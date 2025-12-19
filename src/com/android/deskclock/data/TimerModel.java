@@ -33,6 +33,8 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.net.Uri;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.ArraySet;
 
 import androidx.annotation.StringRes;
@@ -68,6 +70,9 @@ final class TimerModel {
 
     /** The alarm manager system service that calls back when timers expire. */
     private final AlarmManager mAlarmManager;
+
+    /** Periodically checks for running timers that have elapsed to trigger expiry immediately. */
+    private final Handler mHandler = new Handler(Looper.getMainLooper());
 
     /** The model from which settings are fetched. */
     private final SettingsModel mSettingsModel;
@@ -106,6 +111,10 @@ final class TimerModel {
     @SuppressLint("NewApi")
     private final Set<Integer> mRingingIds = new ArraySet<>();
 
+    /** Prevents duplicate expiry dispatches while the model is polling for elapsed timers. */
+    @SuppressLint("NewApi")
+    private final Set<Integer> mPendingExpiryDispatches = new ArraySet<>();
+
     /** The uri of the ringtone to play for timers. */
     private Uri mTimerRingtoneUri;
 
@@ -128,6 +137,11 @@ final class TimerModel {
      */
     private Service mService;
 
+    /** Poller to catch timers that have elapsed before AlarmManager fires. */
+    private final Runnable mExpiryWatcher = new ExpiryWatcher();
+
+    private boolean mWatchingExpiry;
+
     TimerModel(Context context, SharedPreferences prefs, SettingsModel settingsModel,
             RingtoneModel ringtoneModel, NotificationModel notificationModel) {
         mContext = context;
@@ -146,6 +160,8 @@ final class TimerModel {
         final IntentFilter localeBroadcastFilter = new IntentFilter(Intent.ACTION_LOCALE_CHANGED);
         mContext.registerReceiver(mLocaleChangedReceiver, localeBroadcastFilter,
                 Context.RECEIVER_NOT_EXPORTED);
+
+        updateExpiryWatcher();
     }
 
     /**
@@ -554,6 +570,9 @@ final class TimerModel {
             timerListener.timerUpdated(before, timer);
         }
 
+        // Ensure we are watching for timers that have already elapsed.
+        updateExpiryWatcher();
+
         return oldTimer;
     }
 
@@ -598,6 +617,9 @@ final class TimerModel {
         for (TimerListener timerListener : mTimerListeners) {
             timerListener.timerRemoved(timer);
         }
+
+        // Ensure we are watching for timers that have already elapsed.
+        updateExpiryWatcher();
     }
 
     /**
@@ -652,6 +674,72 @@ final class TimerModel {
     private void doUpdateAfterTimeSetTimer(Timer timer) {
         final Timer updated = timer.updateAfterTimeSet();
         doUpdateTimer(updated);
+    }
+
+    /**
+     * Starts or stops the expiry watcher based on running timers.
+     */
+    private void updateExpiryWatcher() {
+        if (mWatchingExpiry) {
+            if (!hasRunningTimers()) {
+                mWatchingExpiry = false;
+                mPendingExpiryDispatches.clear();
+                mHandler.removeCallbacks(mExpiryWatcher);
+            }
+            return;
+        }
+
+        if (hasRunningTimers()) {
+            mWatchingExpiry = true;
+            mHandler.post(mExpiryWatcher);
+        }
+    }
+
+    private boolean hasRunningTimers() {
+        for (Timer timer : getMutableTimers()) {
+            if (timer.isRunning()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Polls running timers to immediately expire any that have elapsed.
+     */
+    private final class ExpiryWatcher implements Runnable {
+        @Override
+        public void run() {
+            boolean hasRunning = false;
+            long nextDelay = 1000;
+
+            for (Timer timer : getMutableTimers()) {
+                final int timerId = timer.getId();
+                if (timer.isRunning()) {
+                    hasRunning = true;
+                    final long remaining = timer.getRemainingTime();
+                    if (remaining <= 0 && mPendingExpiryDispatches.add(timerId)) {
+                        mContext.startService(TimerService.createTimerExpiredIntent(
+                                mContext, timer));
+                    } else if (remaining > 0) {
+                        final long candidateDelay = remaining <= 1000
+                                ? 50
+                                : remaining <= 5000 ? 250 : 1000;
+                        nextDelay = Math.min(nextDelay, candidateDelay);
+                    }
+                } else {
+                    mPendingExpiryDispatches.remove(timerId);
+                }
+            }
+
+            if (hasRunning) {
+                mHandler.postDelayed(this, nextDelay);
+            } else {
+                mWatchingExpiry = false;
+                mPendingExpiryDispatches.clear();
+                mHandler.removeCallbacks(this);
+            }
+        }
     }
 
 

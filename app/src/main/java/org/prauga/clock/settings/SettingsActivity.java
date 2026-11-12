@@ -43,6 +43,7 @@ import org.prauga.clock.data.TimeZones;
 import org.prauga.clock.data.Weekdays;
 import org.prauga.clock.events.Events;
 import org.prauga.clock.ringtone.RingtonePickerActivity;
+import org.prauga.clock.ui.Insets;
 import org.prauga.clock.widget.ToolbarBaseActivity;
 
 /**
@@ -112,6 +113,7 @@ public final class SettingsActivity extends ToolbarBaseActivity {
                     getResources().getDisplayMetrics().densityDpi / 160f);
             view.setPadding(paddingLeftRight, view.getPaddingTop(), paddingLeftRight,
                     view.getPaddingBottom());
+            Insets.padForNavigationBar(getListView());
         }
 
         @Override

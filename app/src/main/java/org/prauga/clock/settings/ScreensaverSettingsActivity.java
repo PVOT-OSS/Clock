@@ -20,7 +20,10 @@ package org.prauga.clock.settings;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.MenuItem;
+import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
@@ -29,6 +32,7 @@ import androidx.preference.SwitchPreferenceCompat;
 
 import org.prauga.clock.R;
 import org.prauga.clock.data.DataModel;
+import org.prauga.clock.ui.Insets;
 import org.prauga.clock.widget.ToolbarBaseActivity;
 
 import java.util.Locale;
@@ -86,6 +90,12 @@ public final class ScreensaverSettingsActivity extends ToolbarBaseActivity {
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             addPreferencesFromResource(R.xml.screensaver_settings);
+        }
+
+        @Override
+        public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+            super.onViewCreated(view, savedInstanceState);
+            Insets.padForNavigationBar(getListView());
         }
 
         @Override

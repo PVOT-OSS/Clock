@@ -58,6 +58,7 @@ import org.prauga.clock.RingtonePreviewKlaxon;
 import org.prauga.clock.alarms.AlarmUpdateHandler;
 import org.prauga.clock.data.DataModel;
 import org.prauga.clock.provider.Alarm;
+import org.prauga.clock.ui.Insets;
 import org.prauga.clock.widget.ToolbarBaseActivity;
 
 import java.util.List;
@@ -176,6 +177,7 @@ public class RingtonePickerActivity extends ToolbarBaseActivity
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(mRingtoneAdapter);
         recyclerView.setItemAnimator(null);
+        Insets.padForNavigationBar(recyclerView);
 
         final int titleResourceId = intent.getIntExtra(EXTRA_TITLE, 0);
         setTitle(context.getString(titleResourceId));

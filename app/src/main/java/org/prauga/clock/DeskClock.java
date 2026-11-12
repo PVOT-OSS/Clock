@@ -59,7 +59,6 @@ import org.prauga.clock.timer.TimerService;
 import org.prauga.clock.uidata.TabListener;
 import org.prauga.clock.uidata.UiDataModel;
 import org.prauga.clock.widget.toast.SnackbarManager;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -114,7 +113,8 @@ public class DeskClock extends BaseActivity
     private TextView mTitleView;
 
     /** The bottom navigation bar */
-    private BottomNavigationView mBottomNavigation;
+    /** The bottom navigation, or a navigation rail in wide windows. */
+    private NavigationBarView mBottomNavigation;
 
     private FragmentUtils mFragmentUtils;
 
@@ -241,7 +241,7 @@ public class DeskClock extends BaseActivity
     }
 
     private final NavigationBarView.OnItemSelectedListener mNavigationListener
-            = new BottomNavigationView.OnItemSelectedListener() {
+            = new NavigationBarView.OnItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {

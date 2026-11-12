@@ -91,17 +91,6 @@
 
     <issue
         id="MissingSuperCall"
-        message="Overriding method should call `super.onBackPressed`"
-        errorLine1="    public void onBackPressed() {"
-        errorLine2="                ~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/org/prauga/clock/alarms/AlarmActivity.java"
-            line="315"
-            column="17"/>
-    </issue>
-
-    <issue
-        id="MissingSuperCall"
         message="Overriding method should call `super.onActivityResult`"
         errorLine1="    protected void onActivityResult(int requestCode, int resultCode, Intent data) {"
         errorLine2="                   ~~~~~~~~~~~~~~~~">

@@ -27,6 +27,8 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.os.Build;
+import android.text.format.DateUtils;
 import android.text.TextUtils;
 
 import androidx.core.app.NotificationCompat;
@@ -66,13 +68,6 @@ class TimerNotificationBuilder {
 
         final List<Action> actions = new ArrayList<>(2);
         final CharSequence stateText;
-
-        // A running timer counts down to zero; a paused one reports the time it stopped at.
-        final TimeDifference remaining = running
-                ? TimeDifference.forTimer(Instant.ofEpochMilli(base),
-                        TimeDifference.FORMAT_CHRONOMETER)
-                : TimeDifference.forPausedTimer(Duration.ofMillis(Math.max(0, remainingTime)),
-                        TimeDifference.FORMAT_CHRONOMETER);
 
         if (count == 1) {
             if (running) {
@@ -146,9 +141,6 @@ class TimerNotificationBuilder {
 
         final PendingIntent pendingShowApp = Utils.pendingActivityIntent(context, showApp);
 
-        final MetricStyle notificationStyle = new MetricStyle()
-                .addMetric(new Metric(remaining, stateText));
-
         final Builder notification = new NotificationCompat.Builder(
                 context, TIMER_MODEL_NOTIFICATION_CHANNEL_ID)
                         .setOngoing(true)
@@ -164,8 +156,26 @@ class TimerNotificationBuilder {
                         .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                         .setColor(ThemeUtils.resolveColor(context, R.attr.colorSurface))
                         .setGroup(nm.getTimerNotificationGroupKey())
-                        .setRequestPromotedOngoing(true)
-                        .setStyle(notificationStyle);
+                        .setRequestPromotedOngoing(true);
+
+        if (Build.VERSION.SDK_INT >= 37) {
+            // A running timer counts down to zero; a paused one reports the time it stopped at.
+            final TimeDifference remaining = running
+                    ? TimeDifference.forTimer(Instant.ofEpochMilli(base),
+                            TimeDifference.FORMAT_CHRONOMETER)
+                    : TimeDifference.forPausedTimer(Duration.ofMillis(Math.max(0, remainingTime)),
+                            TimeDifference.FORMAT_CHRONOMETER);
+            notification.setStyle(new MetricStyle().addMetric(new Metric(remaining, stateText)));
+        } else if (running) {
+            notification.setContentText(stateText)
+                    .setUsesChronometer(true)
+                    .setChronometerCountDown(true)
+                    .setWhen(base)
+                    .setShowWhen(true);
+        } else {
+            notification.setContentText(stateText)
+                    .setSubText(DateUtils.formatElapsedTime(Math.max(0, remainingTime) / 1000));
+        }
 
         for (Action action : actions) {
             notification.addAction(action);
@@ -211,11 +221,6 @@ class TimerNotificationBuilder {
             actions.add(new Action.Builder(null, title1, intent1).build());
         }
 
-        // An expired timer keeps counting past zero, so the time reads as negative.
-        final TimeDifference overtime = TimeDifference.forTimer(
-                Instant.ofEpochMilli(getChronometerBase(timer)),
-                TimeDifference.FORMAT_CHRONOMETER);
-
         // Content intent shows the timer full screen when clicked.
         final Intent content = new Intent(context, ExpiredTimersActivity.class);
         final PendingIntent contentIntent = Utils.pendingActivityIntent(context, content);
@@ -224,9 +229,6 @@ class TimerNotificationBuilder {
         final Intent fullScreen = new Intent(context, ExpiredTimersActivity.class)
                 .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_USER_ACTION);
         final PendingIntent pendingFullScreen = Utils.pendingActivityIntent(context, fullScreen);
-
-        final MetricStyle notificationStyle = new MetricStyle()
-                .addMetric(new Metric(overtime, stateText));
 
         final Builder notification = new NotificationCompat.Builder(
                 context, FIRING_NOTIFICATION_CHANNEL_ID)
@@ -238,11 +240,23 @@ class TimerNotificationBuilder {
                         .setContentIntent(contentIntent)
                         .setPriority(NotificationCompat.PRIORITY_HIGH)
                         .setRequestPromotedOngoing(true)
-                        .setStyle(notificationStyle)
                         .setDefaults(Notification.DEFAULT_LIGHTS)
                         .setSmallIcon(R.drawable.stat_notify_timer)
                         .setFullScreenIntent(pendingFullScreen, true)
                         .setColor(ThemeUtils.resolveColor(context, R.attr.colorSurface));
+
+        if (Build.VERSION.SDK_INT >= 37) {
+            // An expired timer keeps counting past zero, so the time reads as negative.
+            final TimeDifference overtime = TimeDifference.forTimer(
+                    Instant.ofEpochMilli(getChronometerBase(timer)),
+                    TimeDifference.FORMAT_CHRONOMETER);
+            notification.setStyle(new MetricStyle().addMetric(new Metric(overtime, stateText)));
+        } else {
+            notification.setContentText(stateText)
+                    .setUsesChronometer(true)
+                    .setWhen(getChronometerBase(timer))
+                    .setShowWhen(true);
+        }
 
         for (Action action : actions) {
             notification.addAction(action);

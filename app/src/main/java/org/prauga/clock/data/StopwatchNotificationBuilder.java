@@ -24,6 +24,8 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.os.Build;
+import android.text.format.DateUtils;
 
 import androidx.annotation.StringRes;
 import androidx.core.app.NotificationCompat;
@@ -71,7 +73,6 @@ class StopwatchNotificationBuilder {
 
         final List<Action> actions = new ArrayList<>(2);
         final CharSequence text;
-        final TimeDifference elapsed;
 
         if (running) {
             // Left button: Pause
@@ -101,9 +102,6 @@ class StopwatchNotificationBuilder {
             } else {
                 text = null;
             }
-
-            elapsed = TimeDifference.forStopwatch(Instant.ofEpochMilli(base),
-                    TimeDifference.FORMAT_CHRONOMETER);
         } else {
             // Left button: Start
             final Intent start = new Intent(context, StopwatchService.class)
@@ -124,16 +122,8 @@ class StopwatchNotificationBuilder {
             final PendingIntent intent2 = Utils.pendingServiceIntent(context, reset);
             actions.add(new Action.Builder(null, title2, intent2).build());
 
-            // A paused stopwatch reports the frozen time rather than counting up.
-            elapsed = TimeDifference.forPausedStopwatch(Duration.ofMillis(totalTime),
-                    TimeDifference.FORMAT_CHRONOMETER);
             text = null;
         }
-
-        final MetricStyle notificationStyle = new MetricStyle()
-                .addMetric(new Metric(
-                        elapsed,
-                        text != null ? text : res.getText(R.string.menu_stopwatch)));
 
         final Builder notification = new NotificationCompat.Builder(
                 context, STOPWATCH_NOTIFICATION_CHANNEL_ID)
@@ -141,7 +131,6 @@ class StopwatchNotificationBuilder {
                         .setOngoing(true)
                         .setShowWhen(false)
                         .setRequestPromotedOngoing(true)
-                        .setStyle(notificationStyle)
                         .setContentTitle(res.getText(R.string.app_label))
                         .setContentText(text)
                         .setSubText(running ? null : res.getText(R.string.swn_paused))
@@ -152,6 +141,21 @@ class StopwatchNotificationBuilder {
                         .setSmallIcon(R.drawable.stat_notify_stopwatch)
                         .setColor(ThemeUtils.resolveColor(context, R.attr.colorSurface))
                         .setGroup(nm.getStopwatchNotificationGroupKey());
+
+        if (Build.VERSION.SDK_INT >= 37) {
+            // A paused stopwatch reports the frozen time rather than counting up.
+            final TimeDifference elapsed = running
+                    ? TimeDifference.forStopwatch(Instant.ofEpochMilli(base),
+                            TimeDifference.FORMAT_CHRONOMETER)
+                    : TimeDifference.forPausedStopwatch(Duration.ofMillis(totalTime),
+                            TimeDifference.FORMAT_CHRONOMETER);
+            notification.setStyle(new MetricStyle().addMetric(new Metric(
+                    elapsed, text != null ? text : res.getText(R.string.menu_stopwatch))));
+        } else if (running) {
+            notification.setUsesChronometer(true).setWhen(base).setShowWhen(true);
+        } else {
+            notification.setContentText(DateUtils.formatElapsedTime(totalTime / 1000));
+        }
 
         for (Action action : actions) {
             notification.addAction(action);

@@ -31,6 +31,7 @@ class BedtimeFragment : DeskClockFragment(UiDataModel.Tab.BEDTIME) {
     private lateinit var time: TextView
     private lateinit var dayButtons: List<CompoundButton>
     private lateinit var reminder: TextView
+    private lateinit var wakeUp: WakeUpCard
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,9 +53,15 @@ class BedtimeFragment : DeskClockFragment(UiDataModel.Tab.BEDTIME) {
         }
         time.setOnClickListener { pickTime() }
         reminder.setOnClickListener { pickReminder() }
+        wakeUp = WakeUpCard(this, view as ViewGroup, settings)
         buildDayChips()
         bind()
         return view
+    }
+
+    override fun onResume() {
+        super.onResume()
+        wakeUp.load()
     }
 
     private fun buildDayChips() {
@@ -132,6 +139,7 @@ class BedtimeFragment : DeskClockFragment(UiDataModel.Tab.BEDTIME) {
 
     private fun onScheduleChanged() {
         bind()
+        wakeUp.bind()
         BedtimeScheduler.schedule(requireContext())
     }
 

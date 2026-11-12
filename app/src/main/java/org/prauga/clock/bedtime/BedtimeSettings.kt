@@ -34,6 +34,11 @@ class BedtimeSettings(context: Context) {
         get() = Weekdays.fromBits(prefs.getInt(KEY_DAYS, ALL_DAYS))
         set(value) = prefs.edit().putInt(KEY_DAYS, value.bits).apply()
 
+    /** Id of the alarm that wakes the user, or -1. */
+    var wakeUpAlarmId: Long
+        get() = prefs.getLong(KEY_WAKEUP_ALARM, -1)
+        set(value) = prefs.edit().putLong(KEY_WAKEUP_ALARM, value).apply()
+
     /** Minutes before bedtime to remind; 0 is off. */
     var reminderMinutes: Int
         get() = prefs.getInt(KEY_REMINDER, 15)
@@ -65,5 +70,6 @@ class BedtimeSettings(context: Context) {
         const val KEY_DAYS = "bedtime_days"
         const val KEY_REMINDER = "bedtime_reminder_minutes"
         const val ALL_DAYS = 0x7F
+        const val KEY_WAKEUP_ALARM = "bedtime_wakeup_alarm"
     }
 }

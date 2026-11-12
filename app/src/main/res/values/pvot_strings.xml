@@ -86,4 +86,20 @@
     <string name="bedtime_reminder_notification">Bedtime at <xliff:g id="time" example="10:30 pm">%s</xliff:g></string>
     <!-- Text of the bedtime reminder notification -->
     <string name="bedtime_reminder_notification_text">Time to start winding down</string>
+    <!-- Title of the bedtime card about the alarm that wakes the user -->
+    <string name="wakeup_title">Wake-up</string>
+    <!-- Wake-up card when no alarm is linked -->
+    <string name="wakeup_not_set">Not set</string>
+    <!-- Hint on the wake-up card when no alarm is linked -->
+    <string name="wakeup_choose_hint">Choose the alarm that wakes you up</string>
+    <!-- Button on the wake-up card -->
+    <string name="wakeup_choose">Choose alarm</string>
+    <!-- Wake-up alarm choice that creates a new alarm -->
+    <string name="wakeup_new_alarm">New alarm</string>
+    <!-- A one-time alarm in the wake-up alarm choice -->
+    <string name="wakeup_once">Once</string>
+    <!-- Wake-up card when the linked alarm is switched off -->
+    <string name="wakeup_alarm_off">Alarm off</string>
+    <!-- Hours and minutes of sleep between bedtime and the wake-up alarm -->
+    <string name="wakeup_sleep_duration"><xliff:g id="hours" example="8 hours">%1$s</xliff:g> <xliff:g id="minutes" example="0 minutes">%2$s</xliff:g> of sleep</string>
 </resources>

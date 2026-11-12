@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 9.4.0" type="baseline" client="gradle" dependencies="false" name="AGP (9.4.0)" variant="all" version="9.4.0">
+
+    <issue
+        id="MissingPermission"
+        message="Call requires permission which may be rejected by user: code should explicitly check to see if permission is available (with `checkPermission`) or explicitly handle a potential `SecurityException`"
+        errorLine1="        nm.notify(id, notification);"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/prauga/clock/alarms/AlarmNotifications.java"
+            line="139"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="MissingPermission"
+        message="Call requires permission which may be rejected by user: code should explicitly check to see if permission is available (with `checkPermission`) or explicitly handle a potential `SecurityException`"
+        errorLine1="            nm.notify(ALARM_GROUP_NOTIFICATION_ID, summary);"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/prauga/clock/alarms/AlarmNotifications.java"
+            line="220"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingPermission"
+        message="Call requires permission which may be rejected by user: code should explicitly check to see if permission is available (with `checkPermission`) or explicitly handle a potential `SecurityException`"
+        errorLine1="            nm.notify(ALARM_GROUP_MISSED_NOTIFICATION_ID, summary);"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/prauga/clock/alarms/AlarmNotifications.java"
+            line="250"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="MissingPermission"
+        message="Call requires permission which may be rejected by user: code should explicitly check to see if permission is available (with `checkPermission`) or explicitly handle a potential `SecurityException`"
+        errorLine1="        nm.notify(id, notification);"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/prauga/clock/alarms/AlarmNotifications.java"
+            line="291"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="MissingPermission"
+        message="Call requires permission which may be rejected by user: code should explicitly check to see if permission is available (with `checkPermission`) or explicitly handle a potential `SecurityException`"
+        errorLine1="        nm.notify(id, notification);"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/prauga/clock/alarms/AlarmNotifications.java"
+            line="335"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="MissingPermission"
+        message="Call requires permission which may be rejected by user: code should explicitly check to see if permission is available (with `checkPermission`) or explicitly handle a potential `SecurityException`"
+        errorLine1="        mNotificationManager.notify(mNotificationModel.getStopwatchNotificationId(), notification);"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/prauga/clock/data/StopwatchModel.java"
+            line="232"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="MissingPermission"
+        message="Call requires permission which may be rejected by user: code should explicitly check to see if permission is available (with `checkPermission`) or explicitly handle a potential `SecurityException`"
+        errorLine1="        mNotificationManager.notify(notificationId, notification);"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/prauga/clock/data/TimerModel.java"
+            line="759"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="MissingPermission"
+        message="Call requires permission which may be rejected by user: code should explicitly check to see if permission is available (with `checkPermission`) or explicitly handle a potential `SecurityException`"
+        errorLine1="        mNotificationManager.notify(notificationId, notification);"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/prauga/clock/data/TimerModel.java"
+            line="783"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="MissingSuperCall"
+        message="Overriding method should call `super.onBackPressed`"
+        errorLine1="    public void onBackPressed() {"
+        errorLine2="                ~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/prauga/clock/alarms/AlarmActivity.java"
+            line="315"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="MissingSuperCall"
+        message="Overriding method should call `super.onActivityResult`"
+        errorLine1="    protected void onActivityResult(int requestCode, int resultCode, Intent data) {"
+        errorLine2="                   ~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/prauga/clock/DeskClock.java"
+            line="413"
+            column="20"/>
+    </issue>
+
+    <issue
+        id="MissingSuperCall"
+        message="Overriding method should call `super.onRequestPermissionsResult`"
+        errorLine1="    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/prauga/clock/DeskClock.java"
+            line="458"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="ResourceType"
+        message="Expected resource of type integer"
+        errorLine1="        ALARMS(AlarmClockFragment.class, R.id.page_alarm, R.string.menu_alarm),"
+        errorLine2="                                         ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/prauga/clock/uidata/UiDataModel.java"
+            line="44"
+            column="42"/>
+    </issue>
+
+    <issue
+        id="ResourceType"
+        message="Expected resource of type integer"
+        errorLine1="        CLOCKS(ClockFragment.class, R.id.page_clock, R.string.menu_clock),"
+        errorLine2="                                    ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/prauga/clock/uidata/UiDataModel.java"
+            line="45"
+            column="37"/>
+    </issue>
+
+    <issue
+        id="ResourceType"
+        message="Expected resource of type integer"
+        errorLine1="        TIMERS(TimerFragment.class, R.id.page_timer, R.string.menu_timer),"
+        errorLine2="                                    ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/prauga/clock/uidata/UiDataModel.java"
+            line="46"
+            column="37"/>
+    </issue>
+
+    <issue
+        id="ResourceType"
+        message="Expected resource of type integer"
+        errorLine1="        STOPWATCH(StopwatchFragment.class, R.id.page_stopwatch, R.string.menu_stopwatch);"
+        errorLine2="                                           ~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/prauga/clock/uidata/UiDataModel.java"
+            line="47"
+            column="44"/>
+    </issue>
+
+    <issue
+        id="ResourceType"
+        message="Expected resource of type id"
+        errorLine1="            mPageResId = pageResId;"
+        errorLine2="                         ~~~~~~~~~">
+        <location
+            file="src/main/java/org/prauga/clock/uidata/UiDataModel.java"
+            line="55"
+            column="26"/>
+    </issue>
+
+    <issue
+        id="ResourceType"
+        message="Expected resource of type integer"
+        errorLine1="            mPageResId = pageResId;"
+        errorLine2="            ~~~~~~~~~~">
+        <location
+            file="src/main/java/org/prauga/clock/uidata/UiDataModel.java"
+            line="55"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="InvalidWakeLockTag"
+        message="Tag name should use a unique prefix followed by a colon (found AlarmAlertWakeLock). For instance `myapp:mywakelocktag`. This will help with debugging"
+        errorLine1="        return pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);"
+        errorLine2="               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/prauga/clock/AlarmAlertWakeLock.java"
+            line="33"
+            column="16"/>
+    </issue>
+
+    <issue
+        id="InvalidWakeLockTag"
+        message="Tag name should use a unique prefix followed by a colon (found AlarmAlertWakeLock). For instance `myapp:mywakelocktag`. This will help with debugging"
+        errorLine1="        sCpuWakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK"
+        errorLine2="                       ^">
+        <location
+            file="src/main/java/org/prauga/clock/AlarmAlertWakeLock.java"
+            line="50"
+            column="24"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 37 (current min is 31): `forStopwatch`"
+        errorLine1="            elapsed = TimeDifference.forStopwatch(Instant.ofEpochMilli(base),"
+        errorLine2="                                     ~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/prauga/clock/data/StopwatchNotificationBuilder.java"
+            line="105"
+            column="38"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 37 (current min is 31): `forPausedStopwatch`"
+        errorLine1="            elapsed = TimeDifference.forPausedStopwatch(Duration.ofMillis(totalTime),"
+        errorLine2="                                     ~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/prauga/clock/data/StopwatchNotificationBuilder.java"
+            line="128"
+            column="38"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 37 (current min is 31): `MetricStyle`"
+        errorLine1="        final MetricStyle notificationStyle = new MetricStyle()"
+        errorLine2="                                              ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/prauga/clock/data/StopwatchNotificationBuilder.java"
+            line="133"
+            column="47"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 37 (current min is 31): `forTimer`"
+        errorLine1="                ? TimeDifference.forTimer(Instant.ofEpochMilli(base),"
+        errorLine2="                                 ~~~~~~~~">
+        <location
+            file="src/main/java/org/prauga/clock/data/TimerNotificationBuilder.java"
+            line="72"
+            column="34"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 37 (current min is 31): `forPausedTimer`"
+        errorLine1="                : TimeDifference.forPausedTimer(Duration.ofMillis(Math.max(0, remainingTime)),"
+        errorLine2="                                 ~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/prauga/clock/data/TimerNotificationBuilder.java"
+            line="74"
+            column="34"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 37 (current min is 31): `MetricStyle`"
+        errorLine1="        final MetricStyle notificationStyle = new MetricStyle()"
+        errorLine2="                                              ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/prauga/clock/data/TimerNotificationBuilder.java"
+            line="149"
+            column="47"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 37 (current min is 31): `forTimer`"
+        errorLine1="        final TimeDifference overtime = TimeDifference.forTimer("
+        errorLine2="                                                       ~~~~~~~~">
+        <location
+            file="src/main/java/org/prauga/clock/data/TimerNotificationBuilder.java"
+            line="215"
+            column="56"/>
+    </issue>
+
+    <issue
+        id="NewApi"
+        message="Call requires API level 37 (current min is 31): `MetricStyle`"
+        errorLine1="        final MetricStyle notificationStyle = new MetricStyle()"
+        errorLine2="                                              ~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/prauga/clock/data/TimerNotificationBuilder.java"
+            line="228"
+            column="47"/>
+    </issue>
+
+    <issue
+        id="AppCompatCustomView"
+        message="This custom view should extend `androidx.appcompat.widget.AppCompatTextView` instead"
+        errorLine1="public class TextTime extends TextView {"
+        errorLine2="                              ~~~~~~~~">
+        <location
+            file="src/main/java/org/prauga/clock/widget/TextTime.java"
+            line="45"
+            column="31"/>
+    </issue>
+
+    <issue
+        id="RestrictedApi"
+        message="AppCompatEditText.setSupportBackgroundTintList can only be called from within the same library group prefix (referenced groupId=`androidx.appcompat` with prefix androidx from groupId=`Clock`)"
+        errorLine1="        mLabelBox.setSupportBackgroundTintList(new ColorStateList("
+        errorLine2="                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/prauga/clock/LabelDialogFragment.java"
+            line="146"
+            column="19"/>
+    </issue>
+
+    <issue
+        id="RestrictedApi"
+        message="SnackbarLayout can only be accessed from within the same library group (referenced groupId=`com.google.android.material` from groupId=`Clock`)"
+        errorLine1="        return dependency instanceof Snackbar.SnackbarLayout;"
+        errorLine2="                                     ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/prauga/clock/widget/toast/SnackbarSlidingBehavior.java"
+            line="36"
+            column="38"/>
+    </issue>
+
+    <issue
+        id="StringFormatInvalid"
+        message="Format string &apos;`timer_notifications_less_min`&apos; is not a valid format string so it should not be passed to `String.format`"
+        errorLine1="        return String.format(context.getString(formatStringId), hourSeq, minSeq, remainingSuffix,"
+        errorLine2="               ^">
+        <location
+            file="src/main/java/org/prauga/clock/data/TimerStringFormatter.java"
+            line="113"
+            column="16"/>
+        <location
+            file="src/main/res/values/strings.xml"
+            line="141"
+            column="5"
+            message="This definition does not require arguments"/>
+    </issue>
+
+    <issue
+        id="UnsafeImplicitIntentLaunch"
+        message="The intent action `org.prauga.clock.dev.WORLD_CITIES_CHANGED (used to send a broadcast)` matches the intent filter of a non-exported receiver, registered via a call to `Context.registerReceiver`, or similar. If you are trying to invoke this specific receiver via the action then you should use `Intent.setPackage(&lt;APPLICATION_ID>)`."
+        errorLine1="        mContext.sendBroadcast(new Intent(DataModel.ACTION_WORLD_CITIES_CHANGED));"
+        errorLine2="                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/org/prauga/clock/data/CityModel.java"
+            line="238"
+            column="32"/>
+    </issue>
+
+</issues>

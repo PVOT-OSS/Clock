@@ -39,6 +39,16 @@ class BedtimeSettings(context: Context) {
         get() = prefs.getLong(KEY_WAKEUP_ALARM, -1)
         set(value) = prefs.edit().putLong(KEY_WAKEUP_ALARM, value).apply()
 
+    /** Whether Do Not Disturb follows bedtime. */
+    var modeEnabled: Boolean
+        get() = prefs.getBoolean(KEY_MODE, false)
+        set(value) = prefs.edit().putBoolean(KEY_MODE, value).apply()
+
+    /** Id of our Do Not Disturb rule, once created. */
+    var zenRuleId: String?
+        get() = prefs.getString(KEY_ZEN_RULE, null)
+        set(value) = prefs.edit().putString(KEY_ZEN_RULE, value).apply()
+
     /** Minutes before bedtime to remind; 0 is off. */
     var reminderMinutes: Int
         get() = prefs.getInt(KEY_REMINDER, 15)
@@ -71,5 +81,7 @@ class BedtimeSettings(context: Context) {
         const val KEY_REMINDER = "bedtime_reminder_minutes"
         const val ALL_DAYS = 0x7F
         const val KEY_WAKEUP_ALARM = "bedtime_wakeup_alarm"
+        const val KEY_MODE = "bedtime_mode"
+        const val KEY_ZEN_RULE = "bedtime_zen_rule"
     }
 }

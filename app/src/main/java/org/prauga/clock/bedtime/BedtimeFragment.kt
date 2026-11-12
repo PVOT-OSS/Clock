@@ -5,7 +5,9 @@
 
 package org.prauga.clock.bedtime
 
+import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.View
@@ -32,6 +34,8 @@ class BedtimeFragment : DeskClockFragment(UiDataModel.Tab.BEDTIME) {
     private lateinit var dayButtons: List<CompoundButton>
     private lateinit var reminder: TextView
     private lateinit var wakeUp: WakeUpCard
+    private lateinit var mode: MaterialSwitch
+    private lateinit var modeSummary: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -54,6 +58,20 @@ class BedtimeFragment : DeskClockFragment(UiDataModel.Tab.BEDTIME) {
         time.setOnClickListener { pickTime() }
         reminder.setOnClickListener { pickReminder() }
         wakeUp = WakeUpCard(this, view as ViewGroup, settings)
+        mode = view.findViewById(R.id.bedtime_mode)
+        modeSummary = view.findViewById(R.id.bedtime_mode_summary)
+        mode.setOnCheckedChangeListener { _, checked -> setModeEnabled(checked) }
+        // The settings are the source of truth; restored view state would write stale values.
+        enabled.isSaveEnabled = false
+        mode.isSaveEnabled = false
+        dayButtons.forEach { it.isSaveEnabled = false }
+        view.findViewById<View>(R.id.bedtime_mode_row).setOnClickListener {
+            if (settings.modeEnabled && !BedtimeMode.hasAccess(requireContext())) {
+                requestAccess()
+            } else {
+                mode.toggle()
+            }
+        }
         buildDayChips()
         bind()
         return view
@@ -61,7 +79,38 @@ class BedtimeFragment : DeskClockFragment(UiDataModel.Tab.BEDTIME) {
 
     override fun onResume() {
         super.onResume()
+        bind()
         wakeUp.load()
+        bindMode()
+        BedtimeScheduler.schedule(requireContext())
+    }
+
+    private fun setModeEnabled(enabled: Boolean) {
+        if (enabled == settings.modeEnabled) {
+            return
+        }
+        settings.modeEnabled = enabled
+        if (enabled && !BedtimeMode.hasAccess(requireContext())) {
+            requestAccess()
+        }
+        if (!enabled) {
+            BedtimeMode.remove(requireContext())
+        }
+        bindMode()
+        BedtimeScheduler.schedule(requireContext())
+    }
+
+    private fun requestAccess() {
+        startActivity(Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS))
+    }
+
+    private fun bindMode() {
+        mode.isChecked = settings.modeEnabled
+        modeSummary.setText(
+            if (settings.modeEnabled && !BedtimeMode.hasAccess(requireContext()))
+                R.string.bedtime_mode_needs_access
+            else R.string.bedtime_mode_summary
+        )
     }
 
     private fun buildDayChips() {

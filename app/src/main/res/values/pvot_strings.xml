@@ -102,4 +102,10 @@
     <string name="wakeup_alarm_off">Alarm off</string>
     <!-- Hours and minutes of sleep between bedtime and the wake-up alarm -->
     <string name="wakeup_sleep_duration"><xliff:g id="hours" example="8 hours">%1$s</xliff:g> <xliff:g id="minutes" example="0 minutes">%2$s</xliff:g> of sleep</string>
+    <!-- Bedtime card that turns on Do Not Disturb during bedtime -->
+    <string name="bedtime_mode_title">Bedtime mode</string>
+    <!-- Summary of the bedtime mode card -->
+    <string name="bedtime_mode_summary">Do Not Disturb from bedtime until you wake up</string>
+    <!-- Summary of the bedtime mode card while Do Not Disturb access is missing -->
+    <string name="bedtime_mode_needs_access">Tap to allow Do Not Disturb access</string>
 </resources>

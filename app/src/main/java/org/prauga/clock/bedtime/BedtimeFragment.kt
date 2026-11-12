@@ -132,6 +132,7 @@ class BedtimeFragment : DeskClockFragment(UiDataModel.Tab.BEDTIME) {
 
     private fun onScheduleChanged() {
         bind()
+        BedtimeScheduler.schedule(requireContext())
     }
 
     override fun getFabTargetVisibility(): Int = View.INVISIBLE

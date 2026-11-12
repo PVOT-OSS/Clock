@@ -48,6 +48,7 @@ import androidx.fragment.app.Fragment;
 
 import org.prauga.clock.actionbarmenu.OptionsMenuManager;
 import org.prauga.clock.actionbarmenu.SettingsMenuItemController;
+import org.prauga.clock.bedtime.BedtimeScheduler;
 import org.prauga.clock.data.DataModel;
 import org.prauga.clock.data.DataModel.SilentSetting;
 import org.prauga.clock.data.OnSilentSettingsListener;
@@ -304,6 +305,9 @@ public class DeskClock extends BaseActivity
                     case StopwatchService.ACTION_SHOW_STOPWATCH:
                         Events.sendStopwatchEvent(R.string.action_show, label);
                         UiDataModel.getUiDataModel().setSelectedTab(UiDataModel.Tab.STOPWATCH);
+                        break;
+                    case BedtimeScheduler.ACTION_SHOW_BEDTIME:
+                        UiDataModel.getUiDataModel().setSelectedTab(UiDataModel.Tab.BEDTIME);
                         break;
                 }
             }

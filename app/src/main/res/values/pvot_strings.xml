@@ -80,4 +80,10 @@
         <item quantity="one">Remind <xliff:g id="minutes" example="1">%d</xliff:g> minute before</item>
         <item quantity="other">Remind <xliff:g id="minutes" example="15">%d</xliff:g> minutes before</item>
     </plurals>
+    <!-- Notification channel of the bedtime reminder -->
+    <string name="bedtime_channel_name">Bedtime</string>
+    <!-- Bedtime reminder notification; arg is the bedtime -->
+    <string name="bedtime_reminder_notification">Bedtime at <xliff:g id="time" example="10:30 pm">%s</xliff:g></string>
+    <!-- Text of the bedtime reminder notification -->
+    <string name="bedtime_reminder_notification_text">Time to start winding down</string>
 </resources>

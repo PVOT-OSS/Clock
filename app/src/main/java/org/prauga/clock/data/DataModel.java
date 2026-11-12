@@ -78,7 +78,11 @@ public final class DataModel {
         BLOCKED_NOTIFICATIONS(R.string.app_notifications_blocked,
                 R.string.change_setting_action,
                 Predicate.TRUE,
-                new ChangeAppNotificationSettingsListener());
+                new ChangeAppNotificationSettingsListener()),
+        FULL_SCREEN_INTENT_DENIED(R.string.full_screen_alarms_blocked,
+                R.string.change_setting_action,
+                Predicate.TRUE,
+                AlarmReliability.openFullScreenIntentSettings);
 
         private final @StringRes int mLabelResId;
         private final @StringRes int mActionResId;

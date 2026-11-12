@@ -160,6 +160,8 @@ final class SilentSettingsModel {
                     silentSetting = SilentSetting.SILENT_RINGTONE;
                 } else if (isAppNotificationBlocked()) {
                     silentSetting = SilentSetting.BLOCKED_NOTIFICATIONS;
+                } else if (!AlarmReliability.canUseFullScreenIntent(mContext)) {
+                    silentSetting = SilentSetting.FULL_SCREEN_INTENT_DENIED;
                 } else {
                     silentSetting = null;
                 }

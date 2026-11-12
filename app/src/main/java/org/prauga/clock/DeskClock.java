@@ -254,6 +254,8 @@ public class DeskClock extends BaseActivity
                 selectedTab = UiDataModel.Tab.TIMERS;
             } else if (itemId == R.id.page_stopwatch) {
                 selectedTab = UiDataModel.Tab.STOPWATCH;
+            } else if (itemId == R.id.page_bedtime) {
+                selectedTab = UiDataModel.Tab.BEDTIME;
             }
 
             if (selectedTab != null) {

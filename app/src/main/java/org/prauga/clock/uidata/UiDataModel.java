@@ -29,6 +29,7 @@ import androidx.annotation.StringRes;
 import org.prauga.clock.AlarmClockFragment;
 import org.prauga.clock.ClockFragment;
 import org.prauga.clock.R;
+import org.prauga.clock.bedtime.BedtimeFragment;
 import org.prauga.clock.stopwatch.StopwatchFragment;
 import org.prauga.clock.timer.TimerFragment;
 
@@ -44,7 +45,8 @@ public final class UiDataModel {
         ALARMS(AlarmClockFragment.class, R.id.page_alarm, R.string.menu_alarm),
         CLOCKS(ClockFragment.class, R.id.page_clock, R.string.menu_clock),
         TIMERS(TimerFragment.class, R.id.page_timer, R.string.menu_timer),
-        STOPWATCH(StopwatchFragment.class, R.id.page_stopwatch, R.string.menu_stopwatch);
+        STOPWATCH(StopwatchFragment.class, R.id.page_stopwatch, R.string.menu_stopwatch),
+        BEDTIME(BedtimeFragment.class, R.id.page_bedtime, R.string.menu_bedtime);
 
         private final String mFragmentClassName;
         private final @IdRes int mPageResId;

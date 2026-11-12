@@ -49,6 +49,15 @@ class BedtimeSettings(context: Context) {
         get() = prefs.getString(KEY_ZEN_RULE, null)
         set(value) = prefs.edit().putString(KEY_ZEN_RULE, value).apply()
 
+    /** Ordinal of the last sleep sound played, and for how long. */
+    var sleepSound: Int
+        get() = prefs.getInt(KEY_SLEEP_SOUND, 2)
+        set(value) = prefs.edit().putInt(KEY_SLEEP_SOUND, value).apply()
+
+    var sleepSoundMinutes: Int
+        get() = prefs.getInt(KEY_SLEEP_SOUND_MINUTES, 30)
+        set(value) = prefs.edit().putInt(KEY_SLEEP_SOUND_MINUTES, value).apply()
+
     /** Minutes before bedtime to remind; 0 is off. */
     var reminderMinutes: Int
         get() = prefs.getInt(KEY_REMINDER, 15)
@@ -83,5 +92,7 @@ class BedtimeSettings(context: Context) {
         const val KEY_WAKEUP_ALARM = "bedtime_wakeup_alarm"
         const val KEY_MODE = "bedtime_mode"
         const val KEY_ZEN_RULE = "bedtime_zen_rule"
+        const val KEY_SLEEP_SOUND = "bedtime_sleep_sound"
+        const val KEY_SLEEP_SOUND_MINUTES = "bedtime_sleep_sound_minutes"
     }
 }

@@ -108,4 +108,23 @@
     <string name="bedtime_mode_summary">Do Not Disturb from bedtime until you wake up</string>
     <!-- Summary of the bedtime mode card while Do Not Disturb access is missing -->
     <string name="bedtime_mode_needs_access">Tap to allow Do Not Disturb access</string>
+    <!-- Bedtime card that plays a calming noise -->
+    <string name="sleep_sounds_title">Sleep sounds</string>
+    <string name="sleep_sound_white">White noise</string>
+    <string name="sleep_sound_pink">Pink noise</string>
+    <string name="sleep_sound_brown">Brown noise</string>
+    <!-- Short names of the noises on the sleep sounds card buttons -->
+    <string name="sleep_sound_white_short">White</string>
+    <string name="sleep_sound_pink_short">Pink</string>
+    <string name="sleep_sound_brown_short">Brown</string>
+    <!-- Lengths a sleep sound plays for -->
+    <string name="sleep_sound_15">15 min</string>
+    <string name="sleep_sound_30">30 min</string>
+    <string name="sleep_sound_60">1 hour</string>
+    <string name="sleep_sound_play">Play</string>
+    <string name="sleep_sound_stop">Stop</string>
+    <!-- Notification channel and notification of a playing sleep sound -->
+    <string name="sleep_sound_channel">Sleep sounds</string>
+    <string name="sleep_sound_playing"><xliff:g id="sound" example="Brown noise">%s</xliff:g></string>
+    <string name="sleep_sound_stops_at">Stops at <xliff:g id="time" example="11:30 pm">%s</xliff:g></string>
 </resources>

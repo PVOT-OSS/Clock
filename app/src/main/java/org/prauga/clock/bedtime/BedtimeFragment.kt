@@ -36,6 +36,7 @@ class BedtimeFragment : DeskClockFragment(UiDataModel.Tab.BEDTIME) {
     private lateinit var wakeUp: WakeUpCard
     private lateinit var mode: MaterialSwitch
     private lateinit var modeSummary: TextView
+    private lateinit var sleepSound: SleepSoundCard
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -58,6 +59,7 @@ class BedtimeFragment : DeskClockFragment(UiDataModel.Tab.BEDTIME) {
         time.setOnClickListener { pickTime() }
         reminder.setOnClickListener { pickReminder() }
         wakeUp = WakeUpCard(this, view as ViewGroup, settings)
+        sleepSound = SleepSoundCard(view, settings)
         mode = view.findViewById(R.id.bedtime_mode)
         modeSummary = view.findViewById(R.id.bedtime_mode_summary)
         mode.setOnCheckedChangeListener { _, checked -> setModeEnabled(checked) }
@@ -82,6 +84,7 @@ class BedtimeFragment : DeskClockFragment(UiDataModel.Tab.BEDTIME) {
         bind()
         wakeUp.load()
         bindMode()
+        sleepSound.bind()
         BedtimeScheduler.schedule(requireContext())
     }
 

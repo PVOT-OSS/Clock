@@ -15,7 +15,7 @@
 -->
 
 <!-- This TimerItem includes the circle because ample space exists. -->
-<com.android.deskclock.timer.TimerItem
+<org.prauga.clock.timer.TimerItem
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -57,7 +57,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.android.deskclock.CircleButtonsLayout
+    <org.prauga.clock.CircleButtonsLayout
         android:id="@+id/circle_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -70,12 +70,12 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp">
 
-        <com.android.deskclock.timer.TimerCircleView
+        <org.prauga.clock.timer.TimerCircleView
             android:id="@+id/timer_time"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <com.android.deskclock.widget.AutoSizingTextView
+        <org.prauga.clock.widget.AutoSizingTextView
             android:id="@+id/timer_time_text"
             style="@style/display_time"
             android:layout_width="match_parent"
@@ -99,7 +99,7 @@
             app:icon="@drawable/ic_reset"
             app:iconTint="?attr/colorPrimary" />
 
-    </com.android.deskclock.CircleButtonsLayout>
+    </org.prauga.clock.CircleButtonsLayout>
 
     <Space
         android:id="@+id/space_after_close"
@@ -150,4 +150,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:materialSizeOverlay="@style/SizeOverlay.Material3Expressive.Button.Medium"/>
 
-</com.android.deskclock.timer.TimerItem>
+</org.prauga.clock.timer.TimerItem>

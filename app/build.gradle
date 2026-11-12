@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.android.deskclock'
+    namespace 'org.prauga.clock'
     compileSdk 37
 
     defaultConfig {
-        applicationId "com.android.deskclock"
+        applicationId "org.prauga.clock"
         minSdkVersion 27
         targetSdkVersion 34
 

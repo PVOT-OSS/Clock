@@ -18,9 +18,6 @@
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <original-package android:name="com.android.alarmclock" />
-    <original-package android:name="com.android.deskclock" />
-
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -108,7 +105,7 @@
         <!-- ============================================================== -->
 
         <activity
-            android:name="com.android.deskclock.HandleApiCalls"
+            android:name="org.prauga.clock.HandleApiCalls"
             android:permission="com.android.alarm.permission.SET_ALARM"
             android:directBootAware="true"
             android:excludeFromRecents="true"
@@ -130,10 +127,10 @@
         </activity>
 
         <activity-alias
-            android:name="com.android.deskclock.HandleSetAlarmApiCalls"
+            android:name="org.prauga.clock.HandleSetAlarmApiCalls"
             android:permission="com.android.alarm.permission.SET_ALARM"
             android:exported="true"
-            android:targetActivity="com.android.deskclock.HandleApiCalls">
+            android:targetActivity="org.prauga.clock.HandleApiCalls">
             <intent-filter>
                 <action android:name="android.intent.action.SET_ALARM" />
                 <action android:name="android.intent.action.SET_TIMER" />
@@ -208,7 +205,7 @@
 
         <!-- Legacy broadcast receiver that honors old scheduled timers across app upgrade. -->
         <receiver
-            android:name="com.android.deskclock.timer.TimerReceiver"
+            android:name="org.prauga.clock.timer.TimerReceiver"
             android:exported="false">
             <intent-filter>
                 <action android:name="times_up" />
@@ -270,7 +267,7 @@
         <!-- ============================================================== -->
 
         <receiver
-            android:name="com.android.alarmclock.AnalogAppWidgetProvider"
+            android:name="org.prauga.clock.alarmclock.AnalogAppWidgetProvider"
             android:exported="true"
             android:label="@string/analog_gadget">
             <intent-filter>
@@ -286,7 +283,7 @@
         </receiver>
 
         <receiver
-            android:name="com.android.alarmclock.DigitalAppWidgetProvider"
+            android:name="org.prauga.clock.alarmclock.DigitalAppWidgetProvider"
             android:exported="true"
             android:label="@string/digital_gadget">
             <intent-filter>
@@ -305,11 +302,11 @@
         </receiver>
 
         <service
-            android:name="com.android.alarmclock.DigitalAppWidgetCityService"
+            android:name="org.prauga.clock.alarmclock.DigitalAppWidgetCityService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
         <activity
-            android:name="com.android.alarmclock.DigitalAppWidgetConfigurationActivity"
+            android:name="org.prauga.clock.alarmclock.DigitalAppWidgetConfigurationActivity"
             android:theme="@style/Theme.DeskClock.DigitalWidgetConfigurationTheme"
             android:exported="true">
             <intent-filter>

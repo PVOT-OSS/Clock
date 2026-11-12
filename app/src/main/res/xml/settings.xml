@@ -102,7 +102,7 @@
             android:title="@string/snooze_duration_title"
             app:iconSpaceReserved="false"  />
 
-        <com.android.deskclock.settings.AlarmVolumePreference
+        <org.prauga.clock.settings.AlarmVolumePreference
             android:key="volume_setting"
             android:layout="@layout/alarm_volume_preference"
             android:title="@string/alarm_volume_title"

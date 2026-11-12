@@ -55,4 +55,8 @@
         <item quantity="one">Set timer for <xliff:g id="minutes" example="1">%d</xliff:g> minute</item>
         <item quantity="other">Set timer for <xliff:g id="minutes" example="5">%d</xliff:g> minutes</item>
     </plurals>
+    <!-- Quick Settings stopwatch tile subtitle while it runs -->
+    <string name="tile_stopwatch_running">Running</string>
+    <!-- Quick Settings stopwatch tile subtitle while it is reset -->
+    <string name="tile_stopwatch_start">Tap to start</string>
 </resources>

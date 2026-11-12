@@ -116,6 +116,7 @@ public class TimerSetupView extends LinearLayout implements View.OnClickListener
 
         mDeleteView.setOnClickListener(this);
         mDeleteView.setOnLongClickListener(this);
+        TimerPresets.bind(this);
 
         updateTime();
     }
@@ -289,6 +290,22 @@ public class TimerSetupView extends LinearLayout implements View.OnClickListener
             mInputPointer = -1;
             updateTime();
         }
+    }
+
+    /** Replaces the input with a duration of the given minutes, as a preset button does. */
+    public void setMinutes(int totalMinutes) {
+        final int hours = Math.min(totalMinutes / 60, 99);
+        final int minutes = totalMinutes % 60;
+        final int[] input = { 0, 0, minutes % 10, minutes / 10, hours % 10, hours / 10 };
+        System.arraycopy(input, 0, mInput, 0, mInput.length);
+        mInputPointer = -1;
+        for (int i = 0; i < mInput.length; i++) {
+            if (mInput[i] != 0) {
+                mInputPointer = i;
+            }
+        }
+        updateTime();
+        updateFab();
     }
 
     public boolean hasValidInput() {

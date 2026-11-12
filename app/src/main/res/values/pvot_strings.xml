@@ -48,4 +48,11 @@
     <string name="record_new_sound">Record new sound</string>
     <!-- Title of a recorded alarm sound; arg is when it was recorded -->
     <string name="recorded_sound_title">Recording <xliff:g id="when" example="13 Nov 2026 2:45 am">%s</xliff:g></string>
+    <!-- Timer setup button that fills in a common duration; arg is a number of minutes -->
+    <string name="timer_preset_minutes"><xliff:g id="minutes" example="5">%d</xliff:g> min</string>
+    <!-- Spoken for a timer preset button; arg is a number of minutes -->
+    <plurals name="timer_preset_minutes_description">
+        <item quantity="one">Set timer for <xliff:g id="minutes" example="1">%d</xliff:g> minute</item>
+        <item quantity="other">Set timer for <xliff:g id="minutes" example="5">%d</xliff:g> minutes</item>
+    </plurals>
 </resources>

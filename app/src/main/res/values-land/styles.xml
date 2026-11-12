@@ -23,6 +23,12 @@
         <item name="layout_constraintTop_toTopOf">parent</item>
     </style>
 
+    <style name="TimerSetupPresets">
+        <item name="layout_constraintEnd_toEndOf">@id/timer_setup_time</item>
+        <item name="layout_constraintStart_toStartOf">@id/timer_setup_time</item>
+        <item name="layout_constraintTop_toBottomOf">@id/timer_setup_time</item>
+    </style>
+
     <style name="TimerSetupTime">
         <item name="layout_constraintBottom_toBottomOf">@id/timer_setup_time_bottom</item>
         <item name="layout_constraintEnd_toStartOf">@id/fold_vertical_start_edge</item>

@@ -66,6 +66,61 @@
         tools:text="12h34m56s"
         tools:ignore="MissingConstraints" />
 
+    <LinearLayout
+        android:id="@+id/timer_setup_presets"
+        style="@style/TimerSetupPresets"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="12dp"
+        tools:ignore="MissingConstraints">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/timer_preset_0"
+            style="?attr/materialButtonTonalStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="3dp"
+            android:layout_weight="1"
+            android:maxLines="1"
+            android:minWidth="0dp"
+            android:paddingHorizontal="0dp"
+            android:textAppearance="?attr/textAppearanceLabelLarge" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/timer_preset_1"
+            style="?attr/materialButtonTonalStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="3dp"
+            android:layout_weight="1"
+            android:maxLines="1"
+            android:minWidth="0dp"
+            android:paddingHorizontal="0dp"
+            android:textAppearance="?attr/textAppearanceLabelLarge" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/timer_preset_2"
+            style="?attr/materialButtonTonalStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="3dp"
+            android:layout_weight="1"
+            android:maxLines="1"
+            android:minWidth="0dp"
+            android:paddingHorizontal="0dp"
+            android:textAppearance="?attr/textAppearanceLabelLarge" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/timer_preset_3"
+            style="?attr/materialButtonTonalStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="3dp"
+            android:layout_weight="1"
+            android:maxLines="1"
+            android:minWidth="0dp"
+            android:paddingHorizontal="0dp"
+            android:textAppearance="?attr/textAppearanceLabelLarge" />
+    </LinearLayout>
+
     <include
         android:id="@+id/timer_setup_digits"
         style="@style/TimerSetupDigits"

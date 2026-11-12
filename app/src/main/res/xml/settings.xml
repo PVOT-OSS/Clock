@@ -127,6 +127,16 @@
             app:iconSpaceReserved="false"  />
 
         <ListPreference
+            android:defaultValue="swipe"
+            android:dialogTitle="@string/dismiss_gesture_title"
+            android:entries="@array/dismiss_gesture_entries"
+            android:entryValues="@array/dismiss_gesture_values"
+            android:key="alarm_dismiss_gesture"
+            android:title="@string/dismiss_gesture_title"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
             android:defaultValue="0"
             android:dialogTitle="@string/flip_action_title"
             android:entries="@array/action_setting_entries"

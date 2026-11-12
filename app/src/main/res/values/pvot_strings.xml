@@ -30,4 +30,14 @@
     <string name="alarm_date_remove">Remove date</string>
     <!-- Picker button that ends a pause of a repeating alarm -->
     <string name="alarm_pause_resume">Resume</string>
+    <!-- Setting: how a ringing alarm is snoozed or stopped -->
+    <string name="dismiss_gesture_title">Snooze and stop gesture</string>
+    <string-array name="dismiss_gesture_entries">
+        <item>Swipe</item>
+        <item>Tap</item>
+    </string-array>
+    <string-array name="dismiss_gesture_values" translatable="false">
+        <item>swipe</item>
+        <item>tap</item>
+    </string-array>
 </resources>

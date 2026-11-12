@@ -327,8 +327,9 @@ public class AlarmActivity extends BaseActivity
         }
         LOGGER.v("onClick: %s", view);
 
-        // If in accessibility mode, allow snooze/dismiss by double tapping on respective icons.
-        if (isAccessibilityEnabled()) {
+        // If in accessibility mode, allow snooze/dismiss by double tapping on respective icons;
+        // the tap gesture setting does the same with a single tap.
+        if (isAccessibilityEnabled() || AlarmGestures.isTapToDismiss(this)) {
             if (view == mSnoozeButton) {
                 snooze();
             } else if (view == mDismissButton) {

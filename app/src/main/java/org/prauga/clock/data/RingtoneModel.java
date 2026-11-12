@@ -40,6 +40,7 @@ import android.util.ArraySet;
 
 import org.prauga.clock.LogUtils;
 import org.prauga.clock.R;
+import org.prauga.clock.ringtone.RecordedSounds;
 import org.prauga.clock.provider.Alarm;
 
 import java.util.Collections;
@@ -99,6 +100,7 @@ final class RingtoneModel {
         for (CustomRingtone ringtone : ringtones) {
             if (ringtone.getUri().equals(uri)) {
                 CustomRingtoneDAO.removeCustomRingtone(mPrefs, ringtone.getId());
+                RecordedSounds.delete(mContext, uri);
                 ringtones.remove(ringtone);
                 break;
             }
@@ -135,7 +137,8 @@ final class RingtoneModel {
 
         for (ListIterator<CustomRingtone> i = ringtones.listIterator(); i.hasNext();) {
             final CustomRingtone ringtone = i.next();
-            i.set(ringtone.setHasPermissions(permissions.contains(ringtone.getUri())));
+            i.set(ringtone.setHasPermissions(permissions.contains(ringtone.getUri())
+                    || RecordedSounds.isRecordedSound(mContext, ringtone.getUri())));
         }
     }
 

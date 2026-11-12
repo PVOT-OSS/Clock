@@ -33,6 +33,12 @@
     <uses-permission android:name="android.permission.POST_PROMOTED_NOTIFICATIONS" />
     <uses-permission android:name="org.codeaurora.permission.POWER_OFF_ALARM" />
 
+    <queries>
+        <intent>
+            <action android:name="android.provider.MediaStore.RECORD_SOUND" />
+        </intent>
+    </queries>
+
     <application
         android:enableOnBackInvokedCallback="true"
         android:name=".DeskClockApplication"
@@ -189,6 +195,16 @@
             android:name=".alarms.AlarmService"
             android:directBootAware="true"
             android:foregroundServiceType="systemExempted" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.sounds"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/recorded_sounds" />
+        </provider>
 
         <receiver
             android:name=".alarms.AlarmStateChangeReceiver"

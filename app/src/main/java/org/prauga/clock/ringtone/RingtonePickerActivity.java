@@ -77,6 +77,9 @@ import java.util.concurrent.Executors;
 public class RingtonePickerActivity extends ToolbarBaseActivity
         implements LoaderManager.LoaderCallbacks<List<ItemAdapter.ItemHolder<Uri>>> {
 
+    /** Request code for a sound recorded by a recorder app. */
+    private static final int REQUEST_RECORD_SOUND = 1;
+
     /** Key to an extra that defines resource id to the title of this activity. */
     private static final String EXTRA_TITLE = "extra_title";
 
@@ -169,6 +172,8 @@ public class RingtonePickerActivity extends ToolbarBaseActivity
         mRingtoneAdapter = new ItemAdapter<>();
         mRingtoneAdapter.withViewTypes(headerFactory, null, VIEW_TYPE_ITEM_HEADER)
                 .withViewTypes(addNewFactory, listener, VIEW_TYPE_ADD_NEW)
+                .withViewTypes(new RecordSoundViewHolder.Factory(inflater), listener,
+                        RecordSoundViewHolder.VIEW_TYPE_RECORD)
                 .withViewTypes(ringtoneFactory, listener, VIEW_TYPE_SYSTEM_SOUND)
                 .withViewTypes(ringtoneFactory, listener, VIEW_TYPE_CUSTOM_SOUND);
 
@@ -278,6 +283,11 @@ public class RingtonePickerActivity extends ToolbarBaseActivity
 
         final Uri uri = data == null ? null : data.getData();
         if (uri == null) {
+            return;
+        }
+
+        if (requestCode == REQUEST_RECORD_SOUND) {
+            addRecordedSoundAsync(uri);
             return;
         }
 
@@ -425,6 +435,11 @@ public class RingtonePickerActivity extends ToolbarBaseActivity
                             .setType("audio/*"), 0);
                     break;
 
+                case RecordSoundViewHolder.CLICK_RECORD:
+                    stopPlayingRingtone(getSelectedRingtoneHolder(), false);
+                    startActivityForResult(RecordedSounds.recordIntent(), REQUEST_RECORD_SOUND);
+                    break;
+
                 case RingtoneViewHolder.CLICK_NORMAL:
                     final RingtoneHolder oldSelection = getSelectedRingtoneHolder();
                     final RingtoneHolder newSelection = (RingtoneHolder) viewHolder.getItemHolder();
@@ -459,6 +474,24 @@ public class RingtonePickerActivity extends ToolbarBaseActivity
      * This task locates a displayable string in the background that is fit for use as the title of
      * the audio content. It adds a custom ringtone using the uri and title on the main thread.
      */
+    /** Copies a recording into our own files and adds it as a custom ringtone. */
+    private void addRecordedSoundAsync(Uri recording) {
+        final Context context = getApplicationContext();
+        Executors.newSingleThreadExecutor().execute(() -> {
+            final kotlin.Pair<Uri, String> sound = RecordedSounds.importRecording(context, recording);
+            if (sound == null) {
+                return;
+            }
+            new Handler(Looper.getMainLooper()).post(() -> {
+                DataModel.getDataModel().addCustomRingtone(sound.getFirst(), sound.getSecond());
+                mSelectedRingtoneUri = sound.getFirst();
+                mIsPlaying = true;
+                LoaderManager.getInstance(this).restartLoader(0, null,
+                        RingtonePickerActivity.this);
+            });
+        });
+    }
+
     private void addCustomRingtoneAsync(Uri uri) {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());

@@ -93,6 +93,11 @@ class RingtoneLoader extends AsyncTaskLoader<List<ItemAdapter.ItemHolder<Uri>>> 
         // Add an item holder for the "Add new" music ringtone.
         itemHolders.add(new AddCustomRingtoneHolder());
 
+        // Add an item holder to record a new sound if a recorder app is installed.
+        if (RecordedSounds.canRecord(getContext())) {
+            itemHolders.add(new RecordSoundHolder());
+        }
+
         // Add an item holder for the Ringtones heading.
         itemHolders.add(new HeaderHolder(R.string.device_sounds));
 

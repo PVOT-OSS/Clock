@@ -44,4 +44,8 @@
     <string name="alarm_badge_vibrate_only">Vibrate only</string>
     <!-- Spoken with a collapsed alarm that has no sound and does not vibrate -->
     <string name="alarm_badge_silent">Silent</string>
+    <!-- Sound picker row that opens a recorder app to record a new alarm sound -->
+    <string name="record_new_sound">Record new sound</string>
+    <!-- Title of a recorded alarm sound; arg is when it was recorded -->
+    <string name="recorded_sound_title">Recording <xliff:g id="when" example="13 Nov 2026 2:45 am">%s</xliff:g></string>
 </resources>

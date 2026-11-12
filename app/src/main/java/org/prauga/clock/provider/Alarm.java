@@ -63,6 +63,9 @@ public final class Alarm implements Parcelable, ClockContract.AlarmsColumns {
             RINGTONE,
             DELETE_AFTER_USE,
             INCREASING_VOLUME,
+            SCHEDULED_DATE,
+            PAUSE_START,
+            PAUSE_END,
     };
 
     private static final String[] QUERY_ALARMS_WITH_INSTANCES_COLUMNS = {
@@ -85,7 +88,10 @@ public final class Alarm implements Parcelable, ClockContract.AlarmsColumns {
             ClockDatabaseHelper.INSTANCES_TABLE_NAME + "." + ClockContract.InstancesColumns.HOUR,
             ClockDatabaseHelper.INSTANCES_TABLE_NAME + "." + ClockContract.InstancesColumns.MINUTES,
             ClockDatabaseHelper.INSTANCES_TABLE_NAME + "." + ClockContract.InstancesColumns.LABEL,
-            ClockDatabaseHelper.INSTANCES_TABLE_NAME + "." + ClockContract.InstancesColumns.VIBRATE
+            ClockDatabaseHelper.INSTANCES_TABLE_NAME + "." + ClockContract.InstancesColumns.VIBRATE,
+            ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + SCHEDULED_DATE,
+            ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + PAUSE_START,
+            ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + PAUSE_END,
     };
 
     /**
@@ -113,8 +119,9 @@ public final class Alarm implements Parcelable, ClockContract.AlarmsColumns {
     public static final int INSTANCE_LABEL_INDEX = 17;
     public static final int INSTANCE_VIBRATE_INDEX = 18;
 
-    private static final int COLUMN_COUNT = INCREASING_VOLUME_INDEX + 1;
-    private static final int ALARM_JOIN_INSTANCE_COLUMN_COUNT = INSTANCE_VIBRATE_INDEX + 1;
+    private static final int COLUMN_COUNT = QUERY_COLUMNS.length;
+    private static final int ALARM_JOIN_INSTANCE_COLUMN_COUNT =
+            QUERY_ALARMS_WITH_INSTANCES_COLUMNS.length;
 
     public static ContentValues createContentValues(Alarm alarm) {
         ContentValues values = new ContentValues(COLUMN_COUNT);
@@ -130,6 +137,9 @@ public final class Alarm implements Parcelable, ClockContract.AlarmsColumns {
         values.put(LABEL, alarm.label);
         values.put(DELETE_AFTER_USE, alarm.deleteAfterUse);
         values.put(INCREASING_VOLUME, alarm.increasingVolume ? 1 : 0);
+        values.put(SCHEDULED_DATE, alarm.scheduledDate);
+        values.put(PAUSE_START, alarm.pauseStart);
+        values.put(PAUSE_END, alarm.pauseEnd);
         if (alarm.alert == null) {
             // We want to put null, so default alarm changes
             values.putNull(RINGTONE);
@@ -281,6 +291,11 @@ public final class Alarm implements Parcelable, ClockContract.AlarmsColumns {
     public Uri alert;
     public boolean deleteAfterUse;
     public boolean increasingVolume;
+    /** Epoch day a one-time alarm is set for, or {@link AlarmDates#NONE}. */
+    public long scheduledDate = AlarmDates.NONE;
+    /** Epoch days a repeating alarm is paused for (inclusive), or {@link AlarmDates#NONE}. */
+    public long pauseStart = AlarmDates.NONE;
+    public long pauseEnd = AlarmDates.NONE;
     public int instanceState;
     public int instanceId;
 
@@ -311,6 +326,9 @@ public final class Alarm implements Parcelable, ClockContract.AlarmsColumns {
         label = c.getString(LABEL_INDEX);
         deleteAfterUse = c.getInt(DELETE_AFTER_USE_INDEX) == 1;
         increasingVolume = c.getInt(INCREASING_VOLUME_INDEX) == 1;
+        scheduledDate = getLong(c, SCHEDULED_DATE);
+        pauseStart = getLong(c, PAUSE_START);
+        pauseEnd = getLong(c, PAUSE_END);
 
         if (c.getColumnCount() == ALARM_JOIN_INSTANCE_COLUMN_COUNT) {
             instanceState = c.getInt(INSTANCE_STATE_INDEX);
@@ -337,6 +355,14 @@ public final class Alarm implements Parcelable, ClockContract.AlarmsColumns {
         alert = p.readParcelable(null);
         deleteAfterUse = p.readInt() == 1;
         increasingVolume = p.readInt() == 1;
+        scheduledDate = p.readLong();
+        pauseStart = p.readLong();
+        pauseEnd = p.readLong();
+    }
+
+    private static long getLong(Cursor c, String column) {
+        final int index = c.getColumnIndex(column);
+        return index < 0 || c.isNull(index) ? AlarmDates.NONE : c.getLong(index);
     }
 
     public String getLabelOrDefault(Context context) {
@@ -365,6 +391,9 @@ public final class Alarm implements Parcelable, ClockContract.AlarmsColumns {
         p.writeParcelable(alert, flags);
         p.writeInt(deleteAfterUse ? 1 : 0);
         p.writeInt(increasingVolume ? 1 : 0);
+        p.writeLong(scheduledDate);
+        p.writeLong(pauseStart);
+        p.writeLong(pauseEnd);
     }
 
     public int describeContents() {
@@ -406,6 +435,14 @@ public final class Alarm implements Parcelable, ClockContract.AlarmsColumns {
     }
 
     public Calendar getNextAlarmTime(Calendar currentTime) {
+        return AlarmDates.nextAlarmTime(this, currentTime);
+    }
+
+    /**
+     * @return the next time after {@code currentTime} that matches the alarm's time and weekdays,
+     *     ignoring its scheduled date and pause range
+     */
+    public Calendar getNextWeekdayTime(Calendar currentTime) {
         final Calendar nextInstanceTime = Calendar.getInstance(currentTime.getTimeZone());
         nextInstanceTime.set(Calendar.YEAR, currentTime.get(Calendar.YEAR));
         nextInstanceTime.set(Calendar.MONTH, currentTime.get(Calendar.MONTH));
@@ -460,6 +497,9 @@ public final class Alarm implements Parcelable, ClockContract.AlarmsColumns {
                 ", label='" + label + '\'' +
                 ", deleteAfterUse=" + deleteAfterUse +
                 ", increasingVolume=" + increasingVolume +
+                ", scheduledDate=" + scheduledDate +
+                ", pauseStart=" + pauseStart +
+                ", pauseEnd=" + pauseEnd +
                 '}';
     }
 }

@@ -72,6 +72,11 @@ class ClockDatabaseHelper extends SQLiteOpenHelper {
      */
     private static final int VERSION_11 = 12;
 
+    /**
+     * Added a scheduled date for one-time alarms and a pause range for repeating alarms
+     */
+    private static final int VERSION_12 = 13;
+
     // This creates a default alarm at 8:30 for every Mon,Tue,Wed,Thu,Fri
     private static final String DEFAULT_ALARM_1 = "(8, 30, 31, 0, 1, '', NULL, 0, 0);";
 
@@ -96,7 +101,10 @@ class ClockDatabaseHelper extends SQLiteOpenHelper {
                 ClockContract.AlarmsColumns.LABEL + " TEXT NOT NULL, " +
                 ClockContract.AlarmsColumns.RINGTONE + " TEXT, " +
                 ClockContract.AlarmsColumns.DELETE_AFTER_USE + " INTEGER NOT NULL DEFAULT 0, " +
-                ClockContract.AlarmsColumns.INCREASING_VOLUME + " INTEGER NOT NULL DEFAULT 0);");
+                ClockContract.AlarmsColumns.INCREASING_VOLUME + " INTEGER NOT NULL DEFAULT 0, " +
+                ClockContract.AlarmsColumns.SCHEDULED_DATE + " INTEGER NOT NULL DEFAULT -1, " +
+                ClockContract.AlarmsColumns.PAUSE_START + " INTEGER NOT NULL DEFAULT -1, " +
+                ClockContract.AlarmsColumns.PAUSE_END + " INTEGER NOT NULL DEFAULT -1);");
         LogUtils.i("Alarms Table created");
     }
 
@@ -120,7 +128,7 @@ class ClockDatabaseHelper extends SQLiteOpenHelper {
     }
 
     public ClockDatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, VERSION_11);
+        super(context, DATABASE_NAME, null, VERSION_12);
     }
 
     @Override
@@ -270,6 +278,28 @@ class ClockDatabaseHelper extends SQLiteOpenHelper {
             db.execSQL("ALTER TABLE " + TEMP_INSTANCES_TABLE_NAME
                     + " RENAME TO " + INSTANCES_TABLE_NAME + ";");
         }
+
+        if (oldVersion < VERSION_12) {
+            for (String column : new String[] {ClockContract.AlarmsColumns.SCHEDULED_DATE,
+                    ClockContract.AlarmsColumns.PAUSE_START, ClockContract.AlarmsColumns.PAUSE_END}) {
+                if (!hasColumn(db, ALARMS_TABLE_NAME, column)) {
+                    db.execSQL("ALTER TABLE " + ALARMS_TABLE_NAME + " ADD COLUMN " + column
+                            + " INTEGER NOT NULL DEFAULT -1;");
+                }
+            }
+        }
+    }
+
+    private static boolean hasColumn(SQLiteDatabase db, String table, String column) {
+        try (Cursor cursor = db.rawQuery("PRAGMA table_info(" + table + ")", null)) {
+            final int nameIndex = cursor.getColumnIndexOrThrow("name");
+            while (cursor.moveToNext()) {
+                if (column.equals(cursor.getString(nameIndex))) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     long fixAlarmInsert(ContentValues values) {

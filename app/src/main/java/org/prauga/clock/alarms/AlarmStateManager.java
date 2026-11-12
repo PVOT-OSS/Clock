@@ -43,6 +43,7 @@ import org.prauga.clock.Utils;
 import org.prauga.clock.data.DataModel;
 import org.prauga.clock.events.Events;
 import org.prauga.clock.provider.Alarm;
+import org.prauga.clock.provider.AlarmDates;
 import org.prauga.clock.provider.AlarmInstance;
 
 import java.util.Calendar;
@@ -235,6 +236,7 @@ public final class AlarmStateManager extends BroadcastReceiver {
             } else {
                 LogUtils.i("Disabling parent alarm: " + alarm.id);
                 alarm.enabled = false;
+                alarm.scheduledDate = AlarmDates.NONE;
                 Alarm.updateAlarm(cr, alarm);
             }
         } else {

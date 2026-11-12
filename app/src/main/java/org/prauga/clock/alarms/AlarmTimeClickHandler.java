@@ -32,6 +32,7 @@ import org.prauga.clock.alarms.dataadapter.AlarmItemHolder;
 import org.prauga.clock.data.DataModel;
 import org.prauga.clock.events.Events;
 import org.prauga.clock.provider.Alarm;
+import org.prauga.clock.provider.AlarmDates;
 import org.prauga.clock.provider.AlarmInstance;
 import org.prauga.clock.ringtone.RingtonePickerActivity;
 
@@ -112,6 +113,13 @@ public final class AlarmTimeClickHandler {
 
         final int weekday = DataModel.getDataModel().getWeekdayOrder().getCalendarDays().get(index);
         alarm.daysOfWeek = alarm.daysOfWeek.setBit(weekday, checked);
+        // A date only applies to one-time alarms, a pause only to repeating ones.
+        if (alarm.daysOfWeek.isRepeating()) {
+            alarm.scheduledDate = AlarmDates.NONE;
+        } else {
+            alarm.pauseStart = AlarmDates.NONE;
+            alarm.pauseEnd = AlarmDates.NONE;
+        }
 
         // if the change altered the next scheduled alarm time, tell the user
         final Calendar newNextAlarmTime = alarm.getNextAlarmTime(now);

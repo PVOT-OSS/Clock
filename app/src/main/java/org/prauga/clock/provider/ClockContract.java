@@ -134,6 +134,19 @@ public final class ClockContract {
          * <p>Type: INTEGER</p>
          */
         String DELETE_AFTER_USE = "delete_after_use";
+
+        /**
+         * Date (epoch day) a one-time alarm is set for, or -1.
+         * <p>Type: INTEGER</p>
+         */
+        String SCHEDULED_DATE = "scheduled_date";
+
+        /**
+         * First and last date (epoch days) a repeating alarm is paused for, or -1.
+         * <p>Type: INTEGER</p>
+         */
+        String PAUSE_START = "pause_start";
+        String PAUSE_END = "pause_end";
     }
 
     /**

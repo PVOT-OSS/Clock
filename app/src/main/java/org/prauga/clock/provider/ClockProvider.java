@@ -94,6 +94,11 @@ public class ClockProvider extends ContentProvider {
                 INSTANCES_TABLE_NAME + "." + InstancesColumns.LABEL);
         sAlarmsWithInstancesProjection.put(INSTANCES_TABLE_NAME + "." + InstancesColumns.VIBRATE,
                 INSTANCES_TABLE_NAME + "." + InstancesColumns.VIBRATE);
+        for (String column : new String[] {AlarmsColumns.SCHEDULED_DATE,
+                AlarmsColumns.PAUSE_START, AlarmsColumns.PAUSE_END}) {
+            sAlarmsWithInstancesProjection.put(ALARMS_TABLE_NAME + "." + column,
+                    ALARMS_TABLE_NAME + "." + column);
+        }
     }
 
     private static final String ALARM_JOIN_INSTANCE_TABLE_STATEMENT =

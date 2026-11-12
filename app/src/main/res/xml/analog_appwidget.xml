@@ -15,11 +15,16 @@
 -->
 
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:configure="org.prauga.clock.alarmclock.AnalogWidgetConfigActivity"
     android:initialLayout="@layout/analog_appwidget"
     android:minHeight="@dimen/min_analog_widget_size"
     android:minResizeHeight="55dp"
     android:minResizeWidth="55dp"
     android:minWidth="@dimen/min_analog_widget_size"
     android:previewImage="@drawable/appwidget_analog_clock_preview"
+    android:previewLayout="@layout/analog_appwidget_material"
     android:resizeMode="horizontal|vertical"
+    android:targetCellWidth="2"
+    android:targetCellHeight="2"
+    android:widgetFeatures="reconfigurable|configuration_optional"
     android:updatePeriodMillis="0" />

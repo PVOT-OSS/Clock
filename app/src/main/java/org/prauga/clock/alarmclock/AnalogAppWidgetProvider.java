@@ -60,7 +60,8 @@ public class AnalogAppWidgetProvider extends AppWidgetProvider {
 
         for (int widgetId : widgetIds) {
             final String packageName = context.getPackageName();
-            final RemoteViews widget = new RemoteViews(packageName, R.layout.analog_appwidget);
+            final RemoteViews widget = new RemoteViews(packageName,
+                    AnalogFaces.layoutFor(context, widgetId));
 
             // Tapping on the widget opens the app (if not on the lock screen).
             if (Utils.isWidgetClickable(wm, widgetId)) {
@@ -72,5 +73,10 @@ public class AnalogAppWidgetProvider extends AppWidgetProvider {
 
             wm.updateAppWidget(widgetId, widget);
         }
+    }
+
+    @Override
+    public void onDeleted(Context context, int[] widgetIds) {
+        AnalogFaces.forget(context, widgetIds);
     }
 }

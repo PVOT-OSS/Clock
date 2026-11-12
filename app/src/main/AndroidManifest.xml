@@ -315,6 +315,16 @@
                 android:resource="@xml/digital_stacked_appwidget" />
         </receiver>
 
+        <activity
+            android:name=".alarmclock.AnalogWidgetConfigActivity"
+            android:exported="true"
+            android:label="@string/analog_face_title"
+            android:theme="@style/Theme.Material3.Dark.Dialog">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+
         <receiver
             android:name=".alarms.AlarmStateChangeReceiver"
             android:directBootAware="true"

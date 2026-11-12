@@ -169,4 +169,9 @@
     <!-- Name and description of the stacked digital clock widget -->
     <string name="stacked_widget_label">Stacked clock</string>
     <string name="stacked_widget_description">Large hours above minutes, with the date</string>
+    <!-- Analog widget face picker -->
+    <string name="analog_face_title">Choose a clock face</string>
+    <string name="analog_face_classic">Classic</string>
+    <string name="analog_face_material">Material</string>
+    <string name="analog_face_minimal">Minimal</string>
 </resources>

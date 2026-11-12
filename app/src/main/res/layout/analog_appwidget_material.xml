@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  SPDX-FileCopyrightText: 2026 Saalim Quadri <danascape@gmail.com>
+  SPDX-License-Identifier: Apache-2.0
+  -->
+<AnalogClock xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/analog_appwidget"
+    android:dial="@drawable/widget_dial_material"
+    android:hand_hour="@drawable/widget_hand_hour_material"
+    android:hand_minute="@drawable/widget_hand_minute_material"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />

@@ -118,7 +118,7 @@ class WakeUpCard(
         picker.show(fragment.childFragmentManager, "wakeup_time")
     }
 
-    private fun chooseAlarm() {
+    fun chooseAlarm() {
         Executors.newSingleThreadExecutor().execute {
             val alarms = Alarm.getAlarms(context.contentResolver, null)
             Handler(Looper.getMainLooper()).post { showChoices(alarms) }

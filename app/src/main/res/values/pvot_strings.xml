@@ -178,4 +178,8 @@
     <string name="add_place">Add place</string>
     <string name="add_place_name">Name</string>
     <string name="add_place_add">Add</string>
+    <!-- First-run introduction at the top of the Bedtime tab -->
+    <string name="bedtime_intro_title">A steady sleep schedule</string>
+    <string name="bedtime_intro_text">Set when you go to bed and the alarm that wakes you. Clock can remind you, quiet your phone overnight and play a sleep sound.</string>
+    <string name="bedtime_intro_start">Get started</string>
 </resources>

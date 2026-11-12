@@ -58,6 +58,11 @@ class BedtimeSettings(context: Context) {
         get() = prefs.getInt(KEY_SLEEP_SOUND_MINUTES, 30)
         set(value) = prefs.edit().putInt(KEY_SLEEP_SOUND_MINUTES, value).apply()
 
+    /** Whether the first-run introduction was completed. */
+    var introDone: Boolean
+        get() = prefs.getBoolean(KEY_INTRO_DONE, false)
+        set(value) = prefs.edit().putBoolean(KEY_INTRO_DONE, value).apply()
+
     /** Minutes before bedtime to remind; 0 is off. */
     var reminderMinutes: Int
         get() = prefs.getInt(KEY_REMINDER, 15)
@@ -91,6 +96,7 @@ class BedtimeSettings(context: Context) {
         const val ALL_DAYS = 0x7F
         const val KEY_WAKEUP_ALARM = "bedtime_wakeup_alarm"
         const val KEY_MODE = "bedtime_mode"
+        const val KEY_INTRO_DONE = "bedtime_intro_done"
         const val KEY_ZEN_RULE = "bedtime_zen_rule"
         const val KEY_SLEEP_SOUND = "bedtime_sleep_sound"
         const val KEY_SLEEP_SOUND_MINUTES = "bedtime_sleep_sound_minutes"

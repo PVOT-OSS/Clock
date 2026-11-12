@@ -61,6 +61,16 @@ class BedtimeFragment : DeskClockFragment(UiDataModel.Tab.BEDTIME) {
             }
         }
         time.setOnClickListener { pickTime() }
+        val intro = view.findViewById<View>(R.id.bedtime_intro)
+        intro.visibility = if (settings.introDone) View.GONE else View.VISIBLE
+        view.findViewById<View>(R.id.bedtime_intro_start).setOnClickListener {
+            // Bedtime first, then the alarm that wakes the user.
+            pickTime {
+                settings.introDone = true
+                intro.visibility = View.GONE
+                wakeUp.chooseAlarm()
+            }
+        }
         reminder.setOnClickListener { pickReminder() }
         wakeUp = WakeUpCard(this, view as ViewGroup, settings)
         sleepSound = SleepSoundCard(view, settings)
@@ -156,7 +166,7 @@ class BedtimeFragment : DeskClockFragment(UiDataModel.Tab.BEDTIME) {
                 )
     }
 
-    private fun pickTime() {
+    private fun pickTime(then: () -> Unit = {}) {
         val picker =
             MaterialTimePicker.Builder()
                 .setTimeFormat(
@@ -172,6 +182,7 @@ class BedtimeFragment : DeskClockFragment(UiDataModel.Tab.BEDTIME) {
             settings.minute = picker.minute
             settings.enabled = true
             onScheduleChanged()
+            then()
         }
         picker.show(childFragmentManager, "bedtime_time")
     }

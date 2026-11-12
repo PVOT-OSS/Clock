@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  SPDX-FileCopyrightText: 2026 Saalim Quadri <danascape@gmail.com>
+  SPDX-License-Identifier: Apache-2.0
+  -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_background"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextClock
+        android:id="@+id/stacked_hours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:format12Hour="hh"
+        android:format24Hour="HH"
+        android:fontFamily="sans-serif-medium"
+        android:includeFontPadding="false"
+        android:textColor="@color/widget_button_primary"
+        android:textSize="64sp" />
+
+    <TextClock
+        android:id="@+id/stacked_minutes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:format12Hour="mm"
+        android:format24Hour="mm"
+        android:fontFamily="sans-serif"
+        android:includeFontPadding="false"
+        android:textColor="@color/widget_text"
+        android:textSize="64sp" />
+
+    <TextClock
+        android:id="@+id/stacked_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:format12Hour="EEE d"
+        android:format24Hour="EEE d"
+        android:textColor="@color/widget_text_secondary"
+        android:textSize="14sp" />
+</LinearLayout>

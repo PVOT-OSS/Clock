@@ -166,4 +166,7 @@
     <!-- Why an alarm was missed, under the missed alarm notification -->
     <string name="alarm_missed_phone_off">Your phone was off when it was due</string>
     <string name="alarm_missed_time_changed">The time or time zone changed past it</string>
+    <!-- Name and description of the stacked digital clock widget -->
+    <string name="stacked_widget_label">Stacked clock</string>
+    <string name="stacked_widget_description">Large hours above minutes, with the date</string>
 </resources>

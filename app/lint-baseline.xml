@@ -96,7 +96,7 @@
         errorLine2="                   ~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/prauga/clock/DeskClock.java"
-            line="413"
+            line="419"
             column="20"/>
     </issue>
 
@@ -107,74 +107,8 @@
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/prauga/clock/DeskClock.java"
-            line="458"
+            line="464"
             column="17"/>
-    </issue>
-
-    <issue
-        id="ResourceType"
-        message="Expected resource of type integer"
-        errorLine1="        ALARMS(AlarmClockFragment.class, R.id.page_alarm, R.string.menu_alarm),"
-        errorLine2="                                         ~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/org/prauga/clock/uidata/UiDataModel.java"
-            line="44"
-            column="42"/>
-    </issue>
-
-    <issue
-        id="ResourceType"
-        message="Expected resource of type integer"
-        errorLine1="        CLOCKS(ClockFragment.class, R.id.page_clock, R.string.menu_clock),"
-        errorLine2="                                    ~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/org/prauga/clock/uidata/UiDataModel.java"
-            line="45"
-            column="37"/>
-    </issue>
-
-    <issue
-        id="ResourceType"
-        message="Expected resource of type integer"
-        errorLine1="        TIMERS(TimerFragment.class, R.id.page_timer, R.string.menu_timer),"
-        errorLine2="                                    ~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/org/prauga/clock/uidata/UiDataModel.java"
-            line="46"
-            column="37"/>
-    </issue>
-
-    <issue
-        id="ResourceType"
-        message="Expected resource of type integer"
-        errorLine1="        STOPWATCH(StopwatchFragment.class, R.id.page_stopwatch, R.string.menu_stopwatch);"
-        errorLine2="                                           ~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="src/main/java/org/prauga/clock/uidata/UiDataModel.java"
-            line="47"
-            column="44"/>
-    </issue>
-
-    <issue
-        id="ResourceType"
-        message="Expected resource of type id"
-        errorLine1="            mPageResId = pageResId;"
-        errorLine2="                         ~~~~~~~~~">
-        <location
-            file="src/main/java/org/prauga/clock/uidata/UiDataModel.java"
-            line="55"
-            column="26"/>
-    </issue>
-
-    <issue
-        id="ResourceType"
-        message="Expected resource of type integer"
-        errorLine1="            mPageResId = pageResId;"
-        errorLine2="            ~~~~~~~~~~">
-        <location
-            file="src/main/java/org/prauga/clock/uidata/UiDataModel.java"
-            line="55"
-            column="13"/>
     </issue>
 
     <issue
@@ -255,7 +189,7 @@
         errorLine2="                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/java/org/prauga/clock/data/CityModel.java"
-            line="238"
+            line="264"
             column="32"/>
     </issue>
 

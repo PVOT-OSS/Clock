@@ -36,6 +36,7 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.TwoStatePreference;
 
 import org.prauga.clock.R;
+import org.prauga.clock.alarms.AlarmsOff;
 import org.prauga.clock.alarms.Sunrise;
 import org.prauga.clock.ScreensaverActivity;
 import org.prauga.clock.Utils;
@@ -266,6 +267,10 @@ public final class SettingsActivity extends ToolbarBaseActivity {
             volumeButtonsPref.setOnPreferenceChangeListener(this);
 
             findPreference(Sunrise.KEY_MINUTES).setOnPreferenceChangeListener(this);
+            findPreference("turn_off_all_alarms").setOnPreferenceClickListener(pref -> {
+                AlarmsOff.confirm(requireContext());
+                return true;
+            });
 
             final Preference clockSecondsPref = findPreference(KEY_CLOCK_DISPLAY_SECONDS);
             clockSecondsPref.setOnPreferenceChangeListener(this);

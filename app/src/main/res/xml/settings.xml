@@ -171,6 +171,11 @@
             android:key="week_start"
             android:title="@string/week_start_title"
             app:iconSpaceReserved="false"  />
+
+        <Preference
+            android:key="turn_off_all_alarms"
+            android:title="@string/turn_off_all_alarms"
+            app:iconSpaceReserved="false" />
     </PreferenceCategory>
 
     <PreferenceCategory

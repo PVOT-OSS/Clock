@@ -152,4 +152,12 @@
     <!-- Notification channel and notification of the sunrise before an alarm -->
     <string name="sunrise_channel">Sunrise</string>
     <string name="sunrise_notification">Sunrise before your alarm</string>
+    <!-- Settings action that switches every alarm off -->
+    <string name="turn_off_all_alarms">Turn off all alarms</string>
+    <string name="turn_off_all_alarms_message">All alarms will be switched off. You can turn them on again one by one.</string>
+    <string name="turn_off_all_alarms_confirm">Turn off</string>
+    <plurals name="alarms_turned_off">
+        <item quantity="one"><xliff:g id="count" example="1">%d</xliff:g> alarm turned off</item>
+        <item quantity="other"><xliff:g id="count" example="3">%d</xliff:g> alarms turned off</item>
+    </plurals>
 </resources>

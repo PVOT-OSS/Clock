@@ -26,6 +26,7 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import org.prauga.clock.R;
 import org.prauga.clock.Utils;
 import org.prauga.clock.data.DataModel.CitySort;
+import org.prauga.clock.worldclock.CityOrder;
 import org.prauga.clock.settings.SettingsActivity;
 
 import java.util.ArrayList;
@@ -165,7 +166,9 @@ final class CityModel {
     List<City> getSelectedCities() {
         if (mSelectedCities == null) {
             final List<City> selectedCities = CityDAO.getSelectedCities(mPrefs, getCityMap());
-            selectedCities.sort(new City.UtcOffsetComparator());
+            if (!CityOrder.isCustom(mPrefs)) {
+                selectedCities.sort(new City.UtcOffsetComparator());
+            }
             mSelectedCities = Collections.unmodifiableList(selectedCities);
         }
 
@@ -176,6 +179,14 @@ final class CityModel {
      * @param cities the new collection of cities selected for display by the user
      */
     void setSelectedCities(Collection<City> cities) {
+        saveSelectedCities(
+                CityOrder.merge(mPrefs, CityDAO.getSelectedCities(mPrefs, getCityMap()), cities));
+    }
+
+    /**
+     * Saves the selected cities in exactly the given order.
+     */
+    private void saveSelectedCities(Collection<City> cities) {
         CityDAO.setSelectedCities(mPrefs, cities);
 
         // Clear caches affected by this update.
@@ -185,6 +196,21 @@ final class CityModel {
 
         // Broadcast the change to the selected cities for the benefit of widgets.
         fireCitiesChanged();
+    }
+
+    /**
+     * Moves a selected city {@code delta} places up (negative) or down the list; from then on the
+     * world clocks keep the user's order.
+     */
+    void moveSelectedCity(City city, int delta) {
+        CityOrder.setCustom(mPrefs);
+        saveSelectedCities(CityOrder.move(getSelectedCities(), city, delta));
+    }
+
+    void removeSelectedCity(City city) {
+        final List<City> cities = new ArrayList<>(getSelectedCities());
+        cities.remove(city);
+        setSelectedCities(cities);
     }
 
     /**

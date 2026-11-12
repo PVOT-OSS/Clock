@@ -59,4 +59,8 @@
     <string name="tile_stopwatch_running">Running</string>
     <!-- Quick Settings stopwatch tile subtitle while it is reset -->
     <string name="tile_stopwatch_start">Tap to start</string>
+    <!-- Long-press menu of a world clock -->
+    <string name="city_move_up">Move up</string>
+    <string name="city_move_down">Move down</string>
+    <string name="city_remove">Remove city</string>
 </resources>

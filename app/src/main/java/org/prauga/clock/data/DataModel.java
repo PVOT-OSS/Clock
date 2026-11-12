@@ -380,6 +380,19 @@ public final class DataModel {
     }
 
     /**
+     * @param delta places to move the selected city; negative moves it up the list
+     */
+    public void moveSelectedCity(City city, int delta) {
+        enforceMainLooper();
+        mCityModel.moveSelectedCity(city, delta);
+    }
+
+    public void removeSelectedCity(City city) {
+        enforceMainLooper();
+        mCityModel.removeSelectedCity(city);
+    }
+
+    /**
      * @return a comparator used to locate index positions
      */
     public Comparator<City> getCityIndexComparator() {

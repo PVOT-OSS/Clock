@@ -48,6 +48,7 @@ import org.prauga.clock.data.CityListener;
 import org.prauga.clock.data.DataModel;
 import org.prauga.clock.events.Events;
 import org.prauga.clock.uidata.UiDataModel;
+import org.prauga.clock.worldclock.CityMenu;
 import org.prauga.clock.worldclock.CitySelectionActivity;
 
 import java.util.Calendar;
@@ -417,6 +418,7 @@ public final class ClockFragment extends DeskClockFragment {
 
             private void bind(Context context, City city) {
                 final String cityTimeZoneId = city.getTimeZone().getID();
+                itemView.setOnLongClickListener(v -> CityMenu.show(v, city));
 
                 // Configure the digital clock or analog clock depending on the user preference.
                 if (DataModel.getDataModel().getClockStyle() == DataModel.ClockStyle.ANALOG) {

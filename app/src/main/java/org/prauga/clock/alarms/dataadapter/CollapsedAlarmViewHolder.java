@@ -79,6 +79,7 @@ public final class CollapsedAlarmViewHolder extends AlarmItemViewHolder {
         final AlarmInstance alarmInstance = itemHolder.getAlarmInstance();
         final Context context = itemView.getContext();
         bindRepeatText(context, alarm);
+        AlarmBadges.bind(daysOfWeek, alarm);
         bindReadOnlyLabel(context, alarm);
         bindPreemptiveDismissButton(context, alarm, alarmInstance);
         bindAnnotations(alarm);

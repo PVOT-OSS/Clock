@@ -40,4 +40,8 @@
         <item>swipe</item>
         <item>tap</item>
     </string-array>
+    <!-- Spoken with a collapsed alarm that has no sound but vibrates -->
+    <string name="alarm_badge_vibrate_only">Vibrate only</string>
+    <!-- Spoken with a collapsed alarm that has no sound and does not vibrate -->
+    <string name="alarm_badge_silent">Silent</string>
 </resources>

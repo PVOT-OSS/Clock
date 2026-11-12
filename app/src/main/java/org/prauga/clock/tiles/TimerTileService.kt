@@ -5,6 +5,7 @@
 
 package org.prauga.clock.tiles
 
+import android.annotation.SuppressLint
 import android.app.PendingIntent
 import android.content.Intent
 import android.os.Build
@@ -23,6 +24,7 @@ class TimerTileService : TileService() {
         }
     }
 
+    @SuppressLint("StartActivityAndCollapseDeprecated") // only below API 34
     override fun onClick() {
         UiDataModel.getUiDataModel().setSelectedTab(UiDataModel.Tab.TIMERS)
         val intent =

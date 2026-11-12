@@ -36,6 +36,7 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.TwoStatePreference;
 
 import org.prauga.clock.R;
+import org.prauga.clock.alarms.Sunrise;
 import org.prauga.clock.ScreensaverActivity;
 import org.prauga.clock.Utils;
 import org.prauga.clock.data.DataModel;
@@ -133,6 +134,9 @@ public final class SettingsActivity extends ToolbarBaseActivity {
         @Override
         public boolean onPreferenceChange(Preference pref, Object newValue) {
             switch (pref.getKey()) {
+                case Sunrise.KEY_MINUTES:
+                    Sunrise.onSettingChanged(getContext(), newValue);
+                    break;
                 case KEY_ALARM_CRESCENDO:
                 case KEY_HOME_TZ:
                 case KEY_ALARM_SNOOZE:
@@ -260,6 +264,8 @@ public final class SettingsActivity extends ToolbarBaseActivity {
             final ListPreference volumeButtonsPref = findPreference(KEY_VOLUME_BUTTONS);
             volumeButtonsPref.setSummary(volumeButtonsPref.getEntry());
             volumeButtonsPref.setOnPreferenceChangeListener(this);
+
+            findPreference(Sunrise.KEY_MINUTES).setOnPreferenceChangeListener(this);
 
             final Preference clockSecondsPref = findPreference(KEY_CLOCK_DISPLAY_SECONDS);
             clockSecondsPref.setOnPreferenceChangeListener(this);

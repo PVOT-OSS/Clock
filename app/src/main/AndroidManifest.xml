@@ -271,6 +271,20 @@
             </intent-filter>
         </receiver>
 
+        <activity
+            android:name=".alarms.SunriseActivity"
+            android:directBootAware="true"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:launchMode="singleInstance"
+            android:taskAffinity=""
+            android:theme="@style/Theme.Material3.Dark.NoActionBar" />
+
+        <receiver
+            android:name=".alarms.SunriseReceiver"
+            android:directBootAware="true"
+            android:exported="false" />
+
         <receiver
             android:name=".alarms.AlarmStateChangeReceiver"
             android:directBootAware="true"

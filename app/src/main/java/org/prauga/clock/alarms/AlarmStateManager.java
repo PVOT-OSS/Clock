@@ -160,6 +160,7 @@ public final class AlarmStateManager extends BroadcastReceiver {
         }
 
         updateNextAlarmInAlarmManager(context, nextAlarm);
+        Sunrise.schedule(context, nextAlarm);
     }
 
     /**

@@ -135,4 +135,21 @@
     <string name="calendar_untitled">(No title)</string>
     <string name="calendar_permission_hint">See tomorrow\'s first event before you go to bed</string>
     <string name="calendar_allow">Allow calendar access</string>
+    <!-- Setting: brighten the screen slowly before an alarm -->
+    <string name="sunrise_title">Sunrise before alarms</string>
+    <string-array name="sunrise_entries">
+        <item>Off</item>
+        <item>10 minutes</item>
+        <item>20 minutes</item>
+        <item>30 minutes</item>
+    </string-array>
+    <string-array name="sunrise_values" translatable="false">
+        <item>0</item>
+        <item>10</item>
+        <item>20</item>
+        <item>30</item>
+    </string-array>
+    <!-- Notification channel and notification of the sunrise before an alarm -->
+    <string name="sunrise_channel">Sunrise</string>
+    <string name="sunrise_notification">Sunrise before your alarm</string>
 </resources>

@@ -119,6 +119,16 @@
 
         <ListPreference
             android:defaultValue="0"
+            android:dialogTitle="@string/sunrise_title"
+            android:entries="@array/sunrise_entries"
+            android:entryValues="@array/sunrise_values"
+            android:key="sunrise_minutes"
+            android:title="@string/sunrise_title"
+            app:iconSpaceReserved="false"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            android:defaultValue="0"
             android:dialogTitle="@string/volume_button_setting_title"
             android:entries="@array/volume_button_setting_entries"
             android:entryValues="@array/volume_button_setting_values"

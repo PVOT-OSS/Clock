@@ -160,4 +160,7 @@
         <item quantity="one"><xliff:g id="count" example="1">%d</xliff:g> alarm turned off</item>
         <item quantity="other"><xliff:g id="count" example="3">%d</xliff:g> alarms turned off</item>
     </plurals>
+    <!-- Spoken after the fastest and the slowest recorded lap -->
+    <string name="lap_fastest">Fastest lap</string>
+    <string name="lap_slowest">Slowest lap</string>
 </resources>

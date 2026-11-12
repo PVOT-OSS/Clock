@@ -111,6 +111,8 @@ class LapsAdapter extends RecyclerView.Adapter<LapsAdapter.LapItemHolder> {
         viewHolder.lapTime.setText(formatLapTime(lapTime, true));
         viewHolder.accumulatedTime.setText(formatAccumulatedTime(totalTime, true));
         viewHolder.lapNumber.setText(formatLapNumber(getLaps().size() + 1, lapNumber));
+        viewHolder.lapTime.setContentDescription(null);
+        LapStats.decorate(viewHolder.lapTime, lap, getLaps());
     }
 
     @Override
@@ -159,8 +161,9 @@ class LapsAdapter extends RecyclerView.Adapter<LapsAdapter.LapItemHolder> {
             // New current lap now exists.
             notifyItemInserted(0);
 
-            // Prior current lap must be refreshed once with the true values in place.
-            notifyItemChanged(1);
+            // Prior current lap must be refreshed once with the true values in place, and the
+            // fastest and slowest laps may have changed.
+            notifyItemRangeChanged(1, getItemCount() - 1);
         }
 
         return lap;

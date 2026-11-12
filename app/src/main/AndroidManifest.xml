@@ -190,6 +190,11 @@
             android:directBootAware="true"
             android:foregroundServiceType="systemExempted" />
 
+        <receiver
+            android:name=".alarms.AlarmStateChangeReceiver"
+            android:directBootAware="true"
+            android:exported="false" />
+
         <!-- ============================================================== -->
         <!-- Timer components.                                              -->
         <!-- ============================================================== -->

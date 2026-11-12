@@ -956,10 +956,11 @@ public final class AlarmStateManager extends BroadcastReceiver {
             LogUtils.i("Scheduling state change %d to instance %d at %s (%d)", newState,
                     instance.mId, AlarmUtils.getFormattedTime(context, time), timeInMillis);
             final Intent stateChangeIntent =
-                    createStateChangeIntent(context, ALARM_MANAGER_TAG, instance, newState);
+                    createStateChangeIntent(context, ALARM_MANAGER_TAG, instance, newState)
+                            .setClass(context, AlarmStateChangeReceiver.class);
             // Treat alarm state change as high priority, use foreground broadcasts
             stateChangeIntent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
-            PendingIntent pendingIntent = PendingIntent.getService(context, instance.hashCode(),
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(context, instance.hashCode(),
                     stateChangeIntent,
                     PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
@@ -974,8 +975,9 @@ public final class AlarmStateManager extends BroadcastReceiver {
             LogUtils.v("Canceling instance " + instance.mId + " timers");
 
             // Create a PendingIntent that will match any one set for this instance
-            PendingIntent pendingIntent = PendingIntent.getService(context, instance.hashCode(),
-                    createStateChangeIntent(context, ALARM_MANAGER_TAG, instance, null),
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(context, instance.hashCode(),
+                    createStateChangeIntent(context, ALARM_MANAGER_TAG, instance, null)
+                            .setClass(context, AlarmStateChangeReceiver.class),
                     PendingIntent.FLAG_NO_CREATE | PendingIntent.FLAG_IMMUTABLE);
 
             if (pendingIntent != null) {

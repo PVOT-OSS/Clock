@@ -6,4 +6,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!-- Snackbar shown when the app may not show alarms full screen -->
     <string name="full_screen_alarms_blocked">Alarms can\'t open full screen</string>
+    <!-- Snackbar shown when the app may not schedule exact alarms -->
+    <string name="exact_alarms_blocked">Alarms may go off late</string>
+    <!-- Snackbar shown when battery settings restrict the app in the background -->
+    <string name="background_restricted">Battery settings may delay alarms</string>
 </resources>

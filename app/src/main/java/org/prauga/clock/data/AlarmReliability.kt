@@ -5,6 +5,8 @@
 
 package org.prauga.clock.data
 
+import android.app.ActivityManager
+import android.app.AlarmManager
 import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
@@ -26,6 +28,28 @@ object AlarmReliability {
     val openFullScreenIntentSettings =
         View.OnClickListener { v ->
             openAppSetting(v.context, Settings.ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT)
+        }
+
+    /** Whether exact alarms are allowed; USE_EXACT_ALARM grants it, but a ROM may still deny. */
+    @JvmStatic
+    fun canScheduleExactAlarms(context: Context): Boolean =
+        context.getSystemService(AlarmManager::class.java).canScheduleExactAlarms()
+
+    @JvmField
+    val openExactAlarmSettings =
+        View.OnClickListener { v ->
+            openAppSetting(v.context, Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM)
+        }
+
+    /** Whether the user restricted the app's background work in its battery settings. */
+    @JvmStatic
+    fun isBackgroundRestricted(context: Context): Boolean =
+        context.getSystemService(ActivityManager::class.java).isBackgroundRestricted
+
+    @JvmField
+    val openAppDetails =
+        View.OnClickListener { v ->
+            openAppSetting(v.context, Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
         }
 
     private fun openAppSetting(context: Context, action: String) {

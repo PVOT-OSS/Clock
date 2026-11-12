@@ -82,7 +82,15 @@ public final class DataModel {
         FULL_SCREEN_INTENT_DENIED(R.string.full_screen_alarms_blocked,
                 R.string.change_setting_action,
                 Predicate.TRUE,
-                AlarmReliability.openFullScreenIntentSettings);
+                AlarmReliability.openFullScreenIntentSettings),
+        EXACT_ALARMS_DENIED(R.string.exact_alarms_blocked,
+                R.string.change_setting_action,
+                Predicate.TRUE,
+                AlarmReliability.openExactAlarmSettings),
+        BACKGROUND_RESTRICTED(R.string.background_restricted,
+                R.string.change_setting_action,
+                Predicate.TRUE,
+                AlarmReliability.openAppDetails);
 
         private final @StringRes int mLabelResId;
         private final @StringRes int mActionResId;

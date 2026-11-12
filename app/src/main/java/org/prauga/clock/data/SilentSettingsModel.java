@@ -162,6 +162,10 @@ final class SilentSettingsModel {
                     silentSetting = SilentSetting.BLOCKED_NOTIFICATIONS;
                 } else if (!AlarmReliability.canUseFullScreenIntent(mContext)) {
                     silentSetting = SilentSetting.FULL_SCREEN_INTENT_DENIED;
+                } else if (!AlarmReliability.canScheduleExactAlarms(mContext)) {
+                    silentSetting = SilentSetting.EXACT_ALARMS_DENIED;
+                } else if (AlarmReliability.isBackgroundRestricted(mContext)) {
+                    silentSetting = SilentSetting.BACKGROUND_RESTRICTED;
                 } else {
                     silentSetting = null;
                 }

@@ -10,6 +10,7 @@ import android.app.AlarmManager
 import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
+import android.media.AudioManager
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
@@ -50,6 +51,23 @@ object AlarmReliability {
     val openAppDetails =
         View.OnClickListener { v ->
             openAppSetting(v.context, Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+        }
+
+    /** Whether the alarm stream is audible but below a quarter of its range. */
+    @JvmStatic
+    fun isAlarmVolumeLow(context: Context): Boolean {
+        val audio = context.getSystemService(AudioManager::class.java)
+        val volume = audio.getStreamVolume(AudioManager.STREAM_ALARM)
+        return volume > 0 && volume * 4 < audio.getStreamMaxVolume(AudioManager.STREAM_ALARM)
+    }
+
+    /** Raises the alarm stream to 11/16 of its range (a fresh install's level) and shows it. */
+    @JvmField
+    val increaseAlarmVolume =
+        View.OnClickListener { v ->
+            val audio = v.context.getSystemService(AudioManager::class.java)
+            val index = Math.round(audio.getStreamMaxVolume(AudioManager.STREAM_ALARM) * 11f / 16f)
+            audio.setStreamVolume(AudioManager.STREAM_ALARM, index, AudioManager.FLAG_SHOW_UI)
         }
 
     private fun openAppSetting(context: Context, action: String) {

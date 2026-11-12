@@ -166,6 +166,8 @@ final class SilentSettingsModel {
                     silentSetting = SilentSetting.EXACT_ALARMS_DENIED;
                 } else if (AlarmReliability.isBackgroundRestricted(mContext)) {
                     silentSetting = SilentSetting.BACKGROUND_RESTRICTED;
+                } else if (AlarmReliability.isAlarmVolumeLow(mContext)) {
+                    silentSetting = SilentSetting.LOW_VOLUME;
                 } else {
                     silentSetting = null;
                 }

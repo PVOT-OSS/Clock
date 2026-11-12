@@ -90,7 +90,11 @@ public final class DataModel {
         BACKGROUND_RESTRICTED(R.string.background_restricted,
                 R.string.change_setting_action,
                 Predicate.TRUE,
-                AlarmReliability.openAppDetails);
+                AlarmReliability.openAppDetails),
+        LOW_VOLUME(R.string.alarm_volume_low,
+                R.string.increase_alarm_volume,
+                Predicate.TRUE,
+                AlarmReliability.increaseAlarmVolume);
 
         private final @StringRes int mLabelResId;
         private final @StringRes int mActionResId;

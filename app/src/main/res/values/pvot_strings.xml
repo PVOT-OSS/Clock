@@ -3,7 +3,9 @@
   SPDX-FileCopyrightText: 2026 Saalim Quadri <danascape@gmail.com>
   SPDX-License-Identifier: Apache-2.0
   -->
-<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"
+    tools:ignore="MissingTranslation">
     <!-- Snackbar shown when the app may not show alarms full screen -->
     <string name="full_screen_alarms_blocked">Alarms can\'t open full screen</string>
     <!-- Snackbar shown when the app may not schedule exact alarms -->
@@ -14,4 +16,18 @@
     <string name="alarm_volume_low">Alarm volume is low</string>
     <!-- Action on the low alarm volume snackbar -->
     <string name="increase_alarm_volume">Increase</string>
+    <!-- Row in an expanded one-time alarm that picks the date it rings on -->
+    <string name="alarm_schedule_date">Schedule alarm</string>
+    <!-- Row in an expanded repeating alarm that pauses it for a range of dates -->
+    <string name="alarm_pause">Pause alarm</string>
+    <!-- Summary of a paused repeating alarm; args are the first and last paused dates -->
+    <string name="alarm_paused_range">Paused <xliff:g id="start" example="21 Nov">%1$s</xliff:g> – <xliff:g id="end" example="25 Nov">%2$s</xliff:g></string>
+    <!-- Title of the date picker for a one-time alarm -->
+    <string name="alarm_schedule_date_title">Ring on</string>
+    <!-- Title of the date range picker that pauses a repeating alarm -->
+    <string name="alarm_pause_title">Pause alarm on these dates</string>
+    <!-- Picker button that removes the date from a one-time alarm -->
+    <string name="alarm_date_remove">Remove date</string>
+    <!-- Picker button that ends a pause of a repeating alarm -->
+    <string name="alarm_pause_resume">Resume</string>
 </resources>

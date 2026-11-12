@@ -127,6 +127,11 @@ public final class AlarmTimeClickHandler {
         mAlarmUpdateHandler.asyncUpdateAlarm(alarm, popupToast, false);
     }
 
+    public void onDateClicked(Alarm alarm) {
+        AlarmDatePicker.show(mFragment, alarm,
+                () -> mAlarmUpdateHandler.asyncUpdateAlarm(alarm, alarm.enabled, false));
+    }
+
     public void onDeleteClicked(AlarmItemHolder itemHolder) {
         if (mFragment instanceof AlarmClockFragment) {
             ((AlarmClockFragment) mFragment).removeItem(itemHolder);

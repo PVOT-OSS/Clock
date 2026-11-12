@@ -40,6 +40,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 import org.prauga.clock.AnimatorUtils;
 import org.prauga.clock.ItemAdapter;
 import org.prauga.clock.R;
+import org.prauga.clock.alarms.AlarmDatePicker;
 import org.prauga.clock.ThemeUtils;
 import org.prauga.clock.Utils;
 import org.prauga.clock.alarms.AlarmTimeClickHandler;
@@ -61,6 +62,7 @@ public final class ExpandedAlarmViewHolder extends AlarmItemViewHolder {
     private final ConstraintLayout repeatDays;
     private final CompoundButton[] dayButtons;
     private final CheckBox vibrate;
+    private final TextView date;
     private final TextView ringtone;
     private final TextView delete;
 
@@ -73,6 +75,7 @@ public final class ExpandedAlarmViewHolder extends AlarmItemViewHolder {
 
         delete = itemView.findViewById(R.id.delete);
         vibrate = itemView.findViewById(R.id.vibrate_onoff);
+        date = itemView.findViewById(R.id.alarm_date);
         ringtone = itemView.findViewById(R.id.choose_ringtone);
         editLabel = itemView.findViewById(R.id.edit_label);
         repeatDays = itemView.findViewById(R.id.repeat_days);
@@ -120,6 +123,9 @@ public final class ExpandedAlarmViewHolder extends AlarmItemViewHolder {
         vibrate.setOnClickListener(v ->
                 getAlarmTimeClickHandler().setAlarmVibrationEnabled(getItemHolder().item,
                 ((CheckBox) v).isChecked()));
+        // Date (one-time) or pause range (repeating) handler
+        date.setOnClickListener(v ->
+                getAlarmTimeClickHandler().onDateClicked(getItemHolder().item));
         // Ringtone editor handler
         ringtone.setOnClickListener(v ->
                 getAlarmTimeClickHandler().onRingtoneClicked(context, getItemHolder().item));
@@ -152,6 +158,7 @@ public final class ExpandedAlarmViewHolder extends AlarmItemViewHolder {
         bindDaysOfWeekButtons(alarm, context);
         bindVibrator(alarm);
         bindRingtone(context, alarm);
+        date.setText(AlarmDatePicker.rowText(context, alarm));
         bindPreemptiveDismissButton(context, alarm, alarmInstance);
         bindRepeatText(context, alarm);
         bindAnnotations(alarm);
@@ -167,6 +174,7 @@ public final class ExpandedAlarmViewHolder extends AlarmItemViewHolder {
         ringtone.setAlpha(1f);
         preemptiveDismissButton.setAlpha(1f);
         vibrate.setAlpha(1f);
+        date.setAlpha(1f);
         delete.setAlpha(1f);
         setChangingViewsAlpha(1f);
     }
@@ -276,6 +284,8 @@ public final class ExpandedAlarmViewHolder extends AlarmItemViewHolder {
                 .setDuration(shortDuration);
         final Animator vibrateAnimation = ObjectAnimator.ofFloat(vibrate, View.ALPHA, 0f)
                 .setDuration(shortDuration);
+        final Animator dateAnimation = ObjectAnimator.ofFloat(date, View.ALPHA, 0f)
+                .setDuration(shortDuration);
         final Animator ringtoneAnimation = ObjectAnimator.ofFloat(ringtone, View.ALPHA, 0f)
                 .setDuration(shortDuration);
         final Animator dismissAnimation = ObjectAnimator.ofFloat(preemptiveDismissButton,
@@ -298,6 +308,7 @@ public final class ExpandedAlarmViewHolder extends AlarmItemViewHolder {
         editLabelAnimation.setStartDelay(startDelay);
         startDelay += delayIncrement;
         vibrateAnimation.setStartDelay(startDelay);
+        dateAnimation.setStartDelay(startDelay);
         ringtoneAnimation.setStartDelay(startDelay);
         startDelay += delayIncrement;
         if (daysVisible) {
@@ -306,8 +317,9 @@ public final class ExpandedAlarmViewHolder extends AlarmItemViewHolder {
 
         final AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.playTogether(backgroundAnimator, boundsAnimator,
-                repeatDaysAnimation, vibrateAnimation, ringtoneAnimation, editLabelAnimation,
-                deleteAnimation, dismissAnimation, switchAnimator, clockAnimator, ellipseAnimator);
+                repeatDaysAnimation, vibrateAnimation, dateAnimation, ringtoneAnimation,
+                editLabelAnimation, deleteAnimation, dismissAnimation, switchAnimator,
+                clockAnimator, ellipseAnimator);
         animatorSet.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationStart(Animator animation) {
@@ -337,6 +349,7 @@ public final class ExpandedAlarmViewHolder extends AlarmItemViewHolder {
         ringtone.setAlpha(0f);
         preemptiveDismissButton.setAlpha(0f);
         vibrate.setAlpha(0f);
+        date.setAlpha(0f);
         delete.setAlpha(0f);
         setChangingViewsAlpha(0f);
 
@@ -359,6 +372,8 @@ public final class ExpandedAlarmViewHolder extends AlarmItemViewHolder {
                 View.ALPHA, 1f).setDuration(longDuration);
         final Animator vibrateAnimation = ObjectAnimator.ofFloat(vibrate, View.ALPHA, 1f)
                 .setDuration(longDuration);
+        final Animator dateAnimation = ObjectAnimator.ofFloat(date, View.ALPHA, 1f)
+                .setDuration(longDuration);
         final Animator editLabelAnimation = ObjectAnimator.ofFloat(editLabel, View.ALPHA, 1f)
                 .setDuration(longDuration);
         final Animator deleteAnimation = ObjectAnimator.ofFloat(delete, View.ALPHA, 1f)
@@ -377,6 +392,7 @@ public final class ExpandedAlarmViewHolder extends AlarmItemViewHolder {
         }
         ringtoneAnimation.setStartDelay(startDelay);
         vibrateAnimation.setStartDelay(startDelay);
+        dateAnimation.setStartDelay(startDelay);
         startDelay += delayIncrement;
         editLabelAnimation.setStartDelay(startDelay);
         startDelay += delayIncrement;
@@ -388,8 +404,8 @@ public final class ExpandedAlarmViewHolder extends AlarmItemViewHolder {
 
         final AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.playTogether(backgroundAnimator, boundsAnimator,
-                repeatDaysAnimation, vibrateAnimation, ringtoneAnimation, editLabelAnimation,
-                deleteAnimation, dismissAnimation);
+                repeatDaysAnimation, vibrateAnimation, dateAnimation, ringtoneAnimation,
+                editLabelAnimation, deleteAnimation, dismissAnimation);
         return animatorSet;
     }
 

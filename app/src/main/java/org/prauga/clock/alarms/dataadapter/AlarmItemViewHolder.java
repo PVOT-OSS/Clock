@@ -29,6 +29,7 @@ import org.prauga.clock.AnimatorUtils;
 import org.prauga.clock.ItemAdapter;
 import org.prauga.clock.ItemAnimator;
 import org.prauga.clock.R;
+import org.prauga.clock.alarms.AlarmDatePicker;
 import org.prauga.clock.data.DataModel;
 import org.prauga.clock.data.Weekdays;
 import org.prauga.clock.provider.Alarm;
@@ -125,7 +126,12 @@ public abstract class AlarmItemViewHolder extends ItemAdapter.ItemViewHolder<Ala
     }
 
     protected void bindRepeatText(Context context, Alarm alarm) {
-        if (alarm.daysOfWeek.isRepeating()) {
+        final String dateSummary =
+                AlarmDatePicker.summary(context, alarm, Calendar.getInstance());
+        if (dateSummary != null) {
+            daysOfWeek.setText(dateSummary);
+            daysOfWeek.setContentDescription(dateSummary);
+        } else if (alarm.daysOfWeek.isRepeating()) {
             final Weekdays.Order weekdayOrder = DataModel.getDataModel().getWeekdayOrder();
             final String daysOfWeekText = alarm.daysOfWeek.toString(context, weekdayOrder);
             daysOfWeek.setText(daysOfWeekText);

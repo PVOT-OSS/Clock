@@ -65,4 +65,6 @@
     <string name="city_remove">Remove city</string>
     <!-- Description of the stopwatch home screen widget in the widget picker -->
     <string name="stopwatch_widget_description">Start, pause and lap the stopwatch</string>
+    <!-- Description of the timer home screen widget in the widget picker -->
+    <string name="timer_widget_description">Start a 5, 10 or 30 minute timer with one tap</string>
 </resources>

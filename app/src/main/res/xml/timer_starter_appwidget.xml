@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  SPDX-FileCopyrightText: 2026 Saalim Quadri <danascape@gmail.com>
+  SPDX-License-Identifier: Apache-2.0
+  -->
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:description="@string/timer_widget_description"
+    android:initialLayout="@layout/timer_starter_widget"
+    android:minWidth="250dp"
+    android:minHeight="80dp"
+    android:minResizeWidth="180dp"
+    android:minResizeHeight="80dp"
+    android:previewLayout="@layout/timer_starter_widget"
+    android:resizeMode="horizontal|vertical"
+    android:targetCellWidth="4"
+    android:targetCellHeight="1"
+    android:updatePeriodMillis="0"
+    android:widgetCategory="home_screen" />

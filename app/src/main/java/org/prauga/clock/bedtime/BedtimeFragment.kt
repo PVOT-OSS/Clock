@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import android.widget.CompoundButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.materialswitch.MaterialSwitch
 import com.google.android.material.timepicker.MaterialTimePicker
@@ -37,6 +38,9 @@ class BedtimeFragment : DeskClockFragment(UiDataModel.Tab.BEDTIME) {
     private lateinit var mode: MaterialSwitch
     private lateinit var modeSummary: TextView
     private lateinit var sleepSound: SleepSoundCard
+    private lateinit var calendar: CalendarCard
+    private val calendarPermission =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { calendar.load() }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -60,6 +64,7 @@ class BedtimeFragment : DeskClockFragment(UiDataModel.Tab.BEDTIME) {
         reminder.setOnClickListener { pickReminder() }
         wakeUp = WakeUpCard(this, view as ViewGroup, settings)
         sleepSound = SleepSoundCard(view, settings)
+        calendar = CalendarCard(view, calendarPermission)
         mode = view.findViewById(R.id.bedtime_mode)
         modeSummary = view.findViewById(R.id.bedtime_mode_summary)
         mode.setOnCheckedChangeListener { _, checked -> setModeEnabled(checked) }
@@ -85,6 +90,7 @@ class BedtimeFragment : DeskClockFragment(UiDataModel.Tab.BEDTIME) {
         wakeUp.load()
         bindMode()
         sleepSound.bind()
+        calendar.load()
         BedtimeScheduler.schedule(requireContext())
     }
 

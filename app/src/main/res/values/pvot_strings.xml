@@ -127,4 +127,12 @@
     <string name="sleep_sound_channel">Sleep sounds</string>
     <string name="sleep_sound_playing"><xliff:g id="sound" example="Brown noise">%s</xliff:g></string>
     <string name="sleep_sound_stops_at">Stops at <xliff:g id="time" example="11:30 pm">%s</xliff:g></string>
+    <!-- Bedtime card with tomorrow's first calendar event -->
+    <string name="calendar_title">Tomorrow</string>
+    <!-- First event tomorrow; args are its start time and title -->
+    <string name="calendar_first_event"><xliff:g id="time" example="9:00 am">%1$s</xliff:g> · <xliff:g id="title" example="Stand-up">%2$s</xliff:g></string>
+    <string name="calendar_no_event">Nothing on your calendar</string>
+    <string name="calendar_untitled">(No title)</string>
+    <string name="calendar_permission_hint">See tomorrow\'s first event before you go to bed</string>
+    <string name="calendar_allow">Allow calendar access</string>
 </resources>

@@ -20,10 +20,16 @@ fun View.padForNavigationBar() {
     val initialBottom = paddingBottom
     (this as? ViewGroup)?.clipToPadding = false
     ViewCompat.setOnApplyWindowInsetsListener(this) { view, insets ->
-        val bars = insets.getInsets(
-            WindowInsetsCompat.Type.navigationBars() or WindowInsetsCompat.Type.displayCutout()
+        val bars =
+            insets.getInsets(
+                WindowInsetsCompat.Type.navigationBars() or WindowInsetsCompat.Type.displayCutout()
+            )
+        view.setPadding(
+            view.paddingLeft,
+            view.paddingTop,
+            view.paddingRight,
+            initialBottom + bars.bottom,
         )
-        view.setPadding(view.paddingLeft, view.paddingTop, view.paddingRight, initialBottom + bars.bottom)
         insets
     }
     ViewCompat.requestApplyInsets(this)

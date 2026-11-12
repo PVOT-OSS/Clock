@@ -163,4 +163,7 @@
     <!-- Spoken after the fastest and the slowest recorded lap -->
     <string name="lap_fastest">Fastest lap</string>
     <string name="lap_slowest">Slowest lap</string>
+    <!-- Why an alarm was missed, under the missed alarm notification -->
+    <string name="alarm_missed_phone_off">Your phone was off when it was due</string>
+    <string name="alarm_missed_time_changed">The time or time zone changed past it</string>
 </resources>

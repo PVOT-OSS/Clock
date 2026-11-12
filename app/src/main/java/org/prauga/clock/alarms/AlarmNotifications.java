@@ -298,12 +298,13 @@ public final class AlarmNotifications {
 
         String label = instance.mLabel;
         String alarmTime = AlarmUtils.getFormattedTime(context, instance.getAlarmTime());
+        final String text = instance.mLabel.isEmpty() ? alarmTime :
+                context.getString(R.string.alarm_missed_text, alarmTime, label);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(
                 context, ALARM_MISSED_NOTIFICATION_CHANNEL_ID)
                         .setShowWhen(false)
                         .setContentTitle(context.getString(R.string.alarm_missed_title))
-                        .setContentText(instance.mLabel.isEmpty() ? alarmTime :
-                                context.getString(R.string.alarm_missed_text, alarmTime, label))
+                        .setContentText(text)
                         .setColor(ThemeUtils.resolveColor(context, R.attr.colorSurface))
                         .setSortKey(createSortKey(instance))
                         .setSmallIcon(R.drawable.stat_notify_alarm)
@@ -326,6 +327,7 @@ public final class AlarmNotifications {
                 instance.mId);
         showAndDismiss.putExtra(EXTRA_NOTIFICATION_ID, id);
         showAndDismiss.setAction(AlarmStateManager.SHOW_AND_DISMISS_ALARM_ACTION);
+        MissedAlarmReason.apply(context, builder, text);
         builder.setContentIntent(PendingIntent.getBroadcast(context, id,
                 showAndDismiss, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE));
 

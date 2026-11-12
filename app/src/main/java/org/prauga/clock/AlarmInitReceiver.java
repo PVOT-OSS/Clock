@@ -27,6 +27,7 @@ import android.os.PowerManager.WakeLock;
 
 import org.prauga.clock.alarms.AlarmNotifications;
 import org.prauga.clock.alarms.AlarmStateManager;
+import org.prauga.clock.alarms.MissedAlarmReason;
 import org.prauga.clock.controller.Controller;
 import org.prauga.clock.data.DataModel;
 import org.prauga.clock.provider.AlarmInstance;
@@ -149,9 +150,11 @@ public class AlarmInitReceiver extends BroadcastReceiver {
                 // Process restored data if any exists
                 if (!DeskClockBackupAgent.processRestoredData(context)) {
                     // Update all the alarm instances on time change event
+                    MissedAlarmReason.begin(action);
                     AlarmStateManager.fixAlarmInstances(context);
                 }
             } finally {
+                MissedAlarmReason.end();
                 result.finish();
                 wl.release();
                 LogUtils.v("AlarmInitReceiver finished");

@@ -437,11 +437,18 @@ public final class AlarmStateManager extends BroadcastReceiver {
      */
     public static void setSnoozeState(final Context context, AlarmInstance instance,
             boolean showToast) {
+        setSnoozeState(context, instance, showToast, DataModel.getDataModel().getSnoozeLength());
+    }
+
+    /**
+     * Snoozes the instance for the given number of minutes instead of the snooze length setting.
+     */
+    public static void setSnoozeState(final Context context, AlarmInstance instance,
+            boolean showToast, int snoozeMinutes) {
         // Stop alarm if this instance is firing it
         AlarmService.stopAlarm(context, instance);
 
         // Calculate the new snooze alarm time
-        final int snoozeMinutes = DataModel.getDataModel().getSnoozeLength();
         Calendar newAlarmTime = Calendar.getInstance();
         newAlarmTime.add(Calendar.MINUTE, snoozeMinutes);
 

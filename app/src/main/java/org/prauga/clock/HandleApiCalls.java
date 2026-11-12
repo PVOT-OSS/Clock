@@ -100,7 +100,7 @@ public class HandleApiCalls extends Activity {
                     handleDismissAlarm(intent);
                     break;
                 case AlarmClock.ACTION_SNOOZE_ALARM:
-                    handleSnoozeAlarm();
+                    handleSnoozeAlarm(intent);
                     break;
                 case AlarmClock.ACTION_DISMISS_TIMER:
                     handleDismissTimer(intent);
@@ -250,7 +250,11 @@ public class HandleApiCalls extends Activity {
         }
     }
 
-    private void handleSnoozeAlarm() {
+    private void handleSnoozeAlarm(Intent intent) {
+        final int requestedMinutes =
+                intent.getIntExtra(AlarmClock.EXTRA_ALARM_SNOOZE_DURATION, 0);
+        final int snoozeMinutes = requestedMinutes > 0
+                ? requestedMinutes : DataModel.getDataModel().getSnoozeLength();
         ExecutorService executor = Executors.newSingleThreadExecutor();
         executor.execute(() -> {
             final Context context = getApplicationContext();
@@ -265,18 +269,19 @@ public class HandleApiCalls extends Activity {
             }
 
             for (AlarmInstance firingAlarmInstance : alarmInstances) {
-                snoozeAlarm(firingAlarmInstance, context, this);
+                snoozeAlarm(firingAlarmInstance, context, this, snoozeMinutes);
             }
         });
     }
 
-    static void snoozeAlarm(AlarmInstance alarmInstance, Context context, Activity activity) {
+    static void snoozeAlarm(AlarmInstance alarmInstance, Context context, Activity activity,
+            int snoozeMinutes) {
         Utils.enforceNotMainLooper();
 
         final String time = DateFormat.getTimeFormat(context).format(
                 alarmInstance.getAlarmTime().getTime());
         final String reason = context.getString(R.string.alarm_is_snoozed, time);
-        AlarmStateManager.setSnoozeState(context, alarmInstance, true);
+        AlarmStateManager.setSnoozeState(context, alarmInstance, true, snoozeMinutes);
 
         Controller.getController().notifyVoiceSuccess(activity, reason);
         LOGGER.i("Alarm snoozed: " + alarmInstance);

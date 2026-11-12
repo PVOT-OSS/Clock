@@ -174,4 +174,8 @@
     <string name="analog_face_classic">Classic</string>
     <string name="analog_face_material">Material</string>
     <string name="analog_face_minimal">Minimal</string>
+    <!-- City list menu item and dialog that add a place of the user's own -->
+    <string name="add_place">Add place</string>
+    <string name="add_place_name">Name</string>
+    <string name="add_place_add">Add</string>
 </resources>

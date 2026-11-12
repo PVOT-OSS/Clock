@@ -387,6 +387,11 @@ public final class DataModel {
         mCityModel.moveSelectedCity(city, delta);
     }
 
+    public void addCustomPlace(String name, String timeZoneId) {
+        enforceMainLooper();
+        mCityModel.addCustomPlace(name, timeZoneId);
+    }
+
     public void removeSelectedCity(City city) {
         enforceMainLooper();
         mCityModel.removeSelectedCity(city);

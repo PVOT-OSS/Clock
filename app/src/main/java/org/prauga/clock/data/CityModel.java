@@ -21,6 +21,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.util.ArrayMap;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 
 import org.prauga.clock.R;
@@ -207,6 +208,20 @@ final class CityModel {
         saveSelectedCities(CityOrder.move(getSelectedCities(), city, delta));
     }
 
+    /**
+     * Adds a place of the user's own and selects it as a world clock.
+     */
+    void addCustomPlace(String name, String timeZoneId) {
+        final String id = CustomPlaces.add(mPrefs, name, timeZoneId);
+        mCityMap = null;
+        final City city = getCityMap().get(id);
+        if (city != null) {
+            final List<City> cities = new ArrayList<>(getSelectedCities());
+            cities.add(city);
+            setSelectedCities(cities);
+        }
+    }
+
     void removeSelectedCity(City city) {
         final List<City> cities = new ArrayList<>(getSelectedCities());
         cities.remove(city);
@@ -245,7 +260,10 @@ final class CityModel {
 
     private Map<String, City> getCityMap() {
         if (mCityMap == null) {
-            mCityMap = CityDAO.getCities(mContext);
+            final Map<String, City> cities = new ArrayMap<>();
+            cities.putAll(CityDAO.getCities(mContext));
+            cities.putAll(CustomPlaces.load(mPrefs));
+            mCityMap = Collections.unmodifiableMap(cities);
         }
 
         return mCityMap;

@@ -285,6 +285,24 @@
             android:directBootAware="true"
             android:exported="false" />
 
+        <activity
+            android:name=".HandleUris"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:taskAffinity=""
+            android:theme="@android:style/Theme.NoDisplay">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="${applicationId}"
+                    android:scheme="clock-app" />
+            </intent-filter>
+        </activity>
+
         <receiver
             android:name=".alarms.AlarmStateChangeReceiver"
             android:directBootAware="true"

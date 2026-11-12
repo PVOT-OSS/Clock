@@ -229,6 +229,18 @@
         </service>
 
         <receiver
+            android:name=".alarmclock.StopwatchAppWidgetProvider"
+            android:exported="true"
+            android:label="@string/menu_stopwatch">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/stopwatch_appwidget" />
+        </receiver>
+
+        <receiver
             android:name=".alarms.AlarmStateChangeReceiver"
             android:directBootAware="true"
             android:exported="false" />

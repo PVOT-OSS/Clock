@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  SPDX-FileCopyrightText: 2026 Saalim Quadri <danascape@gmail.com>
+  SPDX-License-Identifier: Apache-2.0
+  -->
+<resources>
+    <!-- Material You colours of the stopwatch and timer widgets -->
+    <color name="widget_background">@android:color/system_accent2_50</color>
+    <color name="widget_text">@android:color/system_accent1_900</color>
+    <color name="widget_text_secondary">@android:color/system_accent2_700</color>
+    <color name="widget_button">@android:color/system_accent1_100</color>
+    <color name="widget_on_button">@android:color/system_accent1_900</color>
+    <color name="widget_button_primary">@android:color/system_accent1_600</color>
+    <color name="widget_on_button_primary">@android:color/system_accent1_0</color>
+</resources>

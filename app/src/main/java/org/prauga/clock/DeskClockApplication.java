@@ -22,6 +22,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import org.prauga.clock.alarmclock.StopwatchAppWidgetProvider;
 import org.prauga.clock.controller.Controller;
 import org.prauga.clock.data.DataModel;
 import org.prauga.clock.events.LogEventTracker;
@@ -39,6 +40,7 @@ public class DeskClockApplication extends Application {
 
         DataModel.getDataModel().init(applicationContext, prefs);
         UiDataModel.getUiDataModel().init(applicationContext, prefs);
+        StopwatchAppWidgetProvider.observe(applicationContext);
         Controller.getController().setContext(applicationContext);
         Controller.getController().addEventTracker(new LogEventTracker(applicationContext));
         DynamicColors.applyToActivitiesIfAvailable(this);

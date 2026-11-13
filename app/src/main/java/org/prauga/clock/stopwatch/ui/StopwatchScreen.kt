@@ -20,11 +20,9 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableLongStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.withFrameMillis
@@ -36,6 +34,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.prauga.pvot.coreui.UiState
 import com.prauga.pvot.designsystem.components.PvotScreen
 import com.prauga.pvot.designsystem.components.button.PvotFab
 import com.prauga.pvot.designsystem.components.button.PvotIconButton
@@ -46,23 +47,29 @@ import org.prauga.clock.R
 import org.prauga.clock.common.screenPadding
 import org.prauga.clock.data.DataModel
 import org.prauga.clock.data.Lap
-import org.prauga.clock.data.StopwatchListener
 
 @Composable
-fun StopwatchScreen(padding: PaddingValues, listState: LazyListState) {
-    val model = DataModel.getDataModel()
+fun StopwatchScreen(
+    padding: PaddingValues,
+    listState: LazyListState,
+    viewModel: StopwatchViewModel = viewModel { StopwatchViewModel(DataModel.getDataModel()) },
+) {
+    val state by viewModel.state.collectAsStateWithLifecycle()
+    val content = (state as? UiState.Success)?.data ?: return
+    StopwatchBody(content, padding, listState, viewModel::onEvent)
+}
+
+@Composable
+private fun StopwatchBody(
+    content: StopwatchContent,
+    padding: PaddingValues,
+    listState: LazyListState,
+    onEvent: (StopwatchEvent) -> Unit,
+) {
     val context = LocalContext.current
     val shareTitle = stringResource(R.string.sw_share_button)
-    var stopwatch by remember { mutableStateOf(model.stopwatch) }
-    var laps by remember { mutableStateOf(model.laps.toList()) }
-    DisposableEffect(Unit) {
-        val listener = StopwatchListener { _, after ->
-            stopwatch = after
-            laps = model.laps.toList()
-        }
-        model.addStopwatchListener(listener)
-        onDispose { model.removeStopwatchListener(listener) }
-    }
+    val stopwatch = content.stopwatch
+    val laps = content.laps
     var total by remember { mutableLongStateOf(stopwatch.totalTime) }
     LaunchedEffect(stopwatch) {
         total = stopwatch.totalTime
@@ -110,7 +117,7 @@ fun StopwatchScreen(padding: PaddingValues, listState: LazyListState) {
                 PvotIconButton(
                     icon = painterResource(R.drawable.ic_t_refresh),
                     contentDescription = stringResource(R.string.sw_reset_button),
-                    onClick = { model.resetStopwatch() },
+                    onClick = { onEvent(StopwatchEvent.Reset) },
                 )
             }
             PvotFab(
@@ -125,18 +132,15 @@ fun StopwatchScreen(padding: PaddingValues, listState: LazyListState) {
                         else R.string.sw_start_button
                     ),
                 onClick = {
-                    if (stopwatch.isRunning) model.pauseStopwatch() else model.startStopwatch()
+                    onEvent(if (stopwatch.isRunning) StopwatchEvent.Pause else StopwatchEvent.Start)
                 },
             )
             if (stopwatch.isRunning) {
                 PvotIconButton(
                     icon = painterResource(R.drawable.ic_t_flag),
                     contentDescription = stringResource(R.string.sw_lap_button),
-                    enabled = model.canAddMoreLaps(),
-                    onClick = {
-                        model.addLap()
-                        laps = model.laps.toList()
-                    },
+                    enabled = content.canAddLap,
+                    onClick = { onEvent(StopwatchEvent.Lap) },
                 )
             } else if (stopwatch.isPaused) {
                 PvotIconButton(

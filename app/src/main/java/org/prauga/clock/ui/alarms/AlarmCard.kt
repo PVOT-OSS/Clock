@@ -5,11 +5,7 @@
 
 package org.prauga.clock.ui.alarms
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -17,7 +13,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -28,7 +23,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -47,7 +41,7 @@ import org.prauga.clock.data.DataModel
 import org.prauga.clock.provider.Alarm
 import org.prauga.clock.provider.AlarmDates
 import org.prauga.clock.ringtone.RingtonePickerActivity
-import org.prauga.clock.uidata.UiDataModel
+import org.prauga.clock.ui.WeekdayButtons
 
 @Composable
 fun AlarmCard(
@@ -92,7 +86,7 @@ fun AlarmCard(
             Text(text = summary(context, alarm), style = MaterialTheme.typography.bodyMedium)
 
             if (expanded) {
-                DayButtons(alarm) { calendarDay, on ->
+                WeekdayButtons(alarm.daysOfWeek) { calendarDay, on ->
                     alarm.daysOfWeek = alarm.daysOfWeek.setBit(calendarDay, on)
                     if (alarm.daysOfWeek.isRepeating) {
                         alarm.scheduledDate = AlarmDates.NONE
@@ -162,38 +156,6 @@ fun AlarmCard(
                 editingDate = false
             },
         )
-    }
-}
-
-@Composable
-private fun DayButtons(alarm: Alarm, onChange: (Int, Boolean) -> Unit) {
-    val order = DataModel.getDataModel().weekdayOrder.calendarDays
-    Row(
-        modifier = Modifier.fillMaxWidth().padding(vertical = 12.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-    ) {
-        for (day in order) {
-            val on = alarm.daysOfWeek.isBitOn(day)
-            Box(
-                contentAlignment = Alignment.Center,
-                modifier =
-                    Modifier.size(40.dp)
-                        .clip(CircleShape)
-                        .background(
-                            if (on) MaterialTheme.colorScheme.primary
-                            else MaterialTheme.colorScheme.surface
-                        )
-                        .border(1.dp, MaterialTheme.colorScheme.outline, CircleShape)
-                        .clickable { onChange(day, !on) },
-            ) {
-                Text(
-                    text = UiDataModel.getUiDataModel().getShortWeekday(day),
-                    color =
-                        if (on) MaterialTheme.colorScheme.onPrimary
-                        else MaterialTheme.colorScheme.onSurface,
-                )
-            }
-        }
     }
 }
 

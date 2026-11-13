@@ -25,7 +25,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -36,6 +35,9 @@ import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.compose.LifecycleResumeEffect
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.prauga.pvot.coreui.UiState
 import com.prauga.pvot.designsystem.components.PvotCard
 import com.prauga.pvot.designsystem.components.PvotDialog
 import com.prauga.pvot.designsystem.components.PvotDialogAction
@@ -45,60 +47,69 @@ import com.prauga.pvot.designsystem.components.button.PvotButton
 import com.prauga.pvot.designsystem.components.button.PvotButtonStyle
 import com.prauga.pvot.designsystem.theme.PvotSpacing
 import java.time.LocalTime
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import org.prauga.clock.R
-import org.prauga.clock.alarms.AlarmUpdateHandler
-import org.prauga.clock.alarms.ScrollHandler
+import org.prauga.clock.alarms.data.AlarmRepository
 import org.prauga.clock.alarms.ui.TimeDialog
 import org.prauga.clock.alarms.ui.formatTime
-import org.prauga.clock.bedtime.BedtimeMode
-import org.prauga.clock.bedtime.BedtimeScheduler
-import org.prauga.clock.bedtime.BedtimeSettings
-import org.prauga.clock.bedtime.SleepSoundService
-import org.prauga.clock.bedtime.TomorrowsEvent
+import org.prauga.clock.bedtime.data.BedtimeRepository
+import org.prauga.clock.bedtime.data.BedtimeSnapshot
+import org.prauga.clock.bedtime.data.WakeUpAlarm
 import org.prauga.clock.common.WeekdayButtons
 import org.prauga.clock.common.screenPadding
 import org.prauga.clock.data.DataModel
-import org.prauga.clock.provider.Alarm
+import org.prauga.clock.data.Weekdays
 
 private val REMINDERS = listOf(0, 15, 30, 45, 60)
 private val SLEEP_LENGTHS = listOf(15, 30, 60)
 
 @Composable
-fun BedtimeScreen(padding: PaddingValues, listState: LazyListState) {
-    val context = LocalContext.current
-    val settings = remember { BedtimeSettings(context) }
-    var version by remember { mutableIntStateOf(0) }
-    val changed: () -> Unit = {
-        BedtimeScheduler.schedule(context)
-        version += 1
-    }
+fun BedtimeScreen(
+    padding: PaddingValues,
+    listState: LazyListState,
+    viewModel: BedtimeViewModel = bedtimeViewModel(),
+) {
+    val state by viewModel.state.collectAsStateWithLifecycle()
     LifecycleResumeEffect(Unit) {
-        changed()
+        viewModel.onEvent(BedtimeEvent.Refresh)
         onPauseOrDispose {}
     }
+    val content = (state as? UiState.Success)?.data ?: return
+    BedtimeBody(content, padding, listState, viewModel::onEvent)
+}
+
+@Composable
+private fun bedtimeViewModel(): BedtimeViewModel {
+    val context = LocalContext.current.applicationContext
+    return viewModel { BedtimeViewModel(BedtimeRepository(context, AlarmRepository(context))) }
+}
+
+@Composable
+private fun BedtimeBody(
+    content: BedtimeContent,
+    padding: PaddingValues,
+    listState: LazyListState,
+    onEvent: (BedtimeEvent) -> Unit,
+) {
+    val context = LocalContext.current
+    val bedtime = content.bedtime
     var pickBedtime by remember { mutableStateOf(false) }
     var pickReminder by remember { mutableStateOf(false) }
     var pickWakeUp by remember { mutableStateOf(false) }
-    var afterBedtime by remember { mutableStateOf<(() -> Unit)?>(null) }
+    var introPick by remember { mutableStateOf(false) }
 
     PvotScreen(
         state = listState,
         contentPadding = screenPadding(padding),
         horizontalAlignment = Alignment.Start,
     ) {
-        if (!settings.introDone) {
+        if (!bedtime.introDone) {
             item(key = "intro") {
                 Card(stringResource(R.string.bedtime_intro_title)) {
                     Text(stringResource(R.string.bedtime_intro_text))
                     PvotButton(
                         text = stringResource(R.string.bedtime_intro_start),
                         onClick = {
-                            afterBedtime = {
-                                settings.introDone = true
-                                pickWakeUp = true
-                            }
+                            introPick = true
                             pickBedtime = true
                         },
                         modifier = Modifier.padding(top = PvotSpacing.S),
@@ -107,30 +118,25 @@ fun BedtimeScreen(padding: PaddingValues, listState: LazyListState) {
             }
         }
         item(key = "schedule") {
-            version.let {}
             Card(
                 title = stringResource(R.string.bedtime_schedule_title),
                 trailing = {
                     PvotSwitch(
-                        checked = settings.enabled,
-                        onCheckedChange = {
-                            settings.enabled = it
-                            changed()
-                        },
+                        checked = bedtime.enabled,
+                        onCheckedChange = { onEvent(BedtimeEvent.SetEnabled(it)) },
                     )
                 },
             ) {
                 Text(
-                    text = formatTime(context, settings.hour, settings.minute),
+                    text = formatTime(context, bedtime.hour, bedtime.minute),
                     style = MaterialTheme.typography.displayMedium,
                     modifier = Modifier.clickable { pickBedtime = true },
                 )
-                WeekdayButtons(settings.days) { day, on ->
-                    settings.days = settings.days.setBit(day, on)
-                    changed()
+                WeekdayButtons(Weekdays.fromBits(bedtime.days)) { day, on ->
+                    onEvent(BedtimeEvent.SetDay(day, on))
                 }
                 Text(
-                    text = reminderText(settings.reminderMinutes),
+                    text = reminderText(bedtime.reminderMinutes),
                     modifier =
                         Modifier.fillMaxWidth()
                             .clickable { pickReminder = true }
@@ -139,61 +145,32 @@ fun BedtimeScreen(padding: PaddingValues, listState: LazyListState) {
             }
         }
         item(key = "wakeup") {
-            version.let {}
-            WakeUpCard(settings, version) { pickWakeUp = true }
-        }
-        item(key = "mode") {
-            version.let {}
-            val access = BedtimeMode.hasAccess(context)
-            Card(
-                title = stringResource(R.string.bedtime_mode_title),
-                trailing = {
-                    PvotSwitch(
-                        checked = settings.modeEnabled,
-                        onCheckedChange = {
-                            settings.modeEnabled = it
-                            if (it && !BedtimeMode.hasAccess(context)) requestAccess(context)
-                            if (!it) BedtimeMode.remove(context)
-                            changed()
-                        },
-                    )
-                },
-            ) {
-                Text(
-                    text =
-                        stringResource(
-                            if (settings.modeEnabled && !access) R.string.bedtime_mode_needs_access
-                            else R.string.bedtime_mode_summary
-                        ),
-                    modifier =
-                        if (settings.modeEnabled && !access) {
-                            Modifier.clickable { requestAccess(context) }
-                        } else Modifier,
-                )
+            WakeUpCard(bedtime) {
+                onEvent(BedtimeEvent.LoadWakeUpChoices)
+                pickWakeUp = true
             }
         }
-        item(key = "sounds") {
-            version.let {}
-            SleepSoundsCard(settings, changed)
-        }
-        item(key = "tomorrow") { TomorrowCard() }
+        item(key = "mode") { ModeCard(bedtime, onEvent) }
+        item(key = "sounds") { SleepSoundsCard(bedtime, onEvent) }
+        item(key = "tomorrow") { TomorrowCard(content.tomorrow, onEvent) }
     }
 
     TimeDialog(
         visible = pickBedtime,
-        initial = LocalTime.of(settings.hour, settings.minute),
+        initial = LocalTime.of(bedtime.hour, bedtime.minute),
         onDismiss = {
             pickBedtime = false
-            afterBedtime = null
+            introPick = false
         },
         onConfirm = {
-            settings.hour = it.hour
-            settings.minute = it.minute
-            settings.enabled = true
+            onEvent(BedtimeEvent.SetTime(it.hour, it.minute))
             pickBedtime = false
-            changed()
-            afterBedtime?.invoke()
-            afterBedtime = null
+            if (introPick) {
+                introPick = false
+                onEvent(BedtimeEvent.FinishIntro)
+                onEvent(BedtimeEvent.LoadWakeUpChoices)
+                pickWakeUp = true
+            }
         },
     )
     PvotDialog(
@@ -205,9 +182,8 @@ fun BedtimeScreen(padding: PaddingValues, listState: LazyListState) {
                 PvotDialogAction(
                     label = reminderText(minutes),
                     onClick = {
-                        settings.reminderMinutes = minutes
+                        onEvent(BedtimeEvent.SetReminder(minutes))
                         pickReminder = false
-                        changed()
                     },
                 )
             }
@@ -215,11 +191,9 @@ fun BedtimeScreen(padding: PaddingValues, listState: LazyListState) {
     )
     WakeUpChooser(
         visible = pickWakeUp,
-        settings = settings,
-        onDone = {
-            pickWakeUp = false
-            changed()
-        },
+        choices = content.wakeUpChoices,
+        onEvent = onEvent,
+        onDone = { pickWakeUp = false },
     )
 }
 
@@ -250,21 +224,14 @@ private fun reminderText(minutes: Int): String =
     else pluralStringResource(R.plurals.bedtime_reminder_before, minutes, minutes)
 
 @Composable
-private fun WakeUpCard(settings: BedtimeSettings, version: Int, onChoose: () -> Unit) {
+private fun WakeUpCard(bedtime: BedtimeSnapshot, onChoose: () -> Unit) {
     val context = LocalContext.current
-    var alarm by remember { mutableStateOf<Alarm?>(null) }
-    LaunchedEffect(version, settings.wakeUpAlarmId) {
-        val id = settings.wakeUpAlarmId
-        alarm =
-            if (id < 0) null
-            else withContext(Dispatchers.IO) { Alarm.getAlarm(context.contentResolver, id) }
-    }
+    val linked = bedtime.wakeUp
     Card(stringResource(R.string.wakeup_title)) {
-        val linked = alarm
         Text(
             text =
                 if (linked == null) stringResource(R.string.wakeup_not_set)
-                else formatTime(context, linked.hour, linked.minutes),
+                else formatTime(context, linked.hour, linked.minute),
             style = MaterialTheme.typography.displayMedium,
         )
         Text(
@@ -273,8 +240,8 @@ private fun WakeUpCard(settings: BedtimeSettings, version: Int, onChoose: () -> 
                     linked == null -> stringResource(R.string.wakeup_choose_hint)
                     !linked.enabled -> stringResource(R.string.wakeup_alarm_off)
                     else -> {
-                        val bed = settings.hour * 60 + settings.minute
-                        val sleep = ((linked.hour * 60 + linked.minutes - bed) % 1440 + 1440) % 1440
+                        val bed = bedtime.hour * 60 + bedtime.minute
+                        val sleep = ((linked.hour * 60 + linked.minute - bed) % 1440 + 1440) % 1440
                         stringResource(
                             R.string.wakeup_sleep_duration,
                             pluralStringResource(R.plurals.hours, sleep / 60, sleep / 60),
@@ -292,33 +259,29 @@ private fun WakeUpCard(settings: BedtimeSettings, version: Int, onChoose: () -> 
 }
 
 @Composable
-private fun WakeUpChooser(visible: Boolean, settings: BedtimeSettings, onDone: () -> Unit) {
+private fun WakeUpChooser(
+    visible: Boolean,
+    choices: List<WakeUpAlarm>?,
+    onEvent: (BedtimeEvent) -> Unit,
+    onDone: () -> Unit,
+) {
     val context = LocalContext.current
     val wakeUpTitle = stringResource(R.string.wakeup_title)
-    var alarms by remember { mutableStateOf<List<Alarm>?>(null) }
-    LaunchedEffect(visible) {
-        if (visible) {
-            alarms =
-                withContext(Dispatchers.IO) {
-                    Alarm.getAlarms(context.contentResolver, null)
-                        .sortedWith(compareBy({ it.hour }, { it.minutes }))
-                }
-        }
-    }
     val order = DataModel.getDataModel().weekdayOrder
     PvotDialog(
-        visible = visible && alarms != null,
+        visible = visible && choices != null,
         onDismissRequest = onDone,
-        title = stringResource(R.string.wakeup_title),
+        title = wakeUpTitle,
         actions = {
-            alarms.orEmpty().forEach { a ->
-                val days =
-                    if (a.daysOfWeek.isRepeating) a.daysOfWeek.toString(context, order)
+            choices.orEmpty().forEach { alarm ->
+                val days = Weekdays.fromBits(alarm.days)
+                val daysText =
+                    if (days.isRepeating) days.toString(context, order)
                     else stringResource(R.string.wakeup_once)
                 PvotDialogAction(
-                    label = "${formatTime(context, a.hour, a.minutes)} · $days",
+                    label = "${formatTime(context, alarm.hour, alarm.minute)} · $daysText",
                     onClick = {
-                        settings.wakeUpAlarmId = a.id
+                        onEvent(BedtimeEvent.ChooseWakeUp(alarm.id))
                         onDone()
                     },
                 )
@@ -326,24 +289,7 @@ private fun WakeUpChooser(visible: Boolean, settings: BedtimeSettings, onDone: (
             PvotDialogAction(
                 label = stringResource(R.string.wakeup_new_alarm),
                 onClick = {
-                    val wake = (settings.hour * 60 + settings.minute + 8 * 60) % 1440
-                    AlarmUpdateHandler(
-                            context,
-                            object : ScrollHandler {
-                                override fun setSmoothScrollStableId(stableId: Long) {
-                                    settings.wakeUpAlarmId = stableId
-                                }
-
-                                override fun smoothScrollTo(position: Int) {}
-                            },
-                        )
-                        .asyncAddAlarm(
-                            Alarm(wake / 60, wake % 60).apply {
-                                daysOfWeek = settings.days
-                                enabled = true
-                                label = wakeUpTitle
-                            }
-                        )
+                    onEvent(BedtimeEvent.AddWakeUpAlarm(wakeUpTitle))
                     onDone()
                 },
             )
@@ -352,8 +298,34 @@ private fun WakeUpChooser(visible: Boolean, settings: BedtimeSettings, onDone: (
 }
 
 @Composable
-private fun SleepSoundsCard(settings: BedtimeSettings, changed: () -> Unit) {
+private fun ModeCard(bedtime: BedtimeSnapshot, onEvent: (BedtimeEvent) -> Unit) {
     val context = LocalContext.current
+    val needsAccess = bedtime.modeEnabled && !bedtime.hasModeAccess
+    Card(
+        title = stringResource(R.string.bedtime_mode_title),
+        trailing = {
+            PvotSwitch(
+                checked = bedtime.modeEnabled,
+                onCheckedChange = {
+                    if (it && !bedtime.hasModeAccess) requestAccess(context)
+                    onEvent(BedtimeEvent.SetMode(it))
+                },
+            )
+        },
+    ) {
+        Text(
+            text =
+                stringResource(
+                    if (needsAccess) R.string.bedtime_mode_needs_access
+                    else R.string.bedtime_mode_summary
+                ),
+            modifier = if (needsAccess) Modifier.clickable { requestAccess(context) } else Modifier,
+        )
+    }
+}
+
+@Composable
+private fun SleepSoundsCard(bedtime: BedtimeSnapshot, onEvent: (BedtimeEvent) -> Unit) {
     val noises =
         listOf(
             R.string.sleep_sound_white_short,
@@ -368,12 +340,9 @@ private fun SleepSoundsCard(settings: BedtimeSettings, changed: () -> Unit) {
             noises.forEachIndexed { i, label ->
                 PvotButton(
                     text = stringResource(label),
-                    onClick = {
-                        settings.sleepSound = i
-                        changed()
-                    },
+                    onClick = { onEvent(BedtimeEvent.SetSleepSound(i)) },
                     style =
-                        if (settings.sleepSound == i) PvotButtonStyle.Filled
+                        if (bedtime.sleepSound == i) PvotButtonStyle.Filled
                         else PvotButtonStyle.Tonal,
                 )
             }
@@ -385,12 +354,9 @@ private fun SleepSoundsCard(settings: BedtimeSettings, changed: () -> Unit) {
             SLEEP_LENGTHS.forEach { minutes ->
                 PvotButton(
                     text = stringResource(R.string.timer_preset_minutes, minutes),
-                    onClick = {
-                        settings.sleepSoundMinutes = minutes
-                        changed()
-                    },
+                    onClick = { onEvent(BedtimeEvent.SetSleepMinutes(minutes)) },
                     style =
-                        if (settings.sleepSoundMinutes == minutes) PvotButtonStyle.Filled
+                        if (bedtime.sleepSoundMinutes == minutes) PvotButtonStyle.Filled
                         else PvotButtonStyle.Tonal,
                 )
             }
@@ -398,28 +364,17 @@ private fun SleepSoundsCard(settings: BedtimeSettings, changed: () -> Unit) {
         PvotButton(
             text =
                 stringResource(
-                    if (SleepSoundService.isPlaying) R.string.sleep_sound_stop
+                    if (bedtime.sleepSoundPlaying) R.string.sleep_sound_stop
                     else R.string.sleep_sound_play
                 ),
-            onClick = {
-                if (SleepSoundService.isPlaying) {
-                    SleepSoundService.stop(context)
-                } else {
-                    SleepSoundService.start(
-                        context,
-                        SleepSoundService.Noise.entries[settings.sleepSound],
-                        settings.sleepSoundMinutes,
-                    )
-                }
-                changed()
-            },
+            onClick = { onEvent(BedtimeEvent.ToggleSleepSound) },
             modifier = Modifier.padding(top = PvotSpacing.S),
         )
     }
 }
 
 @Composable
-private fun TomorrowCard() {
+private fun TomorrowCard(tomorrow: String?, onEvent: (BedtimeEvent) -> Unit) {
     val context = LocalContext.current
     var granted by remember {
         mutableStateOf(
@@ -427,19 +382,14 @@ private fun TomorrowCard() {
                 PackageManager.PERMISSION_GRANTED
         )
     }
-    var text by remember { mutableStateOf<String?>(null) }
     val launcher =
         rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) {
             granted = it
         }
-    LaunchedEffect(granted) {
-        if (granted) {
-            text = withContext(Dispatchers.IO) { TomorrowsEvent.describe(context) }
-        }
-    }
+    LaunchedEffect(granted) { if (granted) onEvent(BedtimeEvent.LoadTomorrow) }
     Card(stringResource(R.string.calendar_title)) {
         if (granted) {
-            Text(text.orEmpty(), style = MaterialTheme.typography.bodyLarge)
+            Text(tomorrow.orEmpty(), style = MaterialTheme.typography.bodyLarge)
         } else {
             Text(stringResource(R.string.calendar_permission_hint))
             PvotButton(

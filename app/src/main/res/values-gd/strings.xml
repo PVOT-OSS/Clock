@@ -52,7 +52,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">A’ dèanamh dùsal gu ruige <xliff:g id="time">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Tha caismeachd gu bhith ann</string>
-    <string name="missed_alarm_has_been_deleted">Chaidh a’ chaismeachd a dh’fhalbh ort a sguabadh às</string>
     <string name="timer_notifications_less_min">Nas lugha na mionaid air fhàgail</string>
     <string name="timer_notifications_hours"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="MINUTES" example="2 minutes">%2$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
@@ -61,7 +60,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES" example="2 minutes">%2$s</xliff:g> <xliff:g id="SECONDS" example="2 seconds"> %4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g> <xliff:g id="SECONDS" example="2 seconds"> %4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g><xliff:g id="MINUTES" example="2 minutes"> %2$s</xliff:g><xliff:g id="SECONDS" example="2 seconds"> %4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">Chaidh mionaid a chur ris an tìmear, <xliff:g id="TIME" example="5 hours remaining">%1$s</xliff:g></string>
     <string name="timer_remaining_single">air fhàgail</string>
     <string name="timer_remaining_multiple">air fhàgail</string>
     <string-array name="alarm_set">
@@ -203,8 +201,6 @@
         <item>Leig seachad</item>
         <item>Smachd air àirde na fuaime</item>
     </string-array>
-    <string name="label_description">Leubail</string>
-    <string name="ringtone_description">Seirm</string>
     <string name="menu_alarm">Caismeachd</string>
     <string name="menu_timer">Tìmear</string>
     <string name="menu_clock">Cleoc</string>
@@ -221,27 +217,16 @@
     <string name="sw_pause_button">Cuir ’na stad</string>
     <string name="sw_lap_button">Cuairt</string>
     <string name="sw_share_button">Co-roinn</string>
-    <string name="hours_label">u</string>
-    <string name="minutes_label">m</string>
-    <string name="seconds_label">d</string>
-    <string name="timer_setup_description"><xliff:g id="hours" example="1 hour">%1$s</xliff:g>, <xliff:g id="minutes" example="15 minutes">%2$s</xliff:g>, <xliff:g id="seconds" example="30 seconds">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit"># <xliff:g id="lapNumber">%d</xliff:g></string>
-    <string name="lap_number_double_digit"># <xliff:g id="lapNumber">%02d</xliff:g></string>
-    <string name="sw_share_main">Thug mi <xliff:g id="time">%s</xliff:g></string>
-    <string name="sw_share_laps">Ùineachan cuairte:</string>
     <string name="sw_notification_lap_number">Cuairt <xliff:g id="number">%d</xliff:g></string>
     <string name="timer_add_timer">Cuir tìmear ris</string>
     <string name="timer_start">Tòisich</string>
     <string name="timer_delete">Sguab às</string>
-    <string name="timer_descriptive_delete">Sguab às <xliff:g id="number_string">%s</xliff:g></string>
     <string name="timer_plus_one">Cuir mionaid ris</string>
     <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Cuir mionaid ris</string>
     <string name="timer_stop">Cuir stad air</string>
     <string name="timer_stop_all">Cuir stad air gach tìmear</string>
     <string name="timer_reset">Ath-shuidhich</string>
-    <string name="timer_cancel">Sguir dheth</string>
-    <string name="timer_canceled">Chaidh sgur dhen tìmear</string>
     <string name="timer_times_up">Tha an ùine seachad</string>
     <string name="timer_multi_times_up">Dh’fhalbh an ùine air tìmearan (<xliff:g id="NUM_TIMERS" example="2">%d</xliff:g>)</string>
     <string name="timer_multi_missed">Dh’fhalbh <xliff:g id="number" example="2">%d</xliff:g> tìmear(an) ort</string>
@@ -253,18 +238,6 @@
     <string name="hours_minutes_seconds"><xliff:g id="hours" example="2">%1$d</xliff:g>:<xliff:g id="minutes" example="3">%2$02d</xliff:g>:<xliff:g id="seconds" example="44">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="minutes" example="3">%1$d</xliff:g>:<xliff:g id="seconds" example="44">%2$02d</xliff:g></string>
     <string name="seconds"><xliff:g id="seconds" example="44">%d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>Nach tusa a tha luath!</item>
-        <item>Meal d’ obair.</item>
-        <item>Ruigidh each mall muileann.</item>
-        <item>Murt!</item>
-        <item>Cuairt luath.</item>
-        <item>Nach luath sin?</item>
-        <item>A’ falbh leis a’ ghaoth.</item>
-        <item>Làrach nam bonn.</item>
-        <item>Nach ortsa a tha a’ chabhag!</item>
-        <item>Cho luath ri geàrr.</item>
-    </string-array>
     <string name="home_label">Dachaigh</string>
     <string name="cities_activity_title">Bailtean</string>
     <string name="clock_settings">Cleoc</string>
@@ -393,8 +366,6 @@
     <string name="screensaver_settings">Roghainnean an t-sàbhalaiche-sgrìn</string>
     <string name="night_mode_title">Am modh oidhche</string>
     <string name="night_mode_summary">Sgrìn ghlè fhann (do sheòmraichean dorcha)</string>
-    <string name="expand_alarm">Leudaich a’ chaismeachd</string>
-    <string name="collapse_alarm">Co-theannaich a’ chaismeachd</string>
     <string name="alarm_undo">neo-dhèan</string>
     <string name="alarm_deleted">Chaidh a’ chaismeachd a sguabadh às</string>
     <string name="world_day_of_week_label"> / <xliff:g id="label">%s</xliff:g></string>
@@ -405,7 +376,6 @@
     <string name="world_hours_tomorrow">A-màireach, <xliff:g id="time" example="6 hours ahead">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">An-dè, <xliff:g id="time" example="4 hours behind">%1$s</xliff:g></string>
     <string name="next_alarm_description">An ath-chaismeachd: <xliff:g id="alarm_time" example="Wed 8:00am">%s</xliff:g></string>
-    <string name="no_alarms">Chan eil caismeachd ann</string>
     <string name="invalid_time">Àm mì-dhligheach <xliff:g id="invalid_hour" example="25">%1$d</xliff:g>:<xliff:g id="invalid_minutes" example="63">%2$d</xliff:g> <xliff:g id="invalid_ampm" example="PM">%3$s</xliff:g></string>
     <string name="no_alarm_at">Chan eil chaismeachd aig <xliff:g id="alarm_time_hour" example="14">%1$d</xliff:g>:<xliff:g id="alarm_time_minutes" example="23">%2$d</xliff:g></string>
     <string name="no_scheduled_alarms">Chan eil caismeachd air an sgeideal</string>
@@ -421,7 +391,6 @@
         <item quantity="few">Chaidh <xliff:g id="number" example="5">%d</xliff:g> tìmearan a leigeil seachad</item>
         <item quantity="other">Chaidh <xliff:g id="number" example="5">%d</xliff:g> tìmear a leigeil seachad</item>
     </plurals>
-    <string name="timer_deleted">Chaidh an tìmear a sguabadh às</string>
     <string name="invalid_timer_length">Seo faide mhì-dhligheach do thìmear</string>
     <string name="invalid_timer">Chaidh tìmear mì-dhligheach a thaghadh.</string>
     <string name="no_expired_timers">Cha do dh’fhalbh an ùine air tìmear sam bith</string>

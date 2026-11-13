@@ -48,7 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until"><xliff:g id="TIME">%s</xliff:g> পর্যন্ত মনে করানো হবে</string>
     <string name="alarm_alert_predismiss_title">আসন্ন এলার্ম</string>
-    <string name="missed_alarm_has_been_deleted">আপনার মিসড অ্যালার্ম মুছে ফেলা হয়েছে</string>
     <string name="timer_notifications_less_min">এক মিনিটেরও কম সময় বাকি আছে</string>
     <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
@@ -57,7 +56,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">টাইমারে এক মিনিট যোগ করা হয়েছে, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="timer_remaining_single">বাকি আছে</string>
     <string name="timer_remaining_multiple">বাকি আছে</string>
     <string-array name="alarm_set">
@@ -185,8 +183,6 @@
         <item>খারিজ</item>
         <item>ভলিউম নিয়্ন্ত্রণ করুন</item>
     </string-array>
-    <string name="label_description">লেবেল</string>
-    <string name="ringtone_description">রিংটোন</string>
     <string name="menu_alarm">অ্যালার্ম</string>
     <string name="menu_timer">টাইমার</string>
     <string name="menu_clock">ঘড়ি</string>
@@ -203,27 +199,16 @@
     <string name="sw_pause_button">বিরাম দিন</string>
     <string name="sw_lap_button">ল্যাপ</string>
     <string name="sw_share_button">শেয়ার করুন</string>
-    <string name="hours_label">ঘ.</string>
-    <string name="minutes_label">মি.</string>
-    <string name="seconds_label">সে.</string>
-    <string name="timer_setup_description"><xliff:g id="HOURS">%1$s</xliff:g>, <xliff:g id="MINUTES">%2$s</xliff:g>, <xliff:g id="SECONDS">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit"># <xliff:g id="LAPNUMBER">%d</xliff:g></string>
-    <string name="lap_number_double_digit"># <xliff:g id="LAPNUMBER">%02d</xliff:g></string>
-    <string name="sw_share_main">আমার সময় <xliff:g id="TIME">%s</xliff:g></string>
-    <string name="sw_share_laps">ল্যাপ সময়:</string>
     <string name="sw_notification_lap_number"><xliff:g id="NUMBER">%d</xliff:g> টি ল্যাপ</string>
     <string name="timer_add_timer">টাইমার জুড়ুন</string>
     <string name="timer_start">শুরু করুন</string>
     <string name="timer_delete">মুছুন</string>
-    <string name="timer_descriptive_delete"><xliff:g id="NUMBER_STRING">%s</xliff:g> মুছুন</string>
     <string name="timer_plus_one">১ মিনিট যোগ করুন</string>
     <string name="timer_add_minute">+ ১:০০</string>
     <string name="timer_plus_1_min">১ মিনিট যোগ করুন</string>
     <string name="timer_stop">থামান</string>
     <string name="timer_stop_all">সব টাইমার বন্ধ করুন</string>
     <string name="timer_reset">আবার সেট করুন</string>
-    <string name="timer_cancel">বাতিল করুন</string>
-    <string name="timer_canceled">টাইমার বাতিল করা হয়েছে</string>
     <string name="timer_times_up">সময় শেষ</string>
     <string name="timer_multi_times_up"><xliff:g id="NUM_TIMERS">%d</xliff:g>টি টাইমারের সময় শেষ হয়েছে</string>
     <string name="timer_multi_missed"><xliff:g id="NUMBER">%d</xliff:g>টি টাইমার মিস হয়েছে</string>
@@ -234,18 +219,6 @@
     <string name="timer_reset_all">সমস্ত টাইমার আবার সেট করুন</string>
     <string name="hours_minutes_seconds"><xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="MINUTES">%1$d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>আপনি আসলেই এক গতিময় দৈত্য।</item>
-        <item>আপনার শ্রমের ফসল উপভোগ করুন।</item>
-        <item>অ্যান্ড্রয়েডগুলোকে গতিবান হিসেবে জানি, কিন্তু তারাও আপনার মত দ্রুতগতির নয়!</item>
-        <item>ফু:।</item>
-        <item>L33t গুণ।</item>
-        <item>এমন বিস্ময়কর গতি।</item>
-        <item>চলুন আমরা আবার সময়ের পাকে দৌড় দিই।</item>
-        <item>কেবল বাঁ দিকে এ লাফই যথেষ্ট।</item>
-        <item>তাড়াহুড়োর জন্য আপনার বিশেষ দক্ষতা আছে।</item>
-        <item>আলোর গতি।</item>
-    </string-array>
     <string name="home_label">হোম</string>
     <string name="cities_activity_title">শহর</string>
     <string name="clock_settings">ঘড়ি</string>
@@ -374,8 +347,6 @@
     <string name="screensaver_settings">স্ক্রিন সেভার সেটিংস</string>
     <string name="night_mode_title">রাতের মোড</string>
     <string name="night_mode_summary">স্ক্রিনের আলো খুব কম হবে (অন্ধকার ঘরের জন্য)</string>
-    <string name="expand_alarm">অ্যালার্ম প্রসারিত করুন</string>
-    <string name="collapse_alarm">অ্যালার্ম সঙ্কুচিত করুন</string>
     <string name="alarm_undo">পূর্বাবস্থায় ফিরুন</string>
     <string name="alarm_deleted">অ্যালার্ম মুছে ফেলা হয়েছে</string>
     <string name="world_day_of_week_label">/ <xliff:g id="LABEL">%s</xliff:g></string>
@@ -386,7 +357,6 @@
     <string name="world_hours_tomorrow">আগামীকাল, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">গতকাল, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="next_alarm_description">পরবর্তী অ্যালার্ম: <xliff:g id="ALARM_TIME">%s</xliff:g></string>
-    <string name="no_alarms">কোনো অ্যালার্ম নাই</string>
     <string name="invalid_time">অবৈধ সময় <xliff:g id="INVALID_HOUR">%1$d</xliff:g>:<xliff:g id="INVALID_MINUTES">%2$d</xliff:g> <xliff:g id="INVALID_AMPM">%3$s</xliff:g></string>
     <string name="no_alarm_at"><xliff:g id="ALARM_TIME_HOUR">%1$d</xliff:g>:<xliff:g id="ALARM_TIME_MINUTES">%2$d</xliff:g> -এ কোনো অ্যালার্ম নেই</string>
     <string name="no_scheduled_alarms">কোনো সময়সূচি নেই</string>
@@ -400,7 +370,6 @@
         <item quantity="one"><xliff:g id="NUMBER">%d</xliff:g>টি টাইমার বন্ধ করা হয়েছে</item>
         <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g>টি টাইমার বন্ধ করা হয়েছে</item>
     </plurals>
-    <string name="timer_deleted">টাইমার মুছে ফেলা হয়েছে</string>
     <string name="invalid_timer_length">অবৈধ টাইমার দৈর্ঘ্য</string>
     <string name="invalid_timer">ভুল টাইমার বেছে নিয়েছেন</string>
     <string name="no_expired_timers">কোনও টাইমারের সময় শেষ হয়নি</string>

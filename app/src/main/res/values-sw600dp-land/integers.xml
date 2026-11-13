@@ -5,5 +5,4 @@
 -->
 
 <resources>
-    <integer name="timers_column_count">3</integer>
 </resources>

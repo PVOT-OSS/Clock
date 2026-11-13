@@ -48,7 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Snuza kuze kube ngu-<xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">I-Alamu ezayo</string>
-    <string name="missed_alarm_has_been_deleted">I-Alamu yakho ekuphuthele isusiwe</string>
     <string name="timer_notifications_less_min">Ngaphansi kweminithi okusele</string>
     <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
@@ -57,7 +56,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">Iminithi elilodwa lingezwe kusibali sikhathi, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="timer_remaining_single">asele</string>
     <string name="timer_remaining_multiple">asele</string>
     <string-array name="alarm_set">
@@ -185,8 +183,6 @@
         <item>Chitha</item>
         <item>Lawula ivolomu</item>
     </string-array>
-    <string name="label_description">Ilebula</string>
-    <string name="ringtone_description">Ithoni yokukhala</string>
     <string name="menu_alarm">I-Alamu</string>
     <string name="menu_timer">Isikali sesikhathi</string>
     <string name="menu_clock">Iwashi</string>
@@ -203,27 +199,16 @@
     <string name="sw_pause_button">Misa okwesikhashana</string>
     <string name="sw_lap_button">Ilephu</string>
     <string name="sw_share_button">Yabelana</string>
-    <string name="hours_label">h</string>
-    <string name="minutes_label">m</string>
-    <string name="seconds_label">s</string>
-    <string name="timer_setup_description"><xliff:g id="HOURS">%1$s</xliff:g>, <xliff:g id="MINUTES">%2$s</xliff:g>, <xliff:g id="SECONDS">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit"># <xliff:g id="LAPNUMBER">%d</xliff:g></string>
-    <string name="lap_number_double_digit"># <xliff:g id="LAPNUMBER">%02d</xliff:g></string>
-    <string name="sw_share_main">Isikhathi sami ngu-<xliff:g id="TIME">%s</xliff:g></string>
-    <string name="sw_share_laps">Ukuhluka kwezikhathi:</string>
     <string name="sw_notification_lap_number">Xhapha <xliff:g id="NUMBER">%d</xliff:g></string>
     <string name="timer_add_timer">Engeza isibali sesikhathi</string>
     <string name="timer_start">Qala</string>
     <string name="timer_delete">Susa</string>
-    <string name="timer_descriptive_delete">Susa i-<xliff:g id="NUMBER_STRING">%s</xliff:g></string>
     <string name="timer_plus_one">Engeza 1 imininithi</string>
     <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Engeza iminithi elingu-1</string>
     <string name="timer_stop">Misa</string>
     <string name="timer_stop_all">Misa zonke izibali-sikhathi</string>
     <string name="timer_reset">Setha kabusha</string>
-    <string name="timer_cancel">Khansela</string>
-    <string name="timer_canceled">Isikhathi sikhanseliwe</string>
     <string name="timer_times_up">Isikhathi siphelile</string>
     <string name="timer_multi_times_up"><xliff:g id="NUM_TIMERS">%d</xliff:g> izibali-skhathi ziphelelwe isikhathi</string>
     <string name="timer_multi_missed"><xliff:g id="NUMBER">%d</xliff:g> izibali sikhathi eziphuthelwe</string>
@@ -234,18 +219,6 @@
     <string name="timer_reset_all">Setha kabusha zonke izibali sikhathi</string>
     <string name="hours_minutes_seconds"><xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="MINUTES">%1$d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>Ulidimoni elisheshayo.</item>
-        <item>Thokozela izithelo zomsebenzi wakho.</item>
-        <item>Ama-Android aziwa ashesha, kepha hhayi njengawe!</item>
-        <item>Hawu.</item>
-        <item>L33t izikhathi.</item>
-        <item>Isivinini esimangazayo.</item>
-        <item>Masenze ukugoqa kwesikhathi futhi.</item>
-        <item>Ukweqa okukodwa nje kwesokunxele.</item>
-        <item>Unothando lezinto ezisheshayo.</item>
-        <item>Isivinini sefonetiki.</item>
-    </string-array>
     <string name="home_label">Esasekhaya</string>
     <string name="cities_activity_title">Amadolobha</string>
     <string name="clock_settings">Iwashi</string>
@@ -374,8 +347,6 @@
     <string name="screensaver_settings">Izilungiselelo zokulondoloza isikrini</string>
     <string name="night_mode_title">Imodi yasebusuku</string>
     <string name="night_mode_summary">Ukubonisa okufiphele kakhulu (ngamagumbi amnyama)</string>
-    <string name="expand_alarm">Nwebissa i-alamu</string>
-    <string name="collapse_alarm">Nciphisa i-alamu</string>
     <string name="alarm_undo">hlehlisa</string>
     <string name="alarm_deleted">I-alamu itholakele</string>
     <string name="world_day_of_week_label">/ <xliff:g id="LABEL">%s</xliff:g></string>
@@ -386,7 +357,6 @@
     <string name="world_hours_tomorrow">Kusasa, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">Izolo, ngo-<xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="next_alarm_description">I-alamu elandelayo: <xliff:g id="ALARM_TIME">%s</xliff:g></string>
-    <string name="no_alarms">Awekho ama-alamu</string>
     <string name="invalid_time">Isikhathi esingavumelekile <xliff:g id="INVALID_HOUR">%1$d</xliff:g>:<xliff:g id="INVALID_MINUTES">%2$d</xliff:g> <xliff:g id="INVALID_AMPM">%3$s</xliff:g></string>
     <string name="no_alarm_at">Ayikho i-alamu ngo-<xliff:g id="ALARM_TIME_HOUR">%1$d</xliff:g>:<xliff:g id="ALARM_TIME_MINUTES">%2$d</xliff:g></string>
     <string name="no_scheduled_alarms">Awekho ama-alamu ashejuliwe</string>
@@ -400,7 +370,6 @@
         <item quantity="one"><xliff:g id="NUMBER">%d</xliff:g> izibali zikhathi zicashisiwe</item>
         <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> izibali zikhathi zicashisiwe</item>
     </plurals>
-    <string name="timer_deleted">Isibali sikhathi sisusiwe</string>
     <string name="invalid_timer_length">Ubude besibali sikhathi obungavumelekile</string>
     <string name="invalid_timer">Isibali sikhathi esingavumelekile sikhethiwe</string>
     <string name="no_expired_timers">Azikho izibali sikhathi eziphelelwe isikhathi</string>

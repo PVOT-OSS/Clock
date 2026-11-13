@@ -29,7 +29,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">سووکه‌ نوستن تا <xliff:g id="time">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">ئاگادارکه‌ره‌وه‌ی به‌ڕێگا</string>
-    <string name="missed_alarm_has_been_deleted">ئاگادارکه‌ره‌وه‌ی ونبوو سڕدرایه‌وه‌</string>
     <string name="timer_notifications_less_min">که‌متر له‌ یه‌ک خوله‌کی ماوه‌</string>
     <string-array name="alarm_set">
         <item>ئاگادارکه‌ره‌وه‌ دانرا بۆ که‌متر له‌ یه‌ک خوله‌ک له‌ ئێستاوه‌.</item>
@@ -98,8 +97,6 @@
         <item>گوێ نەدان</item>
         <item>Control volume</item>
     </string-array>
-    <string name="label_description">پێناس</string>
-    <string name="ringtone_description">زه‌نگ</string>
     <string name="menu_alarm">وریاکەرەوە</string>
     <string name="menu_timer">کاتپێو</string>
     <string name="menu_clock">کاتژمێر</string>
@@ -114,11 +111,6 @@
     <string name="sw_start_button">دەستپێکردن</string>
     <string name="sw_lap_button">سوڕ</string>
     <string name="sw_share_button">به‌شداریپێکردن</string>
-    <string name="hours_label">ک</string>
-    <string name="minutes_label">خ</string>
-    <string name="seconds_label">چ</string>
-    <string name="sw_share_main">کاتی من بریتییه‌ له‌ <xliff:g id="time">%s</xliff:g></string>
-    <string name="sw_share_laps">ماوه‌ی سوڕ:</string>
     <string name="sw_notification_lap_number">سوڕی <xliff:g id="number">%d</xliff:g></string>
     <string name="timer_add_timer">دیاریکردنی کاتپێو</string>
     <string name="timer_start">دەستپێکردن</string>
@@ -127,21 +119,8 @@
     <string name="timer_plus_1_min">زیاد کردنی ۱ خوله‌ک</string>
     <string name="timer_stop">وه‌ستاندن</string>
     <string name="timer_reset">ڕێکخستنەوە</string>
-    <string name="timer_cancel">هەڵوەشاندنەوە</string>
     <string name="timer_times_up">کات ته‌واو بوو</string>
     <string name="timer_notification_label">کاتپێو</string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>تۆ خێرایی زۆر به‌رزت بێده‌نگ کرد.</item>
-        <item>دڵخۆشبه‌ به به‌ری کاره‌که‌ت.</item>
-        <item>ئه‌ندرۆید به‌وه‌ ناسراوه‌ خێرایه‌ ، به‌س وه‌ک تۆ نا !</item>
-        <item>فیو.!</item>
-        <item>کاته‌کانی لێت.</item>
-        <item>وه‌ک ته‌قینه‌وه‌ی زۆر گه‌وره‌.</item>
-        <item>با دووباره‌ چه‌مانه‌وه‌ی کات بکه‌ینه‌وه‌.</item>
-        <item>ته‌نیا بازبده‌ بۆ به‌جێهێشتن.</item>
-        <item>تۆ پالێتت هه‌یه‌ بۆ خێرایی.</item>
-        <item>ته‌قاندنه‌وه‌ی فۆتۆن.</item>
-    </string-array>
     <string name="home_label">ماڵەوە</string>
     <string name="cities_activity_title">شاره‌کان</string>
     <string name="clock_style">ستایل</string>
@@ -244,10 +223,7 @@
     <string name="timers_in_use"><xliff:g id="number" example="7">%d</xliff:g> کاتپێو</string>
     <string name="night_mode_title">شێوازی شەو</string>
     <string name="night_mode_summary">ڕوونمای زۆر تاریک (بۆ ژووری تاریک به‌کاردێت)</string>
-    <string name="expand_alarm">به‌ربڵاوی ئاگادارکه‌ره‌وه‌</string>
-    <string name="collapse_alarm">له‌ناوچونی ئاگادارکه‌ره‌وه‌</string>
     <string name="alarm_undo">گه‌ڕانه‌وه‌</string>
     <string name="world_day_of_week_label"> / <xliff:g id="label">%s</xliff:g></string>
     <string name="next_alarm_description">ئاگادارکه‌ره‌وه‌ی داهاتوو:<xliff:g id="alarm_time" example="Wed 8:00am">%s</xliff:g></string>
-    <string name="no_alarms">ئاگادارکردنه‌وه‌ نییه‌</string>
 </resources>

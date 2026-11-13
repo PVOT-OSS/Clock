@@ -48,7 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Snoozer indtil <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Kommende alarm</string>
-    <string name="missed_alarm_has_been_deleted">Din ubesvarede alarm er blevet slettet</string>
     <string name="timer_notifications_less_min">Mindre end ét minut tilbage</string>
     <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g></string>
@@ -57,7 +56,6 @@
     <string name="timer_notifications_minutes_seconds">Der er <xliff:g id="MINUTES">%2$s</xliff:g> og <xliff:g id="SECONDS"> %4$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds">Der er <xliff:g id="HOURS">%1$s</xliff:g> og <xliff:g id="SECONDS"> %4$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds">Der er <xliff:g id="HOURS">%1$s</xliff:g>, <xliff:g id="MINUTES"> %2$s</xliff:g> og <xliff:g id="SECONDS"> %4$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">Der blev føjet 1 minut til timeren – <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="timer_remaining_single">tilbage</string>
     <string name="timer_remaining_multiple">tilbage</string>
     <string-array name="alarm_set">
@@ -185,8 +183,6 @@
         <item>Slår fra</item>
         <item>Styr lydstyrken</item>
     </string-array>
-    <string name="label_description">Etiket</string>
-    <string name="ringtone_description">Ringetone</string>
     <string name="menu_alarm">Alarm</string>
     <string name="menu_timer">Timer</string>
     <string name="menu_clock">Ur</string>
@@ -203,27 +199,16 @@
     <string name="sw_pause_button">Pause</string>
     <string name="sw_lap_button">Omgang</string>
     <string name="sw_share_button">Del</string>
-    <string name="hours_label">t</string>
-    <string name="minutes_label">m</string>
-    <string name="seconds_label">s</string>
-    <string name="timer_setup_description"><xliff:g id="HOURS">%1$s</xliff:g>, <xliff:g id="MINUTES">%2$s</xliff:g> og <xliff:g id="SECONDS">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit"># <xliff:g id="LAPNUMBER">%d</xliff:g></string>
-    <string name="lap_number_double_digit"># <xliff:g id="LAPNUMBER">%02d</xliff:g></string>
-    <string name="sw_share_main">Min tid er <xliff:g id="TIME">%s</xliff:g></string>
-    <string name="sw_share_laps">Omgangstider:</string>
     <string name="sw_notification_lap_number">Omgang <xliff:g id="NUMBER">%d</xliff:g></string>
     <string name="timer_add_timer">Tilføj timer</string>
     <string name="timer_start">Start</string>
     <string name="timer_delete">Slet</string>
-    <string name="timer_descriptive_delete">Slet <xliff:g id="NUMBER_STRING">%s</xliff:g></string>
     <string name="timer_plus_one">Tilføj 1 minut</string>
     <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Tilføj 1 min.</string>
     <string name="timer_stop">Stop</string>
     <string name="timer_stop_all">Stop alle timere</string>
     <string name="timer_reset">Nulstil</string>
-    <string name="timer_cancel">Annuller</string>
-    <string name="timer_canceled">Timeren blev annulleret</string>
     <string name="timer_times_up">Tiden er gået</string>
     <string name="timer_multi_times_up"><xliff:g id="NUM_TIMERS">%d</xliff:g> timere er udløbet</string>
     <string name="timer_multi_missed"><xliff:g id="NUMBER">%d</xliff:g> overskredne timere</string>
@@ -234,18 +219,6 @@
     <string name="timer_reset_all">Nulstil alle timere</string>
     <string name="hours_minutes_seconds"><xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="MINUTES">%1$d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>Du er en rigtig fartdjævel.</item>
-        <item>Nyd frugterne af dit arbejde.</item>
-        <item>Android-enheder er kendte for at være hurtige, men ikke så hurtige som dig!</item>
-        <item>Pyh!</item>
-        <item>L33t times.</item>
-        <item>Fænomenal hastighed.</item>
-        <item>Lad os træde ind i tidslommen igen.</item>
-        <item>Blot et hop til venstre.</item>
-        <item>Du har smag for hurtighed.</item>
-        <item>Med lysets hastighed.</item>
-    </string-array>
     <string name="home_label">Hjemme</string>
     <string name="cities_activity_title">Byer</string>
     <string name="clock_settings">Ur</string>
@@ -374,8 +347,6 @@
     <string name="screensaver_settings">Indstillinger for pauseskærm</string>
     <string name="night_mode_title">Nattilstand</string>
     <string name="night_mode_summary">Meget dæmpet skærmlys (til mørke rum)</string>
-    <string name="expand_alarm">Udvid alarm</string>
-    <string name="collapse_alarm">Skjul alarm</string>
     <string name="alarm_undo">fortryd</string>
     <string name="alarm_deleted">Alarmen blev slettet</string>
     <string name="world_day_of_week_label">/<xliff:g id="LABEL">%s</xliff:g></string>
@@ -386,7 +357,6 @@
     <string name="world_hours_tomorrow">I morgen, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">I går kl. <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="next_alarm_description">Næste alarm: <xliff:g id="ALARM_TIME">%s</xliff:g></string>
-    <string name="no_alarms">Ingen alarmer</string>
     <string name="invalid_time">Ugyldigt klokkeslæt <xliff:g id="INVALID_HOUR">%1$d</xliff:g>:<xliff:g id="INVALID_MINUTES">%2$d</xliff:g> <xliff:g id="INVALID_AMPM">%3$s</xliff:g></string>
     <string name="no_alarm_at">Der er ingen alarm kl. <xliff:g id="ALARM_TIME_HOUR">%1$d</xliff:g>:<xliff:g id="ALARM_TIME_MINUTES">%2$d</xliff:g></string>
     <string name="no_scheduled_alarms">Der er ikke nogen planlagte alarmer</string>
@@ -400,7 +370,6 @@
         <item quantity="one"><xliff:g id="NUMBER">%d</xliff:g> timer er afvist</item>
         <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> timere er afvist</item>
     </plurals>
-    <string name="timer_deleted">Timeren blev slettet</string>
     <string name="invalid_timer_length">Ugyldig timerlængde</string>
     <string name="invalid_timer">Der er valgt en ugyldig timer</string>
     <string name="no_expired_timers">Der er ingen udløbne timere</string>

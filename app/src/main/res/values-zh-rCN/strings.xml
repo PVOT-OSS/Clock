@@ -46,7 +46,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">闹钟已暂停，将于<xliff:g id="TIME">%s</xliff:g>再响</string>
     <string name="alarm_alert_predismiss_title">预定的闹钟</string>
-    <string name="missed_alarm_has_been_deleted">错过的闹钟已删除</string>
     <string name="timer_notifications_less_min">还剩不到 1 分钟</string>
     <string name="timer_notifications_hours"><xliff:g id="REMAINING"> %3$s</xliff:g> <xliff:g id="HOURS">%1$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="REMAINING"> %3$s</xliff:g> <xliff:g id="MINUTES">%2$s</xliff:g></string>
@@ -55,7 +54,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="REMAINING"> %3$s</xliff:g> <xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="REMAINING"> %3$s</xliff:g> <xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="REMAINING"> %3$s</xliff:g> <xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="MINUTES"> %2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">定时器已增加一分钟，<xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="timer_remaining_single">还剩</string>
     <string name="timer_remaining_multiple">还剩</string>
     <string-array name="alarm_set">
@@ -176,8 +174,6 @@
         <item>关闭</item>
         <item>控制音量</item>
     </string-array>
-    <string name="label_description">标签</string>
-    <string name="ringtone_description">铃声</string>
     <string name="menu_alarm">闹钟</string>
     <string name="menu_timer">定时器</string>
     <string name="menu_clock">时钟</string>
@@ -194,27 +190,16 @@
     <string name="sw_pause_button">暂停</string>
     <string name="sw_lap_button">一圈</string>
     <string name="sw_share_button">分享</string>
-    <string name="hours_label">小时</string>
-    <string name="minutes_label">分</string>
-    <string name="seconds_label">秒</string>
-    <string name="timer_setup_description"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit"># <xliff:g id="LAPNUMBER">%d</xliff:g></string>
-    <string name="lap_number_double_digit"># <xliff:g id="LAPNUMBER">%02d</xliff:g></string>
-    <string name="sw_share_main">我的时间：<xliff:g id="TIME">%s</xliff:g></string>
-    <string name="sw_share_laps">各圈时间：</string>
     <string name="sw_notification_lap_number">第<xliff:g id="NUMBER">%d</xliff:g>圈</string>
     <string name="timer_add_timer">添加定时器</string>
     <string name="timer_start">开始</string>
     <string name="timer_delete">删除</string>
-    <string name="timer_descriptive_delete">删除 <xliff:g id="NUMBER_STRING">%s</xliff:g></string>
     <string name="timer_plus_one">增加1分钟</string>
     <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">加上1分钟</string>
     <string name="timer_stop">停止</string>
     <string name="timer_stop_all">停止所有定时器</string>
     <string name="timer_reset">重置</string>
-    <string name="timer_cancel">取消</string>
-    <string name="timer_canceled">已取消定时器</string>
     <string name="timer_times_up">时间到</string>
     <string name="timer_multi_times_up"><xliff:g id="NUM_TIMERS">%d</xliff:g> 个定时器已到期</string>
     <string name="timer_multi_missed">错过了 <xliff:g id="NUMBER">%d</xliff:g> 个定时器</string>
@@ -226,18 +211,6 @@
     <string name="hours_minutes_seconds"><xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="MINUTES">%1$d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g></string>
     <string name="seconds"><xliff:g id="seconds" example="44">%d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>您简直就像闪电侠。</item>
-        <item>享受一下您大汗淋漓的成果吧。</item>
-        <item>Android 以速度快著称，但还跟不上您！</item>
-        <item>哇噻！</item>
-        <item>果然是高手。</item>
-        <item>迅雷不及掩耳之势。</item>
-        <item>再来一次吧。</item>
-        <item>小菜一碟。</item>
-        <item>您简直比得上飞毛腿。</item>
-        <item>冲击光速！</item>
-    </string-array>
     <string name="home_label">家</string>
     <string name="cities_activity_title">城市</string>
     <string name="clock_settings">时钟</string>
@@ -366,8 +339,6 @@
     <string name="screensaver_settings">屏保设置</string>
     <string name="night_mode_title">夜间模式</string>
     <string name="night_mode_summary">将屏幕亮度调至非常低（适合光线昏暗的环境）</string>
-    <string name="expand_alarm">展开闹钟</string>
-    <string name="collapse_alarm">收起闹钟</string>
     <string name="alarm_undo">撤消</string>
     <string name="alarm_deleted">闹钟已删除</string>
     <string name="world_day_of_week_label">/ <xliff:g id="LABEL">%s</xliff:g></string>
@@ -378,7 +349,6 @@
     <string name="world_hours_tomorrow">明天，<xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">昨天，<xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="next_alarm_description">下次闹钟时间：<xliff:g id="ALARM_TIME">%s</xliff:g></string>
-    <string name="no_alarms">没有闹钟</string>
     <string name="invalid_time">时间无效：<xliff:g id="INVALID_AMPM">%3$s</xliff:g> <xliff:g id="INVALID_HOUR">%1$d</xliff:g>:<xliff:g id="INVALID_MINUTES">%2$d</xliff:g></string>
     <string name="no_alarm_at">未设置 <xliff:g id="ALARM_TIME_HOUR">%1$d</xliff:g>:<xliff:g id="ALARM_TIME_MINUTES">%2$d</xliff:g> 的闹钟</string>
     <string name="no_scheduled_alarms">未设置任何闹钟</string>
@@ -391,7 +361,6 @@
     <plurals name="expired_timers_dismissed">
         <item quantity="other">已关闭 <xliff:g id="NUMBER">%d</xliff:g> 个定时器</item>
     </plurals>
-    <string name="timer_deleted">已删除定时器</string>
     <string name="invalid_timer_length">定时器时长无效</string>
     <string name="invalid_timer">选择的定时器无效</string>
     <string name="no_expired_timers">没有已结束的定时器</string>

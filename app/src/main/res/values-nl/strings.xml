@@ -48,7 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Snoozen tot <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Volgende wekker</string>
-    <string name="missed_alarm_has_been_deleted">Je gemiste wekker is verwijderd</string>
     <string name="timer_notifications_less_min">Nog minder dan een minuut</string>
     <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g></string>
@@ -57,7 +56,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">Eén minuut toegevoegd aan timer, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="timer_remaining_single">resterend</string>
     <string name="timer_remaining_multiple">resterend</string>
     <string-array name="alarm_set">
@@ -185,8 +183,6 @@
         <item>Uitzetten</item>
         <item>Volume regelen</item>
     </string-array>
-    <string name="label_description">Label</string>
-    <string name="ringtone_description">Ringtone</string>
     <string name="menu_alarm">Wekker</string>
     <string name="menu_timer">Timer</string>
     <string name="menu_clock">Klok</string>
@@ -203,27 +199,16 @@
     <string name="sw_pause_button">Pauze</string>
     <string name="sw_lap_button">Ronde</string>
     <string name="sw_share_button">Delen</string>
-    <string name="hours_label">u</string>
-    <string name="minutes_label">m</string>
-    <string name="seconds_label">s</string>
-    <string name="timer_setup_description"><xliff:g id="HOURS">%1$s</xliff:g>, <xliff:g id="MINUTES">%2$s</xliff:g>, <xliff:g id="SECONDS">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit">Nr. <xliff:g id="LAPNUMBER">%d</xliff:g></string>
-    <string name="lap_number_double_digit">Nr. <xliff:g id="LAPNUMBER">%02d</xliff:g></string>
-    <string name="sw_share_main">Mijn tijd is <xliff:g id="TIME">%s</xliff:g></string>
-    <string name="sw_share_laps">Rondetijden:</string>
     <string name="sw_notification_lap_number">Ronde <xliff:g id="NUMBER">%d</xliff:g></string>
     <string name="timer_add_timer">Timer toevoegen</string>
     <string name="timer_start">Starten</string>
     <string name="timer_delete">Verwijderen</string>
-    <string name="timer_descriptive_delete"><xliff:g id="NUMBER_STRING">%s</xliff:g> verwijderen</string>
     <string name="timer_plus_one">1 minuut toevoegen</string>
     <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">1 min. toevoegen</string>
     <string name="timer_stop">Stoppen</string>
     <string name="timer_stop_all">Alle timers stoppen</string>
     <string name="timer_reset">Resetten</string>
-    <string name="timer_cancel">Annuleren</string>
-    <string name="timer_canceled">Timer geannuleerd</string>
     <string name="timer_times_up">De tijd is om</string>
     <string name="timer_multi_times_up"><xliff:g id="NUM_TIMERS">%d</xliff:g> timers verlopen</string>
     <string name="timer_multi_missed"><xliff:g id="NUMBER">%d</xliff:g> timers gemist</string>
@@ -234,18 +219,6 @@
     <string name="timer_reset_all">Alle timers resetten</string>
     <string name="hours_minutes_seconds"><xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="MINUTES">%1$d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>Je bent wel erg snel.</item>
-        <item>Profiteer van je inspanningen.</item>
-        <item>Androids staan bekend om hun snelheid, maar jij bent nog sneller.</item>
-        <item>Oef.</item>
-        <item>Mooie tijden.</item>
-        <item>Wat een wonderbaarlijke snelheid.</item>
-        <item>Laten we weer gaan tijdreizen.</item>
-        <item>Spring gewoon naar links.</item>
-        <item>Haast zit in je aard.</item>
-        <item>Lichtsnelheid.</item>
-    </string-array>
     <string name="home_label">Thuis</string>
     <string name="cities_activity_title">Plaatsen</string>
     <string name="clock_settings">Klok</string>
@@ -374,8 +347,6 @@
     <string name="screensaver_settings">Instellingen voor screensaver</string>
     <string name="night_mode_title">Nachtmodus</string>
     <string name="night_mode_summary">Sterk gedimd scherm (voor donkere kamers)</string>
-    <string name="expand_alarm">Wekker uitvouwen</string>
-    <string name="collapse_alarm">Wekker samenvouwen</string>
     <string name="alarm_undo">ongedaan maken</string>
     <string name="alarm_deleted">Verwijderd</string>
     <string name="world_day_of_week_label">/ <xliff:g id="LABEL">%s</xliff:g></string>
@@ -386,7 +357,6 @@
     <string name="world_hours_tomorrow">Morgen, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">Gisteren, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="next_alarm_description">Volgende wekker: <xliff:g id="ALARM_TIME">%s</xliff:g></string>
-    <string name="no_alarms">Geen wekkers</string>
     <string name="invalid_time">Ongeldige tijd: <xliff:g id="INVALID_HOUR">%1$d</xliff:g>:<xliff:g id="INVALID_MINUTES">%2$d</xliff:g> <xliff:g id="INVALID_AMPM">%3$s</xliff:g></string>
     <string name="no_alarm_at">Geen wekker om <xliff:g id="ALARM_TIME_HOUR">%1$d</xliff:g>:<xliff:g id="ALARM_TIME_MINUTES">%2$d</xliff:g></string>
     <string name="no_scheduled_alarms">Geen geplande wekkers</string>
@@ -400,7 +370,6 @@
         <item quantity="one">Timer gesloten</item>
         <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> timers gesloten</item>
     </plurals>
-    <string name="timer_deleted">Timer verwijderd</string>
     <string name="invalid_timer_length">Ongeldige timerduur</string>
     <string name="invalid_timer">Ongeldige timer geselecteerd</string>
     <string name="no_expired_timers">Geen verlopen timers</string>

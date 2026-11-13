@@ -48,7 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Slumrar til <xliff:g id="time">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Komande alarm</string>
-    <string name="missed_alarm_has_been_deleted">Den miste alarmen din er sletta</string>
     <string name="timer_notifications_less_min">Under eitt minutt att</string>
     <string name="timer_notifications_hours"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="MINUTES" example="2 minutes">%2$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
@@ -57,7 +56,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES" example="2 minutes">%2$s</xliff:g> <xliff:g id="SECONDS" example="2 seconds">%4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g> <xliff:g id="SECONDS" example="2 seconds">%4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g> <xliff:g id="MINUTES" example="2 minutes">%2$s</xliff:g> <xliff:g id="SECONDS" example="2 seconds">%4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">Eitt minutt er lagt til, <xliff:g id="TIME" example="5 hours remaining">%1$s</xliff:g></string>
     <string name="timer_remaining_single">att</string>
     <string name="timer_remaining_multiple">att</string>
     <string-array name="alarm_set">
@@ -185,8 +183,6 @@
         <item>Avvis</item>
         <item>Styr lydstyrke</item>
     </string-array>
-    <string name="label_description">Etikett</string>
-    <string name="ringtone_description">Ringetone</string>
     <string name="menu_alarm">Alarm</string>
     <string name="menu_timer">Nedteljing</string>
     <string name="menu_clock">Klokke</string>
@@ -203,27 +199,16 @@
     <string name="sw_pause_button">Pause</string>
     <string name="sw_lap_button">Runde</string>
     <string name="sw_share_button">Del</string>
-    <string name="hours_label">t</string>
-    <string name="minutes_label">m</string>
-    <string name="seconds_label">s</string>
-    <string name="timer_setup_description"><xliff:g id="hours" example="1 hour">%1$s</xliff:g>, <xliff:g id="minutes" example="15 minutes">%2$s</xliff:g>, <xliff:g id="seconds" example="30 seconds">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit"># <xliff:g id="lapNumber">%d</xliff:g></string>
-    <string name="lap_number_double_digit"># <xliff:g id="lapNumber">%02d</xliff:g></string>
-    <string name="sw_share_main">Tida mi er <xliff:g id="time">%s</xliff:g></string>
-    <string name="sw_share_laps">Rundetider:</string>
     <string name="sw_notification_lap_number">Runde <xliff:g id="number">%d</xliff:g></string>
     <string name="timer_add_timer">Legg til nedteljing</string>
     <string name="timer_start">Start</string>
     <string name="timer_delete">Slett</string>
-    <string name="timer_descriptive_delete">Slett <xliff:g id="number_string">%s</xliff:g></string>
     <string name="timer_plus_one">Legg til 1 minutt</string>
     <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Legg til 1 min</string>
     <string name="timer_stop">Stopp</string>
     <string name="timer_stop_all">Stopp alle nedteljingar</string>
     <string name="timer_reset">Nullstill</string>
-    <string name="timer_cancel">Avbryt</string>
-    <string name="timer_canceled">Nedteljinga er avbroten</string>
     <string name="timer_times_up">Tida er ute</string>
     <string name="timer_multi_times_up"><xliff:g id="NUM_TIMERS" example="2">%d</xliff:g> nedteljingar er ferdige</string>
     <string name="timer_multi_missed"><xliff:g id="number" example="2">%d</xliff:g> missa nedteljingar</string>
@@ -235,18 +220,6 @@
     <string name="hours_minutes_seconds"><xliff:g id="hours" example="2">%1$d</xliff:g>:<xliff:g id="minutes" example="3">%2$02d</xliff:g>:<xliff:g id="seconds" example="44">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="minutes" example="3">%1$d</xliff:g>:<xliff:g id="seconds" example="44">%2$02d</xliff:g></string>
     <string name="seconds"><xliff:g id="seconds" example="44">%d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>Du er litt av ein fartsfant.</item>
-        <item>Her er løna for strevet.</item>
-        <item>Android-robotar skal vera snøgge, men du er i ein eigen klasse!</item>
-        <item>Puh.</item>
-        <item>Gasta tider.</item>
-        <item>Ein svær fart.</item>
-        <item>Me dreg gjennom tidslomma att.</item>
-        <item>Berre eit hopp til venstre.</item>
-        <item>Du har smaken på fart.</item>
-        <item>Med ljossnøggleiken.</item>
-    </string-array>
     <string name="home_label">Heim</string>
     <string name="cities_activity_title">Byar</string>
     <string name="clock_settings">Klokke</string>
@@ -375,8 +348,6 @@
     <string name="screensaver_settings">Innstillingar for skjermsparar</string>
     <string name="night_mode_title">Nattmodus</string>
     <string name="night_mode_summary">Sers dempa lys (for mørke rom)</string>
-    <string name="expand_alarm">Utvid alarmen</string>
-    <string name="collapse_alarm">Slå saman alarmen</string>
     <string name="alarm_undo">angra</string>
     <string name="alarm_deleted">Alarmen er sletta</string>
     <string name="world_day_of_week_label"> / <xliff:g id="label">%s</xliff:g></string>
@@ -387,7 +358,6 @@
     <string name="world_hours_tomorrow">I morgon, <xliff:g id="time" example="6 hours ahead">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">I går, <xliff:g id="time" example="4 hours behind">%1$s</xliff:g></string>
     <string name="next_alarm_description">Neste alarm: <xliff:g id="alarm_time" example="Wed 8:00am">%s</xliff:g></string>
-    <string name="no_alarms">Ingen alarmar</string>
     <string name="invalid_time">Ugyldig tid <xliff:g id="invalid_hour" example="25">%1$d</xliff:g>:<xliff:g id="invalid_minutes" example="63">%2$d</xliff:g> <xliff:g id="invalid_ampm" example="PM">%3$s</xliff:g></string>
     <string name="no_alarm_at">Ingen alarm kl. <xliff:g id="alarm_time_hour" example="14">%1$d</xliff:g>:<xliff:g id="alarm_time_minutes" example="23">%2$d</xliff:g></string>
     <string name="no_scheduled_alarms">Ingen planlagde alarmar</string>
@@ -401,7 +371,6 @@
         <item quantity="one">Nedteljinga er avvist</item>
         <item quantity="other"><xliff:g id="number" example="5">%d</xliff:g> nedteljingar er avviste</item>
     </plurals>
-    <string name="timer_deleted">Nedteljinga er sletta</string>
     <string name="invalid_timer_length">Ugyldig lengd på nedteljinga</string>
     <string name="invalid_timer">Ugyldig nedteljing er vald</string>
     <string name="no_expired_timers">Ingen ferdige nedteljingar</string>

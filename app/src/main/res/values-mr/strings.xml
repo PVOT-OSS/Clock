@@ -48,7 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until"><xliff:g id="TIME">%s</xliff:g> पर्यंत स्नूझ करा</string>
     <string name="alarm_alert_predismiss_title">आगामी अलार्म</string>
-    <string name="missed_alarm_has_been_deleted">तुमचा सुटलेला अलार्म हटवला गेला आहे</string>
     <string name="timer_notifications_less_min">एका मिनिटापेक्षा कमी वेळ शिल्लक</string>
     <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
@@ -57,7 +56,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">टायमरमध्ये 1 मिनिट जोडला, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="timer_remaining_single">शिल्लक</string>
     <string name="timer_remaining_multiple">शिल्लक</string>
     <string-array name="alarm_set">
@@ -185,8 +183,6 @@
         <item>डिसमिस करा</item>
         <item>आवाज नियंत्रित करा</item>
     </string-array>
-    <string name="label_description">लेबल</string>
-    <string name="ringtone_description">रिंगटोन</string>
     <string name="menu_alarm">अलार्म</string>
     <string name="menu_timer">टायमर</string>
     <string name="menu_clock">घड्याळ</string>
@@ -203,27 +199,16 @@
     <string name="sw_pause_button">विराम द्या</string>
     <string name="sw_lap_button">लॅप</string>
     <string name="sw_share_button">शेअर करा</string>
-    <string name="hours_label">ता</string>
-    <string name="minutes_label">मि</string>
-    <string name="seconds_label">से</string>
-    <string name="timer_setup_description"><xliff:g id="HOURS">%1$s</xliff:g>, <xliff:g id="MINUTES">%2$s</xliff:g>, <xliff:g id="SECONDS">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit"># <xliff:g id="LAPNUMBER">%d</xliff:g></string>
-    <string name="lap_number_double_digit"># <xliff:g id="LAPNUMBER">%02d</xliff:g></string>
-    <string name="sw_share_main">माझी वेळ <xliff:g id="TIME">%s</xliff:g> आहे</string>
-    <string name="sw_share_laps">लॅप वेळा:</string>
     <string name="sw_notification_lap_number">लॅप <xliff:g id="NUMBER">%d</xliff:g></string>
     <string name="timer_add_timer">टायमर जोडा</string>
     <string name="timer_start">प्रारंभ करा</string>
     <string name="timer_delete">हटवा</string>
-    <string name="timer_descriptive_delete"><xliff:g id="NUMBER_STRING">%s</xliff:g> हटवा</string>
     <string name="timer_plus_one">1 मिनिट जोडा</string>
     <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">1 मिनिट जोडा</string>
     <string name="timer_stop">थांबा</string>
     <string name="timer_stop_all">सर्व टायमर थांबवा</string>
     <string name="timer_reset">रीसेट करा</string>
-    <string name="timer_cancel">रद्द करा</string>
-    <string name="timer_canceled">टायमर रद्द केला</string>
     <string name="timer_times_up">वेळ संपली</string>
     <string name="timer_multi_times_up"><xliff:g id="NUM_TIMERS">%d</xliff:g> टायमर कालबाह्य झाले</string>
     <string name="timer_multi_missed"><xliff:g id="NUMBER">%d</xliff:g> टायमर चुकविले</string>
@@ -234,18 +219,6 @@
     <string name="timer_reset_all">सर्व टायमर रीसेट करा</string>
     <string name="hours_minutes_seconds"><xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="MINUTES">%1$d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>तुम्ही खरोखर वेगाचे दानव आहात.</item>
-        <item>आपल्या कष्टाच्या फळांचा आनंद घ्या.</item>
-        <item>Androids वेगवान असण्यासाठी ज्ञात आहेत, परंतु आपल्या इतके वेगवान नाहीत!</item>
-        <item>फ्यू.</item>
-        <item>L33t वेळा.</item>
-        <item>अशी अफाट गती.</item>
-        <item>चला आता पुन्हा वेळ लावूया.</item>
-        <item>फक्त डावीकडे उडी मारा.</item>
-        <item>आपल्याकडे घाईसाठी पॅलेट आहे.</item>
-        <item>फोटोनिक गती.</item>
-    </string-array>
     <string name="home_label">घर</string>
     <string name="cities_activity_title">शहरे</string>
     <string name="clock_settings">घड्याळ</string>
@@ -374,8 +347,6 @@
     <string name="screensaver_settings">स्क्रीन सेव्हर सेटिंग्ज</string>
     <string name="night_mode_title">रात्र मोड</string>
     <string name="night_mode_summary">खूप मंद डिस्प्ले (अंधार असलेल्या खोल्यांसाठी)</string>
-    <string name="expand_alarm">अलार्म विस्तृत करा</string>
-    <string name="collapse_alarm">अलार्म संकुचित करा</string>
     <string name="alarm_undo">पूर्ववत करा</string>
     <string name="alarm_deleted">अलार्म हटवला</string>
     <string name="world_day_of_week_label">/ <xliff:g id="LABEL">%s</xliff:g></string>
@@ -386,7 +357,6 @@
     <string name="world_hours_tomorrow">उद्या, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">काल, <xliff:g id="TIME">%1$s</xliff:g> वाजता</string>
     <string name="next_alarm_description">पुढील अलार्म: <xliff:g id="ALARM_TIME">%s</xliff:g></string>
-    <string name="no_alarms">कोणतेही अलार्म नाहीत</string>
     <string name="invalid_time">अवैध वेळ <xliff:g id="INVALID_HOUR">%1$d</xliff:g>:<xliff:g id="INVALID_MINUTES">%2$d</xliff:g> <xliff:g id="INVALID_AMPM">%3$s</xliff:g></string>
     <string name="no_alarm_at"><xliff:g id="ALARM_TIME_HOUR">%1$d</xliff:g>:<xliff:g id="ALARM_TIME_MINUTES">%2$d</xliff:g> चा कोणताही अलार्म नाही</string>
     <string name="no_scheduled_alarms">अनुसूची केलेले अलार्म नाहीत</string>
@@ -400,7 +370,6 @@
         <item quantity="one">टायमर डिसमिस केला</item>
         <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> टायमर डिसमिस केले</item>
     </plurals>
-    <string name="timer_deleted">टायमर हटवला</string>
     <string name="invalid_timer_length">अवैध टायमर लांबी</string>
     <string name="invalid_timer">चुकीचा टायमर निवडला</string>
     <string name="no_expired_timers">कोणतेही मुदत संपलेले टायमर नाहीत</string>

@@ -48,7 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Imeahirishwa hadi <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Kengele ijayo</string>
-    <string name="missed_alarm_has_been_deleted">Kengele ambayo haikuitikiwa imefutwa</string>
     <string name="timer_notifications_less_min">Imesalia chini ya dakika moja</string>
     <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
@@ -57,7 +56,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">Dakika moja imeongezwa kwenye kipima wakati, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="timer_remaining_single">imesalia</string>
     <string name="timer_remaining_multiple">zimesalia</string>
     <string-array name="alarm_set">
@@ -185,8 +183,6 @@
         <item>Ondoa</item>
         <item>Dhibiti kiwango cha sauti</item>
     </string-array>
-    <string name="label_description">Lebo</string>
-    <string name="ringtone_description">Mlio wa simu</string>
     <string name="menu_alarm">Kengele</string>
     <string name="menu_timer">Kipima wakati</string>
     <string name="menu_clock">Saa</string>
@@ -203,27 +199,16 @@
     <string name="sw_pause_button">Sitisha</string>
     <string name="sw_lap_button">Mzunguko</string>
     <string name="sw_share_button">Shiriki</string>
-    <string name="hours_label">s</string>
-    <string name="minutes_label">d</string>
-    <string name="seconds_label">s</string>
-    <string name="timer_setup_description"><xliff:g id="HOURS">%1$s</xliff:g>, <xliff:g id="MINUTES">%2$s</xliff:g>, <xliff:g id="SECONDS">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit"># <xliff:g id="LAPNUMBER">%d</xliff:g></string>
-    <string name="lap_number_double_digit"># <xliff:g id="LAPNUMBER">%02d</xliff:g></string>
-    <string name="sw_share_main">Muda wangu ni <xliff:g id="TIME">%s</xliff:g></string>
-    <string name="sw_share_laps">Muda wa mzunguko:</string>
     <string name="sw_notification_lap_number">Mzunguko wa <xliff:g id="NUMBER">%d</xliff:g></string>
     <string name="timer_add_timer">Ongeza Kipima wakati</string>
     <string name="timer_start">Anza</string>
     <string name="timer_delete">Futa</string>
-    <string name="timer_descriptive_delete">Futa <xliff:g id="NUMBER_STRING">%s</xliff:g></string>
     <string name="timer_plus_one">Ongeza Dakika 1</string>
     <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Ongeza dakika 1</string>
     <string name="timer_stop">Simamisha</string>
     <string name="timer_stop_all">Komesha vipima muda vyote</string>
     <string name="timer_reset">Anza upya</string>
-    <string name="timer_cancel">Ghairi</string>
-    <string name="timer_canceled">Kipima muda kimeghairiwa</string>
     <string name="timer_times_up">Muda umekwisha</string>
     <string name="timer_multi_times_up">Muda wa vipima muda <xliff:g id="NUM_TIMERS">%d</xliff:g> umekwisha</string>
     <string name="timer_multi_missed">Vipima muda <xliff:g id="NUMBER">%d</xliff:g> ambavyo hukusikia</string>
@@ -234,18 +219,6 @@
     <string name="timer_reset_all">Anzisha vipima wakati vyote upya</string>
     <string name="hours_minutes_seconds"><xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="MINUTES">%1$d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>Una kasi ya ajabu.</item>
-        <item>Furahia matunda ya kazi yako.</item>
-        <item>Androids zinajulikana kwa kasi, lakini si kasi kama yako!</item>
-        <item>Pumua.</item>
-        <item>Nyakati za L33t.</item>
-        <item>Kasi hiyo ya kupendeza.</item>
-        <item>Hebu tufanye mabadiliko ya muda tena.</item>
-        <item>Ruka tu kushoto.</item>
-        <item>Una safu ya rangi ya kasi.</item>
-        <item>Kasi ya picha.</item>
-    </string-array>
     <string name="home_label">Mwanzo</string>
     <string name="cities_activity_title">Miji</string>
     <string name="clock_settings">Saa</string>
@@ -374,8 +347,6 @@
     <string name="screensaver_settings">Mipangilio ya taswira ya skrini</string>
     <string name="night_mode_title">Modi ya usiku</string>
     <string name="night_mode_summary">Katika vyumba vyenye giza, skrini iwe na mwangaza hafifu.</string>
-    <string name="expand_alarm">Panua kengele</string>
-    <string name="collapse_alarm">Kunja kengele</string>
     <string name="alarm_undo">tendua</string>
     <string name="alarm_deleted">Kengele imefutwa</string>
     <string name="world_day_of_week_label">/ <xliff:g id="LABEL">%s</xliff:g></string>
@@ -386,7 +357,6 @@
     <string name="world_hours_tomorrow">Kesho, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">Jana, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="next_alarm_description">Kengele inayofuata: <xliff:g id="ALARM_TIME">%s</xliff:g></string>
-    <string name="no_alarms">Hakuna Kengele Zilizowekwa</string>
     <string name="invalid_time">Wakati usio sahihi <xliff:g id="INVALID_HOUR">%1$d</xliff:g>:<xliff:g id="INVALID_MINUTES">%2$d</xliff:g> <xliff:g id="INVALID_AMPM">%3$s</xliff:g></string>
     <string name="no_alarm_at">Hakuna kengele ya saa <xliff:g id="ALARM_TIME_HOUR">%1$d</xliff:g>:<xliff:g id="ALARM_TIME_MINUTES">%2$d</xliff:g></string>
     <string name="no_scheduled_alarms">Hakuna kengele zilizoratibiwa</string>
@@ -400,7 +370,6 @@
         <item quantity="one">Umeondoa kipima muda</item>
         <item quantity="other">Umeondoa vipima muda <xliff:g id="NUMBER">%d</xliff:g></item>
     </plurals>
-    <string name="timer_deleted">Kipima muda kimefutwa</string>
     <string name="invalid_timer_length">Urefu usio sahihi wa kipimaji muda</string>
     <string name="invalid_timer">Umechagua kipima muda kisicho sahihi</string>
     <string name="no_expired_timers">Hakuna vipima muda vilivyokwisha</string>

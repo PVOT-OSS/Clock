@@ -48,7 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Ébresztés elhalasztása eddig: <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Következő ébresztés</string>
-    <string name="missed_alarm_has_been_deleted">Elmulasztott ébresztés törölve</string>
     <string name="timer_notifications_less_min">Kevesebb mint 1 perc van hátra</string>
     <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
@@ -57,7 +56,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="MINUTES"> %2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">Egy perc hozzáadva az időzítőhöz: <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="timer_remaining_single">hátralévő idő</string>
     <string name="timer_remaining_multiple">van hátra</string>
     <string-array name="alarm_set">
@@ -185,8 +183,6 @@
         <item>Elvetés</item>
         <item>Hangerő-szabályozás</item>
     </string-array>
-    <string name="label_description">Címke</string>
-    <string name="ringtone_description">Csengőhang</string>
     <string name="menu_alarm">Ébresztő</string>
     <string name="menu_timer">Időzítő</string>
     <string name="menu_clock">Óra</string>
@@ -203,27 +199,16 @@
     <string name="sw_pause_button">Szünet</string>
     <string name="sw_lap_button">Kör</string>
     <string name="sw_share_button">Megosztás</string>
-    <string name="hours_label">ó</string>
-    <string name="minutes_label">p</string>
-    <string name="seconds_label">m</string>
-    <string name="timer_setup_description"><xliff:g id="HOURS">%1$s</xliff:g>, <xliff:g id="MINUTES">%2$s</xliff:g>, <xliff:g id="SECONDS">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit"># <xliff:g id="LAPNUMBER">%d</xliff:g></string>
-    <string name="lap_number_double_digit"># <xliff:g id="LAPNUMBER">%02d</xliff:g></string>
-    <string name="sw_share_main">Az én időm: <xliff:g id="TIME">%s</xliff:g></string>
-    <string name="sw_share_laps">Köridők:</string>
     <string name="sw_notification_lap_number"><xliff:g id="NUMBER">%d</xliff:g>. kör</string>
     <string name="timer_add_timer">Időzítő hozzáadása</string>
     <string name="timer_start">Kezdés</string>
     <string name="timer_delete">Törlés</string>
-    <string name="timer_descriptive_delete">Törlés: <xliff:g id="NUMBER_STRING">%s</xliff:g></string>
     <string name="timer_plus_one">1 perc hozzáadása</string>
     <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">1 perc hozzáadása</string>
     <string name="timer_stop">Leállítás</string>
     <string name="timer_stop_all">Az összes időzítő leállítása</string>
     <string name="timer_reset">Visszaállítás</string>
-    <string name="timer_cancel">Mégse</string>
-    <string name="timer_canceled">Időzítés visszavonva</string>
     <string name="timer_times_up">Az idő lejárt!</string>
     <string name="timer_multi_times_up"><xliff:g id="NUM_TIMERS">%d</xliff:g> időzítő lejárt</string>
     <string name="timer_multi_missed"><xliff:g id="NUMBER">%d</xliff:g> időzítő elmulasztva</string>
@@ -235,18 +220,6 @@
     <string name="hours_minutes_seconds"><xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="MINUTES">%1$d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g></string>
     <string name="seconds"><xliff:g id="seconds" example="44">%d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>Ön valósággal a sebesség ördöge.</item>
-        <item>Élvezze a munkája gyümölcsét.</item>
-        <item>Az androidok köztudottan gyorsak, de nem annyira, mint Ön!</item>
-        <item>Tyű.</item>
-        <item>L33t idő.</item>
-        <item>Micsoda bődületes sebesség.</item>
-        <item>Állítsuk meg újra az időt.</item>
-        <item>Csak egy ugrás balra.</item>
-        <item>Van érzéke a sietséghez.</item>
-        <item>Fotonikus sebesség!</item>
-    </string-array>
     <string name="home_label">Otthoni</string>
     <string name="cities_activity_title">Városok</string>
     <string name="clock_settings">Óra</string>
@@ -375,8 +348,6 @@
     <string name="screensaver_settings">Képernyőkímélő beállításai</string>
     <string name="night_mode_title">Éjszakai üzemmód</string>
     <string name="night_mode_summary">Nagyon halvány megjelenítés (sötét szobában)</string>
-    <string name="expand_alarm">Ébresztő megnyitása</string>
-    <string name="collapse_alarm">Ébresztő bezárása</string>
     <string name="alarm_undo">visszavonás</string>
     <string name="alarm_deleted">Ébresztés törölve</string>
     <string name="world_day_of_week_label">/ <xliff:g id="LABEL">%s</xliff:g></string>
@@ -387,7 +358,6 @@
     <string name="world_hours_tomorrow">Holnap, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">Tegnap, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="next_alarm_description">Következő ébresztés: <xliff:g id="ALARM_TIME">%s</xliff:g></string>
-    <string name="no_alarms">Nincs ébresztés</string>
     <string name="invalid_time">Érvénytelen időpont: <xliff:g id="INVALID_HOUR">%1$d</xliff:g>:<xliff:g id="INVALID_MINUTES">%2$d</xliff:g> <xliff:g id="INVALID_AMPM">%3$s</xliff:g></string>
     <string name="no_alarm_at">Nincs ébresztés ekkor: <xliff:g id="ALARM_TIME_HOUR">%1$d</xliff:g>:<xliff:g id="ALARM_TIME_MINUTES">%2$d</xliff:g></string>
     <string name="no_scheduled_alarms">Nincs ütemezett ébresztés</string>
@@ -401,7 +371,6 @@
         <item quantity="one">Időzítés elvetve</item>
         <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> időzítés elvetve</item>
     </plurals>
-    <string name="timer_deleted">Időzítő törölve</string>
     <string name="invalid_timer_length">Az időzítő hossza érvénytelen</string>
     <string name="invalid_timer">Érvénytelen időzítés kiválasztva</string>
     <string name="no_expired_timers">Nincsenek lejárt időzítések</string>

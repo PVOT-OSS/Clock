@@ -48,7 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Blundar fram til <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Næsti vekjari</string>
-    <string name="missed_alarm_has_been_deleted">Hunsuðum vekjara var eytt</string>
     <string name="timer_notifications_less_min">Innan við mínúta eftir</string>
     <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
@@ -57,7 +56,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">Einni mínútu bætt við teljara, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="timer_remaining_single">eftir</string>
     <string name="timer_remaining_multiple">eftir</string>
     <string-array name="alarm_set">
@@ -185,8 +183,6 @@
         <item>Hunsa</item>
         <item>Stjórna hljóðstyrk</item>
     </string-array>
-    <string name="label_description">Skýring</string>
-    <string name="ringtone_description">Hringitónn</string>
     <string name="menu_alarm">Vekjari</string>
     <string name="menu_timer">Teljari</string>
     <string name="menu_clock">Klukka</string>
@@ -203,27 +199,16 @@
     <string name="sw_pause_button">Gera hlé</string>
     <string name="sw_lap_button">Millitími</string>
     <string name="sw_share_button">Deila</string>
-    <string name="hours_label">k</string>
-    <string name="minutes_label">m</string>
-    <string name="seconds_label">s</string>
-    <string name="timer_setup_description"><xliff:g id="HOURS">%1$s</xliff:g>, <xliff:g id="MINUTES">%2$s</xliff:g>, <xliff:g id="SECONDS">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit"># <xliff:g id="LAPNUMBER">%d</xliff:g></string>
-    <string name="lap_number_double_digit"># <xliff:g id="LAPNUMBER">%02d</xliff:g></string>
-    <string name="sw_share_main">Tíminn minn er <xliff:g id="TIME">%s</xliff:g></string>
-    <string name="sw_share_laps">Millitímar:</string>
     <string name="sw_notification_lap_number">Hringur <xliff:g id="NUMBER">%d</xliff:g></string>
     <string name="timer_add_timer">Bæta teljara við</string>
     <string name="timer_start">Byrja</string>
     <string name="timer_delete">Eyða</string>
-    <string name="timer_descriptive_delete">Eyða <xliff:g id="NUMBER_STRING">%s</xliff:g></string>
     <string name="timer_plus_one">Bæta 1 mínútu við</string>
     <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Bæta 1 mín. við</string>
     <string name="timer_stop">Stöðva</string>
     <string name="timer_stop_all">Stöðva alla teljara</string>
     <string name="timer_reset">Endurstilla</string>
-    <string name="timer_cancel">Hætta við</string>
-    <string name="timer_canceled">Hætt við teljara</string>
     <string name="timer_times_up">Tíminn er liðinn</string>
     <string name="timer_multi_times_up"><xliff:g id="NUM_TIMERS">%d</xliff:g> teljarar útrunnir</string>
     <string name="timer_multi_missed"><xliff:g id="NUMBER">%d</xliff:g> sinnum ekki á réttum tíma</string>
@@ -234,18 +219,6 @@
     <string name="timer_reset_all">Núlla teljara</string>
     <string name="hours_minutes_seconds"><xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="MINUTES">%1$d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>Skolli ferðu hratt yfir.</item>
-        <item>Njóttu ávaxta erfiðisins.</item>
-        <item>Android er hraðvirkt en á ekkert í þig!</item>
-        <item>Hjúff.</item>
-        <item>Hér eru brögð í tafli.</item>
-        <item>Vonandi flýtirðu þér ekki svona mikið í öllu sem þú gerir.</item>
-        <item>Ég hljóp svo hratt að ég hrasaði og datt.</item>
-        <item>Bíddu, pabbi, bíddu mín.</item>
-        <item>Með háskólagráðu í hraða.</item>
-        <item>Á hraða ljóssins.</item>
-    </string-array>
     <string name="home_label">Heima</string>
     <string name="cities_activity_title">Borgir</string>
     <string name="clock_settings">Klukka</string>
@@ -374,8 +347,6 @@
     <string name="screensaver_settings">Stillingar fyrir skjávara</string>
     <string name="night_mode_title">Næturstilling</string>
     <string name="night_mode_summary">Mjög dimmur skjár (fyrir myrk herbergi)</string>
-    <string name="expand_alarm">Stækka vekjara</string>
-    <string name="collapse_alarm">Fella saman vekjara</string>
     <string name="alarm_undo">afturkalla</string>
     <string name="alarm_deleted">Vekjara eytt</string>
     <string name="world_day_of_week_label">/ <xliff:g id="LABEL">%s</xliff:g></string>
@@ -386,7 +357,6 @@
     <string name="world_hours_tomorrow">Á morgun kl. <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">Í gær kl. <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="next_alarm_description">Næsti vekjari: <xliff:g id="ALARM_TIME">%s</xliff:g></string>
-    <string name="no_alarms">Engir vekjarar</string>
     <string name="invalid_time">Ógildur tími <xliff:g id="INVALID_HOUR">%1$d</xliff:g>:<xliff:g id="INVALID_MINUTES">%2$d</xliff:g> <xliff:g id="INVALID_AMPM">%3$s</xliff:g></string>
     <string name="no_alarm_at">Enginn vekjari kl. <xliff:g id="ALARM_TIME_HOUR">%1$d</xliff:g>:<xliff:g id="ALARM_TIME_MINUTES">%2$d</xliff:g></string>
     <string name="no_scheduled_alarms">Engir stilltir vekjarar</string>
@@ -400,7 +370,6 @@
         <item quantity="one"><xliff:g id="NUMBER">%d</xliff:g> teljari hunsaður</item>
         <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> teljarar hunsaðir</item>
     </plurals>
-    <string name="timer_deleted">Teljara eytt</string>
     <string name="invalid_timer_length">Ógild teljaralengd</string>
     <string name="invalid_timer">Ógildur teljari valinn</string>
     <string name="no_expired_timers">Engir útrunnir teljarar</string>

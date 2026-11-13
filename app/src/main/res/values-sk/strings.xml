@@ -52,7 +52,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Odložené do <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Nadchádzajúci budík</string>
-    <string name="missed_alarm_has_been_deleted">Zmeškaný budík bol odstránený</string>
     <string name="timer_notifications_less_min">Zostáva menej ako minúta</string>
     <string name="timer_notifications_hours"><xliff:g id="REMAINING"> %3$s</xliff:g>: <xliff:g id="HOURS">%1$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="REMAINING"> %3$s</xliff:g>: <xliff:g id="MINUTES">%2$s</xliff:g></string>
@@ -61,7 +60,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">K časovaču bola pridaná jedna minúta, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="timer_remaining_single">- zostávajúci čas</string>
     <string name="timer_remaining_multiple">- zostávajúci čas</string>
     <string-array name="alarm_set">
@@ -203,8 +201,6 @@
         <item>Zavrieť</item>
         <item>Ovládanie hlasitosti</item>
     </string-array>
-    <string name="label_description">Štítok</string>
-    <string name="ringtone_description">Tón zvonenia</string>
     <string name="menu_alarm">Budík</string>
     <string name="menu_timer">Časovač</string>
     <string name="menu_clock">Hodiny</string>
@@ -221,27 +217,16 @@
     <string name="sw_pause_button">Pozastaviť</string>
     <string name="sw_lap_button">Etapa</string>
     <string name="sw_share_button">Zdieľať</string>
-    <string name="hours_label">h</string>
-    <string name="minutes_label">m</string>
-    <string name="seconds_label">s</string>
-    <string name="timer_setup_description"><xliff:g id="HOURS">%1$s</xliff:g>, <xliff:g id="MINUTES">%2$s</xliff:g>, <xliff:g id="SECONDS">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit">Č. <xliff:g id="LAPNUMBER">%d</xliff:g></string>
-    <string name="lap_number_double_digit">Č. <xliff:g id="LAPNUMBER">%02d</xliff:g></string>
-    <string name="sw_share_main">Môj čas je <xliff:g id="TIME">%s</xliff:g></string>
-    <string name="sw_share_laps">Časy etáp:</string>
     <string name="sw_notification_lap_number"><xliff:g id="NUMBER">%d</xliff:g>. etapa</string>
     <string name="timer_add_timer">Pridať časovač</string>
     <string name="timer_start">Spustiť</string>
     <string name="timer_delete">Odstrániť</string>
-    <string name="timer_descriptive_delete">Vymazať číslo <xliff:g id="NUMBER_STRING">%s</xliff:g></string>
     <string name="timer_plus_one">Pridať 1 minútu</string>
     <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Pridať 1 min</string>
     <string name="timer_stop">Zastaviť</string>
     <string name="timer_stop_all">Zastaviť všetky časovače</string>
     <string name="timer_reset">Resetovať</string>
-    <string name="timer_cancel">Zrušiť</string>
-    <string name="timer_canceled">Časovač bol zrušený</string>
     <string name="timer_times_up">Čas vypršal</string>
     <string name="timer_multi_times_up">Vypršané časovače: <xliff:g id="NUM_TIMERS">%d</xliff:g></string>
     <string name="timer_multi_missed">Zmeškali ste viacero časovačov (počet: <xliff:g id="NUMBER">%d</xliff:g>)</string>
@@ -252,18 +237,6 @@
     <string name="timer_reset_all">Reset. časovače</string>
     <string name="hours_minutes_seconds"><xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="MINUTES">%1$d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>Ste pánom rýchlosti.</item>
-        <item>Užite si plody svojej práce.</item>
-        <item>Androidy sú veľmi rýchle, ale nie sú také rýchle ako vy.</item>
-        <item>Uf.</item>
-        <item>Rekordné časy.</item>
-        <item>Aká neuveriteľná rýchlosť.</item>
-        <item>Skúsme ten skok časom zopakovať.</item>
-        <item>Len skok vľavo.</item>
-        <item>Máte dar rýchlosti.</item>
-        <item>Rýchlosť svetla.</item>
-    </string-array>
     <string name="home_label">Domovský čas</string>
     <string name="cities_activity_title">Mestá</string>
     <string name="clock_settings">Hodiny</string>
@@ -392,8 +365,6 @@
     <string name="screensaver_settings">Nastavenia šetriča obrazovky</string>
     <string name="night_mode_title">Nočný režim</string>
     <string name="night_mode_summary">Stlmený jas (pre tmavé miestnosti)</string>
-    <string name="expand_alarm">Rozbaliť budík</string>
-    <string name="collapse_alarm">Zbaliť budík</string>
     <string name="alarm_undo">späť</string>
     <string name="alarm_deleted">Budík bol odstránený</string>
     <string name="world_day_of_week_label">/ <xliff:g id="LABEL">%s</xliff:g></string>
@@ -404,7 +375,6 @@
     <string name="world_hours_tomorrow">Zajtra, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">Včera, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="next_alarm_description">Ďalší budík: <xliff:g id="ALARM_TIME">%s</xliff:g></string>
-    <string name="no_alarms">Žiadne budíky</string>
     <string name="invalid_time">Neplatný čas <xliff:g id="INVALID_HOUR">%1$d</xliff:g>:<xliff:g id="INVALID_MINUTES">%2$d</xliff:g> <xliff:g id="INVALID_AMPM">%3$s</xliff:g></string>
     <string name="no_alarm_at">Žiadny budík na <xliff:g id="ALARM_TIME_HOUR">%1$d</xliff:g>:<xliff:g id="ALARM_TIME_MINUTES">%2$d</xliff:g></string>
     <string name="no_scheduled_alarms">Žiadne nastavené budíky</string>
@@ -420,7 +390,6 @@
         <item quantity="many"><xliff:g id="NUMBER">%d</xliff:g> časovača bolo ukončené</item>
         <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> časovačov bolo ukončených</item>
     </plurals>
-    <string name="timer_deleted">Časovač bol odstránený</string>
     <string name="invalid_timer_length">Neplatná dĺžka časovača</string>
     <string name="invalid_timer">Bol vybraný neplatný časovač</string>
     <string name="no_expired_timers">Žiadne uplynuté časovače</string>

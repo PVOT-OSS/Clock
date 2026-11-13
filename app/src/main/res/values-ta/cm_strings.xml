@@ -30,13 +30,6 @@
     <string name="stopwatch_channel">நொடிக்கணக்கி</string>
     <string name="timer_channel">நேரங்கணிப்பி</string>
     <string name="add_label">குறிப்பேடு சேர்</string>
-    <string name="dialog_permissions_title">இசைவுகள்</string>
-    <string name="dialog_permissions_ask">மீண்டும் கேள்</string>
-    <string name="dialog_permissions_dismiss">விலக்கு</string>
-    <string name="dialog_permissions_settings">அமைப்புகள்</string>
-    <string name="dialog_permissions_power_off_alarm">இவ்விசைவின்றி கருவி அலறிமணியை எழுப்பத் தானாக விழித்தெழாது</string>
-    <string name="dialog_permissions_no_permission">வேண்டிய இசைவு மறுக்கப்பட்டது; அமைவுச் செயலியியான் செயலாக்கு</string>
-    <string name="dialog_permissions_post_notifications">இச்செயலி அறிவிப்புச்சார்ந்தது; அதனின்றி இயங்கவியலாது!</string>
     <string name="selected">தேர்ந்தது</string>
     <string name="more_options">கூடுதற்தெரிவு</string>
     <string name="widget_choice_title">நின் பாணியைத் தேர்</string>

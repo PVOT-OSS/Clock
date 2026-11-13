@@ -46,7 +46,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">ปิดเสียงเตือนชั่วคราวจนถึง <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">ตั้งปลุกครั้งต่อไป</string>
-    <string name="missed_alarm_has_been_deleted">ลบการปลุกที่พลาดออกไปแล้ว</string>
     <string name="timer_notifications_less_min">เหลืออีกไม่ถึง 1 นาที</string>
     <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
@@ -55,7 +54,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">ตัวจับเวลาผ่านไปอีก 1 นาที <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="timer_remaining_single">เหลืออีก</string>
     <string name="timer_remaining_multiple">เหลืออีก</string>
     <string-array name="alarm_set">
@@ -176,8 +174,6 @@
         <item>ปิด</item>
         <item>ควบคุมระดับเสียง</item>
     </string-array>
-    <string name="label_description">ป้ายกำกับ</string>
-    <string name="ringtone_description">เสียงเรียกเข้า</string>
     <string name="menu_alarm">ปลุก</string>
     <string name="menu_timer">ตัวจับเวลา</string>
     <string name="menu_clock">นาฬิกา</string>
@@ -194,27 +190,16 @@
     <string name="sw_pause_button">หยุดชั่วคราว</string>
     <string name="sw_lap_button">รอบ</string>
     <string name="sw_share_button">แชร์</string>
-    <string name="hours_label">ชม.</string>
-    <string name="minutes_label">น.</string>
-    <string name="seconds_label">ว.</string>
-    <string name="timer_setup_description"><xliff:g id="HOURS">%1$s</xliff:g>, <xliff:g id="MINUTES">%2$s</xliff:g>, <xliff:g id="SECONDS">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit"># <xliff:g id="LAPNUMBER">%d</xliff:g></string>
-    <string name="lap_number_double_digit"># <xliff:g id="LAPNUMBER">%02d</xliff:g></string>
-    <string name="sw_share_main">เวลาของฉันคือ <xliff:g id="TIME">%s</xliff:g></string>
-    <string name="sw_share_laps">เวลาสิ้นสุดรอบ:</string>
     <string name="sw_notification_lap_number">สิ้นสุดรอบที่ <xliff:g id="NUMBER">%d</xliff:g></string>
     <string name="timer_add_timer">เพิ่มตัวจับเวลา</string>
     <string name="timer_start">เริ่ม</string>
     <string name="timer_delete">ลบ</string>
-    <string name="timer_descriptive_delete">ลบ <xliff:g id="NUMBER_STRING">%s</xliff:g></string>
     <string name="timer_plus_one">เพิ่ม 1 นาที</string>
     <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">เพิ่ม 1 นาที</string>
     <string name="timer_stop">หยุด</string>
     <string name="timer_stop_all">หยุดใช้ตัวจับเวลาทั้งหมด</string>
     <string name="timer_reset">รีเซ็ต</string>
-    <string name="timer_cancel">ยกเลิก</string>
-    <string name="timer_canceled">ยกเลิกการตั้งเวลาแล้ว</string>
     <string name="timer_times_up">หมดเวลา</string>
     <string name="timer_multi_times_up">การจับเวลา <xliff:g id="NUM_TIMERS">%d</xliff:g> ครั้งครบแล้ว</string>
     <string name="timer_multi_missed">ตัวตั้งเวลาที่พลาด <xliff:g id="NUMBER">%d</xliff:g> ครั้ง</string>
@@ -225,18 +210,6 @@
     <string name="timer_reset_all">รีเซ็ตตัวจับเวลาทั้งหมด</string>
     <string name="hours_minutes_seconds"><xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="MINUTES">%1$d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>คุณนี่เป็นพวกคลั่งไคล้ความเร็วเสียจริง</item>
-        <item>เริงรื่นกับผลสำเร็จจากความทุ่มเทของคุณ</item>
-        <item> Android ขึ้นชื่อในเรื่องความเร็ว แต่ก็ยังไม่เร็วเท่าคุณ!</item>
-        <item>เฮ้อ</item>
-        <item>L33t ครั้ง</item>
-        <item>เป็นความเร็วที่น่าอัศจรรย์</item>
-        <item>มาข้ามเวลากันอีกเถอะ</item>
-        <item>เพียงแค่กระโดดไปทางซ้าย</item>
-        <item>คุณมีจานสีสำหรับกรณีเร่งรีบ</item>
-        <item>ความเร็วโฟตอนิกส์</item>
-    </string-array>
     <string name="home_label">บ้าน</string>
     <string name="cities_activity_title">เมือง</string>
     <string name="clock_settings">นาฬิกา</string>
@@ -365,8 +338,6 @@
     <string name="screensaver_settings">การตั้งค่าโปรแกรมรักษาหน้าจอ</string>
     <string name="night_mode_title">โหมดกลางคืน</string>
     <string name="night_mode_summary">หน้าจอมืดมาก (สำหรับห้องมืด)</string>
-    <string name="expand_alarm">ขยายการแจ้งเตือน</string>
-    <string name="collapse_alarm">ยุบการแจ้งเตือน</string>
     <string name="alarm_undo">เลิกทำ</string>
     <string name="alarm_deleted">ลบการแจ้งเตือนแล้ว</string>
     <string name="world_day_of_week_label">/ <xliff:g id="LABEL">%s</xliff:g></string>
@@ -377,7 +348,6 @@
     <string name="world_hours_tomorrow">พรุ่งนี้ <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">เมื่อวานนี้เวลา <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="next_alarm_description">ปลุกครั้งถัดไป: <xliff:g id="ALARM_TIME">%s</xliff:g></string>
-    <string name="no_alarms">ไม่มีการเตือน</string>
     <string name="invalid_time">เวลาไม่ถูกต้อง <xliff:g id="INVALID_HOUR">%1$d</xliff:g>.<xliff:g id="INVALID_MINUTES">%2$d</xliff:g> <xliff:g id="INVALID_AMPM">%3$s</xliff:g></string>
     <string name="no_alarm_at">ไม่มีการปลุกที่เวลา <xliff:g id="ALARM_TIME_HOUR">%1$d</xliff:g>:<xliff:g id="ALARM_TIME_MINUTES">%2$d</xliff:g></string>
     <string name="no_scheduled_alarms">ไม่มีการตั้งปลุก</string>
@@ -390,7 +360,6 @@
     <plurals name="expired_timers_dismissed">
         <item quantity="other">ปิดตัวจับเวลาถอยหลังแล้ว <xliff:g id="NUMBER">%d</xliff:g> รายการ</item>
     </plurals>
-    <string name="timer_deleted">ลบตัวจับเวลาแล้ว</string>
     <string name="invalid_timer_length">ระยะเวลาในการจับเวลาไม่ถูกต้อง</string>
     <string name="invalid_timer">มีการเลือกตัวจับเวลาถอยหลังที่ไม่ถูกต้อง</string>
     <string name="no_expired_timers">ไม่มีตัวจับเวลาถอยหลังที่หมดอายุ</string>

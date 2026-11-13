@@ -48,7 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Äratuse edasilükkamine kuni <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Tulevane äratus</string>
-    <string name="missed_alarm_has_been_deleted">Märkamata jäänud alarm on kustutatud</string>
     <string name="timer_notifications_less_min">Jäänud on vähem kui minut</string>
     <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g></string>
@@ -57,7 +56,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">Taimerile lisati üks minut, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="timer_remaining_single">on jäänud</string>
     <string name="timer_remaining_multiple">on jäänud</string>
     <string-array name="alarm_set">
@@ -185,8 +183,6 @@
         <item>Loobu</item>
         <item>Juhi helitugevust</item>
     </string-array>
-    <string name="label_description">Silt</string>
-    <string name="ringtone_description">Helin</string>
     <string name="menu_alarm">Äratus</string>
     <string name="menu_timer">Taimer</string>
     <string name="menu_clock">Kell</string>
@@ -203,27 +199,16 @@
     <string name="sw_pause_button">Peata</string>
     <string name="sw_lap_button">Ring</string>
     <string name="sw_share_button">Jaga</string>
-    <string name="hours_label">h</string>
-    <string name="minutes_label">m</string>
-    <string name="seconds_label">s</string>
-    <string name="timer_setup_description"><xliff:g id="HOURS">%1$s</xliff:g>, <xliff:g id="MINUTES">%2$s</xliff:g>, <xliff:g id="SECONDS">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit"># <xliff:g id="LAPNUMBER">%d</xliff:g></string>
-    <string name="lap_number_double_digit"># <xliff:g id="LAPNUMBER">%02d</xliff:g></string>
-    <string name="sw_share_main">Minu aeg on <xliff:g id="TIME">%s</xliff:g></string>
-    <string name="sw_share_laps">Ringi ajad:</string>
     <string name="sw_notification_lap_number"><xliff:g id="NUMBER">%d</xliff:g>. ring</string>
     <string name="timer_add_timer">Lisa taimer</string>
     <string name="timer_start">Alusta</string>
     <string name="timer_delete">Kustuta</string>
-    <string name="timer_descriptive_delete">Numbri <xliff:g id="NUMBER_STRING">%s</xliff:g> kustutamine</string>
     <string name="timer_plus_one">Lisa 1 minut</string>
     <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Lisa 1 min</string>
     <string name="timer_stop">Peata</string>
     <string name="timer_stop_all">Kõigi taimerite peatamine</string>
     <string name="timer_reset">Lähtesta</string>
-    <string name="timer_cancel">Tühista</string>
-    <string name="timer_canceled">Taimer on tühistatud</string>
     <string name="timer_times_up">Aeg on läbi</string>
     <string name="timer_multi_times_up"><xliff:g id="NUM_TIMERS">%d</xliff:g> taimerit on aegunud</string>
     <string name="timer_multi_missed"><xliff:g id="NUMBER">%d</xliff:g> taimerit jäi vahele</string>
@@ -234,18 +219,6 @@
     <string name="timer_reset_all">Lähtesta kõik taimerid</string>
     <string name="hours_minutes_seconds"><xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="MINUTES">%1$d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>Olete ülikiire.</item>
-        <item>Nautige oma töö vilju.</item>
-        <item>Androidid on kiired, aga mitte nii kiired kui teie!</item>
-        <item>Oeh.</item>
-        <item>L33t aeg.</item>
-        <item>Milline imeline kiirus.</item>
-        <item>Teeme uuesti ajahüpe.</item>
-        <item>Lihtsalt hüpe vasakule.</item>
-        <item>Naudite kiirust.</item>
-        <item>Footonkiirus.</item>
-    </string-array>
     <string name="home_label">Kodu</string>
     <string name="cities_activity_title">Linnad</string>
     <string name="clock_settings">Kell</string>
@@ -374,8 +347,6 @@
     <string name="screensaver_settings">Ekraanisäästja seaded</string>
     <string name="night_mode_title">Öörežiim</string>
     <string name="night_mode_summary">Väga hämar ekraan (pimedate ruumide jaoks)</string>
-    <string name="expand_alarm">Äratuse laiendamine</string>
-    <string name="collapse_alarm">Äratuse ahendamine</string>
     <string name="alarm_undo">võta tagasi</string>
     <string name="alarm_deleted">Äratus on kustutatud</string>
     <string name="world_day_of_week_label">/ <xliff:g id="LABEL">%s</xliff:g></string>
@@ -386,7 +357,6 @@
     <string name="world_hours_tomorrow">Homme kell <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">Eile kell <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="next_alarm_description">Järgmine äratus: <xliff:g id="ALARM_TIME">%s</xliff:g></string>
-    <string name="no_alarms">Alarme pole</string>
     <string name="invalid_time"><xliff:g id="INVALID_HOUR">%1$d</xliff:g>:<xliff:g id="INVALID_MINUTES">%2$d</xliff:g> <xliff:g id="INVALID_AMPM">%3$s</xliff:g> on sobimatu kellaaeg</string>
     <string name="no_alarm_at">Kellaajaks <xliff:g id="ALARM_TIME_HOUR">%1$d</xliff:g>:<xliff:g id="ALARM_TIME_MINUTES">%2$d</xliff:g> ei ole alarmi määratud</string>
     <string name="no_scheduled_alarms">Ühtegi määratud alarmi pole</string>
@@ -400,7 +370,6 @@
         <item quantity="one">Taimerist loobuti</item>
         <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> taimerist loobuti</item>
     </plurals>
-    <string name="timer_deleted">Taimer kustutati</string>
     <string name="invalid_timer_length">Taimeri kestus on sobimatu</string>
     <string name="invalid_timer">Valitud on sobimatu taimer</string>
     <string name="no_expired_timers">Aegunud taimereid ei ole</string>

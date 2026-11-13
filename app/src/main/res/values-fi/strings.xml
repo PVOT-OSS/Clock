@@ -48,7 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Torkkuhälytys <xliff:g id="TIME">%s</xliff:g> saakka</string>
     <string name="alarm_alert_predismiss_title">Tuleva herätys</string>
-    <string name="missed_alarm_has_been_deleted">Ohitettu herätys on poistettu</string>
     <string name="timer_notifications_less_min">Alle minuutti jäljellä</string>
     <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g></string>
@@ -57,7 +56,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="MINUTES"> %2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">Minuutti lisätty ajastimeen, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="timer_remaining_single">jäljellä</string>
     <string name="timer_remaining_multiple">jäljellä</string>
     <string-array name="alarm_set">
@@ -185,8 +183,6 @@
         <item>Ohita</item>
         <item>Säädä äänenvoimakkuutta</item>
     </string-array>
-    <string name="label_description">Tunniste</string>
-    <string name="ringtone_description">Soittoääni</string>
     <string name="menu_alarm">Herätys</string>
     <string name="menu_timer">Ajastin</string>
     <string name="menu_clock">Kello</string>
@@ -203,27 +199,16 @@
     <string name="sw_pause_button">Keskeytä</string>
     <string name="sw_lap_button">Kierros</string>
     <string name="sw_share_button">Jaa</string>
-    <string name="hours_label">t</string>
-    <string name="minutes_label">m</string>
-    <string name="seconds_label">s</string>
-    <string name="timer_setup_description"><xliff:g id="HOURS">%1$s</xliff:g>, <xliff:g id="MINUTES">%2$s</xliff:g>, <xliff:g id="SECONDS">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit">Nro <xliff:g id="LAPNUMBER">%d</xliff:g></string>
-    <string name="lap_number_double_digit">Nro <xliff:g id="LAPNUMBER">%02d</xliff:g></string>
-    <string name="sw_share_main">Oma aika: <xliff:g id="TIME">%s</xliff:g></string>
-    <string name="sw_share_laps">Kierrosajat:</string>
     <string name="sw_notification_lap_number">Kierros <xliff:g id="NUMBER">%d</xliff:g></string>
     <string name="timer_add_timer">Lisää ajastin</string>
     <string name="timer_start">Aloita</string>
     <string name="timer_delete">Poista</string>
-    <string name="timer_descriptive_delete">Poista <xliff:g id="NUMBER_STRING">%s</xliff:g></string>
     <string name="timer_plus_one">Lisää 1 minuutti</string>
     <string name="timer_add_minute">+ 1.00</string>
     <string name="timer_plus_1_min">Lisää 1 min</string>
     <string name="timer_stop">Pysäytä</string>
     <string name="timer_stop_all">Pysäytä kaikki ajastimet</string>
     <string name="timer_reset">Nollaa</string>
-    <string name="timer_cancel">Peruuta</string>
-    <string name="timer_canceled">Ajastimen asetus peruutettiin.</string>
     <string name="timer_times_up">Aika loppui</string>
     <string name="timer_multi_times_up"><xliff:g id="NUM_TIMERS">%d</xliff:g> ajastinta umpeutui</string>
     <string name="timer_multi_missed"><xliff:g id="NUMBER">%d</xliff:g> ajastinta ohitettu</string>
@@ -234,18 +219,6 @@
     <string name="timer_reset_all">Nollaa ajastimet</string>
     <string name="hours_minutes_seconds"><xliff:g id="HOURS">%1$d</xliff:g>.<xliff:g id="MINUTES">%2$02d</xliff:g>.<xliff:g id="SECONDS">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="MINUTES">%1$d</xliff:g>.<xliff:g id="SECONDS">%2$02d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>Olet supernopea.</item>
-        <item>Nauti työsi hedelmistä.</item>
-        <item>Androidien tiedetään toimivan nopeasti, mutta sinä olet vielä nopeampi!</item>
-        <item>Huh.</item>
-        <item>Makeat ajat.</item>
-        <item>Nopeuden ihmelapsi.</item>
-        <item>Tehdään aikahyppy uudestaan.</item>
-        <item>Hyppää vasemmalle.</item>
-        <item>Tunnet kiireen anatomian.</item>
-        <item>Valonnopea.</item>
-    </string-array>
     <string name="home_label">Koti</string>
     <string name="cities_activity_title">Kaupungit</string>
     <string name="clock_settings">Kello</string>
@@ -374,8 +347,6 @@
     <string name="screensaver_settings">Näytönsäästäjäasetukset</string>
     <string name="night_mode_title">Yötila</string>
     <string name="night_mode_summary">Hyvin himmeä näyttö (hämärille huoneille)</string>
-    <string name="expand_alarm">Laajenna hälytys</string>
-    <string name="collapse_alarm">Tiivistä hälytys</string>
     <string name="alarm_undo">kumoa</string>
     <string name="alarm_deleted">Herätys poistettu</string>
     <string name="world_day_of_week_label">/ <xliff:g id="LABEL">%s</xliff:g></string>
@@ -386,7 +357,6 @@
     <string name="world_hours_tomorrow">Huomenna, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">Eilen klo <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="next_alarm_description">Seuraava herätys: <xliff:g id="ALARM_TIME">%s</xliff:g></string>
-    <string name="no_alarms">Ei herätyksiä</string>
     <string name="invalid_time">Virheellinen aika <xliff:g id="INVALID_HOUR">%1$d</xliff:g>.<xliff:g id="INVALID_MINUTES">%2$d</xliff:g> <xliff:g id="INVALID_AMPM">%3$s</xliff:g></string>
     <string name="no_alarm_at">Kello <xliff:g id="ALARM_TIME_HOUR">%1$d</xliff:g>.<xliff:g id="ALARM_TIME_MINUTES">%2$d</xliff:g> ei ole hälytystä.</string>
     <string name="no_scheduled_alarms">Ei ajastettuja hälytyksiä</string>
@@ -400,7 +370,6 @@
         <item quantity="one">Ajastin hylätty</item>
         <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> ajastinta hylätty</item>
     </plurals>
-    <string name="timer_deleted">Ajastin poistettiin.</string>
     <string name="invalid_timer_length">Virheellinen ajastimen pituus</string>
     <string name="invalid_timer">Virheellinen ajastin valittu</string>
     <string name="no_expired_timers">Ei vanhentuneita ajastimia</string>

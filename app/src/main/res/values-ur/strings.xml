@@ -48,7 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until"><xliff:g id="TIME">%s</xliff:g> تک اسنوز کر رہا ہے</string>
     <string name="alarm_alert_predismiss_title">آئندہ الارم</string>
-    <string name="missed_alarm_has_been_deleted">آپ کا چھوٹا ہوا الارم حذف کر دیا گیا ہے</string>
     <string name="timer_notifications_less_min">ایک منٹ سے کم باقی ہے</string>
     <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
@@ -57,7 +56,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">ٹائمر میں ایک منٹ شامل ہو گیا، <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="timer_remaining_single">باقی ہے</string>
     <string name="timer_remaining_multiple">باقی ہیں</string>
     <string-array name="alarm_set">
@@ -185,8 +183,6 @@
         <item>کالعدم کریں</item>
         <item>والیوم کنٹرول کریں</item>
     </string-array>
-    <string name="label_description">لیبل</string>
-    <string name="ringtone_description">رنگ ٹون</string>
     <string name="menu_alarm">الارم</string>
     <string name="menu_timer">ٹائمر</string>
     <string name="menu_clock">گھڑی</string>
@@ -203,27 +199,16 @@
     <string name="sw_pause_button">موقوف کریں</string>
     <string name="sw_lap_button">لیپ</string>
     <string name="sw_share_button">اشتراک کریں</string>
-    <string name="hours_label">h</string>
-    <string name="minutes_label">m</string>
-    <string name="seconds_label">s</string>
-    <string name="timer_setup_description">‎<xliff:g id="HOURS">%1$s</xliff:g>, <xliff:g id="MINUTES">%2$s</xliff:g>, <xliff:g id="SECONDS">%3$s</xliff:g>‎</string>
-    <string name="lap_number_single_digit"># <xliff:g id="LAPNUMBER">%d</xliff:g></string>
-    <string name="lap_number_double_digit"># <xliff:g id="LAPNUMBER">%02d</xliff:g></string>
-    <string name="sw_share_main">میرا وقت ہے <xliff:g id="TIME">%s</xliff:g></string>
-    <string name="sw_share_laps">لیپ اوقات:</string>
     <string name="sw_notification_lap_number">لیپ <xliff:g id="NUMBER">%d</xliff:g></string>
     <string name="timer_add_timer">ٹائمر شامل کریں</string>
     <string name="timer_start">شروع کریں</string>
     <string name="timer_delete">حذف کریں</string>
-    <string name="timer_descriptive_delete"><xliff:g id="NUMBER_STRING">%s</xliff:g> کو حذف کریں</string>
     <string name="timer_plus_one">1 منٹ شامل کریں</string>
     <string name="timer_add_minute">1:00 +</string>
     <string name="timer_plus_1_min">1 منٹ شامل کریں</string>
     <string name="timer_stop">روکیں</string>
     <string name="timer_stop_all">تمام ٹائمرز بند کریں</string>
     <string name="timer_reset">دوبارہ ترتیب دیں</string>
-    <string name="timer_cancel">منسوخ کریں</string>
-    <string name="timer_canceled">ٹائمر منسوخ ہو گیا</string>
     <string name="timer_times_up">وقت ختم ہو گیا</string>
     <string name="timer_multi_times_up"><xliff:g id="NUM_TIMERS">%d</xliff:g> ٹائمرز کی میعاد ختم ہوگئی</string>
     <string name="timer_multi_missed"><xliff:g id="NUMBER">%d</xliff:g> ٹائمرز چھوٹ گئے</string>
@@ -234,18 +219,6 @@
     <string name="timer_reset_all">تمام ٹائمرز دوبارہ ترتیب دیں</string>
     <string name="hours_minutes_seconds"><xliff:g id="SECONDS">%1$02d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="HOURS">%3$d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="SECONDS">%1$02d</xliff:g>:<xliff:g id="MINUTES">%2$d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>آپ کی رفتار بہت زیادہ ہے۔</item>
-        <item>اپنی محنت کا پھل کھائیں۔</item>
-        <item>‏Androids کو تیزی کیلئے جانا جاتا ہے، لیکن آپ کے جتنا تیز نہیں!</item>
-        <item>اوہ۔</item>
-        <item>‏L33t اوقات۔</item>
-        <item>اتنی زبردست رفتار۔</item>
-        <item>آئیے وقت دوبارہ ترتیب دیں۔</item>
-        <item>بس بائیں طرف ایک چھلانگ۔</item>
-        <item>جلدی کیلئے آپ کے پاس ایک پیلٹ ہے۔</item>
-        <item>روشنی کی رفتار۔</item>
-    </string-array>
     <string name="home_label">ہوم</string>
     <string name="cities_activity_title">شہر</string>
     <string name="clock_settings">گھڑی</string>
@@ -374,8 +347,6 @@
     <string name="screensaver_settings">اسکرین سیور کی ترتیبات</string>
     <string name="night_mode_title">رات وضع</string>
     <string name="night_mode_summary">بہت کم روشن ڈسپلے (تاریک کمروں کیلئے)</string>
-    <string name="expand_alarm">الارم کی توسیع کریں</string>
-    <string name="collapse_alarm">الارم کو سکیڑیں</string>
     <string name="alarm_undo">کالعدم کریں</string>
     <string name="alarm_deleted">الارم حذف ہوگیا</string>
     <string name="world_day_of_week_label">/ <xliff:g id="LABEL">%s</xliff:g></string>
@@ -386,7 +357,6 @@
     <string name="world_hours_tomorrow">آئندہ کل، <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">گزشتہ کل، <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="next_alarm_description">اگلا الارم: <xliff:g id="ALARM_TIME">%s</xliff:g></string>
-    <string name="no_alarms">کوئی الارمز نہیں ہیں</string>
     <string name="invalid_time">‏غلط وقت <xliff:g id="INVALID_HOUR">%1$d</xliff:g>:<xliff:g id="INVALID_MINUTES">%2$d</xliff:g>‎ <xliff:g id="INVALID_AMPM">%3$s</xliff:g></string>
     <string name="no_alarm_at"><xliff:g id="ALARM_TIME_HOUR">%1$d</xliff:g>:<xliff:g id="ALARM_TIME_MINUTES">%2$d</xliff:g> پر کوئی الارم نہیں</string>
     <string name="no_scheduled_alarms">کوئی الارم مقرر نہیں</string>
@@ -400,7 +370,6 @@
         <item quantity="one">ٹائمر کو برخاست کر دیا</item>
         <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> ٹائمرز کو برخاست کر دیا</item>
     </plurals>
-    <string name="timer_deleted">ٹائمر حذف ہوگیا</string>
     <string name="invalid_timer_length">ٹائمر کی غلط لمبائی</string>
     <string name="invalid_timer">غلط ٹائمر منتخب کیا گیا</string>
     <string name="no_expired_timers">میعاد ختم ہونے والا کوئی ٹائمر نہیں ہے</string>

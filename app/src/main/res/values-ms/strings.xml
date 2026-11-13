@@ -46,7 +46,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Ditunda sehingga <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Penggera akan datang</string>
-    <string name="missed_alarm_has_been_deleted">Penggera terlepas anda telah dipadamkan</string>
     <string name="timer_notifications_less_min">Kurang seminit lagi</string>
     <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
@@ -55,7 +54,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">Seminit ditambahkan pada pemasa, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="timer_remaining_single">lagi</string>
     <string name="timer_remaining_multiple">lagi</string>
     <string-array name="alarm_set">
@@ -176,8 +174,6 @@
         <item>Tutup</item>
         <item>Kawal kelantangan</item>
     </string-array>
-    <string name="label_description">Label</string>
-    <string name="ringtone_description">Nada dering</string>
     <string name="menu_alarm">Penggera</string>
     <string name="menu_timer">Pemasa</string>
     <string name="menu_clock">Jam</string>
@@ -194,27 +190,16 @@
     <string name="sw_pause_button">Jeda</string>
     <string name="sw_lap_button">Pusingan</string>
     <string name="sw_share_button">Kongsi</string>
-    <string name="hours_label">j</string>
-    <string name="minutes_label">m</string>
-    <string name="seconds_label">s</string>
-    <string name="timer_setup_description"><xliff:g id="HOURS">%1$s</xliff:g>, <xliff:g id="MINUTES">%2$s</xliff:g>, <xliff:g id="SECONDS">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit"># <xliff:g id="LAPNUMBER">%d</xliff:g></string>
-    <string name="lap_number_double_digit"># <xliff:g id="LAPNUMBER">%02d</xliff:g></string>
-    <string name="sw_share_main">Masa saya ialah <xliff:g id="TIME">%s</xliff:g></string>
-    <string name="sw_share_laps">Masa pusingan:</string>
     <string name="sw_notification_lap_number">Pusingan <xliff:g id="NUMBER">%d</xliff:g></string>
     <string name="timer_add_timer">Tambah Pemasa</string>
     <string name="timer_start">Bermula</string>
     <string name="timer_delete">Padam</string>
-    <string name="timer_descriptive_delete">Padamkan <xliff:g id="NUMBER_STRING">%s</xliff:g></string>
     <string name="timer_plus_one">Tambah 1 Minit</string>
     <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Tambah 1 min</string>
     <string name="timer_stop">Berhenti</string>
     <string name="timer_stop_all">Hentikan semua pemasa</string>
     <string name="timer_reset">Tetapkan semula</string>
-    <string name="timer_cancel">Batalkan</string>
-    <string name="timer_canceled">Pemasa dibatalkan</string>
     <string name="timer_times_up">Masa tamat</string>
     <string name="timer_multi_times_up"><xliff:g id="NUM_TIMERS">%d</xliff:g> pemasa tamat tempoh</string>
     <string name="timer_multi_missed"><xliff:g id="NUMBER">%d</xliff:g> pemasa terlepas</string>
@@ -225,18 +210,6 @@
     <string name="timer_reset_all">Ttpkn sml pmasa</string>
     <string name="hours_minutes_seconds"><xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="MINUTES">%1$d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>Anda memang pantas.</item>
-        <item>Nikmati hasil usaha anda.</item>
-        <item>Android memang diketahui cepat, tetapi tidak secepat anda!</item>
-        <item>Huh.</item>
-        <item>L33t kali.</item>
-        <item>Halaju yang luar biasa.</item>
-        <item>Mari kita buat pelompatan masa lagi.</item>
-        <item>Hanya melompat ke kiri.</item>
-        <item>Anda suka tergesa-gesa.</item>
-        <item>Halaju fotonik.</item>
-    </string-array>
     <string name="home_label">Tempatan</string>
     <string name="cities_activity_title">Bandar</string>
     <string name="clock_settings">Jam</string>
@@ -365,8 +338,6 @@
     <string name="screensaver_settings">Tetapan penyelamat skrin</string>
     <string name="night_mode_title">Mod malam</string>
     <string name="night_mode_summary">Paparan sangat malap (untuk bilik gelap)</string>
-    <string name="expand_alarm">Kembangkan penggera</string>
-    <string name="collapse_alarm">Runtuhkan penggera</string>
     <string name="alarm_undo">buat asal</string>
     <string name="alarm_deleted">Penggera dikesan</string>
     <string name="world_day_of_week_label">/ <xliff:g id="LABEL">%s</xliff:g></string>
@@ -377,7 +348,6 @@
     <string name="world_hours_tomorrow">Esok, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">Semalam, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="next_alarm_description">Penggera seterusnya: <xliff:g id="ALARM_TIME">%s</xliff:g></string>
-    <string name="no_alarms">Tiada Penggera</string>
     <string name="invalid_time">Masa tidak sah <xliff:g id="INVALID_HOUR">%1$d</xliff:g>:<xliff:g id="INVALID_MINUTES">%2$d</xliff:g> <xliff:g id="INVALID_AMPM">%3$s</xliff:g></string>
     <string name="no_alarm_at">Tiada penggera pada <xliff:g id="ALARM_TIME_HOUR">%1$d</xliff:g>:<xliff:g id="ALARM_TIME_MINUTES">%2$d</xliff:g></string>
     <string name="no_scheduled_alarms">Tiada penggera yang dijadualkan</string>
@@ -390,7 +360,6 @@
     <plurals name="expired_timers_dismissed">
         <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> pemasa diketepikan</item>
     </plurals>
-    <string name="timer_deleted">Pemasa dipadamkan</string>
     <string name="invalid_timer_length">Tempoh pemasa tidak sah</string>
     <string name="invalid_timer">Pemasa tidak sah dipilih</string>
     <string name="no_expired_timers">Tiada pemasa yang tamat tempoh</string>

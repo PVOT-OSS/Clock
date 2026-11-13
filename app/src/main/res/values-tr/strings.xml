@@ -48,7 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Şu saate kadar ertelendi: <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Yaklaşan alarm</string>
-    <string name="missed_alarm_has_been_deleted">Kaçırılan alarmınız silindi</string>
     <string name="timer_notifications_less_min">Bir dakikadan az kaldı</string>
     <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
@@ -57,7 +56,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">Zamanlayıcıya bir dakika eklendi, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="timer_remaining_single">kaldı</string>
     <string name="timer_remaining_multiple">kaldı</string>
     <string-array name="alarm_set">
@@ -185,8 +183,6 @@
         <item>Kapat</item>
         <item>Ses seviyesi denetle</item>
     </string-array>
-    <string name="label_description">Etiket</string>
-    <string name="ringtone_description">Zil sesi</string>
     <string name="menu_alarm">Alarm</string>
     <string name="menu_timer">Zamanlayıcı</string>
     <string name="menu_clock">Saat</string>
@@ -203,27 +199,16 @@
     <string name="sw_pause_button">Duraklat</string>
     <string name="sw_lap_button">Tur</string>
     <string name="sw_share_button">Paylaş</string>
-    <string name="hours_label">s</string>
-    <string name="minutes_label">d</string>
-    <string name="seconds_label">s</string>
-    <string name="timer_setup_description"><xliff:g id="HOURS">%1$s</xliff:g>, <xliff:g id="MINUTES">%2$s</xliff:g>, <xliff:g id="SECONDS">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit"><xliff:g id="LAPNUMBER">%d</xliff:g>. tur</string>
-    <string name="lap_number_double_digit"><xliff:g id="LAPNUMBER">%02d</xliff:g>. tur</string>
-    <string name="sw_share_main">Saatim: <xliff:g id="TIME">%s</xliff:g></string>
-    <string name="sw_share_laps">Tur süreleri:</string>
     <string name="sw_notification_lap_number"><xliff:g id="NUMBER">%d</xliff:g>. tur</string>
     <string name="timer_add_timer">Zamanlayıcı Ekle</string>
     <string name="timer_start">Başlat</string>
     <string name="timer_delete">Sil</string>
-    <string name="timer_descriptive_delete"><xliff:g id="NUMBER_STRING">%s</xliff:g> rakamını sil</string>
     <string name="timer_plus_one">1 Dakika Ekle</string>
     <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">1 dk ekle</string>
     <string name="timer_stop">Durdur</string>
     <string name="timer_stop_all">Tüm zamanlayıcılr durdur</string>
     <string name="timer_reset">Sıfırla</string>
-    <string name="timer_cancel">İptal</string>
-    <string name="timer_canceled">Zamanlayıcı iptal edildi</string>
     <string name="timer_times_up">Süre doldu</string>
     <string name="timer_multi_times_up"><xliff:g id="NUM_TIMERS">%d</xliff:g> zamanlayc. süresi doldu</string>
     <string name="timer_multi_missed"><xliff:g id="NUMBER">%d</xliff:g> zamanlayıcı kaçırıldı</string>
@@ -234,18 +219,6 @@
     <string name="timer_reset_all">Tüm zamanlayıcıları sıfırla</string>
     <string name="hours_minutes_seconds"><xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="MINUTES">%1$d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>Oldukça yüksek hız tutkunusunuz.</item>
-        <item>Çalışmanızın meyvesini toplayabilirsiniz.</item>
-        <item>Android\'ler hızlarıyla bilinir, ancak sizin kadar hızlı değiller!</item>
-        <item>Vay canına.</item>
-        <item>L33t kez.</item>
-        <item>Olağanüstü bir hız.</item>
-        <item>Zaman atlamasını yine yapalım.</item>
-        <item>Yalnızca sola bir atlama.</item>
-        <item>Aceleci bir yapınız var.</item>
-        <item>Işık hızı.</item>
-    </string-array>
     <string name="home_label">Ev</string>
     <string name="cities_activity_title">Şehirler</string>
     <string name="clock_settings">Saat</string>
@@ -374,8 +347,6 @@
     <string name="screensaver_settings">Ekran koruyucusu ayarları</string>
     <string name="night_mode_title">Gece modu</string>
     <string name="night_mode_summary">Çok karanlık ekran (karanlık odalar için)</string>
-    <string name="expand_alarm">Alarmı genişlet</string>
-    <string name="collapse_alarm">Alarmı daralt</string>
     <string name="alarm_undo">geri al</string>
     <string name="alarm_deleted">Alarm silindi</string>
     <string name="world_day_of_week_label">/ <xliff:g id="LABEL">%s</xliff:g></string>
@@ -386,7 +357,6 @@
     <string name="world_hours_tomorrow">Yarın, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">Dün, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="next_alarm_description">Sonraki alarm: <xliff:g id="ALARM_TIME">%s</xliff:g></string>
-    <string name="no_alarms">Alarm Yok</string>
     <string name="invalid_time">Geçersiz saat: <xliff:g id="INVALID_HOUR">%1$d</xliff:g>:<xliff:g id="INVALID_MINUTES">%2$d</xliff:g> <xliff:g id="INVALID_AMPM">%3$s</xliff:g></string>
     <string name="no_alarm_at">Şu saate ayarlanmış alarm yok: <xliff:g id="ALARM_TIME_HOUR">%1$d</xliff:g>:<xliff:g id="ALARM_TIME_MINUTES">%2$d</xliff:g></string>
     <string name="no_scheduled_alarms">Programlanmış alarm yok</string>
@@ -400,7 +370,6 @@
         <item quantity="one">Zamanlayıcı kapatıldı</item>
         <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> zamanlayıcı kapatıldı</item>
     </plurals>
-    <string name="timer_deleted">Zamanlayıcı silindi</string>
     <string name="invalid_timer_length">Geçersiz zamanlayıcı uzunluğu</string>
     <string name="invalid_timer">Geçersiz zamanlayıcı seçildi</string>
     <string name="no_expired_timers">Süresi dolan zamanlayıcı yok</string>

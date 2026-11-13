@@ -56,7 +56,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Ar oediad nes <xliff:g id="time">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Larwm yn dod i fyny</string>
-    <string name="missed_alarm_has_been_deleted">Mae dy larwm wedi\u2019i fethu wedi ei dileu</string>
     <string name="timer_notifications_less_min">Llai na funud i fynd</string>
     <string name="timer_notifications_hours"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="MINUTES" example="2 minutes">%2$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
@@ -65,7 +64,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES" example="2 minutes">%2$s</xliff:g> <xliff:g id="SECONDS" example="2 seconds">%4$s</xliff:g> <xliff:g id="REMAINING" example="remaining">%3$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g> <xliff:g id="SECONDS" example="2 seconds"> %4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g><xliff:g id="MINUTES" example="2 minutes"> %2$s</xliff:g><xliff:g id="SECONDS" example="2 seconds"> %4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">Ychwanegwyd un munud i\u2019r amserydd, <xliff:g id="TIME" example="5 hours remaining">%1$s</xliff:g></string>
     <string name="timer_remaining_single">yn weddill</string>
     <string name="timer_remaining_multiple">yn weddill</string>
     <string-array name="alarm_set">
@@ -221,8 +219,6 @@
         <item>Diystyru</item>
         <item>Rheoli uchder sain</item>
     </string-array>
-    <string name="label_description">Label</string>
-    <string name="ringtone_description">Tôn caniad</string>
     <string name="menu_alarm">Larwm</string>
     <string name="menu_timer">Amserydd</string>
     <string name="menu_clock">Cloc</string>
@@ -239,27 +235,16 @@
     <string name="sw_pause_button">Saib</string>
     <string name="sw_lap_button">Lap</string>
     <string name="sw_share_button">Rhannu</string>
-    <string name="hours_label">a</string>
-    <string name="minutes_label">m</string>
-    <string name="seconds_label">e</string>
-    <string name="timer_setup_description"><xliff:g id="hours" example="1 hour">%1$s</xliff:g>, <xliff:g id="minutes" example="15 minutes">%2$s</xliff:g>, <xliff:g id="seconds" example="30 seconds">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit"># <xliff:g id="lapNumber">%d</xliff:g></string>
-    <string name="lap_number_double_digit"># <xliff:g id="lapNumber">%02d</xliff:g></string>
-    <string name="sw_share_main">Fy amser i yw <xliff:g id="time">%s</xliff:g></string>
-    <string name="sw_share_laps">Amseroedd lapiau:</string>
     <string name="sw_notification_lap_number">Lap <xliff:g id="number">%d</xliff:g></string>
     <string name="timer_add_timer">Ychwanegu Amserydd</string>
     <string name="timer_start">Dechrau</string>
     <string name="timer_delete">Dileu</string>
-    <string name="timer_descriptive_delete">Dileu <xliff:g id="number_string">%s</xliff:g></string>
     <string name="timer_plus_one">Ychwanegu 1 Munud</string>
     <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Ychwanegu 1 munud</string>
     <string name="timer_stop">Stopio</string>
     <string name="timer_stop_all">Stopio pob amserydd</string>
     <string name="timer_reset">Ailosod</string>
-    <string name="timer_cancel">Diddymu</string>
-    <string name="timer_canceled">Diddymwyd yr amserydd</string>
     <string name="timer_times_up">Amser ar ben</string>
     <string name="timer_multi_times_up"><xliff:g id="NUM_TIMERS" example="2">%d</xliff:g> amserydd wedi dod i ben</string>
     <string name="timer_multi_missed"><xliff:g id="number" example="2">%d</xliff:g> amserydd wedi eu methu</string>
@@ -271,18 +256,6 @@
     <string name="hours_minutes_seconds"><xliff:g id="hours" example="2">%1$d</xliff:g>:<xliff:g id="minutes" example="3">%2$02d</xliff:g>:<xliff:g id="seconds" example="44">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="minutes" example="3">%1$d</xliff:g>:<xliff:g id="seconds" example="44">%2$02d</xliff:g></string>
     <string name="seconds"><xliff:g id="seconds" example="44">%d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>Ti fel cath i gythrel.</item>
-        <item>Mwynha ffrwyth dy lafur</item>
-        <item>Mae Android yn gyflym, ond nid mor gyflym ag wyt ti!</item>
-        <item>Ffiw, roedd hyny\'n sydyn.</item>
-        <item>Dy amseroedd di</item>
-        <item>Ti yn tanio ar bob silindr.</item>
-        <item>Yn gynt na mellten.</item>
-        <item>Ti fel roced.</item>
-        <item>Cyntaf i\u2019r felin...</item>
-        <item>Mae gwynt yn dy ddwrn.</item>
-    </string-array>
     <string name="home_label">Cartref</string>
     <string name="cities_activity_title">Dinasoedd</string>
     <string name="clock_settings">Cloc</string>
@@ -411,8 +384,6 @@
     <string name="screensaver_settings">Gosodiadau arbedwr sgrin</string>
     <string name="night_mode_title">Modd nos</string>
     <string name="night_mode_summary">Dangos â golau isel iawn (ar gyfer ystafelloedd tywyll)</string>
-    <string name="expand_alarm">Ehangu\u2019r larwm</string>
-    <string name="collapse_alarm">Lleihau\u2019r larwm</string>
     <string name="alarm_undo">dad-wneud</string>
     <string name="alarm_deleted">Dilëwyd y larwm</string>
     <string name="world_day_of_week_label"> / <xliff:g id="label">%s</xliff:g></string>
@@ -423,7 +394,6 @@
     <string name="world_hours_tomorrow">Yfory, <xliff:g id="time" example="6 hours ahead">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">Ddoe, <xliff:g id="time" example="4 hours behind">%1$s</xliff:g></string>
     <string name="next_alarm_description">Larwm nesaf: <xliff:g id="alarm_time" example="Wed 8:00am">%s</xliff:g></string>
-    <string name="no_alarms">Dim Larymau</string>
     <string name="invalid_time">Amser annilys <xliff:g id="invalid_hour" example="25">%1$d</xliff:g><xliff:g id="invalid_minutes" example="63">%2$d</xliff:g> <xliff:g id="invalid_ampm" example="PM">%3$s</xliff:g></string>
     <string name="no_alarm_at">Dim larwm am <xliff:g id="alarm_time_hour" example="14">%1$d</xliff:g>:<xliff:g id="alarm_time_minutes" example="23">%2$d</xliff:g></string>
     <string name="no_scheduled_alarms">Dim larymau wedi\u2019u gosod</string>
@@ -441,7 +411,6 @@
         <item quantity="many">Diystyrwyd <xliff:g id="number" example="5">%d</xliff:g> amserydd</item>
         <item quantity="other">Diystyrwyd <xliff:g id="number" example="5">%d</xliff:g> amserydd</item>
     </plurals>
-    <string name="timer_deleted">Amserydd wedi\u2019i ddileu</string>
     <string name="invalid_timer_length">Hyd amserydd annilys</string>
     <string name="invalid_timer">Dewiswyd amserydd annilys</string>
     <string name="no_expired_timers">Dim amseryddion wedi dod i ben</string>

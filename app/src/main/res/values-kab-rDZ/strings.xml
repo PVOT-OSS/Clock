@@ -103,8 +103,6 @@
         <item>Suref</item>
         <item>Control volume</item>
     </string-array>
-    <string name="label_description">Tabzimt</string>
-    <string name="ringtone_description">Aṭenṭen</string>
     <string name="menu_alarm">Teṭentunt</string>
     <string name="menu_clock">Tamrint</string>
     <string name="button_cities">Timdinin</string>
@@ -115,14 +113,10 @@
     <string name="sw_start_button">Bdu</string>
     <string name="sw_pause_button">Steɛfu</string>
     <string name="sw_share_button">Bḍu</string>
-    <string name="hours_label">s</string>
-    <string name="minutes_label">m</string>
-    <string name="seconds_label">s</string>
     <string name="timer_start">Bdu</string>
     <string name="timer_delete">Kkes</string>
     <string name="timer_stop">Seḥbes</string>
     <string name="timer_reset">Wennez</string>
-    <string name="timer_cancel">Sefsex</string>
     <string name="timer_pause">Steɛfu</string>
     <string name="home_label">Asebter agejdan</string>
     <string name="cities_activity_title">Timdinin</string>

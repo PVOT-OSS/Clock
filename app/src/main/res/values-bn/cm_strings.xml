@@ -27,5 +27,4 @@
     <string name="stopwatch_channel">স্টপওয়াচ</string>
     <string name="timer_channel">টাইমার</string>
     <string name="add_label">লেবেল যুক্ত করো</string>
-    <string name="dialog_permissions_dismiss">বাতিল</string>
 </resources>

@@ -123,7 +123,6 @@
     <string name="alarm_alert_predismiss_title">Upcoming alarm</string>
 
     <!-- Text to appear in when trying to view a missed alarm that has been deleted -->
-    <string name="missed_alarm_has_been_deleted">Your missed alarm has been deleted</string>
 
     <!-- 0: nothing
          1: days
@@ -148,7 +147,6 @@
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g><xliff:g id="MINUTES" example="2 minutes"> %2$s</xliff:g><xliff:g id="SECONDS" example="2 seconds"> %4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
 
     <!-- Timer accessibility announcements -->
-    <string name="timer_accessibility_one_minute_added">One minute added to timer, <xliff:g id="TIME" example="5 hours remaining">%1$s</xliff:g></string>
 
     <!--
         Verb inflection to use for single time units remaining
@@ -458,8 +456,6 @@
     <skip />
 
     <!-- Accessibility labels for alarm buttons -->
-    <string name="label_description">Label</string>
-    <string name="ringtone_description">Ringtone</string>
 
     <!--  ActionBar strings -->
     <!-- Describes the purpose of the tab button which which switches the activity to the Alarm page -->
@@ -510,25 +506,17 @@
     <string name="sw_share_button">Share</string>
 
     <!-- Abbreviation for temporal hours [CHAR LIMIT=1] -->
-    <string name="hours_label">h</string>
     <!-- Abbreviation for temporal minutes [CHAR LIMIT=1] -->
-    <string name="minutes_label">m</string>
     <!-- Abbreviation for temporal seconds [CHAR LIMIT=1] -->
-    <string name="seconds_label">s</string>
 
     <!-- Accessibility description for new timer setup duration (e.g. 1 hour, 10 minutes, 30 seconds). [CHAR LIMIT=NONE] -->
-    <string name="timer_setup_description"><xliff:g id="hours" example="1 hour">%1$s</xliff:g>, <xliff:g id="minutes" example="15 minutes">%2$s</xliff:g>, <xliff:g id="seconds" example="30 seconds">%3$s</xliff:g></string>
 
     <!-- Formats the lap number display. Allows for control of the symbol preceding the lap number. [CHAR LIMIT=5] -->
-    <string name="lap_number_single_digit"># <xliff:g id="lapNumber">%d</xliff:g></string>
     <!-- Formats the lap number display. Allows for control of the symbol preceding the lap number. [CHAR LIMIT=5] -->
-    <string name="lap_number_double_digit"># <xliff:g id="lapNumber">%02d</xliff:g></string>
 
     <!--  Stopwatch share strings -->
     <!-- Sentence within the message created to share the total time recorded within the stopwatch -->
-    <string name="sw_share_main">My time is <xliff:g id="time">%s</xliff:g></string>
     <!-- Header within the message created to share a list of lap times (a new line is appended to this) -->
-    <string name="sw_share_laps">Lap times:</string>
     <!-- Label to enumerate the number of laps in the notification the user has counted -->
     <string name="sw_notification_lap_number">Lap <xliff:g id="number">%d</xliff:g></string>
 
@@ -540,7 +528,6 @@
     <!-- Describes the purpose of the button to delete a timer. -->
     <string name="timer_delete">Delete</string>
     <!-- Talkback description for deleting a number. -->
-    <string name="timer_descriptive_delete">Delete <xliff:g id="number_string">%s</xliff:g></string>
     <!-- Describes the purpose of the button increase the remaining time on a timer by one minute. -->
     <string name="timer_plus_one">Add 1 Minute</string>
     <!-- Label for adding one minute to a timer. [CHAR LIMIT=10] -->
@@ -554,9 +541,7 @@
     <!-- Describes the purpose of the button to return the timer to it's original starting value. -->
     <string name="timer_reset">Reset</string>
     <!-- Describes the purpose of the button to discard the current dialog values. Will also close the dialog if other time's exist -->
-    <string name="timer_cancel">Cancel</string>
     <!-- Accessibility announcement when a timer is canceled. -->
-    <string name="timer_canceled">Timer canceled</string>
     <!-- Notification content shown when a timer has completed and has no more time remaining -->
     <string name="timer_times_up">Time\'s up</string>
     <!--
@@ -585,18 +570,6 @@
     <string name="seconds"><xliff:g id="seconds" example="44">%d</xliff:g></string>
 
     <!-- Jocular content that user may append when sharing the lap times -->
-    <string-array name="sw_share_strings" translatable="true">
-        <item>You\'re quite the speed demon.</item>
-        <item>Enjoy the fruits of your labor.</item>
-        <item>Androids are known to be fast, but not as fast as you!</item>
-        <item>Phew.</item>
-        <item>L33t times.</item>
-        <item>Such prodigious velocity.</item>
-        <item>Let\'s do the time warp again.</item>
-        <item>Just a jump to the left.</item>
-        <item>You have a palette for haste.</item>
-        <item>Photonic velocity.</item>
-    </string-array>
 
     <!-- Title with the clock on the main page displaying the user's regular timezone (shows when automatic_home_clock enabled) -->
     <string name="home_label">Home</string>
@@ -901,9 +874,7 @@
     <string name="night_mode_summary">Very dim display (for dark rooms)</string>
 
     <!-- Description of the down caret in the alarm alert screen to expand the alarm content to edit perspective. [CHAR LIMIT=NONE] -->
-    <string name="expand_alarm">Expand alarm</string>
     <!-- Description of the up caret in the alarm alert screen to collapse the alarm content to summary perspective. [CHAR LIMIT=NONE] -->
-    <string name="collapse_alarm">Collapse alarm</string>
 
     <!-- Description of the button to undo change to alarm -->
     <string name="alarm_undo">undo</string>
@@ -931,7 +902,6 @@
     <string name="next_alarm_description">Next alarm: <xliff:g id="alarm_time" example="Wed 8:00am">%s</xliff:g></string>
 
     <!-- String for no alarms -->
-    <string name="no_alarms">No Alarms</string>
 
     <!-- String that represents that invalid time for an alarm was specified, e.g. 23:00am
      or 27:68pm.
@@ -1002,7 +972,6 @@
 
     <!-- String that represents that the user has successfully deleted a timer. [CHAR LIMIT=NONE]
     -->
-    <string name="timer_deleted">Timer deleted</string>
 
     <!-- String that represents that the user attempted to start a timer through a voice action
     but specified invalid length.

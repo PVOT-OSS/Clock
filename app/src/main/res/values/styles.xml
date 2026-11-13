@@ -17,10 +17,6 @@
 
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="no_alarms">
-        <item name="android:textSize">@dimen/no_alarm_font_size</item>
-        <item name="android:textColor">@color/white_63p</item>
-    </style>
 
     <style name="display_time">
         <item name="android:textSize">56sp</item>
@@ -29,11 +25,6 @@
         <item name="android:fontFeatureSettings">tnum</item>
     </style>
 
-    <style name="world_clock_time">
-        <item name="android:textSize">48sp</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:fontFamily">sans-serif-light</item>
-    </style>
 
     <style name="body">
         <item name="android:textSize">14sp</item>
@@ -69,9 +60,6 @@
         <item name="android:fontFamily">sans-serif-medium</item>
     </style>
 
-    <style name="navText">
-        <item name="android:textSize">12sp</item>
-    </style>
 
     <style name="Widget.ActionBar" parent="Widget.AppCompat.ActionBar">
         <item name="android:background">@null</item>
@@ -85,26 +73,7 @@
         <item name="displayOptions">homeAsUp</item>
     </style>
 
-    <style name="Widget.Button.TimerSetupDigit" parent="Widget.Material3Expressive.Button.TonalButton">
-        <item name="shapeAppearanceOverlay">@style/Widget.Button.TimerSetupDigit.CircleOverlay</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetBottom">0dp</item>
-        <item name="android:insetLeft">0dp</item>
-        <item name="android:insetRight">0dp</item>
-        <item name="android:textSize">36sp</item>
-        <item name="android:layout_margin">2.0dip</item>
-        <item name="android:padding">0dp</item>
-        <item name="layout_constraintDimensionRatio">1:1</item>
-        <item name="autoSizeMaxTextSize">36sp</item>
-        <item name="autoSizeTextType">uniform</item>
-        <item name="backgroundTint">?attr/colorSurfaceVariant</item>
-        <item name="android:textColor">?attr/colorOnSurface</item>
-    </style>
 
-    <style name="Widget.Button.TimerSetupDigit.CircleOverlay">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">50%</item>
-    </style>
 
     <style name="Widget.TimePicker" parent="android:Widget.Material.TimePicker">
         <item name="android:background">?attr/colorSurface</item>
@@ -133,14 +102,6 @@
         <item name="elevation">0.0dip</item>
     </style>
 
-    <style name="DayButtonStyle">
-        <item name="android:textSize">@dimen/day_button_font_size</item>
-        <item name="android:gravity">center</item>
-        <item name="android:background">@drawable/toggle_circle</item>
-        <item name="android:layout_width">@dimen/touch_target_min_size</item>
-        <item name="android:layout_height">@dimen/touch_target_min_size</item>
-        <item name="android:button">@null</item>
-    </style>
 
     <style name="SnackBarStyle" parent="@style/Widget.Material3.Snackbar">
         <item name="backgroundTint">?attr/colorSurfaceVariant</item>
@@ -159,29 +120,9 @@
         <item name="android:textColor">?attr/colorOnSurfaceVariant</item>
     </style>
 
-    <style name="TextAppearance.Title" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
-        <item name="android:textSize">22.0sp</item>
-    </style>
 
-    <style name="TimerSetupTime">
-        <item name="layout_constraintBottom_toBottomOf">@id/timer_setup_time_bottom</item>
-        <item name="layout_constraintEnd_toEndOf">@id/timer_setup_digits</item>
-        <item name="layout_constraintStart_toStartOf">@id/timer_setup_digits</item>
-        <item name="layout_constraintTop_toTopOf">@id/timer_setup_time_top</item>
-    </style>
 
-    <style name="TimerSetupPresets">
-        <item name="layout_constraintEnd_toEndOf">@id/timer_setup_digits</item>
-        <item name="layout_constraintStart_toStartOf">@id/timer_setup_digits</item>
-        <item name="layout_constraintTop_toBottomOf">@id/timer_setup_time</item>
-    </style>
 
-    <style name="TimerSetupDigits">
-        <item name="layout_constraintBottom_toBottomOf">parent</item>
-        <item name="layout_constraintEnd_toEndOf">parent</item>
-        <item name="layout_constraintStart_toStartOf">parent</item>
-        <item name="layout_constraintTop_toBottomOf">@id/timer_setup_presets</item>
-    </style>
 
     <style name="Theme.DeskClock.DigitalWidgetTransparentDarkBg" parent="Theme.Material3Expressive.DynamicColors.Light">
         <item name="appWidgetBackgroundTint">@android:color/transparent</item>

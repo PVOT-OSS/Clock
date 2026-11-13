@@ -48,7 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Αναβολή έως τις <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Επόμενο ξυπνητήρι</string>
-    <string name="missed_alarm_has_been_deleted">Η ειδοποίηση που παραβλέψατε έχει διαγραφεί</string>
     <string name="timer_notifications_less_min">Απομένει λιγότερο από ένα λεπτό</string>
     <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
@@ -57,7 +56,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">Προστέθηκε ένα λεπτό στον χρονοδιακόπτη, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="timer_remaining_single">απομένουν</string>
     <string name="timer_remaining_multiple">απομένουν</string>
     <string-array name="alarm_set">
@@ -185,8 +183,6 @@
         <item>Παράβλεψη</item>
         <item>Έλεγχος έντασης ήχου</item>
     </string-array>
-    <string name="label_description">Ετικέτα</string>
-    <string name="ringtone_description">Ήχος κλήσης</string>
     <string name="menu_alarm">Ξυπνητήρι</string>
     <string name="menu_timer">Χρονοδιακόπτης</string>
     <string name="menu_clock">Ρολόι</string>
@@ -203,27 +199,16 @@
     <string name="sw_pause_button">Παύση</string>
     <string name="sw_lap_button">Γύρος</string>
     <string name="sw_share_button">Κοινοποίηση</string>
-    <string name="hours_label">ω.</string>
-    <string name="minutes_label">λ.</string>
-    <string name="seconds_label">δ.</string>
-    <string name="timer_setup_description"><xliff:g id="HOURS">%1$s</xliff:g>, <xliff:g id="MINUTES">%2$s</xliff:g>, <xliff:g id="SECONDS">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit"># <xliff:g id="LAPNUMBER">%d</xliff:g></string>
-    <string name="lap_number_double_digit"># <xliff:g id="LAPNUMBER">%02d</xliff:g></string>
-    <string name="sw_share_main">Ο χρόνος μου είναι <xliff:g id="TIME">%s</xliff:g></string>
-    <string name="sw_share_laps">Χρόνοι γύρων:</string>
     <string name="sw_notification_lap_number">Γύρος <xliff:g id="NUMBER">%d</xliff:g></string>
     <string name="timer_add_timer">Προσθήκη χρονοδιακόπτη</string>
     <string name="timer_start">Έναρξη</string>
     <string name="timer_delete">Διαγραφή</string>
-    <string name="timer_descriptive_delete">Διαγραφή <xliff:g id="NUMBER_STRING">%s</xliff:g></string>
     <string name="timer_plus_one">Προσθήκη 1 λεπτού</string>
     <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Προσθήκη 1 λεπτού</string>
     <string name="timer_stop">Διακοπή</string>
     <string name="timer_stop_all">Διακοπή των χρονομέτρων</string>
     <string name="timer_reset">Επαναφορά</string>
-    <string name="timer_cancel">Ακύρωση</string>
-    <string name="timer_canceled">Ο χρονοδιακόπτης ακυρώθηκε</string>
     <string name="timer_times_up">Ο χρόνος έχει τελειώσει</string>
     <string name="timer_multi_times_up"><xliff:g id="NUM_TIMERS">%d</xliff:g> χρονόμετρα έληξαν</string>
     <string name="timer_multi_missed">Παραλείφθηκαν <xliff:g id="NUMBER">%d</xliff:g> χρονόμετρα</string>
@@ -235,18 +220,6 @@
     <string name="hours_minutes_seconds"><xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="MINUTES">%1$d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g></string>
     <string name="seconds"><xliff:g id="seconds" example="44">%d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>Είστε πάρα πολύ γρήγοροι.</item>
-        <item>Απολαύστε</item>
-        <item>Τα Android είναι γρήγορα, αλλά όχι τόσο όσο εσείς!</item>
-        <item>Ουφ.</item>
-        <item>Τρελοί χρόνοι.</item>
-        <item>Απίστευτη ταχύτητα.</item>
-        <item>Ας ξανακάνουμε ένα ταξίδι στο χρόνο.</item>
-        <item>Ένα απλό άλμα προς τα αριστερά.</item>
-        <item>Έχετε μια τάση να βιάζεστε.</item>
-        <item>Ταχύτητα φωτονίου.</item>
-    </string-array>
     <string name="home_label">Σπίτι</string>
     <string name="cities_activity_title">Πόλεις</string>
     <string name="clock_settings">Ρολόι</string>
@@ -375,8 +348,6 @@
     <string name="screensaver_settings">Ρυθμίσεις προφύλαξης οθόνης</string>
     <string name="night_mode_title">Λειτουργία νύχτας</string>
     <string name="night_mode_summary">Πολύ χαμηλή φωτεινότητα οθόνης (για σκοτεινά δωμάτια)</string>
-    <string name="expand_alarm">Ανάπτυξη ξυπνητηριού</string>
-    <string name="collapse_alarm">Σύμπτυξη ξυπνητηριού</string>
     <string name="alarm_undo">αναίρεση</string>
     <string name="alarm_deleted">Ξυπν/ρι διαγράφ.</string>
     <string name="world_day_of_week_label">/ <xliff:g id="LABEL">%s</xliff:g></string>
@@ -387,7 +358,6 @@
     <string name="world_hours_tomorrow">Αύριο, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">Χθες, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="next_alarm_description">Επόμενο ξυπνητήρι: <xliff:g id="ALARM_TIME">%s</xliff:g></string>
-    <string name="no_alarms">Δεν υπάρχουν ξυπνητήρια</string>
     <string name="invalid_time">Μη έγκυρη ώρα <xliff:g id="INVALID_HOUR">%1$d</xliff:g>:<xliff:g id="INVALID_MINUTES">%2$d</xliff:g> <xliff:g id="INVALID_AMPM">%3$s</xliff:g></string>
     <string name="no_alarm_at">Δεν υπάρχει ξυπνητήρι στις <xliff:g id="ALARM_TIME_HOUR">%1$d</xliff:g>:<xliff:g id="ALARM_TIME_MINUTES">%2$d</xliff:g></string>
     <string name="no_scheduled_alarms">Δεν υπάρχουν προγραμματισμένα ξυπνητήρια</string>
@@ -401,7 +371,6 @@
         <item quantity="one">Το χρονόμετρο παραβλέφθηκε</item>
         <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> χρονόμετρα παραβλέφθηκαν</item>
     </plurals>
-    <string name="timer_deleted">Η αντίστροφη μέτρηση διαγράφηκε</string>
     <string name="invalid_timer_length">Μη έγκυρη διάρκεια αντίστροφης μέτρησης</string>
     <string name="invalid_timer">Επιλέχθηκε μη έγκυρο χρονόμετρο</string>
     <string name="no_expired_timers">Δεν υπάρχουν χρονόμετρα που έληξαν</string>

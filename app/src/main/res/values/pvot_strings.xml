@@ -41,7 +41,6 @@
         <item>tap</item>
     </string-array>
     <!-- Spoken with a collapsed alarm that has no sound but vibrates -->
-    <string name="alarm_badge_vibrate_only">Vibrate only</string>
     <!-- Spoken with a collapsed alarm that has no sound and does not vibrate -->
     <string name="alarm_badge_silent">Silent</string>
     <!-- Sound picker row that opens a recorder app to record a new alarm sound -->
@@ -118,9 +117,6 @@
     <string name="sleep_sound_pink_short">Pink</string>
     <string name="sleep_sound_brown_short">Brown</string>
     <!-- Lengths a sleep sound plays for -->
-    <string name="sleep_sound_15">15 min</string>
-    <string name="sleep_sound_30">30 min</string>
-    <string name="sleep_sound_60">1 hour</string>
     <string name="sleep_sound_play">Play</string>
     <string name="sleep_sound_stop">Stop</string>
     <!-- Notification channel and notification of a playing sleep sound -->
@@ -161,8 +157,6 @@
         <item quantity="other"><xliff:g id="count" example="3">%d</xliff:g> alarms turned off</item>
     </plurals>
     <!-- Spoken after the fastest and the slowest recorded lap -->
-    <string name="lap_fastest">Fastest lap</string>
-    <string name="lap_slowest">Slowest lap</string>
     <!-- Why an alarm was missed, under the missed alarm notification -->
     <string name="alarm_missed_phone_off">Your phone was off when it was due</string>
     <string name="alarm_missed_time_changed">The time or time zone changed past it</string>
@@ -183,5 +177,4 @@
     <string name="bedtime_intro_text">Set when you go to bed and the alarm that wakes you. Clock can remind you, quiet your phone overnight and play a sleep sound.</string>
     <string name="bedtime_intro_start">Get started</string>
     <!-- Button on a tab of the new screens that isn't rebuilt yet; opens the classic screens -->
-    <string name="open_classic_view">Open in classic view</string>
 </resources>

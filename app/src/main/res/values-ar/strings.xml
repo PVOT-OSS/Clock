@@ -56,7 +56,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">غفوة إلى <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">التنبيه القادم</string>
-    <string name="missed_alarm_has_been_deleted">تم حذف التنبيه المفقود</string>
     <string name="timer_notifications_less_min">يتبقى أقل من دقيقة</string>
     <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
@@ -65,7 +64,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">تمت إضافة دقيقة واحدة إلى المؤقت، <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="timer_remaining_single">تتبقى</string>
     <string name="timer_remaining_multiple">تتبقى</string>
     <string-array name="alarm_set">
@@ -221,8 +219,6 @@
         <item>تجاهل</item>
         <item>التحكم في مستوى الصوت</item>
     </string-array>
-    <string name="label_description">تصنيف</string>
-    <string name="ringtone_description">نغمة الرنين</string>
     <string name="menu_alarm">المنبّه</string>
     <string name="menu_timer">موقت</string>
     <string name="menu_clock">الساعة</string>
@@ -239,27 +235,16 @@
     <string name="sw_pause_button">إيقاف مؤقت</string>
     <string name="sw_lap_button">الدورة</string>
     <string name="sw_share_button">مشاركة</string>
-    <string name="hours_label">س</string>
-    <string name="minutes_label">د</string>
-    <string name="seconds_label">ث</string>
-    <string name="timer_setup_description"><xliff:g id="HOURS">%1$s</xliff:g>، <xliff:g id="MINUTES">%2$s</xliff:g>، <xliff:g id="SECONDS">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit">الدورة <xliff:g id="LAPNUMBER">%d</xliff:g></string>
-    <string name="lap_number_double_digit">الدورة <xliff:g id="LAPNUMBER">%02d</xliff:g></string>
-    <string name="sw_share_main">وقتي هو <xliff:g id="TIME">%s</xliff:g></string>
-    <string name="sw_share_laps">عدد مرات الدورة:</string>
     <string name="sw_notification_lap_number">الدورة <xliff:g id="NUMBER">%d</xliff:g></string>
     <string name="timer_add_timer">إضافة موقت</string>
     <string name="timer_start">بدء</string>
     <string name="timer_delete">حذف</string>
-    <string name="timer_descriptive_delete">حذف <xliff:g id="NUMBER_STRING">%s</xliff:g></string>
     <string name="timer_plus_one">إضافة دقيقة واحدة</string>
     <string name="timer_add_minute">+ ١:٠٠</string>
     <string name="timer_plus_1_min">إضافة دقيقة واحدة</string>
     <string name="timer_stop">إيقاف</string>
     <string name="timer_stop_all">إيقاف كل الموقِّتات</string>
     <string name="timer_reset">إعادة تعيين</string>
-    <string name="timer_cancel">إلغاء</string>
-    <string name="timer_canceled">تم إلغاء الموقِّت</string>
     <string name="timer_times_up">انتهى الوقت</string>
     <string name="timer_multi_times_up">انتهت صلاحية <xliff:g id="NUM_TIMERS">%d</xliff:g> من الموقِّتات</string>
     <string name="timer_multi_missed"><xliff:g id="NUMBER">%d</xliff:g> موقِّت فائت</string>
@@ -270,18 +255,6 @@
     <string name="timer_reset_all">إعادة ضبط الموقتات</string>
     <string name="hours_minutes_seconds"><xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="MINUTES">%1$d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>يمكنك إجراء كل شيء بسرعة البرق.</item>
-        <item>استمتع بحصاد ثمار تعبك.</item>
-        <item>‏مشهور أن أجهزة Android سريعة، لكن ليس بسرعتك!</item>
-        <item>فو</item>
-        <item>‏L33t أوقات</item>
-        <item>هذه السرعة المذهلة.</item>
-        <item>هيا بنا نجري التحريف الزمني مرة أخرى.</item>
-        <item>الانتقال إلى اليمين.</item>
-        <item>لديك لوحة للإسراع.</item>
-        <item>السرعة الضوئية</item>
-    </string-array>
     <string name="home_label">الوقت المحلي</string>
     <string name="cities_activity_title">مدن</string>
     <string name="clock_settings">الساعة</string>
@@ -410,8 +383,6 @@
     <string name="screensaver_settings">إعدادات شاشة التوقف</string>
     <string name="night_mode_title">الوضع الليلي</string>
     <string name="night_mode_summary">شاشة معتمة جدًا (للغرف المظلمة)</string>
-    <string name="expand_alarm">توسيع المنبّه</string>
-    <string name="collapse_alarm">تصغير المنبّه</string>
     <string name="alarm_undo">تراجع</string>
     <string name="alarm_deleted">تم حذف المنبّه.</string>
     <string name="world_day_of_week_label">/ <xliff:g id="LABEL">%s</xliff:g></string>
@@ -422,7 +393,6 @@
     <string name="world_hours_tomorrow">غدًا، <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">أمس، <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="next_alarm_description">التنبيه التالي: <xliff:g id="ALARM_TIME">%s</xliff:g></string>
-    <string name="no_alarms">ليست هناك اشعارات</string>
     <string name="invalid_time">الوقت غير صالح <xliff:g id="INVALID_HOUR">%1$d</xliff:g>:<xliff:g id="INVALID_MINUTES">%2$d</xliff:g> <xliff:g id="INVALID_AMPM">%3$s</xliff:g></string>
     <string name="no_alarm_at">لم يتم تعيين منبه للوقت <xliff:g id="ALARM_TIME_HOUR">%1$d</xliff:g>:<xliff:g id="ALARM_TIME_MINUTES">%2$d</xliff:g></string>
     <string name="no_scheduled_alarms">لم يتم تعيين أي منبه</string>
@@ -440,7 +410,6 @@
         <item quantity="many">تم تجاهل <xliff:g id="NUMBER">%d</xliff:g> موقِّتًا</item>
         <item quantity="other">تم تجاهل <xliff:g id="NUMBER">%d</xliff:g> موقِّت</item>
     </plurals>
-    <string name="timer_deleted">تم حذف الموقِّت</string>
     <string name="invalid_timer_length">مدة الموقت غير صالحة</string>
     <string name="invalid_timer">تم اختيار موقِّت غير صالح</string>
     <string name="no_expired_timers">لا يمكن تنفيذ الإجراء على الموقِّتات المنتهية</string>

@@ -48,7 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">دوادەخرێت تا <xliff:g id="time">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">وریاکەرەوەی داهاتوو</string>
-    <string name="missed_alarm_has_been_deleted">وریاکەرەوە لەدەستچووەکەت سڕدرایەوە</string>
     <string name="timer_notifications_less_min">کەمتر لە خولەکێک ماوە</string>
     <string name="timer_notifications_hours"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="MINUTES" example="2 minutes">%2$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
@@ -57,7 +56,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES" example="2 minutes">%2$s</xliff:g> <xliff:g id="SECONDS" example="2 seconds"> %4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g> <xliff:g id="SECONDS" example="2 seconds"> %4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g><xliff:g id="MINUTES" example="2 minutes"> %2$s</xliff:g><xliff:g id="SECONDS" example="2 seconds"> %4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">یەک خولەک زیادکرا بۆ کاتپێو، <xliff:g id="TIME" example="5 hours remaining">%1$s</xliff:g></string>
     <string name="timer_remaining_single">ماوە</string>
     <string name="timer_remaining_multiple">ماوە</string>
     <string-array name="alarm_set">
@@ -185,8 +183,6 @@
         <item>لابردن</item>
         <item>کۆنترۆڵکردنی دەنگ</item>
     </string-array>
-    <string name="label_description">ناونیشان</string>
-    <string name="ringtone_description">زەنگ</string>
     <string name="menu_alarm">وریاکەرەوە</string>
     <string name="menu_timer">کاتپێو</string>
     <string name="menu_clock">کاتژمێر</string>
@@ -203,27 +199,16 @@
     <string name="sw_pause_button">ڕاگرتنی کاتی</string>
     <string name="sw_lap_button">خول</string>
     <string name="sw_share_button">هاوبەشکردن</string>
-    <string name="hours_label">ک</string>
-    <string name="minutes_label">خ</string>
-    <string name="seconds_label">چ</string>
-    <string name="timer_setup_description"><xliff:g id="hours" example="1 hour">%1$s</xliff:g>، <xliff:g id="minutes" example="15 minutes">%2$s</xliff:g>، <xliff:g id="seconds" example="30 seconds">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit"># <xliff:g id="lapNumber">%d</xliff:g></string>
-    <string name="lap_number_double_digit"># <xliff:g id="lapNumber">%02d</xliff:g></string>
-    <string name="sw_share_main">کاتەکەم <xliff:g id="time">%s</xliff:g></string>
-    <string name="sw_share_laps">کاتەکانی خول:</string>
     <string name="sw_notification_lap_number">خولی <xliff:g id="number">%d</xliff:g></string>
     <string name="timer_add_timer">زیادکردنی کاتپێو</string>
     <string name="timer_start">دەستپێکردن</string>
     <string name="timer_delete">سڕینەوە</string>
-    <string name="timer_descriptive_delete">سڕینەوەی <xliff:g id="number_string">%s</xliff:g></string>
     <string name="timer_plus_one">زیادکردنی 1 خولەک</string>
     <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">زیادکردنی 1 خولەک</string>
     <string name="timer_stop">بوەستێنە</string>
     <string name="timer_stop_all">وەستاندنی هەموو کاتپێوەکان</string>
     <string name="timer_reset">ڕێکخستنەوە</string>
-    <string name="timer_cancel">پاشگەزبوونەوە</string>
-    <string name="timer_canceled">کاتپێو هەڵوەشێندرایەوە</string>
     <string name="timer_times_up">کات تەواوبوو</string>
     <string name="timer_multi_times_up">کاتی <xliff:g id="NUM_TIMERS" example="2">%d</xliff:g> کاتپێو تەواوبوو</string>
     <string name="timer_multi_missed"><xliff:g id="number" example="2">%d</xliff:g> کاتپێو لەدەستچوون</string>
@@ -235,18 +220,6 @@
     <string name="hours_minutes_seconds"><xliff:g id="hours" example="2">%1$d</xliff:g>:<xliff:g id="minutes" example="3">%2$02d</xliff:g>:<xliff:g id="seconds" example="44">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="minutes" example="3">%1$d</xliff:g>:<xliff:g id="seconds" example="44">%2$02d</xliff:g></string>
     <string name="seconds"><xliff:g id="seconds" example="44">%d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>تۆ خێراییەکی زۆر بەرزت هەیە.</item>
-        <item>دڵخۆشبە بە بەری کارەکەت.</item>
-        <item>ئەندرۆید بەوە ناسراوە خێرایە، بەس وەک تۆ نا!</item>
-        <item>ئووف.!</item>
-        <item>کاتەکانی لێت.</item>
-        <item>وەک تەقینەوەی زۆر گەورە.</item>
-        <item>با دووبارە چەمانەوەی کات بکەینەوە.</item>
-        <item>تەنیا بازبدە بۆ چەپ.</item>
-        <item>تۆ تامی خێراییت کردووە.</item>
-        <item>خێرایی تیشکی.</item>
-    </string-array>
     <string name="home_label">ماڵەوە</string>
     <string name="cities_activity_title">شارەکان</string>
     <string name="clock_settings">کاتژمێر</string>
@@ -375,8 +348,6 @@
     <string name="screensaver_settings">ڕێکخستنەکانی پارێزەری ڕوونما</string>
     <string name="night_mode_title">دۆخی شەو</string>
     <string name="night_mode_summary">ڕوونمای زۆر کز (بۆ ژووری تاریک)</string>
-    <string name="expand_alarm">فراوانکردنی وریاکەرەوە</string>
-    <string name="collapse_alarm">گرژکردنەوەی وریاکەرەوە</string>
     <string name="alarm_undo">گەڕانەوە</string>
     <string name="alarm_deleted">وریاکەرەوە سڕدرایەوە</string>
     <string name="world_day_of_week_label"> / <xliff:g id="label">%s</xliff:g></string>
@@ -387,7 +358,6 @@
     <string name="world_hours_tomorrow">سبەینێ، <xliff:g id="time" example="6 hours ahead">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">دوێنێ، <xliff:g id="time" example="4 hours behind">%1$s</xliff:g></string>
     <string name="next_alarm_description">وریاکەرەوەی داهاتوو: <xliff:g id="alarm_time" example="Wed 8:00am">%s</xliff:g></string>
-    <string name="no_alarms">هیچ وریاکەرەوەیەک نییە</string>
     <string name="invalid_time">کاتی نادروست <xliff:g id="invalid_hour" example="25">%1$d</xliff:g>:<xliff:g id="invalid_minutes" example="63">%2$d</xliff:g> <xliff:g id="invalid_ampm" example="PM">%3$s</xliff:g></string>
     <string name="no_alarm_at">هیچ وریاکەرەوەیەک نییە لە کاتژمێر <xliff:g id="alarm_time_hour" example="14">%1$d</xliff:g>:<xliff:g id="alarm_time_minutes" example="23">%2$d</xliff:g></string>
     <string name="no_scheduled_alarms">هیچ وریاکەرەوەیەکی دیاریکراو نییە</string>
@@ -401,7 +371,6 @@
         <item quantity="one">کاتپێو لادرا</item>
         <item quantity="other"><xliff:g id="number" example="5">%d</xliff:g> کاتپێو لادران</item>
     </plurals>
-    <string name="timer_deleted">کاتپێو سڕدرایەوە</string>
     <string name="invalid_timer_length">ماوەی کاتپێو نادروستە</string>
     <string name="invalid_timer">کاتپێوی نادروست هەڵبژێردراوە</string>
     <string name="no_expired_timers">هیچ کاتپێوێکی بەسەرچوو نییە</string>

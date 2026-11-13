@@ -48,7 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">ჩაჩუმება  <xliff:g id="TIME">%s</xliff:g>-მდე</string>
     <string name="alarm_alert_predismiss_title">მომავალი მაღვიძარა</string>
-    <string name="missed_alarm_has_been_deleted">თქვენი გაცდენილი მაღვიძარა წაიშალა</string>
     <string name="timer_notifications_less_min">დარჩენილია ერთ წუთზე ნაკლები</string>
     <string name="timer_notifications_hours"><xliff:g id="REMAINING"> %3$s</xliff:g><xliff:g id="HOURS">%1$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="REMAINING"> %3$s</xliff:g><xliff:g id="MINUTES">%2$s</xliff:g></string>
@@ -57,7 +56,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="REMAINING"> %3$s</xliff:g> <xliff:g id="MINUTES">%2$s</xliff:g> და <xliff:g id="SECONDS"> %4$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="REMAINING"> %3$s</xliff:g> <xliff:g id="HOURS">%1$s</xliff:g> და <xliff:g id="SECONDS"> %4$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="REMAINING"> %3$s</xliff:g> <xliff:g id="HOURS">%1$s</xliff:g>, <xliff:g id="MINUTES"> %2$s</xliff:g> და <xliff:g id="SECONDS"> %4$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">ტაიმერს დაემატა ერთი წუთი, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="timer_remaining_single">დარჩენილია</string>
     <string name="timer_remaining_multiple">დარჩენილია</string>
     <string-array name="alarm_set">
@@ -185,8 +183,6 @@
         <item>დახურვა</item>
         <item>ხმის მართვა</item>
     </string-array>
-    <string name="label_description">ლეიბლი</string>
-    <string name="ringtone_description">ზარი</string>
     <string name="menu_alarm">მაღვიძარა</string>
     <string name="menu_timer">ტაიმერი</string>
     <string name="menu_clock">საათი</string>
@@ -203,27 +199,16 @@
     <string name="sw_pause_button">პაუზა</string>
     <string name="sw_lap_button">წრე</string>
     <string name="sw_share_button">გაზიარება</string>
-    <string name="hours_label">სთ</string>
-    <string name="minutes_label">წთ</string>
-    <string name="seconds_label">წმ</string>
-    <string name="timer_setup_description"><xliff:g id="HOURS">%1$s</xliff:g>, <xliff:g id="MINUTES">%2$s</xliff:g>, <xliff:g id="SECONDS">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit">№ <xliff:g id="LAPNUMBER">%d</xliff:g></string>
-    <string name="lap_number_double_digit">№ <xliff:g id="LAPNUMBER">%02d</xliff:g></string>
-    <string name="sw_share_main">ჩემი დრო არის <xliff:g id="TIME">%s</xliff:g></string>
-    <string name="sw_share_laps">წრის დრო:</string>
     <string name="sw_notification_lap_number">წრე <xliff:g id="NUMBER">%d</xliff:g></string>
     <string name="timer_add_timer">ტაიმერის დამატება</string>
     <string name="timer_start">დაწყება</string>
     <string name="timer_delete">წაშლა</string>
-    <string name="timer_descriptive_delete">წაშლა <xliff:g id="NUMBER_STRING">%s</xliff:g></string>
     <string name="timer_plus_one">1 წუთის დამატება</string>
     <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">1 წუთის დამატება</string>
     <string name="timer_stop">შეჩერება</string>
     <string name="timer_stop_all">ყველა ტაიმერის შეჩერება</string>
     <string name="timer_reset">ჩამოყრა</string>
-    <string name="timer_cancel">გაუქმება</string>
-    <string name="timer_canceled">ტაიმერი გაუქმდა</string>
     <string name="timer_times_up">დრო ამოიწურა</string>
     <string name="timer_multi_times_up"><xliff:g id="NUM_TIMERS">%d</xliff:g> ტაიმერის დრო ამოიწურა</string>
     <string name="timer_multi_missed">გამოტოვებულია <xliff:g id="NUMBER">%d</xliff:g> ტაიმერი</string>
@@ -234,18 +219,6 @@
     <string name="timer_reset_all">ტაიმერებ.ჩამოყრა</string>
     <string name="hours_minutes_seconds"><xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="MINUTES">%1$d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>საკმაოდ სწრაფი ხართ.</item>
-        <item>ისიამოვნეთ თქვენი შრომის ნაყოფით.</item>
-        <item>ანდროიდები ცნობილია, როგორც სწრაფი. მაგრამ თქვეზე სწარფი მაინც ვერაა!</item>
-        <item>Phew.</item>
-        <item>L33t times.</item>
-        <item>ამას ჰქვია სიჩქარე!</item>
-        <item>მოდით, ისევ შევეჭიდოთ დროს.</item>
-        <item>უბრალოდ მარცხნივ ახტომა.</item>
-        <item>დროს ნუ დაკარგავთ.</item>
-        <item>ფოტონური სისწრაფე.</item>
-    </string-array>
     <string name="home_label">ჩემი</string>
     <string name="cities_activity_title">ქალაქები</string>
     <string name="clock_settings">საათი</string>
@@ -374,8 +347,6 @@
     <string name="screensaver_settings">ეკრანმზოგის პარამეტრები</string>
     <string name="night_mode_title">ღამის რეჟიმი</string>
     <string name="night_mode_summary">ძალიან მუქი ეკრანი (ბნელი ოთახებისთვის)</string>
-    <string name="expand_alarm">მაღვიძარას გაფართოება</string>
-    <string name="collapse_alarm">მაღვიძარას ხედის შემცირება</string>
     <string name="alarm_undo">მოქმედების გაუქმება</string>
     <string name="alarm_deleted">მაღვიძარა წაშლილია</string>
     <string name="world_day_of_week_label">/ <xliff:g id="LABEL">%s</xliff:g></string>
@@ -386,7 +357,6 @@
     <string name="world_hours_tomorrow">ხვალ, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">გუშინ, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="next_alarm_description">მომდევნო მაღვიძარა: <xliff:g id="ALARM_TIME">%s</xliff:g></string>
-    <string name="no_alarms">მაღვიძარები არ არის</string>
     <string name="invalid_time">არასწორი დრო <xliff:g id="INVALID_HOUR">%1$d</xliff:g>:<xliff:g id="INVALID_MINUTES">%2$d</xliff:g> <xliff:g id="INVALID_AMPM">%3$s</xliff:g></string>
     <string name="no_alarm_at"><xliff:g id="ALARM_TIME_HOUR">%1$d</xliff:g>:<xliff:g id="ALARM_TIME_MINUTES">%2$d</xliff:g>-ზე მაღვიძარა არ არის</string>
     <string name="no_scheduled_alarms">დაგეგმილი მაღვიძარა არ არის</string>
@@ -400,7 +370,6 @@
         <item quantity="one">ტაიმერი უგულებელყოფილია</item>
         <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> ტაიმერი უგულებელყოფილია</item>
     </plurals>
-    <string name="timer_deleted">ტაიმერი წაშლილია</string>
     <string name="invalid_timer_length">ტაიმერის არასწორი ხანგრძლივობა</string>
     <string name="invalid_timer">არჩეულია არასწორი ტაიმერი</string>
     <string name="no_expired_timers">ვადაგასული ტაიმერები არ არის</string>

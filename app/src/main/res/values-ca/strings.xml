@@ -48,7 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Es posposarà fins a les <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Pròxima alarma</string>
-    <string name="missed_alarm_has_been_deleted">L\'alarma desatesa s\'ha suprimit</string>
     <string name="timer_notifications_less_min">Queda menys d\'un minut</string>
     <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
@@ -57,7 +56,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="MINUTES"> %2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">S\'ha afegit un minut al temporitzador, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="timer_remaining_single">restant</string>
     <string name="timer_remaining_multiple">restants</string>
     <string-array name="alarm_set">
@@ -185,8 +183,6 @@
         <item>Ignora</item>
         <item>Controla el volum</item>
     </string-array>
-    <string name="label_description">Etiqueta</string>
-    <string name="ringtone_description">So</string>
     <string name="menu_alarm">Alarma</string>
     <string name="menu_timer">Temporitzador</string>
     <string name="menu_clock">Rellotge</string>
@@ -203,27 +199,16 @@
     <string name="sw_pause_button">Posa en pausa</string>
     <string name="sw_lap_button">Volta</string>
     <string name="sw_share_button">Comparteix</string>
-    <string name="hours_label">h</string>
-    <string name="minutes_label">m</string>
-    <string name="seconds_label">s</string>
-    <string name="timer_setup_description"><xliff:g id="HOURS">%1$s</xliff:g>, <xliff:g id="MINUTES">%2$s</xliff:g> i <xliff:g id="SECONDS">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit">Volta <xliff:g id="LAPNUMBER">%d</xliff:g></string>
-    <string name="lap_number_double_digit">Volta <xliff:g id="LAPNUMBER">%02d</xliff:g></string>
-    <string name="sw_share_main">La meva hora: <xliff:g id="TIME">%s</xliff:g></string>
-    <string name="sw_share_laps">Temps per volta:</string>
     <string name="sw_notification_lap_number">Volta <xliff:g id="NUMBER">%d</xliff:g></string>
     <string name="timer_add_timer">Afegeix temporitzador</string>
     <string name="timer_start">Inicia</string>
     <string name="timer_delete">Suprimeix</string>
-    <string name="timer_descriptive_delete">Suprimeix <xliff:g id="NUMBER_STRING">%s</xliff:g></string>
     <string name="timer_plus_one">Afegeix 1 minut</string>
     <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Afegeix 1 minut</string>
     <string name="timer_stop">Atura</string>
     <string name="timer_stop_all">Atura els temporitzadors</string>
     <string name="timer_reset">Restableix</string>
-    <string name="timer_cancel">Cancel·la</string>
-    <string name="timer_canceled">S\'ha cancel·lat el temporitzador</string>
     <string name="timer_times_up">S\'ha esgotat el temps</string>
     <string name="timer_multi_times_up">Temporitzadors caducats: <xliff:g id="NUM_TIMERS">%d</xliff:g></string>
     <string name="timer_multi_missed"><xliff:g id="NUMBER">%d</xliff:g> temporitzadors desatesos</string>
@@ -235,18 +220,6 @@
     <string name="hours_minutes_seconds"><xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="MINUTES">%1$d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g></string>
     <string name="seconds"><xliff:g id="seconds" example="44">%d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>Ets un boig del volant.</item>
-        <item>Gaudeix dels fruits de la teva feina.</item>
-        <item>Se sap que els Android són ràpids, però no tan com tu!</item>
-        <item>Uf!</item>
-        <item>L33t vegades.</item>
-        <item>Una velocitat prodigiosa com aquesta.</item>
-        <item>Tornem a fer un salt en el temps.</item>
-        <item>Només un salt cap a l\'esquerra.</item>
-        <item>Tens moltes opcions per afanyar-te.</item>
-        <item>Velocitat fotònica.</item>
-    </string-array>
     <string name="home_label">Casa</string>
     <string name="cities_activity_title">Ciutats</string>
     <string name="clock_settings">Rellotge</string>
@@ -375,8 +348,6 @@
     <string name="screensaver_settings">Configuració d\'estalvi de pantalla</string>
     <string name="night_mode_title">Mode nocturn</string>
     <string name="night_mode_summary">Pantalla molt tènue (per a espais foscos)</string>
-    <string name="expand_alarm">Amplia l\'alarma</string>
-    <string name="collapse_alarm">Redueix l\'alarma</string>
     <string name="alarm_undo">desfés</string>
     <string name="alarm_deleted">Alarma suprimida</string>
     <string name="world_day_of_week_label">/ <xliff:g id="LABEL">%s</xliff:g></string>
@@ -387,7 +358,6 @@
     <string name="world_hours_tomorrow">Demà, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">Ahir a les <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="next_alarm_description">Propera alarma: <xliff:g id="ALARM_TIME">%s</xliff:g></string>
-    <string name="no_alarms">Cap alarma</string>
     <string name="invalid_time">L\'hora no és vàlida (<xliff:g id="INVALID_HOUR">%1$d</xliff:g>:<xliff:g id="INVALID_MINUTES">%2$d</xliff:g> <xliff:g id="INVALID_AMPM">%3$s</xliff:g>)</string>
     <string name="no_alarm_at">No hi ha cap alarma a les <xliff:g id="ALARM_TIME_HOUR">%1$d</xliff:g>:<xliff:g id="ALARM_TIME_MINUTES">%2$d</xliff:g></string>
     <string name="no_scheduled_alarms">No s\'ha programat cap alarma</string>
@@ -401,7 +371,6 @@
         <item quantity="one">S\'ha ignorat el temporitzador</item>
         <item quantity="other">S\'han ignorat <xliff:g id="NUMBER">%d</xliff:g> temporitzadors</item>
     </plurals>
-    <string name="timer_deleted">El temporitzador s\'ha suprimit</string>
     <string name="invalid_timer_length">La durada del temporitzador no és vàlida</string>
     <string name="invalid_timer">El temporitzador que s\'ha seleccionat no és vàlid</string>
     <string name="no_expired_timers">No hi ha cap temporitzador finalitzat</string>

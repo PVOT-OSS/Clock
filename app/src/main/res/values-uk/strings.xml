@@ -52,7 +52,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Відкласти сигнал до <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Наступний будильник</string>
-    <string name="missed_alarm_has_been_deleted">Пропущений сигнал видалено</string>
     <string name="timer_notifications_less_min">Залишилося менше хвилини</string>
     <string name="timer_notifications_hours"><xliff:g id="REMAINING"> %3$s</xliff:g> <xliff:g id="HOURS">%1$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="REMAINING"> %3$s</xliff:g> <xliff:g id="MINUTES">%2$s</xliff:g></string>
@@ -61,7 +60,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="REMAINING"> %3$s</xliff:g> <xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="REMAINING"> %3$s</xliff:g> <xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="REMAINING"> %3$s</xliff:g> <xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="MINUTES"> %2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">До таймера додано 1 хвилину, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="timer_remaining_single">залишилося</string>
     <string name="timer_remaining_multiple">залишилося</string>
     <string-array name="alarm_set">
@@ -203,8 +201,6 @@
         <item>Вимкнути</item>
         <item>Регулювати гучність</item>
     </string-array>
-    <string name="label_description">Мітка</string>
-    <string name="ringtone_description">Сигнал дзвінка</string>
     <string name="menu_alarm">Будильник</string>
     <string name="menu_timer">Таймер</string>
     <string name="menu_clock">Годинник</string>
@@ -221,27 +217,16 @@
     <string name="sw_pause_button">Призупинити</string>
     <string name="sw_lap_button">Коло</string>
     <string name="sw_share_button">Надіслати</string>
-    <string name="hours_label">г</string>
-    <string name="minutes_label">х</string>
-    <string name="seconds_label">с</string>
-    <string name="timer_setup_description"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit"># <xliff:g id="LAPNUMBER">%d</xliff:g></string>
-    <string name="lap_number_double_digit"># <xliff:g id="LAPNUMBER">%02d</xliff:g></string>
-    <string name="sw_share_main">Мій час – <xliff:g id="TIME">%s</xliff:g></string>
-    <string name="sw_share_laps">Час кола:</string>
     <string name="sw_notification_lap_number">Коло <xliff:g id="NUMBER">%d</xliff:g></string>
     <string name="timer_add_timer">Додати таймер</string>
     <string name="timer_start">Почати</string>
     <string name="timer_delete">Видалити</string>
-    <string name="timer_descriptive_delete">Видалити номер <xliff:g id="NUMBER_STRING">%s</xliff:g></string>
     <string name="timer_plus_one">Додати 1 хвилину</string>
     <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Додати 1 хв</string>
     <string name="timer_stop">Зупинити</string>
     <string name="timer_stop_all">Зупинити всі таймери</string>
     <string name="timer_reset">Скинути</string>
-    <string name="timer_cancel">Скасувати</string>
-    <string name="timer_canceled">Таймер скасовано</string>
     <string name="timer_times_up">Час вийшов</string>
     <string name="timer_multi_times_up">Використаних таймерів: <xliff:g id="NUM_TIMERS">%d</xliff:g></string>
     <string name="timer_multi_missed">Пропущено таймерів: <xliff:g id="NUMBER">%d</xliff:g></string>
@@ -252,18 +237,6 @@
     <string name="timer_reset_all">Скинути таймери</string>
     <string name="hours_minutes_seconds"><xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="MINUTES">%1$d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>Ну ви й швидкі!</item>
-        <item>Насолоджуйтесь плодами своєї праці.</item>
-        <item>Пристрої Android швидкі, але ви – швидші!</item>
-        <item>Фу.</item>
-        <item>Стільки разів: L33t.</item>
-        <item>Неймовірна швидкість.</item>
-        <item>Повторімо \"викривлення часу\".</item>
-        <item>Просто стрибніть ліворуч.</item>
-        <item>Ви дуже поспішаєте.</item>
-        <item>Швидкість світла.</item>
-    </string-array>
     <string name="home_label">Удома</string>
     <string name="cities_activity_title">Міста</string>
     <string name="clock_settings">Годинник</string>
@@ -392,8 +365,6 @@
     <string name="screensaver_settings">Налаштування заставки</string>
     <string name="night_mode_title">Нічний режим</string>
     <string name="night_mode_summary">Дуже тьмяний дисплей (для темних приміщень)</string>
-    <string name="expand_alarm">Посилити сигнал</string>
-    <string name="collapse_alarm">Згорнути</string>
     <string name="alarm_undo">відмінити</string>
     <string name="alarm_deleted">Будильник видалено</string>
     <string name="world_day_of_week_label">/ <xliff:g id="LABEL">%s</xliff:g></string>
@@ -404,7 +375,6 @@
     <string name="world_hours_tomorrow">Завтра, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">Учора, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="next_alarm_description">Наступний сигнал: <xliff:g id="ALARM_TIME">%s</xliff:g></string>
-    <string name="no_alarms">Немає сигналів</string>
     <string name="invalid_time">Недійсний час – <xliff:g id="INVALID_HOUR">%1$d</xliff:g>:<xliff:g id="INVALID_MINUTES">%2$d</xliff:g> <xliff:g id="INVALID_AMPM">%3$s</xliff:g></string>
     <string name="no_alarm_at">Немає будильника на <xliff:g id="ALARM_TIME_HOUR">%1$d</xliff:g>:<xliff:g id="ALARM_TIME_MINUTES">%2$d</xliff:g></string>
     <string name="no_scheduled_alarms">Немає майбутніх будильників</string>
@@ -420,7 +390,6 @@
         <item quantity="many">Вимкнено <xliff:g id="NUMBER">%d</xliff:g> таймерів</item>
         <item quantity="other">Вимкнено <xliff:g id="NUMBER">%d</xliff:g> таймера</item>
     </plurals>
-    <string name="timer_deleted">Таймер видалено</string>
     <string name="invalid_timer_length">Недійсна тривалість таймера</string>
     <string name="invalid_timer">Вибрано недійсний таймер</string>
     <string name="no_expired_timers">Немає використаних таймерів</string>

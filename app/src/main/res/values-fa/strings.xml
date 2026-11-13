@@ -48,7 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">تعویق تا <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">هشدار بعدی</string>
-    <string name="missed_alarm_has_been_deleted">هشدار بی‌پاسخ حذف شد</string>
     <string name="timer_notifications_less_min">کمتر از یک دقیقه باقیمانده است</string>
     <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
@@ -57,7 +56,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">یک دقیقه به تایمر اضافه شد، <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="timer_remaining_single">باقیمانده</string>
     <string name="timer_remaining_multiple">باقیمانده</string>
     <string-array name="alarm_set">
@@ -185,8 +183,6 @@
         <item>رد کردن</item>
         <item>کنترل بلندی صدا</item>
     </string-array>
-    <string name="label_description">برچسب</string>
-    <string name="ringtone_description">آهنگ زنگ</string>
     <string name="menu_alarm">هشدار</string>
     <string name="menu_timer">تایمر</string>
     <string name="menu_clock">ساعت</string>
@@ -203,27 +199,16 @@
     <string name="sw_pause_button">مکث</string>
     <string name="sw_lap_button">دور</string>
     <string name="sw_share_button">اشتراک‏‌گذاری</string>
-    <string name="hours_label">س</string>
-    <string name="minutes_label">د</string>
-    <string name="seconds_label">ث</string>
-    <string name="timer_setup_description"><xliff:g id="HOURS">%1$s</xliff:g>، <xliff:g id="MINUTES">%2$s</xliff:g>، <xliff:g id="SECONDS">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit"># <xliff:g id="LAPNUMBER">%d</xliff:g></string>
-    <string name="lap_number_double_digit"># <xliff:g id="LAPNUMBER">%02d</xliff:g></string>
-    <string name="sw_share_main">زمان من <xliff:g id="TIME">%s</xliff:g> است</string>
-    <string name="sw_share_laps">زمان‌های دور:</string>
     <string name="sw_notification_lap_number">دور <xliff:g id="NUMBER">%d</xliff:g></string>
     <string name="timer_add_timer">افزودن تایمر</string>
     <string name="timer_start">شروع</string>
     <string name="timer_delete">حذف</string>
-    <string name="timer_descriptive_delete">حذف <xliff:g id="NUMBER_STRING">%s</xliff:g></string>
     <string name="timer_plus_one">افزودن ۱ دقیقه</string>
     <string name="timer_add_minute">‎+ ۱:۰۰</string>
     <string name="timer_plus_1_min">افزودن ۱ دقیقه</string>
     <string name="timer_stop">توقف</string>
     <string name="timer_stop_all">توقف همه تایمرها</string>
     <string name="timer_reset">بازنشانی</string>
-    <string name="timer_cancel">لغو</string>
-    <string name="timer_canceled">تایمر لغو شد</string>
     <string name="timer_times_up">وقت تمام است</string>
     <string name="timer_multi_times_up"><xliff:g id="NUM_TIMERS">%d</xliff:g> تایمر منقضی شده</string>
     <string name="timer_multi_missed"><xliff:g id="NUMBER">%d</xliff:g> تایمر ازدست‌رفته</string>
@@ -235,18 +220,6 @@
     <string name="hours_minutes_seconds"><xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="MINUTES">%1$d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g></string>
     <string name="seconds"><xliff:g id="seconds" example="44">%d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>شما واقعاً خدای سرعت هستید.</item>
-        <item>از ثمره زحمات خود لذت ببرید.</item>
-        <item>‏Androidها به چالاکی معروفند، اما نه به اندازه شما!</item>
-        <item>اوف.</item>
-        <item>‏L33t بار.</item>
-        <item>عجب سرعت حیرت‌آوری.</item>
-        <item>بیایید توقف زمان را دوباره انجام دهیم.</item>
-        <item>فقط یک پرش به چپ.</item>
-        <item>شما پالتی برای سرعت دارید.</item>
-        <item>سرعت فوتونی.</item>
-    </string-array>
     <string name="home_label">ساعت محلی</string>
     <string name="cities_activity_title">شهرها</string>
     <string name="clock_settings">ساعت</string>
@@ -375,8 +348,6 @@
     <string name="screensaver_settings">تنظیمات محافظ صفحه</string>
     <string name="night_mode_title">حالت شب</string>
     <string name="night_mode_summary">نمایشگر بسیار تیره (برای اتاق تاریک)</string>
-    <string name="expand_alarm">هشدار بزرگ‌کردن</string>
-    <string name="collapse_alarm">هشدار کوچک‌کردن</string>
     <string name="alarm_undo">واگرد</string>
     <string name="alarm_deleted">هشدار حذف شد</string>
     <string name="world_day_of_week_label">/ <xliff:g id="LABEL">%s</xliff:g></string>
@@ -387,7 +358,6 @@
     <string name="world_hours_tomorrow">فردا، <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">دیروز، <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="next_alarm_description">هشدار بعدی: <xliff:g id="ALARM_TIME">%s</xliff:g></string>
-    <string name="no_alarms">بدون هشدار</string>
     <string name="invalid_time">زمان نامعتبر است <xliff:g id="INVALID_AMPM">%3$s</xliff:g> ‏<xliff:g id="INVALID_MINUTES">%2$d</xliff:g>:‏<xliff:g id="INVALID_HOUR">%1$d</xliff:g></string>
     <string name="no_alarm_at">زنگ هشداری برای <xliff:g id="ALARM_TIME_MINUTES">%2$d</xliff:g>‏:<xliff:g id="ALARM_TIME_HOUR">%1$d</xliff:g> تنظیم نشده است</string>
     <string name="no_scheduled_alarms">هیچ زنگ هشدار زمان‌بندی‌شده‌ای وجود ندارد</string>
@@ -401,7 +371,6 @@
         <item quantity="one"><xliff:g id="NUMBER">%d</xliff:g> تایمر رد شد</item>
         <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> تایمر رد شد</item>
     </plurals>
-    <string name="timer_deleted">تایمر حذف شد</string>
     <string name="invalid_timer_length">مدت زمان  تایمر نامعتبر است</string>
     <string name="invalid_timer">تایمر انتخاب‌شده معتبر نیست</string>
     <string name="no_expired_timers">تایمر پایان‌یافته‌ای وجود ندارد</string>

@@ -48,7 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Suspendido até à(s) <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Próximo alarme</string>
-    <string name="missed_alarm_has_been_deleted">O alarme perdido foi eliminado</string>
     <string name="timer_notifications_less_min">Menos de um minuto restante</string>
     <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
@@ -57,7 +56,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">Um minuto adicionado ao temporizador, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="timer_remaining_single">Falta</string>
     <string name="timer_remaining_multiple">Faltam</string>
     <string-array name="alarm_set">
@@ -185,8 +183,6 @@
         <item>Ignorar</item>
         <item>Controlar o volume</item>
     </string-array>
-    <string name="label_description">Etiqueta</string>
-    <string name="ringtone_description">Toque</string>
     <string name="menu_alarm">Alarme</string>
     <string name="menu_timer">Temporizador</string>
     <string name="menu_clock">Relógio</string>
@@ -203,27 +199,16 @@
     <string name="sw_pause_button">Pausa</string>
     <string name="sw_lap_button">Volta</string>
     <string name="sw_share_button">Partilhar</string>
-    <string name="hours_label">h</string>
-    <string name="minutes_label">m</string>
-    <string name="seconds_label">s</string>
-    <string name="timer_setup_description"><xliff:g id="HOURS">%1$s</xliff:g>, <xliff:g id="MINUTES">%2$s</xliff:g>, <xliff:g id="SECONDS">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit">N.º <xliff:g id="LAPNUMBER">%d</xliff:g></string>
-    <string name="lap_number_double_digit">N.º <xliff:g id="LAPNUMBER">%02d</xliff:g></string>
-    <string name="sw_share_main">O meu tempo é <xliff:g id="TIME">%s</xliff:g></string>
-    <string name="sw_share_laps">Tempos de volta:</string>
     <string name="sw_notification_lap_number">Volta <xliff:g id="NUMBER">%d</xliff:g></string>
     <string name="timer_add_timer">Adicionar Temporizador</string>
     <string name="timer_start">Iniciar</string>
     <string name="timer_delete">Eliminar</string>
-    <string name="timer_descriptive_delete">Eliminar <xliff:g id="NUMBER_STRING">%s</xliff:g></string>
     <string name="timer_plus_one">Adicionar 1 Minuto</string>
     <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Adicionar 1 min</string>
     <string name="timer_stop">Parar</string>
     <string name="timer_stop_all">Parar todos os temporiz.</string>
     <string name="timer_reset">Repor</string>
-    <string name="timer_cancel">Cancelar</string>
-    <string name="timer_canceled">Temporizador cancelado</string>
     <string name="timer_times_up">Terminou o tempo</string>
     <string name="timer_multi_times_up"><xliff:g id="NUM_TIMERS">%d</xliff:g> temporizadores expiraram</string>
     <string name="timer_multi_missed"><xliff:g id="NUMBER">%d</xliff:g> temporizadores perdidos</string>
@@ -235,18 +220,6 @@
     <string name="hours_minutes_seconds"><xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="MINUTES">%1$d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g></string>
     <string name="seconds"><xliff:g id="seconds" example="44">%d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>É um verdadeiro ás da velocidade.</item>
-        <item>Aproveite os frutos do seu trabalho.</item>
-        <item>Os Androids são conhecidos por serem rápidos, mas não tão rápidos como você!</item>
-        <item>Ufa.</item>
-        <item>Tempos lendários.</item>
-        <item>Mas que velocidade estupenda.</item>
-        <item>Vamos viajar de novo no tempo.</item>
-        <item>Apenas um salto para a esquerda.</item>
-        <item>Tem um fraco por correrias.</item>
-        <item>Velocidade fotónica.</item>
-    </string-array>
     <string name="home_label">Casa</string>
     <string name="cities_activity_title">Cidades</string>
     <string name="clock_settings">Relógio</string>
@@ -375,8 +348,6 @@
     <string name="screensaver_settings">Definições de proteção de ecrã</string>
     <string name="night_mode_title">Modo noturno</string>
     <string name="night_mode_summary">Ecrã com luminosidade reduzida (para salas escuras)</string>
-    <string name="expand_alarm">Expandir alarme</string>
-    <string name="collapse_alarm">Reduzir alarme</string>
     <string name="alarm_undo">anular</string>
     <string name="alarm_deleted">Alarme eliminado</string>
     <string name="world_day_of_week_label">/ <xliff:g id="LABEL">%s</xliff:g></string>
@@ -387,7 +358,6 @@
     <string name="world_hours_tomorrow">Amanhã à(s) <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">Ontem à(s) <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="next_alarm_description">Próximo alarme: <xliff:g id="ALARM_TIME">%s</xliff:g></string>
-    <string name="no_alarms">Sem alarmes</string>
     <string name="invalid_time">Hora inválida <xliff:g id="INVALID_HOUR">%1$d</xliff:g>:<xliff:g id="INVALID_MINUTES">%2$d</xliff:g> <xliff:g id="INVALID_AMPM">%3$s</xliff:g></string>
     <string name="no_alarm_at">Nenhum alarme às <xliff:g id="ALARM_TIME_HOUR">%1$d</xliff:g>:<xliff:g id="ALARM_TIME_MINUTES">%2$d</xliff:g></string>
     <string name="no_scheduled_alarms">Nenhum alarme programado</string>
@@ -401,7 +371,6 @@
         <item quantity="one">Temporizador ignorado</item>
         <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> temporizadores ignorados</item>
     </plurals>
-    <string name="timer_deleted">Temporizador eliminado</string>
     <string name="invalid_timer_length">Duração inválida do temporizador</string>
     <string name="invalid_timer">Temporizador inválido selecionado</string>
     <string name="no_expired_timers">Nenhum temporizador expirado</string>

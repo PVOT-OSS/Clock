@@ -46,7 +46,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until"><xliff:g id="TIME">%s</xliff:g>အထိ မှေးရန်</string>
     <string name="alarm_alert_predismiss_title">လာတော့မည့် နှိုးစက်</string>
-    <string name="missed_alarm_has_been_deleted">သင် လွတ်သွားခဲ့သည့် နှိုးစက်ကို ဖျက်လိုက်ပြီ</string>
     <string name="timer_notifications_less_min">ကျန်ရှိနေသည်မှာ တစ်မိနစ်ထက် နည်း</string>
     <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
@@ -55,7 +54,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">အချိန်တိုင်းစနစ်သို့ တစ်မိနစ် ပေါင်းလိုက်ပါပြီ၊ <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="timer_remaining_single">ကျန်ရှိနေသော</string>
     <string name="timer_remaining_multiple">ကျန်ရှိနေသော</string>
     <string-array name="alarm_set">
@@ -176,8 +174,6 @@
         <item>ပယ်ရန်</item>
         <item>အသံထိန်းချုပ်မှု</item>
     </string-array>
-    <string name="label_description">အညွှန်း</string>
-    <string name="ringtone_description">သံစဉ်</string>
     <string name="menu_alarm">နှိုးစက်</string>
     <string name="menu_timer">တိုင်မာ</string>
     <string name="menu_clock">နာရီ</string>
@@ -194,27 +190,16 @@
     <string name="sw_pause_button">ခဏရပ်ပါ</string>
     <string name="sw_lap_button">တာတစ်ပတ်</string>
     <string name="sw_share_button">မျှဝေရန်</string>
-    <string name="hours_label">h</string>
-    <string name="minutes_label">m</string>
-    <string name="seconds_label">s</string>
-    <string name="timer_setup_description"><xliff:g id="HOURS">%1$s</xliff:g>၊ <xliff:g id="MINUTES">%2$s</xliff:g>၊ <xliff:g id="SECONDS">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit"># <xliff:g id="LAPNUMBER">%d</xliff:g></string>
-    <string name="lap_number_double_digit"># <xliff:g id="LAPNUMBER">%02d</xliff:g></string>
-    <string name="sw_share_main">ကျွန်ုပ်၏ အချိန်မှာ <xliff:g id="TIME">%s</xliff:g></string>
-    <string name="sw_share_laps">တာ အချိန်များ:</string>
     <string name="sw_notification_lap_number">တာ<xliff:g id="NUMBER">%d</xliff:g></string>
     <string name="timer_add_timer">တိုင်မာ ထည့်ရန်</string>
     <string name="timer_start">စတင်ရန်</string>
     <string name="timer_delete">ဖျက်ရန်</string>
-    <string name="timer_descriptive_delete"><xliff:g id="NUMBER_STRING">%s</xliff:g> ကို ဖျက်မယ်</string>
     <string name="timer_plus_one">၁ မိနစ် ထည့်ရန်</string>
     <string name="timer_add_minute">+ ၁:၀၀</string>
     <string name="timer_plus_1_min">၁ မိနစ် ထည့်ရန်</string>
     <string name="timer_stop">ရပ်တန့်ရန်</string>
     <string name="timer_stop_all">အချိန်တိုင်းကိရိယာများအားလုံး ရပ်ရန်</string>
     <string name="timer_reset">ပြင်ဆင်သတ်မှတ်ရန်</string>
-    <string name="timer_cancel">မလုပ်တော့</string>
-    <string name="timer_canceled">တိုင်မာ ဖျက်သိမ်းလိုက်ပြီ</string>
     <string name="timer_times_up">အချိန်ပြည့်သွားပါပြီ</string>
     <string name="timer_multi_times_up"><xliff:g id="NUM_TIMERS">%d</xliff:g> အချိန်တိုင်းကိရိယာ သက်တမ်းကုန်ပါပြီ</string>
     <string name="timer_multi_missed">သတိပေးချက် <xliff:g id="NUMBER">%d</xliff:g> ခုလွတ်သွားသည်</string>
@@ -225,18 +210,6 @@
     <string name="timer_reset_all">တိုင်မာ အားလုံး ပြင်ဆင်သတ်မှတ်ရန်</string>
     <string name="hours_minutes_seconds"><xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="MINUTES">%1$d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>သင်၏ အတော့်ကို နှုန်း မြန်လွန်းနေသည်။</item>
-        <item>သင် ကြိုးစားခဲ့မှု အသီးအပွင့်များကို ခံစားနိုင်ပါပြီ။</item>
-        <item>Android များ မြန်ဆန်ခြင်းကို အားလုံးသိကြပေမည့်၊ သင့်လို မမြန်လှပါ!</item>
-        <item>ဝှူး။</item>
-        <item>L33t အချိန်များ</item>
-        <item>သိပ်ကို များလွန်းနေသည့် အရှိန်အဟုန်။</item>
-        <item>အချိန် မူမမှန်မှုများကို ပြန်ပြီး လုပ်ကိုင်ကြရအောင်။</item>
-        <item>ဘယ်ဘက်ကို ခုန်လိုက်ရုံပါပဲ။</item>
-        <item>သင့်ဆီမှာ ရွေးစရာ တစ်ပုံကြီးပဲ။</item>
-        <item>အလင်း၏ အမြန်နှုန်း။</item>
-    </string-array>
     <string name="home_label">ပင်မ​</string>
     <string name="cities_activity_title">မြို့များ</string>
     <string name="clock_settings">နာရီ</string>
@@ -365,8 +338,6 @@
     <string name="screensaver_settings">ဖန်သားပြင်ချွေတာမှုစနစ် ဆက်တင်များ</string>
     <string name="night_mode_title">ညသုံး မုဒ်</string>
     <string name="night_mode_summary">ခပ်မှိန်မှိန် ပြသမှု (အမှောင်ခန်းများအတွက်)</string>
-    <string name="expand_alarm">နှိုးစက်ကို တိုးချဲ့ရန်</string>
-    <string name="collapse_alarm">နှိုးစက်ကို ခေါက်သိမ်းပါ</string>
     <string name="alarm_undo">မလုပ်တော့ရန်</string>
     <string name="alarm_deleted">နိုးစက်ဖျက်လိုက်ပြီ</string>
     <string name="world_day_of_week_label">/ <xliff:g id="LABEL">%s</xliff:g></string>
@@ -377,7 +348,6 @@
     <string name="world_hours_tomorrow">မနက်ဖြန်၊ <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">မနေ့က၊ <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="next_alarm_description">နောက် နှိုးစက် တစ်ခု: <xliff:g id="ALARM_TIME">%s</xliff:g></string>
-    <string name="no_alarms">နှိုးစက် မရှိ</string>
     <string name="invalid_time">မမှန်ကန်သည့် အချိန် <xliff:g id="INVALID_HOUR">%1$d</xliff:g> : <xliff:g id="INVALID_MINUTES">%2$d</xliff:g><xliff:g id="INVALID_AMPM">%3$s</xliff:g></string>
     <string name="no_alarm_at"><xliff:g id="ALARM_TIME_HOUR">%1$d</xliff:g>:<xliff:g id="ALARM_TIME_MINUTES">%2$d</xliff:g> တွင် နှိုးစက် မရှိပါ</string>
     <string name="no_scheduled_alarms">စီစဉ်ထားသည့် နိုးစက်မရှိပါ</string>
@@ -390,7 +360,6 @@
     <plurals name="expired_timers_dismissed">
         <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> သတိပေးချက်များကို ပယ်ဖျက်လိုက်ပါပြီ</item>
     </plurals>
-    <string name="timer_deleted">အချိန်သတ်မှတ်ခြင်း ဖျက်လိုက်ပါပြီ</string>
     <string name="invalid_timer_length">မမှန်ကန်သည့် အချိန်ကိုက် အလျား</string>
     <string name="invalid_timer">မမှန်ကန်သည့် သတိပေးချက်ကို ရွေးထားသည်</string>
     <string name="no_expired_timers">အချိန်ကျော်လွန်သွားပြီဖြစ်သော သတိပေးချက်များ မရှိပါ</string>

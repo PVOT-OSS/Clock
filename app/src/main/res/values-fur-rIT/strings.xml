@@ -48,7 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Posticipazion fin aes <xliff:g id="time">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Prossime svee</string>
-    <string name="missed_alarm_has_been_deleted">La svee pierdude e je stade eliminade</string>
     <string name="timer_notifications_less_min">Al reste mancul di un minût</string>
     <string name="timer_notifications_hours"><xliff:g id="REMAINING" example="remaining">%3$s</xliff:g> <xliff:g id="HOURS" example="2 hours">%1$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="REMAINING" example="remaining">%3$s</xliff:g> <xliff:g id="MINUTES" example="2 minutes">%2$s</xliff:g></string>
@@ -57,7 +56,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="REMAINING" example="remaining">%3$s</xliff:g> <xliff:g id="MINUTES" example="2 minutes">%2$s</xliff:g> e <xliff:g id="SECONDS" example="2 seconds">%4$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="REMAINING" example="remaining">%3$s</xliff:g> <xliff:g id="HOURS" example="2 hours">%1$s</xliff:g> e <xliff:g id="SECONDS" example="2 seconds">%4$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="REMAINING" example="remaining">%3$s</xliff:g> <xliff:g id="HOURS" example="2 hours">%1$s</xliff:g> <xliff:g id="MINUTES" example="2 minutes">%2$s</xliff:g> e <xliff:g id="SECONDS" example="2 seconds">%4$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">Un minût zontât al temporizadôr, <xliff:g id="TIME" example="5 hours remaining">%1$s</xliff:g></string>
     <string name="timer_remaining_single">al reste</string>
     <string name="timer_remaining_multiple">a restin</string>
     <string-array name="alarm_set">
@@ -185,8 +183,6 @@
         <item>Scarte</item>
         <item>Regole volum</item>
     </string-array>
-    <string name="label_description">Etichete</string>
-    <string name="ringtone_description">Sunarie</string>
     <string name="menu_alarm">Svee</string>
     <string name="menu_timer">Temporizadôr</string>
     <string name="menu_clock">Orloi</string>
@@ -203,27 +199,16 @@
     <string name="sw_pause_button">Pause</string>
     <string name="sw_lap_button">Zonte zîr</string>
     <string name="sw_share_button">Condivît</string>
-    <string name="hours_label">h</string>
-    <string name="minutes_label">m</string>
-    <string name="seconds_label">s</string>
-    <string name="timer_setup_description"><xliff:g id="hours" example="1 hour">%1$s</xliff:g>, <xliff:g id="minutes" example="15 minutes">%2$s</xliff:g>, <xliff:g id="seconds" example="30 seconds">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit"># <xliff:g id="lapNumber">%d</xliff:g></string>
-    <string name="lap_number_double_digit"># <xliff:g id="lapNumber">%02d</xliff:g></string>
-    <string name="sw_share_main">Il gno timp al è <xliff:g id="time">%s</xliff:g></string>
-    <string name="sw_share_laps">Timps dai zîrs:</string>
     <string name="sw_notification_lap_number">Zîr <xliff:g id="number">%d</xliff:g></string>
     <string name="timer_add_timer">Zonte temporizadôr</string>
     <string name="timer_start">Scomence</string>
     <string name="timer_delete">Elimine</string>
-    <string name="timer_descriptive_delete">Elimine <xliff:g id="number_string">%s</xliff:g></string>
     <string name="timer_plus_one">Zonte 1 minût</string>
     <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Zonte 1 min</string>
     <string name="timer_stop">Ferme</string>
     <string name="timer_stop_all">Ferme ducj temporizadôrs</string>
     <string name="timer_reset">Azere</string>
-    <string name="timer_cancel">Anule</string>
-    <string name="timer_canceled">Temporizadôr anulât</string>
     <string name="timer_times_up">Timp scjadût</string>
     <string name="timer_multi_times_up"><xliff:g id="NUM_TIMERS" example="2">%d</xliff:g> temporizadôrs scjadûts</string>
     <string name="timer_multi_missed"><xliff:g id="number" example="2">%d</xliff:g> temporizadôrs pierdûts</string>
@@ -235,18 +220,6 @@
     <string name="hours_minutes_seconds"><xliff:g id="hours" example="2">%1$d</xliff:g>:<xliff:g id="minutes" example="3">%2$02d</xliff:g>:<xliff:g id="seconds" example="44">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="minutes" example="3">%1$d</xliff:g>:<xliff:g id="seconds" example="44">%2$02d</xliff:g></string>
     <string name="seconds"><xliff:g id="seconds" example="44">%d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>Nissun al cor tant che te.</item>
-        <item>Gjolt dai risultâts dal to lavôr.</item>
-        <item>Si sa che i androits a son svelts, ma no tant che te!</item>
-        <item>Ce fature!</item>
-        <item>Timps di drâc.</item>
-        <item>Ce velocitât portentose.</item>
-        <item>Tornìn a fâ cheste distorsion temporâl.</item>
-        <item>Juste un salt a çampe.</item>
-        <item>Tu âs un pevaroncin tal cûl.</item>
-        <item>Velocitât fotoniche.</item>
-    </string-array>
     <string name="home_label">Cjase</string>
     <string name="cities_activity_title">Citâts</string>
     <string name="clock_settings">Orloi</string>
@@ -375,8 +348,6 @@
     <string name="screensaver_settings">Impostazions salve-schermi</string>
     <string name="night_mode_title">Modalitât gnot</string>
     <string name="night_mode_summary">Schermi une vore scûr (par stanziis scuris)</string>
-    <string name="expand_alarm">Slargje la svee</string>
-    <string name="collapse_alarm">Strenç la svee</string>
     <string name="alarm_undo">disfe</string>
     <string name="alarm_deleted">Svee eliminade</string>
     <string name="world_day_of_week_label"> / <xliff:g id="label">%s</xliff:g></string>
@@ -387,7 +358,6 @@
     <string name="world_hours_tomorrow">Doman, <xliff:g id="time" example="6 hours ahead">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">Îr, <xliff:g id="time" example="4 hours behind">%1$s</xliff:g></string>
     <string name="next_alarm_description">Prossime svee: <xliff:g id="alarm_time" example="Wed 8:00am">%s</xliff:g></string>
-    <string name="no_alarms">Nissune svee</string>
     <string name="invalid_time">Ore no valide <xliff:g id="invalid_hour" example="25">%1$d</xliff:g>:<xliff:g id="invalid_minutes" example="63">%2$d</xliff:g> <xliff:g id="invalid_ampm" example="PM">%3$s</xliff:g></string>
     <string name="no_alarm_at">Nissune svee aes <xliff:g id="alarm_time_hour" example="14">%1$d</xliff:g>:<xliff:g id="alarm_time_minutes" example="23">%2$d</xliff:g></string>
     <string name="no_scheduled_alarms">Nissune svee programade</string>
@@ -401,7 +371,6 @@
         <item quantity="one">Temporizadôr sierât</item>
         <item quantity="other"><xliff:g id="number" example="5">%d</xliff:g> temporizadôrs sierâts</item>
     </plurals>
-    <string name="timer_deleted">Temporizadôr eliminât</string>
     <string name="invalid_timer_length">La durade dal temporizadôr no je valide</string>
     <string name="invalid_timer">La selezion dal temporizadôr no je valide</string>
     <string name="no_expired_timers">Nissun temporizadôr scjadût</string>

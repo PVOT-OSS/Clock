@@ -52,7 +52,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Drzemka do <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Nadchodzący alarm</string>
-    <string name="missed_alarm_has_been_deleted">Zignorowany przez Ciebie alarm został usunięty</string>
     <string name="timer_notifications_less_min">Jeszcze niecała minuta</string>
     <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
@@ -61,7 +60,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="REMAINING"> %3$s</xliff:g><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="REMAINING"> %3$s</xliff:g><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="REMAINING"> %3$s</xliff:g><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">Jedna minuta dodana do minutnika, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="timer_remaining_single">pozostała</string>
     <string name="timer_remaining_multiple">pozostało</string>
     <string-array name="alarm_set">
@@ -203,8 +201,6 @@
         <item>Odrzuć</item>
         <item>Sterowanie głośnością</item>
     </string-array>
-    <string name="label_description">Etykieta</string>
-    <string name="ringtone_description">Dzwonek</string>
     <string name="menu_alarm">Alarm</string>
     <string name="menu_timer">Minutnik</string>
     <string name="menu_clock">Zegar</string>
@@ -221,27 +217,16 @@
     <string name="sw_pause_button">Wstrzymaj</string>
     <string name="sw_lap_button">Okrążenie</string>
     <string name="sw_share_button">Udostępnij</string>
-    <string name="hours_label">g</string>
-    <string name="minutes_label">m</string>
-    <string name="seconds_label">s</string>
-    <string name="timer_setup_description"><xliff:g id="HOURS">%1$s</xliff:g>, <xliff:g id="MINUTES">%2$s</xliff:g>, <xliff:g id="SECONDS">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit">Nr <xliff:g id="LAPNUMBER">%d</xliff:g></string>
-    <string name="lap_number_double_digit">Nr <xliff:g id="LAPNUMBER">%02d</xliff:g></string>
-    <string name="sw_share_main">Mój czas to <xliff:g id="TIME">%s</xliff:g></string>
-    <string name="sw_share_laps">Czasy okrążeń:</string>
     <string name="sw_notification_lap_number">Okrążenie <xliff:g id="NUMBER">%d</xliff:g></string>
     <string name="timer_add_timer">Dodaj minutnik</string>
     <string name="timer_start">Start</string>
     <string name="timer_delete">Usuń</string>
-    <string name="timer_descriptive_delete">Usuń <xliff:g id="NUMBER_STRING">%s</xliff:g></string>
     <string name="timer_plus_one">Dodaj 1 minutę</string>
     <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Dodaj 1 min</string>
     <string name="timer_stop">Zatrzymaj</string>
     <string name="timer_stop_all">Zatrzymaj wszystkie minutniki</string>
     <string name="timer_reset">Resetuj</string>
-    <string name="timer_cancel">Anuluj</string>
-    <string name="timer_canceled">Minutnik anulowany</string>
     <string name="timer_times_up">Czas minął</string>
     <string name="timer_multi_times_up">Minutniki, których czas upłynął: <xliff:g id="NUM_TIMERS">%d</xliff:g></string>
     <string name="timer_multi_missed">Pominięte minutniki: <xliff:g id="NUMBER">%d</xliff:g></string>
@@ -253,18 +238,6 @@
     <string name="hours_minutes_seconds"><xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="MINUTES">%1$d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g></string>
     <string name="seconds"><xliff:g id="seconds" example="44">%d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>Niezły z Ciebie demon prędkości.</item>
-        <item>Ciesz się owocami pracy.</item>
-        <item>Powszechnie wiadomo, że androidy są szybkie, ale Ty zostawiasz je w tyle!</item>
-        <item>Uff.</item>
-        <item>Twoje czasy są l33t.</item>
-        <item>Niesamowita prędkość.</item>
-        <item>Jeszcze raz przenieś się w czasie.</item>
-        <item>Wciśnij gaz i wróć do przyszłości.</item>
-        <item>Prędkość to Twoje drugie imię.</item>
-        <item>Zawstydzasz światło.</item>
-    </string-array>
     <string name="home_label">Dom</string>
     <string name="cities_activity_title">Miasta</string>
     <string name="clock_settings">Zegar</string>
@@ -393,8 +366,6 @@
     <string name="screensaver_settings">Ustawienia wygaszacza ekranu</string>
     <string name="night_mode_title">Tryb nocny</string>
     <string name="night_mode_summary">Mocno przyciemniony wyświetlacz (do ciemnych pomieszczeń)</string>
-    <string name="expand_alarm">Rozwiń alarm</string>
-    <string name="collapse_alarm">Zwiń alarm</string>
     <string name="alarm_undo">cofnij</string>
     <string name="alarm_deleted">Usunięto alarm </string>
     <string name="world_day_of_week_label">/ <xliff:g id="LABEL">%s</xliff:g></string>
@@ -405,7 +376,6 @@
     <string name="world_hours_tomorrow">Jutro, <xliff:g id="time" example="6 hours ahead">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">Wczoraj, <xliff:g id="time" example="4 hours behind">%1$s</xliff:g></string>
     <string name="next_alarm_description">Następny alarm: <xliff:g id="alarm_time" example="Wed 8:00am">%s</xliff:g></string>
-    <string name="no_alarms">Brak alarmów</string>
     <string name="invalid_time">Nieprawidłowa godzina  <xliff:g id="invalid_hour" example="25">%1$d</xliff:g>:<xliff:g id="invalid_minutes" example="63">%2$d</xliff:g> <xliff:g id="invalid_ampm" example="PM">%3$s</xliff:g></string>
     <string name="no_alarm_at">Brak alarmu o <xliff:g id="alarm_time_hour" example="14">%1$d</xliff:g>:<xliff:g id="alarm_time_minutes" example="23">%2$d</xliff:g></string>
     <string name="no_scheduled_alarms">Brak zaplanowanych alarmów</string>
@@ -421,7 +391,6 @@
         <item quantity="many">Zostało odwołanych <xliff:g id="number" example="5">%d</xliff:g> minutników</item>
         <item quantity="other">Zostały odwołane <xliff:g id="number" example="5">%d</xliff:g> minutniki</item>
     </plurals>
-    <string name="timer_deleted">Minutnik został usunięty</string>
     <string name="invalid_timer_length">Nieprawidłowy czas w minutniku</string>
     <string name="invalid_timer">Wybrano nieprawidłowy minutnik</string>
     <string name="no_expired_timers">Brak wygasłych minutników</string>

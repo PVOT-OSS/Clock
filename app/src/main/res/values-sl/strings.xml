@@ -52,7 +52,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Dremež do <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Prihodnji alarm</string>
-    <string name="missed_alarm_has_been_deleted">Zamujeni alarm je izbrisan</string>
     <string name="timer_notifications_less_min">Še manj kot minuta</string>
     <string name="timer_notifications_hours"><xliff:g id="REMAINING"> %3$s</xliff:g> <xliff:g id="HOURS">%1$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="REMAINING"> %3$s</xliff:g> <xliff:g id="MINUTES">%2$s</xliff:g></string>
@@ -61,7 +60,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">Ena minuta dodana časovniku, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="timer_remaining_single">še</string>
     <string name="timer_remaining_multiple">še</string>
     <string-array name="alarm_set">
@@ -203,8 +201,6 @@
         <item>Opusti</item>
         <item>Nadziranje glasnosti</item>
     </string-array>
-    <string name="label_description">Oznaka</string>
-    <string name="ringtone_description">Melodija zvonjenja</string>
     <string name="menu_alarm">Alarm</string>
     <string name="menu_timer">Časovnik</string>
     <string name="menu_clock">Ura</string>
@@ -221,27 +217,16 @@
     <string name="sw_pause_button">Začasno ustavi</string>
     <string name="sw_lap_button">Krog</string>
     <string name="sw_share_button">Deli z drugimi</string>
-    <string name="hours_label">h</string>
-    <string name="minutes_label">m</string>
-    <string name="seconds_label">s</string>
-    <string name="timer_setup_description"><xliff:g id="HOURS">%1$s</xliff:g>, <xliff:g id="MINUTES">%2$s</xliff:g>, <xliff:g id="SECONDS">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit">Št. <xliff:g id="LAPNUMBER">%d</xliff:g></string>
-    <string name="lap_number_double_digit">Št. <xliff:g id="LAPNUMBER">%02d</xliff:g></string>
-    <string name="sw_share_main">Moj čas je <xliff:g id="TIME">%s</xliff:g></string>
-    <string name="sw_share_laps">Časi kroga:</string>
     <string name="sw_notification_lap_number"><xliff:g id="NUMBER">%d</xliff:g>. krog</string>
     <string name="timer_add_timer">Dodaj časovnik</string>
     <string name="timer_start">Začni</string>
     <string name="timer_delete">Izbriši</string>
-    <string name="timer_descriptive_delete">Izbris <xliff:g id="NUMBER_STRING">%s</xliff:g></string>
     <string name="timer_plus_one">Dodajanje 1 minute</string>
     <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Dodaj 1 min</string>
     <string name="timer_stop">Ustavi</string>
     <string name="timer_stop_all">Ustavi vse časovnike</string>
     <string name="timer_reset">Ponastavi</string>
-    <string name="timer_cancel">Prekliči</string>
-    <string name="timer_canceled">Merilnik časa je preklican</string>
     <string name="timer_times_up">Čas je potekel</string>
     <string name="timer_multi_times_up">Pretekli časovniki: <xliff:g id="NUM_TIMERS">%d</xliff:g></string>
     <string name="timer_multi_missed">Zamujenih časovnikov: <xliff:g id="NUMBER">%d</xliff:g></string>
@@ -253,18 +238,6 @@
     <string name="hours_minutes_seconds"><xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="MINUTES">%1$d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g></string>
     <string name="seconds"><xliff:g id="seconds" example="44">%d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>Hitri ste kot blisk.</item>
-        <item>Uživajte v sadovih svojega dela.</item>
-        <item>Znano je, da so Androidi hitri, vendar ste vi hitrejši.</item>
-        <item>Uf.</item>
-        <item>Tolikokrat: l33t.</item>
-        <item>Izjemna hitrost.</item>
-        <item>Dajmo še enkrat.</item>
-        <item>En skok na levo.</item>
-        <item>Imate pester izbor hitrosti.</item>
-        <item>Fotonska hitrost.</item>
-    </string-array>
     <string name="home_label">Doma</string>
     <string name="cities_activity_title">Mesta</string>
     <string name="clock_settings">Ura</string>
@@ -393,8 +366,6 @@
     <string name="screensaver_settings">Nastavitve ohranjevalnika zaslona</string>
     <string name="night_mode_title">Nočni način</string>
     <string name="night_mode_summary">Zatemnjen zaslon (za temne prostore)</string>
-    <string name="expand_alarm">Razširi budilko</string>
-    <string name="collapse_alarm">Strni budilko</string>
     <string name="alarm_undo">razveljavi</string>
     <string name="alarm_deleted">Alarm je izbrisan</string>
     <string name="world_day_of_week_label">/<xliff:g id="LABEL">%s</xliff:g></string>
@@ -405,7 +376,6 @@
     <string name="world_hours_tomorrow">Jutri, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">Včeraj, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="next_alarm_description">Naslednji alarm: <xliff:g id="ALARM_TIME">%s</xliff:g></string>
-    <string name="no_alarms">Brez opozoril</string>
     <string name="invalid_time">Neveljavna ura <xliff:g id="INVALID_HOUR">%1$d</xliff:g>.<xliff:g id="INVALID_MINUTES">%2$d</xliff:g> <xliff:g id="INVALID_AMPM">%3$s</xliff:g></string>
     <string name="no_alarm_at">Ni alarmov ob <xliff:g id="ALARM_TIME_HOUR">%1$d</xliff:g>.<xliff:g id="ALARM_TIME_MINUTES">%2$d</xliff:g></string>
     <string name="no_scheduled_alarms">Ni nastavljenih alarmov</string>
@@ -421,7 +391,6 @@
         <item quantity="few"><xliff:g id="NUMBER">%d</xliff:g> časovniki so bili opuščeni</item>
         <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> časovnikov je bilo opuščenih</item>
     </plurals>
-    <string name="timer_deleted">Časovnik je izbrisan</string>
     <string name="invalid_timer_length">Neveljavna dolžina časovnika</string>
     <string name="invalid_timer">Izbran je bil neveljaven časovnik</string>
     <string name="no_expired_timers">Ni pretečenih časovnikov</string>

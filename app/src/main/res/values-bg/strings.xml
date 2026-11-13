@@ -48,7 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Отлагане до <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Предстоящ будилник</string>
-    <string name="missed_alarm_has_been_deleted">Пропуснатият ви будилник е изтрит</string>
     <string name="timer_notifications_less_min">Остава по-малко от минута</string>
     <string name="timer_notifications_hours"><xliff:g id="REMAINING"> %3$s</xliff:g> <xliff:g id="HOURS">%1$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="REMAINING"> %3$s</xliff:g> <xliff:g id="MINUTES">%2$s</xliff:g></string>
@@ -57,7 +56,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">Към таймера е добавена една минута, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="timer_remaining_single">Остава</string>
     <string name="timer_remaining_multiple">Остават</string>
     <string-array name="alarm_set">
@@ -185,8 +183,6 @@
         <item>Отхвърляне</item>
         <item>Управление на силата на звука</item>
     </string-array>
-    <string name="label_description">Етикет</string>
-    <string name="ringtone_description">Мелодия</string>
     <string name="menu_alarm">Будилник</string>
     <string name="menu_timer">Таймер</string>
     <string name="menu_clock">Часовник</string>
@@ -203,27 +199,16 @@
     <string name="sw_pause_button">Пауза</string>
     <string name="sw_lap_button">Етап</string>
     <string name="sw_share_button">Споделяне</string>
-    <string name="hours_label">ч</string>
-    <string name="minutes_label">м</string>
-    <string name="seconds_label">с</string>
-    <string name="timer_setup_description"><xliff:g id="HOURS">%1$s</xliff:g>, <xliff:g id="MINUTES">%2$s</xliff:g>, <xliff:g id="SECONDS">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit">№ <xliff:g id="LAPNUMBER">%d</xliff:g></string>
-    <string name="lap_number_double_digit">№ <xliff:g id="LAPNUMBER">%02d</xliff:g></string>
-    <string name="sw_share_main">Времето ми е <xliff:g id="TIME">%s</xliff:g></string>
-    <string name="sw_share_laps">Междинни резултати:</string>
     <string name="sw_notification_lap_number">Етап <xliff:g id="NUMBER">%d</xliff:g></string>
     <string name="timer_add_timer">Добавяне на таймер</string>
     <string name="timer_start">Старт</string>
     <string name="timer_delete">Изтриване</string>
-    <string name="timer_descriptive_delete">Изтриване на <xliff:g id="NUMBER_STRING">%s</xliff:g></string>
     <string name="timer_plus_one">Добавяне на 1 минута</string>
     <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Добавяне на 1 мин</string>
     <string name="timer_stop">Спиране</string>
     <string name="timer_stop_all">Спиране на всички таймери</string>
     <string name="timer_reset">Нулиране</string>
-    <string name="timer_cancel">Отказ</string>
-    <string name="timer_canceled">Таймерът е анулиран</string>
     <string name="timer_times_up">Времето изтече</string>
     <string name="timer_multi_times_up"><xliff:g id="NUM_TIMERS">%d</xliff:g> таймера са изтекли</string>
     <string name="timer_multi_missed"><xliff:g id="NUMBER">%d</xliff:g> таймера са пропуснати</string>
@@ -234,18 +219,6 @@
     <string name="timer_reset_all">Нулиране на всички таймери</string>
     <string name="hours_minutes_seconds"><xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="MINUTES">%1$d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>Развивате светкавична скорост.</item>
-        <item>Радвайте се на плодовете от труда си.</item>
-        <item>Устройствата с Android са известни с бързината си, но не са бързи колкото вас!</item>
-        <item>Слава богу!</item>
-        <item>1 337 пъти.</item>
-        <item>Каква изумителна скорост!</item>
-        <item>Нека да направим отново изкривяване на времето.</item>
-        <item>Само един отскок вляво.</item>
-        <item>Демонстрирате бързина в различни аспекти.</item>
-        <item>Светлинна скорост!</item>
-    </string-array>
     <string name="home_label">Местна</string>
     <string name="cities_activity_title">Градове</string>
     <string name="clock_settings">Часовник</string>
@@ -374,8 +347,6 @@
     <string name="screensaver_settings">Настройки за скрийнсейвър</string>
     <string name="night_mode_title">Нощен режим</string>
     <string name="night_mode_summary">Много затъмнен дисплей (за тъмни стаи)</string>
-    <string name="expand_alarm">Разгъване на будилника</string>
-    <string name="collapse_alarm">Свиване на будилника</string>
     <string name="alarm_undo">отмяна</string>
     <string name="alarm_deleted">Изтрит будилник</string>
     <string name="world_day_of_week_label">/ <xliff:g id="LABEL">%s</xliff:g></string>
@@ -386,7 +357,6 @@
     <string name="world_hours_tomorrow">Утре – <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">Вчера – <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="next_alarm_description">Следващ будилник: <xliff:g id="ALARM_TIME">%s</xliff:g></string>
-    <string name="no_alarms">Няма будилници</string>
     <string name="invalid_time"><xliff:g id="INVALID_HOUR">%1$d</xliff:g>:<xliff:g id="INVALID_MINUTES">%2$d</xliff:g> <xliff:g id="INVALID_AMPM">%3$s</xliff:g> е невалиден час</string>
     <string name="no_alarm_at">Няма будилник за <xliff:g id="ALARM_TIME_HOUR">%1$d</xliff:g>:<xliff:g id="ALARM_TIME_MINUTES">%2$d</xliff:g></string>
     <string name="no_scheduled_alarms">Няма насрочени будилници</string>
@@ -400,7 +370,6 @@
         <item quantity="one">Таймерът е отхвърлен</item>
         <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> таймера са отхвърлени</item>
     </plurals>
-    <string name="timer_deleted">Таймерът е изтрит</string>
     <string name="invalid_timer_length">Невалидна продължителност на таймера</string>
     <string name="invalid_timer">Избран е невалиден таймер</string>
     <string name="no_expired_timers">Няма изтекли таймери</string>

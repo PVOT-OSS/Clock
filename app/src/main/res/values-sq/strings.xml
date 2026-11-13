@@ -48,7 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Dremit deri në <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Alarmi i ardhshëm</string>
-    <string name="missed_alarm_has_been_deleted">Alarmi i humbur u fshi</string>
     <string name="timer_notifications_less_min">Ka mbetur më pak se një minutë</string>
     <string name="timer_notifications_hours"><xliff:g id="REMAINING"> %3$s</xliff:g> <xliff:g id="HOURS">%1$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="REMAINING"> %3$s</xliff:g> <xliff:g id="MINUTES">%2$s</xliff:g></string>
@@ -57,7 +56,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">Një minutë u shtua te kohëmatësi, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="timer_remaining_single">Ka mbetur edhe</string>
     <string name="timer_remaining_multiple">Kanë mbetur edhe</string>
     <string-array name="alarm_set">
@@ -185,8 +183,6 @@
         <item>Ndalo alarmin</item>
         <item>Kontrollo volumin</item>
     </string-array>
-    <string name="label_description">Emërtimi</string>
-    <string name="ringtone_description">Zilja</string>
     <string name="menu_alarm">Alarmi</string>
     <string name="menu_timer">Kohëmatësi</string>
     <string name="menu_clock">Ora</string>
@@ -203,27 +199,16 @@
     <string name="sw_pause_button">Ndërprit</string>
     <string name="sw_lap_button">Xhiro</string>
     <string name="sw_share_button">Shpërnda</string>
-    <string name="hours_label">o</string>
-    <string name="minutes_label">m</string>
-    <string name="seconds_label">s</string>
-    <string name="timer_setup_description"><xliff:g id="HOURS">%1$s</xliff:g>, <xliff:g id="MINUTES">%2$s</xliff:g>, <xliff:g id="SECONDS">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit"># <xliff:g id="LAPNUMBER">%d</xliff:g></string>
-    <string name="lap_number_double_digit"># <xliff:g id="LAPNUMBER">%02d</xliff:g></string>
-    <string name="sw_share_main">Koha ime është <xliff:g id="TIME">%s</xliff:g></string>
-    <string name="sw_share_laps">Kohët e xhiros:</string>
     <string name="sw_notification_lap_number">Xhiroja <xliff:g id="NUMBER">%d</xliff:g></string>
     <string name="timer_add_timer">Shto kohëmatës</string>
     <string name="timer_start">Fillo</string>
     <string name="timer_delete">Fshi</string>
-    <string name="timer_descriptive_delete">Fshi <xliff:g id="NUMBER_STRING">%s</xliff:g></string>
     <string name="timer_plus_one">Shto 1 minutë</string>
     <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Shto 1 minutë</string>
     <string name="timer_stop">Ndalo</string>
     <string name="timer_stop_all">Ndalo të gjithë kohëmatësit</string>
     <string name="timer_reset">Rivendos</string>
-    <string name="timer_cancel">Anulo</string>
-    <string name="timer_canceled">Kohëmatësi u anulua</string>
     <string name="timer_times_up">Koha mbaroi</string>
     <string name="timer_multi_times_up"><xliff:g id="NUM_TIMERS">%d</xliff:g> kohëmatës kanë skaduar</string>
     <string name="timer_multi_missed"><xliff:g id="NUMBER">%d</xliff:g> kohëmatës të humbur</string>
@@ -234,18 +219,6 @@
     <string name="timer_reset_all">Rivendos të gjithë kohëmatësit</string>
     <string name="hours_minutes_seconds"><xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="MINUTES">%1$d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>Je mjaft i shpejtë.</item>
-        <item>Shijo frytet e punës.</item>
-        <item>Androidët njihen për të shpejtë, por jo kaq të shpejtë sa ti!</item>
-        <item>Phu!</item>
-        <item>L33t herë.</item>
-        <item>Një shpejtësi e jashtëzakonshme.</item>
-        <item>Ta kalojmë edhe një herë shpejtësinë e zërit!</item>
-        <item>Edhe një kthesë në të majtë.</item>
-        <item>E ke në gjak shpejtësinë.</item>
-        <item>Shpejtësi fotonike.</item>
-    </string-array>
     <string name="home_label">Faqja bazë</string>
     <string name="cities_activity_title">Qytetet</string>
     <string name="clock_settings">Ora</string>
@@ -374,8 +347,6 @@
     <string name="screensaver_settings">Cilësimet e mbrojtësit të ekranit</string>
     <string name="night_mode_title">Modaliteti i natës</string>
     <string name="night_mode_summary">Ekran shumë i zbehtë (për dhoma të errëta)</string>
-    <string name="expand_alarm">Zgjero alarmin</string>
-    <string name="collapse_alarm">Shpalos alarmin</string>
     <string name="alarm_undo">zhbëj</string>
     <string name="alarm_deleted">Alarmi u fshi</string>
     <string name="world_day_of_week_label">/ <xliff:g id="LABEL">%s</xliff:g></string>
@@ -386,7 +357,6 @@
     <string name="world_hours_tomorrow">Nesër, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">Dje, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="next_alarm_description">Alarmi tjetër: <xliff:g id="ALARM_TIME">%s</xliff:g></string>
-    <string name="no_alarms">Nuk ka alarme</string>
     <string name="invalid_time"><xliff:g id="INVALID_HOUR">%1$d</xliff:g>:<xliff:g id="INVALID_MINUTES">%2$d</xliff:g> <xliff:g id="INVALID_AMPM">%3$s</xliff:g> është orë e pavlefshme</string>
     <string name="no_alarm_at">Nuk ka asnjë alarm në <xliff:g id="ALARM_TIME_HOUR">%1$d</xliff:g>:<xliff:g id="ALARM_TIME_MINUTES">%2$d</xliff:g></string>
     <string name="no_scheduled_alarms">Nuk ka asnjë alarm të planifikuar</string>
@@ -400,7 +370,6 @@
         <item quantity="one">Kohëmatësi u hoq</item>
         <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> kohëmatës u hoqën</item>
     </plurals>
-    <string name="timer_deleted">Kohëmatësi u fshi</string>
     <string name="invalid_timer_length">Gjatësia e kohëmatësit e pavlefshme</string>
     <string name="invalid_timer">Është zgjedhur kohëmatës i pavlefshëm</string>
     <string name="no_expired_timers">Nuk ka kohëmatës të skaduar</string>

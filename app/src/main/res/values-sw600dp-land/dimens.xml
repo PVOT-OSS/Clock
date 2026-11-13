@@ -20,7 +20,6 @@
     <dimen name="time_margin_top">32dip</dimen>
 
     <!-- Size of margin for circles. -->
-    <dimen name="circle_margin_top">0dp</dimen>
 
     <!-- The maximum size of the font for the time in widgets. -->
     <dimen name="widget_max_clock_font_size">90dp</dimen>

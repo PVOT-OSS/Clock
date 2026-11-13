@@ -52,7 +52,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Повтор в <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Следующий будильник</string>
-    <string name="missed_alarm_has_been_deleted">Пропущенный будильник был удален</string>
     <string name="timer_notifications_less_min">Осталось: меньше минуты</string>
     <string name="timer_notifications_hours"><xliff:g id="REMAINING"> %3$s</xliff:g> <xliff:g id="HOURS">%1$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="REMAINING"> %3$s</xliff:g> <xliff:g id="MINUTES">%2$s</xliff:g></string>
@@ -61,7 +60,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="REMAINING"> %3$s</xliff:g>: <xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="REMAINING"> %3$s</xliff:g>: <xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="REMAINING"> %3$s</xliff:g>: <xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="MINUTES"> %2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">К таймеру добавлена одна минута, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="timer_remaining_single">Осталось:</string>
     <string name="timer_remaining_multiple">Осталось:</string>
     <string-array name="alarm_set">
@@ -203,8 +201,6 @@
         <item>Выключить</item>
         <item>Изменить громкость</item>
     </string-array>
-    <string name="label_description">Ярлык</string>
-    <string name="ringtone_description">Рингтон</string>
     <string name="menu_alarm">Будильник</string>
     <string name="menu_timer">Таймер</string>
     <string name="menu_clock">Часы</string>
@@ -221,27 +217,16 @@
     <string name="sw_pause_button">Приостановить</string>
     <string name="sw_lap_button">Круг</string>
     <string name="sw_share_button">Отправить</string>
-    <string name="hours_label">ч.</string>
-    <string name="minutes_label">м.</string>
-    <string name="seconds_label">с.</string>
-    <string name="timer_setup_description"><xliff:g id="HOURS">%1$s</xliff:g>, <xliff:g id="MINUTES">%2$s</xliff:g>, <xliff:g id="SECONDS">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit"><xliff:g id="LAPNUMBER">%d</xliff:g></string>
-    <string name="lap_number_double_digit"><xliff:g id="LAPNUMBER">%02d</xliff:g></string>
-    <string name="sw_share_main">Мое время: <xliff:g id="TIME">%s</xliff:g></string>
-    <string name="sw_share_laps">Время круга</string>
     <string name="sw_notification_lap_number">Круг <xliff:g id="NUMBER">%d</xliff:g></string>
     <string name="timer_add_timer">Добавить таймер</string>
     <string name="timer_start">Старт</string>
     <string name="timer_delete">Удалить</string>
-    <string name="timer_descriptive_delete">Удалить <xliff:g id="NUMBER_STRING">%s</xliff:g></string>
     <string name="timer_plus_one">Добавить 1 минуту</string>
     <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Добавить 1 мин.</string>
     <string name="timer_stop">Стоп</string>
     <string name="timer_stop_all">Остановить все таймеры</string>
     <string name="timer_reset">Сбросить</string>
-    <string name="timer_cancel">Отмена</string>
-    <string name="timer_canceled">Таймер удален</string>
     <string name="timer_times_up">Время вышло</string>
     <string name="timer_multi_times_up">Завершено таймеров: <xliff:g id="NUM_TIMERS">%d</xliff:g></string>
     <string name="timer_multi_missed">Пропущено таймеров: <xliff:g id="NUMBER">%d</xliff:g></string>
@@ -253,18 +238,6 @@
     <string name="hours_minutes_seconds"><xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="MINUTES">%1$d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g></string>
     <string name="seconds"><xliff:g id="seconds" example="44">%d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>Да вы просто Шумахер!</item>
-        <item>Вы славно потрудились!</item>
-        <item>Вы даже быстрее, чем Android!</item>
-        <item>Уф!</item>
-        <item>L33t раз(а)</item>
-        <item>Вот это скорость!</item>
-        <item>Искажение времени – то, что нам нужно!</item>
-        <item>Прыжок влево</item>
-        <item>Вы времени даром не теряете!</item>
-        <item>Быстрее света!</item>
-    </string-array>
     <string name="home_label">Дома</string>
     <string name="cities_activity_title">Города</string>
     <string name="clock_settings">Часы</string>
@@ -393,8 +366,6 @@
     <string name="screensaver_settings">Настройки заставки</string>
     <string name="night_mode_title">Ночной режим</string>
     <string name="night_mode_summary">Тусклый дисплей (для темных помещений)</string>
-    <string name="expand_alarm">Развернуть</string>
-    <string name="collapse_alarm">Свернуть</string>
     <string name="alarm_undo">отмена</string>
     <string name="alarm_deleted">Будильник удален</string>
     <string name="world_day_of_week_label">/<xliff:g id="LABEL">%s</xliff:g></string>
@@ -405,7 +376,6 @@
     <string name="world_hours_tomorrow">Завтра, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">Вчера, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="next_alarm_description">Следующий будильник: <xliff:g id="ALARM_TIME">%s</xliff:g></string>
-    <string name="no_alarms">Нет будильников</string>
     <string name="invalid_time">Время (<xliff:g id="INVALID_HOUR">%1$d</xliff:g>:<xliff:g id="INVALID_MINUTES">%2$d</xliff:g> <xliff:g id="INVALID_AMPM">%3$s</xliff:g>) указано неверно</string>
     <string name="no_alarm_at">На <xliff:g id="ALARM_TIME_HOUR">%1$d</xliff:g>:<xliff:g id="ALARM_TIME_MINUTES">%2$d</xliff:g> не установлено ни одного будильника</string>
     <string name="no_scheduled_alarms">Будильники не установлены</string>
@@ -421,7 +391,6 @@
         <item quantity="many"><xliff:g id="NUMBER">%d</xliff:g> таймеров выключено</item>
         <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> таймера выключено</item>
     </plurals>
-    <string name="timer_deleted">Таймер удален</string>
     <string name="invalid_timer_length">Недопустимая длительность таймера</string>
     <string name="invalid_timer">Выбран недопустимый таймер</string>
     <string name="no_expired_timers">Нет завершенных таймеров</string>

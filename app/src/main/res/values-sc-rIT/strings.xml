@@ -37,7 +37,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Post-ponende finas a is <xliff:g id="time">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Isvèllia imbeniente</string>
-    <string name="missed_alarm_has_been_deleted">S\'isvèllia chi as pèrdidu est istada cantzellada</string>
     <string name="timer_notifications_less_min">Abarrat prus pagu de unu minutu</string>
     <string-array name="alarm_set">
         <item>Isvèllia impostada pro prus pagu de unu minutu dae immoe.</item>
@@ -143,8 +142,6 @@
         <item>Iscarta</item>
         <item>Control volume</item>
     </string-array>
-    <string name="label_description">Eticheta</string>
-    <string name="ringtone_description">Soneria</string>
     <string name="menu_alarm">Isvèllia</string>
     <string name="menu_timer">Contadore de tempus</string>
     <string name="menu_clock">Rellògiu</string>
@@ -160,35 +157,16 @@
     <string name="sw_start_button">Cumintza</string>
     <string name="sw_lap_button">Agiunghe giru</string>
     <string name="sw_share_button">Cumpartzidura</string>
-    <string name="hours_label">o</string>
-    <string name="minutes_label">m</string>
-    <string name="seconds_label">s</string>
-    <string name="sw_share_main">Su tempus miu est <xliff:g id="time">%s</xliff:g></string>
-    <string name="sw_share_laps">Tempus de giru:</string>
     <string name="sw_notification_lap_number">Giru <xliff:g id="number">%d</xliff:g></string>
     <string name="timer_add_timer">Agiunghe contadore de tempus</string>
     <string name="timer_start">Cumintza</string>
     <string name="timer_delete">Cantzella</string>
-    <string name="timer_descriptive_delete">Cantzella <xliff:g id="number_string">%s</xliff:g></string>
     <string name="timer_plus_one">Agiunghe 1 minutu</string>
     <string name="timer_plus_1_min">Agiunghe 1 min</string>
     <string name="timer_stop">Firma·ddu</string>
     <string name="timer_reset">Torra a impostare</string>
-    <string name="timer_cancel">Annulla</string>
     <string name="timer_times_up">Tempus agabbadu</string>
     <string name="timer_notification_label">Contadore de tempus</string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>Nemos tenet sa lestresa tua.</item>
-        <item>Gosa·ti sa bravesa chi as tentu.</item>
-        <item>Is Andròides sunt connotos pro èssere lestros, ma non che a tue!</item>
-        <item>Uff.</item>
-        <item>L33t bortas.</item>
-        <item>Arratza de lestresa.</item>
-        <item>Ajò ca torramus a brincare in su tempus.</item>
-        <item>Isceti unu brincu fache a manca.</item>
-        <item>Tenes unu muntone de cosas de fàghere.</item>
-        <item>Lestresa fotònica.</item>
-    </string-array>
     <string name="home_label">Pàgina printzipale</string>
     <string name="cities_activity_title">Tzitades</string>
     <string name="clock_settings">Rellògiu</string>
@@ -296,13 +274,10 @@
     <string name="timers_in_use"><xliff:g id="number" example="7">%d</xliff:g> contadores de tempus</string>
     <string name="night_mode_title">Modalidade noturna</string>
     <string name="night_mode_summary">Ischermu oscuru a beru (pro logos oscuros)</string>
-    <string name="expand_alarm">Ismànnia isvèllia</string>
-    <string name="collapse_alarm">Mìnima isvèllia</string>
     <string name="alarm_undo">annulla</string>
     <string name="alarm_deleted">Isvèllia cantzellada</string>
     <string name="world_day_of_week_label"> / <xliff:g id="label">%s</xliff:g></string>
     <string name="next_alarm_description">Isvèllia imbeniente: <xliff:g id="alarm_time" example="Wed 8:00am">%s</xliff:g></string>
-    <string name="no_alarms">Peruna isvèllia</string>
     <string name="no_scheduled_alarms">Peruna isvèllia programmada</string>
     <string name="no_label_specified">Peruna eticheta ispetzificada</string>
     <string name="no_alarms_with_label">Peruna isvèllia cuntenet s\'eticheta</string>
@@ -310,7 +285,6 @@
     <string name="alarm_is_dismissed">Isvèllia de is<xliff:g id="alarm_time" example="14:20">%s</xliff:g> iscartada</string>
     <string name="alarm_is_set">S\'isvèllia est impostada pro is <xliff:g id="alarm_time" example="14:20">%s</xliff:g></string>
     <string name="timer_created">Contadore de tempus creadu</string>
-    <string name="timer_deleted">Contadore de tempus cantzelladu</string>
     <string name="invalid_timer_length">Longària de contadore de tempus non bàlida</string>
     <string name="alarm_cant_be_dismissed_still_more_than_24_hours_away">S\'isvèllia de is <xliff:g id="alarm_time" example="14:20">%s</xliff:g> non faghet ancora a dd\'iscartare, ca mancant ancora prus de 24 oras</string>
     <string name="dismiss_alarm">Iscarta isvèllia</string>

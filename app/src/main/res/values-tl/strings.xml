@@ -48,7 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Nag-i-snooze hanggang <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Paparating na alarm</string>
-    <string name="missed_alarm_has_been_deleted">Na-delete ang iyong nakaligtaang alarm</string>
     <string name="timer_notifications_less_min">Wala nang isang minuto ang natitira</string>
     <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
@@ -57,7 +56,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">Nagdagdag ng isang minuto sa timer, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="timer_remaining_single">natitira</string>
     <string name="timer_remaining_multiple">ang natitira</string>
     <string-array name="alarm_set">
@@ -185,8 +183,6 @@
         <item>I-dismiss</item>
         <item>Kontrolin ang volume</item>
     </string-array>
-    <string name="label_description">Label</string>
-    <string name="ringtone_description">Ringtone</string>
     <string name="menu_alarm">Alarm</string>
     <string name="menu_timer">Timer</string>
     <string name="menu_clock">Orasan</string>
@@ -203,27 +199,16 @@
     <string name="sw_pause_button">I-pause</string>
     <string name="sw_lap_button">Lap</string>
     <string name="sw_share_button">Ibahagi</string>
-    <string name="hours_label">o</string>
-    <string name="minutes_label">m</string>
-    <string name="seconds_label">s</string>
-    <string name="timer_setup_description"><xliff:g id="HOURS">%1$s</xliff:g>, <xliff:g id="MINUTES">%2$s</xliff:g>, <xliff:g id="SECONDS">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit"># <xliff:g id="LAPNUMBER">%d</xliff:g></string>
-    <string name="lap_number_double_digit"># <xliff:g id="LAPNUMBER">%02d</xliff:g></string>
-    <string name="sw_share_main">Ang aking oras ay <xliff:g id="TIME">%s</xliff:g></string>
-    <string name="sw_share_laps">Mga lap time:</string>
     <string name="sw_notification_lap_number">Lap <xliff:g id="NUMBER">%d</xliff:g></string>
     <string name="timer_add_timer">Magdagdag ng Timer</string>
     <string name="timer_start">Magsimula</string>
     <string name="timer_delete">I-delete</string>
-    <string name="timer_descriptive_delete">I-delete ang <xliff:g id="NUMBER_STRING">%s</xliff:g></string>
     <string name="timer_plus_one">Magdagdag ng 1 minuto</string>
     <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Magdagdag ng 1 min</string>
     <string name="timer_stop">Ihinto</string>
     <string name="timer_stop_all">Ihinto ang lahat ng timer</string>
     <string name="timer_reset">I-reset</string>
-    <string name="timer_cancel">Kanselahin</string>
-    <string name="timer_canceled">Kinansela ang timer</string>
     <string name="timer_times_up">Oras na</string>
     <string name="timer_multi_times_up"><xliff:g id="NUM_TIMERS">%d</xliff:g> (na) timer, nag-expire</string>
     <string name="timer_multi_missed"><xliff:g id="NUMBER">%d</xliff:g> (na) napalampas na timer</string>
@@ -234,18 +219,6 @@
     <string name="timer_reset_all">I-reset lahat ng timer</string>
     <string name="hours_minutes_seconds"><xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="MINUTES">%1$d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>Napakabilis mo naman.</item>
-        <item>I-enjoy ang mga pinagsikapan mo.</item>
-        <item>Kilalang mabilis ang mga Android, ngunit hindi kasing bilis mo!</item>
-        <item>Phew.</item>
-        <item>L33t times.</item>
-        <item>Lubhang napakabilis.</item>
-        <item>Mag-time warp tayo ulit.</item>
-        <item>Isang talon lang pakaliwa.</item>
-        <item>Mahilig kang magmadali.</item>
-        <item>Kasing bilis ng liwanag.</item>
-    </string-array>
     <string name="home_label">Local</string>
     <string name="cities_activity_title">Mga Lungsod</string>
     <string name="clock_settings">Orasan</string>
@@ -374,8 +347,6 @@
     <string name="screensaver_settings">Mga setting ng screen saver</string>
     <string name="night_mode_title">Night mode</string>
     <string name="night_mode_summary">Napakadilim na display (para sa madidilim na kuwarto)</string>
-    <string name="expand_alarm">Alarm sa pagpalawak</string>
-    <string name="collapse_alarm">Alarma sa pagtiklop</string>
     <string name="alarm_undo">i-undo</string>
     <string name="alarm_deleted">Na-delete ang alarm</string>
     <string name="world_day_of_week_label">/ <xliff:g id="LABEL">%s</xliff:g></string>
@@ -386,7 +357,6 @@
     <string name="world_hours_tomorrow">Bukas, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">Kahapon, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="next_alarm_description">Susunod na alarma: <xliff:g id="ALARM_TIME">%s</xliff:g></string>
-    <string name="no_alarms">Walang Mga Alarm</string>
     <string name="invalid_time">Di-wastong oras <xliff:g id="INVALID_HOUR">%1$d</xliff:g>:<xliff:g id="INVALID_MINUTES">%2$d</xliff:g> <xliff:g id="INVALID_AMPM">%3$s</xliff:g></string>
     <string name="no_alarm_at">Walang alarm sa <xliff:g id="ALARM_TIME_HOUR">%1$d</xliff:g>:<xliff:g id="ALARM_TIME_MINUTES">%2$d</xliff:g></string>
     <string name="no_scheduled_alarms">Walang mga naka-iskedyul na alarm</string>
@@ -400,7 +370,6 @@
         <item quantity="one"><xliff:g id="NUMBER">%d</xliff:g> timer ang na-dismiss</item>
         <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> na timer ang na-dismiss</item>
     </plurals>
-    <string name="timer_deleted">Na-delete ang timer</string>
     <string name="invalid_timer_length">Hindi wastong tagal ng timer</string>
     <string name="invalid_timer">Invalid ang timer na napili</string>
     <string name="no_expired_timers">Walang nag-expire nang timer</string>

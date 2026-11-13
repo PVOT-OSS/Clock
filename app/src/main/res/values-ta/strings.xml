@@ -48,7 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until"><xliff:g id="TIME">%s</xliff:g> வரை உறக்கநிலையில் வை</string>
     <string name="alarm_alert_predismiss_title">அடுத்த அலாரம்</string>
-    <string name="missed_alarm_has_been_deleted">உங்கள் தவறிய அலாரம் நீக்கப்பட்டது</string>
     <string name="timer_notifications_less_min">ஒரு நிமிடத்திற்கும் குறைவான நேரமே மீதமுள்ளது</string>
     <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
@@ -57,7 +56,6 @@
     <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
     <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_accessibility_one_minute_added">டைமரில் ஒரு நிமிடம் சேர்க்கப்பட்டது, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="timer_remaining_single">மீதமுள்ளது</string>
     <string name="timer_remaining_multiple">மீதமுள்ளன</string>
     <string-array name="alarm_set">
@@ -185,8 +183,6 @@
         <item>நிராகரி</item>
         <item>ஒலியைக் கட்டுப்படுத்து</item>
     </string-array>
-    <string name="label_description">லேபிள்</string>
-    <string name="ringtone_description">ரிங்டோன்</string>
     <string name="menu_alarm">அலாரம்</string>
     <string name="menu_timer">டைமர்</string>
     <string name="menu_clock">கடிகாரம்</string>
@@ -203,27 +199,16 @@
     <string name="sw_pause_button">இடைநிறுத்து</string>
     <string name="sw_lap_button">தடம்</string>
     <string name="sw_share_button">பகிர்</string>
-    <string name="hours_label">ம</string>
-    <string name="minutes_label">நி</string>
-    <string name="seconds_label">வி</string>
-    <string name="timer_setup_description"><xliff:g id="HOURS">%1$s</xliff:g>, <xliff:g id="MINUTES">%2$s</xliff:g>, <xliff:g id="SECONDS">%3$s</xliff:g></string>
-    <string name="lap_number_single_digit"># <xliff:g id="LAPNUMBER">%d</xliff:g></string>
-    <string name="lap_number_double_digit"># <xliff:g id="LAPNUMBER">%02d</xliff:g></string>
-    <string name="sw_share_main">எனது நேரம் <xliff:g id="TIME">%s</xliff:g></string>
-    <string name="sw_share_laps">தட நேரங்கள்:</string>
     <string name="sw_notification_lap_number"><xliff:g id="NUMBER">%d</xliff:g> தடம்</string>
     <string name="timer_add_timer">டைமரைச் சேர்</string>
     <string name="timer_start">தொடங்கு</string>
     <string name="timer_delete">நீக்கு</string>
-    <string name="timer_descriptive_delete"><xliff:g id="NUMBER_STRING">%s</xliff:g>ஐ நீக்கு</string>
     <string name="timer_plus_one">1 நிமிடத்தைச் சேர்</string>
     <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">1 நிமிடம் சேர்</string>
     <string name="timer_stop">நிறுத்து</string>
     <string name="timer_stop_all">எல்லா டைமர்களையும் நிறுத்து</string>
     <string name="timer_reset">மீட்டமை</string>
-    <string name="timer_cancel">ரத்துசெய்</string>
-    <string name="timer_canceled">டைமர் ரத்துசெய்யப்பட்டது</string>
     <string name="timer_times_up">நேரம் முடிந்தது</string>
     <string name="timer_multi_times_up"><xliff:g id="NUM_TIMERS">%d</xliff:g> டைமர்கள் முடிந்துவிட்டன</string>
     <string name="timer_multi_missed"><xliff:g id="NUMBER">%d</xliff:g> டைமர்கள் தவறவிடப்பட்டன</string>
@@ -235,18 +220,6 @@
     <string name="hours_minutes_seconds"><xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g></string>
     <string name="minutes_seconds"><xliff:g id="MINUTES">%1$d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g></string>
     <string name="seconds"><xliff:g id="seconds" example="44">%d</xliff:g></string>
-    <string-array name="sw_share_strings" translatable="true">
-        <item>நீவிர் மிக விரைவாளி.</item>
-        <item>நின் உழைப்பின் பயனைத் துய்.</item>
-        <item>ஆண்ட்ராய்டு விரைவானதென்பர், ஆனால் நின்னளவு விரையாது!</item>
-        <item>அப்பாடா.</item>
-        <item>வித்தகக்காலம்.</item>
-        <item>எத்துணை வியத்தகு விரைவு.</item>
-        <item>மீண்டுங்காலச்சுருள் செய்வோம்.</item>
-        <item>இடப்புறம் ஒரு தாவலே.</item>
-        <item>நினக்கு விரைவு இனிக்கும்.</item>
-        <item>ஒளிரைவு.</item>
-    </string-array>
     <string name="home_label">தாய்நாடு</string>
     <string name="cities_activity_title">நகரங்கள்</string>
     <string name="clock_settings">கடிகாரம்</string>
@@ -375,8 +348,6 @@
     <string name="screensaver_settings">ஸ்கிரீன் சேவர் அமைப்புகள்</string>
     <string name="night_mode_title">இரவுப் பயன்முறை</string>
     <string name="night_mode_summary">மிகவும் மங்கலான காட்சி (இருண்ட அறைகளுக்கானது)</string>
-    <string name="expand_alarm">அலாரத்தை விரிவாக்கு</string>
-    <string name="collapse_alarm">அலாரத்தைச் சுருக்கு</string>
     <string name="alarm_undo">செயல்தவிர்</string>
     <string name="alarm_deleted">அலாரம் நீக்கப்பட்டது</string>
     <string name="world_day_of_week_label">/ <xliff:g id="LABEL">%s</xliff:g></string>
@@ -387,7 +358,6 @@
     <string name="world_hours_tomorrow">நாளை, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="world_hours_yesterday">நேற்று, <xliff:g id="TIME">%1$s</xliff:g></string>
     <string name="next_alarm_description">அடுத்த அலாரம்: <xliff:g id="ALARM_TIME">%s</xliff:g></string>
-    <string name="no_alarms">அலாரங்கள் இல்லை</string>
     <string name="invalid_time">தவறான நேரம் <xliff:g id="INVALID_HOUR">%1$d</xliff:g>:<xliff:g id="INVALID_MINUTES">%2$d</xliff:g> <xliff:g id="INVALID_AMPM">%3$s</xliff:g></string>
     <string name="no_alarm_at"><xliff:g id="ALARM_TIME_HOUR">%1$d</xliff:g>:<xliff:g id="ALARM_TIME_MINUTES">%2$d</xliff:g>க்கு அலாரம் எதுவுமில்லை</string>
     <string name="no_scheduled_alarms">அலாரங்கள் எதுவும் அமைக்கப்படவில்லை</string>
@@ -401,7 +371,6 @@
         <item quantity="one">டைமர் நிராகரிக்கப்பட்டது</item>
         <item quantity="other"><xliff:g id="NUMBER">%d</xliff:g> டைமர்கள் நிராகரிக்கப்பட்டன</item>
     </plurals>
-    <string name="timer_deleted">டைமர் நீக்கப்பட்டது</string>
     <string name="invalid_timer_length">தவறான டைமர் நீளம்</string>
     <string name="invalid_timer">தவறான டைமர் தேர்ந்தெடுக்கப்பட்டது</string>
     <string name="no_expired_timers">டைமர்கள் எதுவும் காலாவதியாகவில்லை</string>

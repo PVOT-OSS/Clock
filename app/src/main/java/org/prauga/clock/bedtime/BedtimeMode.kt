@@ -12,8 +12,8 @@ import android.content.Context
 import android.net.Uri
 import android.os.Build
 import android.service.notification.Condition
-import android.util.Log
 import org.prauga.clock.DeskClock
+import org.prauga.clock.LogUtils
 import org.prauga.clock.R
 
 object BedtimeMode {
@@ -42,7 +42,7 @@ object BedtimeMode {
             )
         } catch (e: RuntimeException) {
             // Do Not Disturb is a convenience here; never take the alarm process down for it.
-            Log.w("BedtimeMode", "Could not set bedtime mode", e)
+            LogUtils.w("Could not set bedtime mode: %s", e)
         }
     }
 

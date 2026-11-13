@@ -3,19 +3,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.prauga.clock.settings
+package org.prauga.clock.settings.ui
 
-import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
-import android.database.ContentObserver
-import android.hardware.Sensor
-import android.hardware.SensorManager
-import android.media.AudioManager
-import android.os.Handler
-import android.os.Looper
-import android.os.Vibrator
 import android.provider.Settings
 import androidx.annotation.ArrayRes
 import androidx.annotation.StringRes
@@ -27,11 +18,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -41,8 +29,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
-import androidx.core.content.edit
 import androidx.lifecycle.compose.LifecycleResumeEffect
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.prauga.pvot.coreui.UiState
 import com.prauga.pvot.designsystem.components.PvotDialog
 import com.prauga.pvot.designsystem.components.PvotDialogAction
 import com.prauga.pvot.designsystem.components.PvotDialogActionStyle
@@ -53,19 +43,17 @@ import com.prauga.pvot.designsystem.components.list.PvotPreferenceRow
 import com.prauga.pvot.designsystem.components.list.PvotSwitchRow
 import com.prauga.pvot.designsystem.components.slider.PvotSlider
 import com.prauga.pvot.designsystem.theme.PvotSpacing
-import kotlinx.coroutines.delay
 import org.prauga.clock.R
-import org.prauga.clock.RingtonePreviewKlaxon
 import org.prauga.clock.ScreensaverActivity
 import org.prauga.clock.Utils
 import org.prauga.clock.alarms.AlarmGestures
-import org.prauga.clock.alarms.AlarmsOff
 import org.prauga.clock.alarms.Sunrise
 import org.prauga.clock.common.ChoiceSheet
 import org.prauga.clock.common.SubScreen
 import org.prauga.clock.data.DataModel
 import org.prauga.clock.events.Events
 import org.prauga.clock.ringtone.RingtonePickerActivity
+import org.prauga.clock.settings.ScreensaverSettingsActivity
 import org.prauga.clock.settings.SettingsActivity.Companion.KEY_ALARM_CRESCENDO
 import org.prauga.clock.settings.SettingsActivity.Companion.KEY_ALARM_SNOOZE
 import org.prauga.clock.settings.SettingsActivity.Companion.KEY_AUTO_HOME_CLOCK
@@ -79,6 +67,8 @@ import org.prauga.clock.settings.SettingsActivity.Companion.KEY_TIMER_CRESCENDO
 import org.prauga.clock.settings.SettingsActivity.Companion.KEY_TIMER_VIBRATE
 import org.prauga.clock.settings.SettingsActivity.Companion.KEY_VOLUME_BUTTONS
 import org.prauga.clock.settings.SettingsActivity.Companion.KEY_WEEK_START
+import org.prauga.clock.settings.data.AlarmVolume
+import org.prauga.clock.settings.data.SettingsRepository
 
 internal class ListSetting(
     val key: String,
@@ -88,41 +78,37 @@ internal class ListSetting(
     val default: String,
 )
 
-// Device-protected so alarms can read the settings before the first unlock.
-internal fun settingsPrefs(context: Context): SharedPreferences {
-    val storage = context.createDeviceProtectedStorageContext()
-    return storage.getSharedPreferences("${storage.packageName}_preferences", Context.MODE_PRIVATE)
+@Composable
+fun SettingsScreen(onBack: () -> Unit, viewModel: SettingsViewModel = settingsViewModel()) {
+    val state by viewModel.state.collectAsStateWithLifecycle()
+    LifecycleResumeEffect(Unit) {
+        viewModel.onEvent(SettingsEvent.Refresh)
+        onPauseOrDispose {}
+    }
+    val content = (state as? UiState.Success)?.data ?: return
+    SettingsBody(content, onBack, viewModel::onEvent)
 }
 
 @Composable
-fun SettingsScreen(onBack: () -> Unit) {
+internal fun settingsViewModel(): SettingsViewModel {
+    val context = LocalContext.current.applicationContext
+    return viewModel { SettingsViewModel(SettingsRepository(context), DataModel.getDataModel()) }
+}
+
+@Composable
+private fun SettingsBody(
+    content: SettingsContent,
+    onBack: () -> Unit,
+    onEvent: (SettingsEvent) -> Unit,
+) {
     val context = LocalContext.current
-    val prefs = remember { settingsPrefs(context) }
-    val model = DataModel.getDataModel()
-    var version by remember { mutableIntStateOf(0) }
-    DisposableEffect(prefs) {
-        val listener = SharedPreferences.OnSharedPreferenceChangeListener { _, _ -> version++ }
-        prefs.registerOnSharedPreferenceChangeListener(listener)
-        onDispose { prefs.unregisterOnSharedPreferenceChangeListener(listener) }
-    }
-    LifecycleResumeEffect(Unit) {
-        version++
-        onPauseOrDispose {}
-    }
     var open by remember { mutableStateOf<ListSetting?>(null) }
     var shown by remember { mutableStateOf<ListSetting?>(null) }
     var confirmOff by remember { mutableStateOf(false) }
 
-    val hasMotion = remember {
-        context
-            .getSystemService(SensorManager::class.java)
-            .getDefaultSensor(Sensor.TYPE_ACCELEROMETER) != null
-    }
-    val hasVibrator = remember {
-        context.getSystemService(Vibrator::class.java)?.hasVibrator() == true
-    }
-    val zones = remember { model.timeZones }
-    val firstDay = model.weekdayOrder.calendarDays[0].toString()
+    val hasMotion = content.hasMotionSensor
+    val hasVibrator = content.hasVibrator
+    val firstDay = content.firstDayOfWeek
 
     val clockStyle =
         list(
@@ -136,8 +122,8 @@ fun SettingsScreen(onBack: () -> Unit) {
         ListSetting(
             KEY_HOME_TZ,
             R.string.home_time_zone,
-            zones.timeZoneNames.map { it.toString() },
-            zones.timeZoneIds.map { it.toString() },
+            content.zoneNames,
+            content.zoneIds,
             java.util.TimeZone.getDefault().id,
         )
     val autoSilence =
@@ -221,10 +207,7 @@ fun SettingsScreen(onBack: () -> Unit) {
             "0",
         )
 
-    // The values below read the preferences again whenever the version moves.
-    version.let {}
-    fun value(setting: ListSetting) =
-        prefs.getString(setting.key, setting.default) ?: setting.default
+    fun value(setting: ListSetting) = content.string(setting.key, setting.default)
     fun entry(setting: ListSetting): String {
         val index = setting.values.indexOf(value(setting))
         return if (index >= 0) setting.entries[index] else ""
@@ -245,7 +228,7 @@ fun SettingsScreen(onBack: () -> Unit) {
                 },
             )
         }
-    val autoHome = prefs.getBoolean(KEY_AUTO_HOME_CLOCK, true)
+    val autoHome = content.boolean(KEY_AUTO_HOME_CLOCK, true)
 
     SubScreen(stringResource(R.string.settings), onBack) {
         item {
@@ -254,8 +237,10 @@ fun SettingsScreen(onBack: () -> Unit) {
                 item {
                     PvotSwitchRow(
                         title = stringResource(R.string.display_clock_seconds_pref),
-                        checked = prefs.getBoolean(KEY_CLOCK_DISPLAY_SECONDS, false),
-                        onCheckedChange = { model.displayClockSeconds = it },
+                        checked = content.boolean(KEY_CLOCK_DISPLAY_SECONDS, false),
+                        onCheckedChange = {
+                            onEvent(SettingsEvent.SetBoolean(KEY_CLOCK_DISPLAY_SECONDS, it))
+                        },
                     )
                 }
                 item {
@@ -263,7 +248,9 @@ fun SettingsScreen(onBack: () -> Unit) {
                         title = stringResource(R.string.automatic_home_clock),
                         summary = stringResource(R.string.automatic_home_clock_summary),
                         checked = autoHome,
-                        onCheckedChange = { prefs.edit { putBoolean(KEY_AUTO_HOME_CLOCK, it) } },
+                        onCheckedChange = {
+                            onEvent(SettingsEvent.SetBoolean(KEY_AUTO_HOME_CLOCK, it))
+                        },
                     )
                 }
                 // A zone the list doesn't name (an alias such as Asia/Calcutta) shows by name.
@@ -321,7 +308,7 @@ fun SettingsScreen(onBack: () -> Unit) {
             PvotListGroup(title = stringResource(R.string.alarm_settings)) {
                 autoSilence.row(this, summary = autoSilenceText(context, value(autoSilence)))
                 snooze.row(this)
-                item { AlarmVolumeRow() }
+                item { AlarmVolumeRow(content.alarmVolume, onEvent) }
                 alarmCrescendo.row(this)
                 sunrise.row(this)
                 volumeButtons.row(this)
@@ -344,7 +331,7 @@ fun SettingsScreen(onBack: () -> Unit) {
                 item {
                     PvotPreferenceRow(
                         title = stringResource(R.string.timer_sound),
-                        value = model.timerRingtoneTitle,
+                        value = content.timerRingtoneTitle,
                         onClick = {
                             context.startActivity(
                                 RingtonePickerActivity.createTimerRingtonePickerIntent(context)
@@ -357,8 +344,10 @@ fun SettingsScreen(onBack: () -> Unit) {
                     item {
                         PvotSwitchRow(
                             title = stringResource(R.string.timer_vibrate_title),
-                            checked = prefs.getBoolean(KEY_TIMER_VIBRATE, false),
-                            onCheckedChange = { model.setTimerVibrate(it) },
+                            checked = content.boolean(KEY_TIMER_VIBRATE, false),
+                            onCheckedChange = {
+                                onEvent(SettingsEvent.SetBoolean(KEY_TIMER_VIBRATE, it))
+                            },
                         )
                     }
                 }
@@ -375,9 +364,7 @@ fun SettingsScreen(onBack: () -> Unit) {
             selected = sheet.values.indexOf(value(sheet)),
             onDismiss = { open = null },
             onSelect = { index ->
-                val chosen = sheet.values[index]
-                prefs.edit { putString(sheet.key, chosen) }
-                if (sheet.key == Sunrise.KEY_MINUTES) Sunrise.onSettingChanged(context, chosen)
+                onEvent(SettingsEvent.SetString(sheet.key, sheet.values[index]))
                 open = null
             },
         )
@@ -391,7 +378,7 @@ fun SettingsScreen(onBack: () -> Unit) {
             PvotDialogAction(
                 label = stringResource(R.string.turn_off_all_alarms_confirm),
                 onClick = {
-                    AlarmsOff.turnOff(context)
+                    onEvent(SettingsEvent.TurnOffAllAlarms)
                     confirmOff = false
                 },
                 style = PvotDialogActionStyle.Destructive,
@@ -425,42 +412,9 @@ private fun autoSilenceText(context: Context, value: String): String {
     else Utils.getNumberFormattedQuantityString(context, R.plurals.auto_silence_summary, minutes)
 }
 
-private const val PREVIEW_MILLIS = 2000L
-
 @Composable
-private fun AlarmVolumeRow() {
-    val context = LocalContext.current
-    val audio = remember { context.getSystemService(AudioManager::class.java) }
-    val min = audio.getStreamMinVolume(AudioManager.STREAM_ALARM)
-    val max = audio.getStreamMaxVolume(AudioManager.STREAM_ALARM)
-    var volume by remember {
-        mutableFloatStateOf(audio.getStreamVolume(AudioManager.STREAM_ALARM).toFloat())
-    }
-    // Do Not Disturb with total silence keeps alarms quiet, so the volume can't be set then.
-    val allowed =
-        context.getSystemService(NotificationManager::class.java).currentInterruptionFilter !=
-            NotificationManager.INTERRUPTION_FILTER_NONE
-    DisposableEffect(Unit) {
-        val observer =
-            object : ContentObserver(Handler(Looper.getMainLooper())) {
-                override fun onChange(selfChange: Boolean) {
-                    volume = audio.getStreamVolume(AudioManager.STREAM_ALARM).toFloat()
-                }
-            }
-        context.contentResolver.registerContentObserver(Settings.System.CONTENT_URI, true, observer)
-        onDispose { context.contentResolver.unregisterContentObserver(observer) }
-    }
-    var previews by remember { mutableIntStateOf(0) }
-    LaunchedEffect(previews) {
-        if (previews > 0) {
-            RingtonePreviewKlaxon.start(context, DataModel.getDataModel().defaultAlarmRingtoneUri)
-            try {
-                delay(PREVIEW_MILLIS)
-            } finally {
-                RingtonePreviewKlaxon.stop(context)
-            }
-        }
-    }
+private fun AlarmVolumeRow(volume: AlarmVolume, onEvent: (SettingsEvent) -> Unit) {
+    var dragged by remember(volume.current) { mutableFloatStateOf(volume.current.toFloat()) }
     Column(Modifier.padding(horizontal = PvotSpacing.L, vertical = PvotSpacing.M)) {
         Text(
             stringResource(R.string.alarm_volume_title),
@@ -473,16 +427,18 @@ private fun AlarmVolumeRow() {
                 modifier =
                     Modifier.padding(end = PvotSpacing.M).size(PvotIconButtonDefaults.IconSize),
             )
+            // Do Not Disturb with total silence keeps alarms quiet, so the volume can't be set
+            // then.
             PvotSlider(
-                value = volume,
+                value = dragged,
                 onValueChange = {
-                    volume = it
-                    audio.setStreamVolume(AudioManager.STREAM_ALARM, it.toInt(), 0)
+                    dragged = it
+                    onEvent(SettingsEvent.SetAlarmVolume(it.toInt()))
                 },
-                valueRange = min.toFloat()..max.toFloat(),
-                steps = (max - min - 1).coerceAtLeast(0),
-                enabled = allowed,
-                onValueChangeFinished = { previews++ },
+                valueRange = volume.min.toFloat()..volume.max.toFloat(),
+                steps = (volume.max - volume.min - 1).coerceAtLeast(0),
+                enabled = volume.adjustable,
+                onValueChangeFinished = { onEvent(SettingsEvent.PreviewAlarmVolume) },
             )
         }
     }

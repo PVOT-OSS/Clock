@@ -8,6 +8,7 @@ package org.prauga.clock.settings
 import android.os.Bundle
 import com.prauga.pvot.designsystem.platform.PvotBaseActivity
 import com.prauga.pvot.designsystem.theme.PvotAppTheme
+import org.prauga.clock.settings.ui.SettingsScreen
 
 class SettingsActivity : PvotBaseActivity() {
 

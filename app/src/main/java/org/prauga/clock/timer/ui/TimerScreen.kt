@@ -5,6 +5,7 @@
 
 package org.prauga.clock.timer.ui
 
+import android.os.SystemClock
 import android.text.format.DateUtils
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -19,12 +20,10 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.neverEqualPolicy
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -34,6 +33,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.prauga.pvot.coreui.UiState
 import com.prauga.pvot.designsystem.components.PvotCard
 import com.prauga.pvot.designsystem.components.PvotScreen
 import com.prauga.pvot.designsystem.components.button.PvotButton
@@ -52,33 +54,18 @@ import org.prauga.clock.common.ScreenFab
 import org.prauga.clock.common.screenPadding
 import org.prauga.clock.data.DataModel
 import org.prauga.clock.data.Timer
-import org.prauga.clock.data.TimerListener
 
 private val PRESETS = listOf(5, 10, 30, 45)
 
 @Composable
-fun TimerScreen(padding: PaddingValues, listState: LazyListState, setupRequests: Int) {
-    val model = DataModel.getDataModel()
-    // Timer.equals compares ids only, so an updated list looks equal to the old one.
-    var timers by remember { mutableStateOf(model.timers.toList(), neverEqualPolicy()) }
-    DisposableEffect(Unit) {
-        val listener =
-            object : TimerListener {
-                override fun timerAdded(timer: Timer) {
-                    timers = model.timers.toList()
-                }
-
-                override fun timerUpdated(before: Timer, after: Timer) {
-                    timers = model.timers.toList()
-                }
-
-                override fun timerRemoved(timer: Timer) {
-                    timers = model.timers.toList()
-                }
-            }
-        model.addTimerListener(listener)
-        onDispose { model.removeTimerListener(listener) }
-    }
+fun TimerScreen(
+    padding: PaddingValues,
+    listState: LazyListState,
+    setupRequests: Int,
+    viewModel: TimerViewModel = viewModel { TimerViewModel(DataModel.getDataModel()) },
+) {
+    val state by viewModel.state.collectAsStateWithLifecycle()
+    val timers = (state as? UiState.Success)?.data ?: return
     var adding by rememberSaveable { mutableStateOf(false) }
     LaunchedEffect(setupRequests) { if (setupRequests > 0) adding = true }
 
@@ -89,12 +76,12 @@ fun TimerScreen(padding: PaddingValues, listState: LazyListState, setupRequests:
                 canCancel = timers.isNotEmpty(),
                 onCancel = { adding = false },
                 onStart = { length ->
-                    model.startTimer(model.addTimer(length, "", false))
+                    viewModel.onEvent(TimerEvent.Create(length))
                     adding = false
                 },
             )
         } else {
-            TimerList(timers, listState, padding, onAdd = { adding = true })
+            TimerList(timers, listState, padding, viewModel::onEvent, onAdd = { adding = true })
         }
     }
 }
@@ -148,31 +135,24 @@ private fun TimerSetup(
 
 @Composable
 private fun TimerList(
-    timers: List<Timer>,
+    timers: List<TimerItem>,
     listState: LazyListState,
     padding: PaddingValues,
+    onEvent: (TimerEvent) -> Unit,
     onAdd: () -> Unit,
 ) {
-    var now by remember { mutableLongStateOf(System.currentTimeMillis()) }
-    val ticking = timers.any { it.isRunning || it.isExpired }
+    var now by remember { mutableLongStateOf(SystemClock.elapsedRealtime()) }
+    val ticking = timers.any { it.isTicking }
     LaunchedEffect(ticking) {
         while (ticking) {
-            withFrameMillis { now = System.currentTimeMillis() }
+            withFrameMillis { now = SystemClock.elapsedRealtime() }
         }
     }
     ScreenFab(R.drawable.ic_t_plus, R.string.new_timer, onAdd)
     Box(Modifier.fillMaxSize()) {
         PvotScreen(state = listState, contentPadding = screenPadding(padding, withFab = true)) {
-            itemsIndexed(timers, key = { _, timer -> timer.id }) { index, timer ->
-                TimerCard(
-                    timer,
-                    timer.state,
-                    timer.remainingTime,
-                    timer.label,
-                    timer.totalLength,
-                    now,
-                    Modifier.pvotReveal(index),
-                )
+            itemsIndexed(timers, key = { _, item -> item.id }) { index, item ->
+                TimerCard(item, now, onEvent, Modifier.pvotReveal(index))
             }
         }
     }
@@ -180,26 +160,16 @@ private fun TimerList(
 
 @Composable
 private fun TimerCard(
-    timer: Timer,
-    state: Timer.State,
-    remainingAtBind: Long,
-    label: String,
-    length: Long,
+    item: TimerItem,
     now: Long,
+    onEvent: (TimerEvent) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val model = DataModel.getDataModel()
-    // Timer.equals compares ids only, so the changing fields are passed in to redraw the card.
-    val remaining =
-        if (state == Timer.State.RUNNING || state == Timer.State.EXPIRED) {
-            timer.remainingTime
-        } else {
-            remainingAtBind
-        }
+    val remaining = item.remainingAt(now)
     PvotCard(modifier.fillMaxWidth()) {
         Column(Modifier.padding(PvotSpacing.L)) {
             Text(
-                text = label.ifEmpty { stringResource(R.string.timer_notification_label) },
+                text = item.label.ifEmpty { stringResource(R.string.timer_notification_label) },
                 style = MaterialTheme.typography.titleMedium,
             )
             Text(
@@ -207,12 +177,12 @@ private fun TimerCard(
                 style = MaterialTheme.typography.displayMedium,
                 fontWeight = FontWeight.Light,
                 color =
-                    if (timer.isExpired) MaterialTheme.colorScheme.error
+                    if (item.state == Timer.State.EXPIRED) MaterialTheme.colorScheme.error
                     else MaterialTheme.colorScheme.onSurface,
             )
             PvotLinearProgress(
                 progress = {
-                    (1f - remaining.toFloat() / length.coerceAtLeast(1)).coerceIn(0f, 1f)
+                    (1f - remaining.toFloat() / item.length.coerceAtLeast(1)).coerceIn(0f, 1f)
                 },
                 modifier = Modifier.fillMaxWidth().padding(vertical = PvotSpacing.S),
             )
@@ -222,40 +192,40 @@ private fun TimerCard(
             ) {
                 PvotButton(
                     text = stringResource(R.string.timer_plus_1_min),
-                    onClick = { model.addTimerMinute(timer) },
+                    onClick = { onEvent(TimerEvent.AddMinute(item.id)) },
                     style = PvotButtonStyle.Tonal,
                 )
                 when {
-                    timer.isRunning ->
+                    item.state == Timer.State.RUNNING ->
                         PvotIconButton(
                             icon = painterResource(R.drawable.ic_t_player_pause),
                             contentDescription = stringResource(R.string.timer_pause),
-                            onClick = { model.pauseTimer(timer) },
+                            onClick = { onEvent(TimerEvent.Pause(item.id)) },
                         )
-                    timer.isExpired ->
+                    item.state == Timer.State.EXPIRED ->
                         PvotIconButton(
                             icon = painterResource(R.drawable.ic_t_x),
                             contentDescription = stringResource(R.string.timer_stop),
-                            onClick = { model.resetOrDeleteTimer(timer, R.string.label_deskclock) },
+                            onClick = { onEvent(TimerEvent.Stop(item.id)) },
                         )
                     else ->
                         PvotIconButton(
                             icon = painterResource(R.drawable.ic_t_player_play),
                             contentDescription = stringResource(R.string.timer_start),
-                            onClick = { model.startTimer(timer) },
+                            onClick = { onEvent(TimerEvent.Start(item.id)) },
                         )
                 }
-                if (timer.isPaused) {
+                if (item.state == Timer.State.PAUSED) {
                     PvotIconButton(
                         icon = painterResource(R.drawable.ic_t_refresh),
                         contentDescription = stringResource(R.string.timer_reset),
-                        onClick = { model.resetTimer(timer) },
+                        onClick = { onEvent(TimerEvent.Reset(item.id)) },
                     )
                 }
                 PvotIconButton(
                     icon = painterResource(R.drawable.ic_t_trash),
                     contentDescription = stringResource(R.string.timer_delete),
-                    onClick = { model.removeTimer(timer) },
+                    onClick = { onEvent(TimerEvent.Delete(item.id)) },
                 )
             }
         }

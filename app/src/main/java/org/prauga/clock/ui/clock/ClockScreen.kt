@@ -9,6 +9,7 @@ import android.content.Context
 import android.content.Intent
 import android.text.format.DateFormat
 import android.text.format.DateUtils
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -32,8 +33,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -41,8 +45,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.compose.LifecycleResumeEffect
 import com.prauga.pvot.coreui.PvotSectionHeader
+import com.prauga.pvot.designsystem.components.PvotBottomSheet
 import com.prauga.pvot.designsystem.components.PvotCard
 import com.prauga.pvot.designsystem.components.PvotScreen
+import com.prauga.pvot.designsystem.components.PvotSheetItem
 import com.prauga.pvot.designsystem.motion.pvotReveal
 import com.prauga.pvot.designsystem.theme.PvotSpacing
 import java.util.Calendar
@@ -72,6 +78,9 @@ fun ClockScreen(padding: PaddingValues, listState: LazyListState) {
     }
     val now by rememberNow(if (seconds) DateUtils.SECOND_IN_MILLIS else DateUtils.MINUTE_IN_MILLIS)
     var cities by remember { mutableStateOf(worldClocks()) }
+    val haptics = LocalHapticFeedback.current
+    var menuCity by remember { mutableStateOf<City?>(null) }
+    var menuOpen by remember { mutableStateOf(false) }
     ScreenFab(R.drawable.ic_t_world, R.string.add_city) {
         context.startActivity(Intent(context, CitySelectionActivity::class.java))
     }
@@ -96,7 +105,60 @@ fun ClockScreen(padding: PaddingValues, listState: LazyListState) {
             }
         }
         itemsIndexed(cities, key = { _, city -> city.id }) { index, city ->
-            CityCard(context, city, now, Modifier.pvotReveal(index))
+            CityCard(
+                context,
+                city,
+                now,
+                Modifier.pvotReveal(index).pointerInput(city) {
+                    detectTapGestures(
+                        onLongPress = {
+                            // The home clock follows the time zone, so only chosen cities move.
+                            if (city in model.selectedCities) {
+                                haptics.performHapticFeedback(HapticFeedbackType.LongPress)
+                                menuCity = city
+                                menuOpen = true
+                            }
+                        }
+                    )
+                },
+            )
+        }
+    }
+
+    // Long-press menu of a world clock; it keeps its city while it slides away.
+    val shown = menuCity
+    if (shown != null) {
+        val selected = model.selectedCities
+        val index = selected.indexOf(shown)
+        PvotBottomSheet(
+            visible = menuOpen,
+            onDismissRequest = { menuOpen = false },
+            title = shown.name,
+        ) {
+            PvotSheetItem(
+                title = stringResource(R.string.city_move_up),
+                enabled = index > 0,
+                onClick = {
+                    model.moveSelectedCity(shown, -1)
+                    menuOpen = false
+                },
+            )
+            PvotSheetItem(
+                title = stringResource(R.string.city_move_down),
+                enabled = index in 0 until selected.lastIndex,
+                onClick = {
+                    model.moveSelectedCity(shown, 1)
+                    menuOpen = false
+                },
+            )
+            PvotSheetItem(
+                title = stringResource(R.string.city_remove),
+                destructive = true,
+                onClick = {
+                    model.removeSelectedCity(shown)
+                    menuOpen = false
+                },
+            )
         }
     }
 }

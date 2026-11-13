@@ -37,6 +37,7 @@ import com.prauga.pvot.designsystem.navigation.PvotTopBarAction
 import org.prauga.clock.DeskClock
 import org.prauga.clock.R
 import org.prauga.clock.settings.SettingsActivity
+import org.prauga.clock.ui.alarms.AlarmsScreen
 import org.prauga.clock.ui.clock.ClockScreen
 import org.prauga.clock.ui.stopwatch.StopwatchScreen
 import org.prauga.clock.ui.timer.TimerScreen
@@ -108,6 +109,7 @@ fun ClockApp() {
                 Tab.CLOCKS -> ClockScreen(padding)
                 Tab.STOPWATCH -> StopwatchScreen(padding)
                 Tab.TIMERS -> TimerScreen(padding)
+                Tab.ALARMS -> AlarmsScreen(padding)
                 else -> ClassicTab(tab, padding, context)
             }
         }

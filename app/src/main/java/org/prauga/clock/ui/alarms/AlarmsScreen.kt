@@ -1,0 +1,144 @@
+/*
+ * SPDX-FileCopyrightText: 2026 Saalim Quadri <danascape@gmail.com>
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+package org.prauga.clock.ui.alarms
+
+import android.app.Activity
+import android.content.Context
+import android.database.ContentObserver
+import android.net.Uri
+import android.os.Handler
+import android.os.Looper
+import android.view.ViewGroup
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableLongStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.neverEqualPolicy
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
+import com.prauga.pvot.designsystem.components.button.PvotFab
+import java.time.LocalTime
+import java.util.concurrent.Executors
+import org.prauga.clock.BuildConfig
+import org.prauga.clock.R
+import org.prauga.clock.alarms.AlarmUpdateHandler
+import org.prauga.clock.alarms.ScrollHandler
+import org.prauga.clock.provider.Alarm
+
+/** The Alarms tab: every alarm as a card that expands into its settings. */
+@Composable
+fun AlarmsScreen(padding: PaddingValues) {
+    val context = LocalContext.current
+    // Alarm.equals compares ids only: store every reload and redraw the cards on each version.
+    var alarms by remember { mutableStateOf(emptyList<Alarm>(), neverEqualPolicy()) }
+    var version by remember { mutableIntStateOf(0) }
+    DisposableEffect(Unit) {
+        val main = Handler(Looper.getMainLooper())
+        val reload = {
+            Executors.newSingleThreadExecutor().execute {
+                val loaded = Alarm.getAlarms(context.contentResolver, null).sortedWith(ORDER)
+                main.post {
+                    alarms = loaded
+                    version++
+                }
+            }
+        }
+        val observer =
+            object : ContentObserver(main) {
+                override fun onChange(selfChange: Boolean) = reload()
+            }
+        context.contentResolver.registerContentObserver(PROVIDER, true, observer)
+        reload()
+        onDispose { context.contentResolver.unregisterContentObserver(observer) }
+    }
+    val updater = remember { updater(context) }
+    var expanded by rememberSaveable { mutableLongStateOf(-1L) }
+    var editingTime by remember { mutableStateOf<Alarm?>(null) }
+    var adding by rememberSaveable { mutableStateOf(false) }
+
+    Box(Modifier.fillMaxSize().padding(top = padding.calculateTopPadding())) {
+        LazyColumn(
+            contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 220.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            items(alarms, key = { it.id }) { alarm ->
+                AlarmCard(
+                    alarm = alarm,
+                    version = version,
+                    expanded = expanded == alarm.id,
+                    onToggleExpanded = { expanded = if (expanded == alarm.id) -1L else alarm.id },
+                    onEditTime = { editingTime = alarm },
+                    updater = updater,
+                )
+            }
+        }
+        PvotFab(
+            icon = painterResource(R.drawable.ic_add_24dp),
+            contentDescription = stringResource(R.string.button_alarms),
+            onClick = { adding = true },
+            modifier = Modifier.align(Alignment.BottomCenter).padding(bottom = 120.dp),
+        )
+    }
+
+    val target = editingTime
+    if (target != null || adding) {
+        val now = LocalTime.now()
+        TimeDialog(
+            initial =
+                if (target != null) LocalTime.of(target.hour, target.minutes)
+                else LocalTime.of(now.hour, 0),
+            onDismiss = {
+                editingTime = null
+                adding = false
+            },
+            onConfirm = { time ->
+                if (target != null) {
+                    target.hour = time.hour
+                    target.minutes = time.minute
+                    target.enabled = true
+                    updater.asyncUpdateAlarm(target, true, false)
+                } else {
+                    updater.asyncAddAlarm(Alarm(time.hour, time.minute).apply { enabled = true })
+                }
+                editingTime = null
+                adding = false
+            },
+        )
+    }
+}
+
+private val PROVIDER: Uri = Uri.parse("content://${BuildConfig.APPLICATION_ID}/")
+
+private val ORDER = compareBy<Alarm>({ it.hour }, { it.minutes }, { -it.id })
+
+private fun updater(context: Context): AlarmUpdateHandler {
+    val anchor = (context as Activity).findViewById<ViewGroup>(android.R.id.content)
+    return AlarmUpdateHandler(
+        context,
+        object : ScrollHandler {
+            override fun setSmoothScrollStableId(stableId: Long) {}
+
+            override fun smoothScrollTo(position: Int) {}
+        },
+        anchor,
+    )
+}

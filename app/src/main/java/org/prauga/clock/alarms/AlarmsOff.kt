@@ -9,25 +9,15 @@ import android.content.Context
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.util.concurrent.Executors
 import org.prauga.clock.R
 import org.prauga.clock.provider.Alarm
 
-/** "Turn off all alarms": switches every alarm off after a confirmation. */
+/** "Turn off all alarms" in settings, which asks first. */
 object AlarmsOff {
 
-    @JvmStatic
-    fun confirm(context: Context) {
-        MaterialAlertDialogBuilder(context)
-            .setTitle(R.string.turn_off_all_alarms)
-            .setMessage(R.string.turn_off_all_alarms_message)
-            .setNegativeButton(android.R.string.cancel, null)
-            .setPositiveButton(R.string.turn_off_all_alarms_confirm) { _, _ -> turnOff(context) }
-            .show()
-    }
-
-    private fun turnOff(context: Context) {
+    /** Switches every alarm off, then says how many with a toast. */
+    fun turnOff(context: Context) {
         val app = context.applicationContext
         Executors.newSingleThreadExecutor().execute {
             val alarms = Alarm.getAlarms(app.contentResolver, "enabled=1")

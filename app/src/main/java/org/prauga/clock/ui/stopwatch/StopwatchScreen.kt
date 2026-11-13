@@ -101,7 +101,7 @@ fun StopwatchScreen(padding: PaddingValues, listState: LazyListState) {
         ) {
             if (!stopwatch.isReset) {
                 PvotIconButton(
-                    icon = painterResource(R.drawable.ic_reset),
+                    icon = painterResource(R.drawable.ic_t_refresh),
                     contentDescription = stringResource(R.string.sw_reset_button),
                     onClick = { model.resetStopwatch() },
                 )
@@ -109,8 +109,8 @@ fun StopwatchScreen(padding: PaddingValues, listState: LazyListState) {
             PvotFab(
                 icon =
                     painterResource(
-                        if (stopwatch.isRunning) R.drawable.ic_widget_pause
-                        else R.drawable.ic_widget_play
+                        if (stopwatch.isRunning) R.drawable.ic_t_player_pause
+                        else R.drawable.ic_t_player_play
                     ),
                 contentDescription =
                     stringResource(
@@ -124,7 +124,7 @@ fun StopwatchScreen(padding: PaddingValues, listState: LazyListState) {
             )
             if (stopwatch.isRunning) {
                 PvotIconButton(
-                    icon = painterResource(R.drawable.ic_widget_lap),
+                    icon = painterResource(R.drawable.ic_t_flag),
                     contentDescription = stringResource(R.string.sw_lap_button),
                     enabled = model.canAddMoreLaps(),
                     onClick = {
@@ -134,7 +134,7 @@ fun StopwatchScreen(padding: PaddingValues, listState: LazyListState) {
                 )
             } else if (stopwatch.isPaused) {
                 PvotIconButton(
-                    icon = painterResource(R.drawable.ic_share),
+                    icon = painterResource(R.drawable.ic_t_share),
                     contentDescription = stringResource(R.string.sw_share_button),
                     onClick = {
                         val text = buildString {

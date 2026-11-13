@@ -132,7 +132,7 @@ private fun MainClock(context: Context, now: Long, seconds: Boolean) {
                 modifier = Modifier.padding(top = 4.dp),
             ) {
                 Icon(
-                    painterResource(R.drawable.ic_alarm_small),
+                    painterResource(R.drawable.ic_t_alarm),
                     contentDescription = null,
                     modifier = Modifier.size(16.dp),
                 )

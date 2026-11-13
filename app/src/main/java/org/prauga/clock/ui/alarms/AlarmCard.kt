@@ -97,7 +97,7 @@ fun AlarmCard(
                     updater.asyncUpdateAlarm(alarm, true, false)
                 }
                 SettingRow(
-                    icon = R.drawable.ic_ringtone,
+                    icon = R.drawable.ic_t_bell,
                     text = DataModel.getDataModel().getRingtoneTitle(alarm.alert),
                     onClick = {
                         context.startActivity(
@@ -107,7 +107,7 @@ fun AlarmCard(
                 )
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     SettingRow(
-                        icon = R.drawable.ic_vibrate,
+                        icon = R.drawable.ic_t_device_mobile_vibration,
                         text = stringResource(R.string.alarm_vibrate),
                         onClick = {
                             alarm.vibrate = !alarm.vibrate
@@ -124,7 +124,7 @@ fun AlarmCard(
                     )
                 }
                 SettingRow(
-                    icon = R.drawable.ic_calendar,
+                    icon = R.drawable.ic_t_calendar,
                     text = AlarmDatePicker.rowText(context, alarm),
                     onClick = { editingDate = true },
                 )

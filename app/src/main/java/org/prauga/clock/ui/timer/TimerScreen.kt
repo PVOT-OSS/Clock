@@ -137,14 +137,14 @@ private fun TimerSetup(canCancel: Boolean, onCancel: () -> Unit, onStart: (Long)
         ) {
             if (canCancel) {
                 PvotIconButton(
-                    icon = painterResource(R.drawable.ic_close),
+                    icon = painterResource(R.drawable.ic_t_x),
                     contentDescription = stringResource(android.R.string.cancel),
                     onClick = onCancel,
                 )
             }
             if (duration > Duration.ZERO) {
                 PvotFab(
-                    icon = painterResource(R.drawable.ic_widget_play),
+                    icon = painterResource(R.drawable.ic_t_player_play),
                     contentDescription = stringResource(R.string.timer_start),
                     onClick = { onStart(duration.inWholeMilliseconds) },
                     modifier = Modifier.size(72.dp),
@@ -179,7 +179,7 @@ private fun TimerList(
             }
         }
         PvotFab(
-            icon = painterResource(R.drawable.ic_add_24dp),
+            icon = painterResource(R.drawable.ic_t_plus),
             contentDescription = stringResource(R.string.timer_add_timer),
             onClick = onAdd,
             modifier = Modifier.align(Alignment.BottomCenter).padding(bottom = 120.dp),
@@ -236,32 +236,32 @@ private fun TimerCard(
                 when {
                     timer.isRunning ->
                         PvotIconButton(
-                            icon = painterResource(R.drawable.ic_widget_pause),
+                            icon = painterResource(R.drawable.ic_t_player_pause),
                             contentDescription = stringResource(R.string.timer_pause),
                             onClick = { model.pauseTimer(timer) },
                         )
                     timer.isExpired ->
                         PvotIconButton(
-                            icon = painterResource(R.drawable.ic_close),
+                            icon = painterResource(R.drawable.ic_t_x),
                             contentDescription = stringResource(R.string.timer_stop),
                             onClick = { model.resetOrDeleteTimer(timer, R.string.label_deskclock) },
                         )
                     else ->
                         PvotIconButton(
-                            icon = painterResource(R.drawable.ic_widget_play),
+                            icon = painterResource(R.drawable.ic_t_player_play),
                             contentDescription = stringResource(R.string.timer_start),
                             onClick = { model.startTimer(timer) },
                         )
                 }
                 if (timer.isPaused) {
                     PvotIconButton(
-                        icon = painterResource(R.drawable.ic_reset),
+                        icon = painterResource(R.drawable.ic_t_refresh),
                         contentDescription = stringResource(R.string.timer_reset),
                         onClick = { model.resetTimer(timer) },
                     )
                 }
                 PvotIconButton(
-                    icon = painterResource(R.drawable.ic_delete),
+                    icon = painterResource(R.drawable.ic_t_trash),
                     contentDescription = stringResource(R.string.timer_delete),
                     onClick = { model.removeTimer(timer) },
                 )

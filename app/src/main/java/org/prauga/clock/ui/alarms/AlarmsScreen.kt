@@ -108,7 +108,7 @@ fun AlarmsScreen(
             }
         }
         PvotFab(
-            icon = painterResource(R.drawable.ic_add_24dp),
+            icon = painterResource(R.drawable.ic_t_plus),
             contentDescription = stringResource(R.string.button_alarms),
             onClick = { adding = true },
             modifier = Modifier.align(Alignment.BottomCenter).padding(bottom = 120.dp),

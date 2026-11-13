@@ -41,15 +41,11 @@ import org.prauga.clock.worldclock.CitySelectionActivity
 
 private val NAV_TABS =
     listOf(
-        PvotTabItem(R.drawable.ic_tab_alarm_static, R.string.menu_alarm, R.string.menu_alarm),
-        PvotTabItem(R.drawable.ic_tab_clock_static, R.string.menu_clock, R.string.menu_clock),
-        PvotTabItem(R.drawable.ic_tab_timer_static, R.string.menu_timer, R.string.menu_timer),
-        PvotTabItem(
-            R.drawable.ic_tab_stopwatch_static,
-            R.string.menu_stopwatch,
-            R.string.menu_stopwatch,
-        ),
-        PvotTabItem(R.drawable.ic_tab_bedtime, R.string.menu_bedtime, R.string.menu_bedtime),
+        PvotTabItem(R.drawable.ic_t_alarm, R.string.menu_alarm, R.string.menu_alarm),
+        PvotTabItem(R.drawable.ic_t_clock, R.string.menu_clock, R.string.menu_clock),
+        PvotTabItem(R.drawable.ic_t_hourglass, R.string.menu_timer, R.string.menu_timer),
+        PvotTabItem(R.drawable.ic_t_stopwatch, R.string.menu_stopwatch, R.string.menu_stopwatch),
+        PvotTabItem(R.drawable.ic_t_moon, R.string.menu_bedtime, R.string.menu_bedtime),
     )
 
 @Composable
@@ -82,7 +78,7 @@ fun ClockApp(timerSetupRequests: Int, createAlarmRequests: Int, shownAlarm: Long
                 compact = compact,
                 actions = {
                     PvotTopBarAction(
-                        icon = painterResource(R.drawable.ic_settings),
+                        icon = painterResource(R.drawable.ic_t_settings),
                         contentDescription = stringResource(R.string.settings),
                         onClick = {
                             context.startActivity(Intent(context, SettingsActivity::class.java))
@@ -104,7 +100,7 @@ fun ClockApp(timerSetupRequests: Int, createAlarmRequests: Int, shownAlarm: Long
         floatingAction = {
             if (tab == Tab.CLOCKS) {
                 PvotFab(
-                    icon = painterResource(R.drawable.ic_public),
+                    icon = painterResource(R.drawable.ic_t_world),
                     contentDescription = stringResource(R.string.button_cities),
                     onClick = {
                         context.startActivity(Intent(context, CitySelectionActivity::class.java))

@@ -210,7 +210,7 @@ public class RingtonePickerActivity extends ToolbarBaseActivity
                             DataModel.getDataModel().setDefaultAlarmRingtoneUri(alarm.alert);
 
                             // Start a second background task to persist the updated alarm.
-                            new AlarmUpdateHandler(context, null, null)
+                            new AlarmUpdateHandler(context, null)
                                     .asyncUpdateAlarm(alarm, false, true);
                         });
                     }
@@ -569,7 +569,7 @@ public class RingtonePickerActivity extends ToolbarBaseActivity
                 if (removeUri.equals(alarm.alert)) {
                     alarm.alert = systemDefaultRingtoneUri;
                     // Start a second background task to persist the updated alarm.
-                    new AlarmUpdateHandler(RingtonePickerActivity.this, null, null)
+                    new AlarmUpdateHandler(RingtonePickerActivity.this, null)
                             .asyncUpdateAlarm(alarm, false, true);
                 }
             }

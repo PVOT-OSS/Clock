@@ -5,13 +5,11 @@
 
 package org.prauga.clock.ui.alarms
 
-import android.app.Activity
 import android.content.Context
 import android.database.ContentObserver
 import android.net.Uri
 import android.os.Handler
 import android.os.Looper
-import android.view.ViewGroup
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -168,7 +166,6 @@ private val PROVIDER: Uri = Uri.parse("content://${BuildConfig.APPLICATION_ID}/"
 private val ORDER = compareBy<Alarm>({ it.hour }, { it.minutes }, { -it.id })
 
 private fun updater(context: Context): AlarmUpdateHandler {
-    val anchor = (context as Activity).findViewById<ViewGroup>(android.R.id.content)
     return AlarmUpdateHandler(
         context,
         object : ScrollHandler {
@@ -176,6 +173,5 @@ private fun updater(context: Context): AlarmUpdateHandler {
 
             override fun smoothScrollTo(position: Int) {}
         },
-        anchor,
     )
 }

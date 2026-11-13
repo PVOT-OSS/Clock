@@ -19,15 +19,13 @@ package org.prauga.clock;
 import android.content.Context;
 import android.text.format.DateFormat;
 import android.text.format.DateUtils;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.VisibleForTesting;
 
 import org.prauga.clock.provider.AlarmInstance;
-import org.prauga.clock.widget.toast.SnackbarManager;
+import org.prauga.clock.ui.ClockSnackbars;
 import org.prauga.clock.widget.toast.ToastManager;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Calendar;
 import java.util.Locale;
@@ -95,11 +93,8 @@ public class AlarmUtils {
         toast.show();
     }
 
-    public static void popAlarmSetSnackbar(View snackbarAnchor, long alarmTime) {
+    public static void popAlarmSetSnackbar(Context context, long alarmTime) {
         final long alarmTimeDelta = alarmTime - System.currentTimeMillis();
-        final String text = formatElapsedTimeUntilAlarm(
-                snackbarAnchor.getContext(), alarmTimeDelta);
-        SnackbarManager.show(Snackbar.make(snackbarAnchor, text, Snackbar.LENGTH_SHORT));
-        snackbarAnchor.announceForAccessibility(text);
+        ClockSnackbars.show(formatElapsedTimeUntilAlarm(context, alarmTimeDelta));
     }
 }

@@ -6,12 +6,10 @@
 package org.prauga.clock.ui.bedtime
 
 import android.Manifest
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.provider.Settings
-import android.view.ViewGroup
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.clickable
@@ -333,7 +331,6 @@ private fun WakeUpChooser(visible: Boolean, settings: BedtimeSettings, onDone: (
                 onClick = {
                     // A new alarm on the bedtime days, eight hours after bedtime.
                     val wake = (settings.hour * 60 + settings.minute + 8 * 60) % 1440
-                    val anchor = (context as Activity).findViewById<ViewGroup>(android.R.id.content)
                     AlarmUpdateHandler(
                             context,
                             object : ScrollHandler {
@@ -343,7 +340,6 @@ private fun WakeUpChooser(visible: Boolean, settings: BedtimeSettings, onDone: (
 
                                 override fun smoothScrollTo(position: Int) {}
                             },
-                            anchor,
                         )
                         .asyncAddAlarm(
                             Alarm(wake / 60, wake % 60).apply {

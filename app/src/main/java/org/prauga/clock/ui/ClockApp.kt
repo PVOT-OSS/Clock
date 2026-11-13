@@ -9,9 +9,13 @@ import android.content.Intent
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SnackbarDuration
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.SnackbarResult
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -22,10 +26,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import com.prauga.pvot.designsystem.components.PvotScreenScaffold
+import com.prauga.pvot.designsystem.components.PvotSnackbarHost
 import com.prauga.pvot.designsystem.navigation.PvotNavBar
 import com.prauga.pvot.designsystem.navigation.PvotTabItem
 import com.prauga.pvot.designsystem.navigation.PvotTopBar
 import com.prauga.pvot.designsystem.navigation.PvotTopBarAction
+import kotlinx.coroutines.flow.collectLatest
 import org.prauga.clock.R
 import org.prauga.clock.settings.SettingsActivity
 import org.prauga.clock.ui.alarms.AlarmsScreen
@@ -69,6 +75,22 @@ fun ClockApp(timerSetupRequests: Int, createAlarmRequests: Int, shownAlarm: Long
             }
         }
 
+    val snackbars = remember { SnackbarHostState() }
+    // Messages from the alarm code; a new one, or a dismiss, replaces the one showing.
+    LaunchedEffect(snackbars) {
+        ClockSnackbars.messages.collectLatest { message ->
+            if (message != null) {
+                val result =
+                    snackbars.showSnackbar(
+                        message = message.text,
+                        actionLabel = message.actionLabel,
+                        duration =
+                            if (message.long) SnackbarDuration.Long else SnackbarDuration.Short,
+                    )
+                if (result == SnackbarResult.ActionPerformed) message.onAction?.run()
+            }
+        }
+    }
     val fab = remember { FloatingActionSlot() }
     fab.expanded = !compact
 
@@ -99,6 +121,7 @@ fun ClockApp(timerSetupRequests: Int, createAlarmRequests: Int, shownAlarm: Long
             )
         },
         floatingAction = { fab.content?.invoke() },
+        snackbarHost = { PvotSnackbarHost(snackbars) },
     ) { padding ->
         CompositionLocalProvider(
             LocalContentColor provides MaterialTheme.colorScheme.onBackground,

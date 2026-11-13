@@ -21,16 +21,13 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.format.DateFormat;
-import android.view.View;
-import android.view.ViewGroup;
 
 import org.prauga.clock.AlarmUtils;
 import org.prauga.clock.R;
 import org.prauga.clock.events.Events;
 import org.prauga.clock.provider.Alarm;
 import org.prauga.clock.provider.AlarmInstance;
-import org.prauga.clock.widget.toast.SnackbarManager;
-import com.google.android.material.snackbar.Snackbar;
+import org.prauga.clock.ui.ClockSnackbars;
 
 import java.util.Calendar;
 import java.util.List;
@@ -44,16 +41,13 @@ public final class AlarmUpdateHandler {
 
     private final Context mAppContext;
     private final ScrollHandler mScrollHandler;
-    private final View mSnackbarAnchor;
 
     // For undo
     private Alarm mDeletedAlarm;
 
-    public AlarmUpdateHandler(Context context, ScrollHandler scrollHandler,
-            ViewGroup snackbarAnchor) {
+    public AlarmUpdateHandler(Context context, ScrollHandler scrollHandler) {
         mAppContext = context.getApplicationContext();
         mScrollHandler = scrollHandler;
-        mSnackbarAnchor = snackbarAnchor;
     }
 
     /**
@@ -86,7 +80,7 @@ public final class AlarmUpdateHandler {
             handler.post(() -> {
                 if (finalInstance != null) {
                     AlarmUtils.popAlarmSetSnackbar(
-                            mSnackbarAnchor, finalInstance.getAlarmTime().getTimeInMillis());
+                            mAppContext, finalInstance.getAlarmTime().getTimeInMillis());
                 }
             });
         });
@@ -138,7 +132,7 @@ public final class AlarmUpdateHandler {
             handler.post(() -> {
                 if (popToast && finalInstance != null) {
                     AlarmUtils.popAlarmSetSnackbar(
-                            mSnackbarAnchor, finalInstance.getAlarmTime().getTimeInMillis());
+                            mAppContext, finalInstance.getAlarmTime().getTimeInMillis());
                 }
             });
         });
@@ -179,7 +173,7 @@ public final class AlarmUpdateHandler {
         final String time = DateFormat.getTimeFormat(mAppContext).format(
                 instance.getAlarmTime().getTime());
         final String text = mAppContext.getString(R.string.alarm_is_dismissed, time);
-        SnackbarManager.show(Snackbar.make(mSnackbarAnchor, text, Snackbar.LENGTH_SHORT));
+        ClockSnackbars.show(text);
     }
 
     /**
@@ -187,18 +181,16 @@ public final class AlarmUpdateHandler {
      */
     public void hideUndoBar() {
         mDeletedAlarm = null;
-        SnackbarManager.dismiss();
+        ClockSnackbars.dismiss();
     }
 
     private void showUndoBar() {
         final Alarm deletedAlarm = mDeletedAlarm;
-        final Snackbar snackbar = Snackbar.make(mSnackbarAnchor,
-                mAppContext.getString(R.string.alarm_deleted), Snackbar.LENGTH_LONG)
-                .setAction(R.string.alarm_undo, v -> {
+        ClockSnackbars.show(mAppContext.getString(R.string.alarm_deleted), true,
+                mAppContext.getString(R.string.alarm_undo), () -> {
                     mDeletedAlarm = null;
                     asyncAddAlarm(deletedAlarm);
                 });
-        SnackbarManager.show(snackbar);
     }
 
     private AlarmInstance setupAlarmInstance(Alarm alarm) {

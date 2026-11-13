@@ -25,7 +25,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableLongStateOf
@@ -44,7 +43,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.compose.LifecycleResumeEffect
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.prauga.pvot.coreui.PvotSectionHeader
+import com.prauga.pvot.coreui.UiState
 import com.prauga.pvot.designsystem.components.PvotBottomSheet
 import com.prauga.pvot.designsystem.components.PvotCard
 import com.prauga.pvot.designsystem.components.PvotScreen
@@ -62,31 +64,40 @@ import org.prauga.clock.Utils
 import org.prauga.clock.common.ScreenFab
 import org.prauga.clock.common.screenPadding
 import org.prauga.clock.data.City
-import org.prauga.clock.data.CityListener
 import org.prauga.clock.data.DataModel
 import org.prauga.clock.worldclock.CitySelectionActivity
 
 @Composable
-fun ClockScreen(padding: PaddingValues, listState: LazyListState) {
-    val context = LocalContext.current
-    val model = DataModel.getDataModel()
-    var seconds by remember { mutableStateOf(model.displayClockSeconds) }
+fun ClockScreen(
+    padding: PaddingValues,
+    listState: LazyListState,
+    viewModel: ClockViewModel = viewModel { ClockViewModel(DataModel.getDataModel()) },
+) {
+    val state by viewModel.state.collectAsStateWithLifecycle()
+    val content = (state as? UiState.Success)?.data ?: return
     LifecycleResumeEffect(Unit) {
-        seconds = model.displayClockSeconds
+        viewModel.onEvent(ClockEvent.Refresh)
         onPauseOrDispose {}
     }
+    ClockBody(content, padding, listState, viewModel::onEvent)
+}
+
+@Composable
+private fun ClockBody(
+    content: ClockContent,
+    padding: PaddingValues,
+    listState: LazyListState,
+    onEvent: (ClockEvent) -> Unit,
+) {
+    val context = LocalContext.current
+    val seconds = content.seconds
     val now by rememberNow(if (seconds) DateUtils.SECOND_IN_MILLIS else DateUtils.MINUTE_IN_MILLIS)
-    var cities by remember { mutableStateOf(worldClocks()) }
+    val cities = content.clocks
     val haptics = LocalHapticFeedback.current
     var menuCity by remember { mutableStateOf<City?>(null) }
     var menuOpen by remember { mutableStateOf(false) }
     ScreenFab(R.drawable.ic_t_world, R.string.add_city) {
         context.startActivity(Intent(context, CitySelectionActivity::class.java))
-    }
-    DisposableEffect(Unit) {
-        val listener = CityListener { cities = worldClocks() }
-        model.addCityListener(listener)
-        onDispose { model.removeCityListener(listener) }
     }
 
     PvotScreen(
@@ -94,7 +105,7 @@ fun ClockScreen(padding: PaddingValues, listState: LazyListState) {
         contentPadding = screenPadding(padding, withFab = true),
         horizontalAlignment = Alignment.Start,
     ) {
-        item { MainClock(context, now, seconds) }
+        item { MainClock(context, now, seconds, content.analog) }
         if (cities.isNotEmpty()) {
             item(key = "cities") {
                 PvotSectionHeader(
@@ -112,7 +123,7 @@ fun ClockScreen(padding: PaddingValues, listState: LazyListState) {
                     detectTapGestures(
                         onLongPress = {
                             // The home clock follows the time zone, so only chosen cities move.
-                            if (city in model.selectedCities) {
+                            if (city in content.selected) {
                                 haptics.performHapticFeedback(HapticFeedbackType.LongPress)
                                 menuCity = city
                                 menuOpen = true
@@ -126,7 +137,7 @@ fun ClockScreen(padding: PaddingValues, listState: LazyListState) {
 
     val shown = menuCity
     if (shown != null) {
-        val selected = model.selectedCities
+        val selected = content.selected
         val index = selected.indexOf(shown)
         PvotBottomSheet(
             visible = menuOpen,
@@ -137,7 +148,7 @@ fun ClockScreen(padding: PaddingValues, listState: LazyListState) {
                 title = stringResource(R.string.city_move_up),
                 enabled = index > 0,
                 onClick = {
-                    model.moveSelectedCity(shown, -1)
+                    onEvent(ClockEvent.Move(shown, -1))
                     menuOpen = false
                 },
             )
@@ -145,7 +156,7 @@ fun ClockScreen(padding: PaddingValues, listState: LazyListState) {
                 title = stringResource(R.string.city_move_down),
                 enabled = index in 0 until selected.lastIndex,
                 onClick = {
-                    model.moveSelectedCity(shown, 1)
+                    onEvent(ClockEvent.Move(shown, 1))
                     menuOpen = false
                 },
             )
@@ -153,18 +164,12 @@ fun ClockScreen(padding: PaddingValues, listState: LazyListState) {
                 title = stringResource(R.string.city_remove),
                 destructive = true,
                 onClick = {
-                    model.removeSelectedCity(shown)
+                    onEvent(ClockEvent.Remove(shown))
                     menuOpen = false
                 },
             )
         }
     }
-}
-
-private fun worldClocks(): List<City> {
-    val model = DataModel.getDataModel()
-    val home = model.homeCity.takeIf { model.showHomeClock }
-    return listOfNotNull(home) + model.selectedCities
 }
 
 @Composable
@@ -181,11 +186,10 @@ private fun rememberNow(step: Long): androidx.compose.runtime.State<Long> {
 }
 
 @Composable
-private fun MainClock(context: Context, now: Long, seconds: Boolean) {
+private fun MainClock(context: Context, now: Long, seconds: Boolean, analog: Boolean) {
     val locale = LocalConfiguration.current.locales[0]
-    val model = DataModel.getDataModel()
     Column(modifier = Modifier.fillMaxWidth().padding(vertical = PvotSpacing.L)) {
-        if (model.clockStyle == DataModel.ClockStyle.ANALOG) {
+        if (analog) {
             AndroidView(
                 factory = { AnalogClock(it) },
                 update = { it.enableSeconds(seconds) },

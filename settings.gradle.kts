@@ -4,6 +4,7 @@
  */
 
 pluginManagement {
+    includeBuild("PvotLib/build-logic")
     repositories {
         gradlePluginPortal()
         google()
@@ -20,5 +21,12 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Clock"
+
+includeBuild("PvotLib") {
+    dependencySubstitution {
+        substitute(module("com.prauga.pvot:design-system")).using(project(":design-system"))
+        substitute(module("com.prauga.pvot:core-ui")).using(project(":core-ui"))
+    }
+}
 
 include(":app")

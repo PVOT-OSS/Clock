@@ -37,6 +37,7 @@ import android.view.accessibility.AccessibilityManager;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProvider;
 
 import org.prauga.clock.BaseActivity;
 import org.prauga.clock.LogUtils;
@@ -46,7 +47,7 @@ import org.prauga.clock.data.DataModel.AlarmVolumeButtonBehavior;
 import org.prauga.clock.events.Events;
 import org.prauga.clock.provider.AlarmInstance;
 import org.prauga.clock.alarms.ui.AlarmRinging;
-import org.prauga.clock.alarms.ui.RingingState;
+import org.prauga.clock.alarms.ui.AlarmRingingViewModel;
 
 import java.util.List;
 
@@ -97,7 +98,7 @@ public class AlarmActivity extends BaseActivity {
         }
     };
 
-    private final RingingState mRingingState = new RingingState();
+    private AlarmRingingViewModel mRinging;
 
     private AlarmInstance mAlarmInstance;
     private boolean mAlarmHandled;
@@ -149,8 +150,9 @@ public class AlarmActivity extends BaseActivity {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
         }
 
+        mRinging = new ViewModelProvider(this).get(AlarmRingingViewModel.class);
         AlarmRinging.show(this, mAlarmInstance.getLabelOrDefault(this),
-                isAccessibilityEnabled() || AlarmGestures.isTapToDismiss(this), mRingingState,
+                isAccessibilityEnabled() || AlarmGestures.isTapToDismiss(this), mRinging,
                 () -> {
                     if (!mAlarmHandled) snooze();
                 },
@@ -271,7 +273,7 @@ public class AlarmActivity extends BaseActivity {
         mAlarmHandled = true;
         LOGGER.v("Snoozed: %s", mAlarmInstance);
 
-        mRingingState.snoozed(DataModel.getDataModel().getSnoozeLength());
+        mRinging.snoozed(DataModel.getDataModel().getSnoozeLength());
         AlarmStateManager.setSnoozeState(this, mAlarmInstance, false /* showToast */);
         Events.sendAlarmEvent(R.string.action_snooze, R.string.label_deskclock);
 
@@ -287,7 +289,7 @@ public class AlarmActivity extends BaseActivity {
         mAlarmHandled = true;
         LOGGER.v("Dismissed: %s", mAlarmInstance);
 
-        mRingingState.dismissed();
+        mRinging.dismissed();
         AlarmStateManager.deleteInstanceAndUpdateParent(this, mAlarmInstance);
         Events.sendAlarmEvent(R.string.action_dismiss, R.string.label_deskclock);
 

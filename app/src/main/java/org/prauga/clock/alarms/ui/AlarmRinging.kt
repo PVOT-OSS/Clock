@@ -28,7 +28,6 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableLongStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -40,6 +39,7 @@ import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.prauga.pvot.designsystem.components.PvotSlideTarget
 import com.prauga.pvot.designsystem.components.PvotSlideToAct
 import com.prauga.pvot.designsystem.components.PvotSlideToActDefaults
@@ -50,25 +50,6 @@ import com.prauga.pvot.designsystem.theme.PvotSpacing
 import kotlinx.coroutines.delay
 import org.prauga.clock.R
 
-class RingingState {
-    var outcome by mutableStateOf<Outcome?>(null)
-        private set
-
-    fun snoozed(minutes: Int) {
-        outcome = Outcome.Snoozed(minutes)
-    }
-
-    fun dismissed() {
-        outcome = Outcome.Dismissed
-    }
-
-    sealed interface Outcome {
-        data class Snoozed(val minutes: Int) : Outcome
-
-        data object Dismissed : Outcome
-    }
-}
-
 object AlarmRinging {
 
     @JvmStatic
@@ -76,7 +57,7 @@ object AlarmRinging {
         activity: ComponentActivity,
         label: String,
         tapToAct: Boolean,
-        state: RingingState,
+        viewModel: AlarmRingingViewModel,
         onSnooze: Runnable,
         onDismiss: Runnable,
     ) {
@@ -86,7 +67,7 @@ object AlarmRinging {
                 CompositionLocalProvider(
                     LocalContentColor provides MaterialTheme.colorScheme.onBackground
                 ) {
-                    AlarmRingingScreen(label, tapToAct, state, onSnooze::run, onDismiss::run)
+                    AlarmRingingScreen(label, tapToAct, viewModel, onSnooze::run, onDismiss::run)
                 }
             }
         }
@@ -97,10 +78,11 @@ object AlarmRinging {
 private fun AlarmRingingScreen(
     label: String,
     tapToAct: Boolean,
-    state: RingingState,
+    viewModel: AlarmRingingViewModel,
     onSnooze: () -> Unit,
     onDismiss: () -> Unit,
 ) {
+    val outcome by viewModel.state.collectAsStateWithLifecycle()
     Box(
         Modifier.fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
@@ -108,7 +90,7 @@ private fun AlarmRingingScreen(
             .padding(PvotSpacing.L)
     ) {
         AnimatedContent(
-            targetState = state.outcome,
+            targetState = outcome,
             transitionSpec = { fadeIn() togetherWith fadeOut() },
             modifier = Modifier.fillMaxSize(),
             label = "ringing",
@@ -193,14 +175,14 @@ private fun Ringing(label: String, tapToAct: Boolean, onSnooze: () -> Unit, onDi
 }
 
 @Composable
-private fun Handled(outcome: RingingState.Outcome) {
+private fun Handled(outcome: RingingOutcome) {
     Column(
         Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         when (outcome) {
-            is RingingState.Outcome.Snoozed -> {
+            is RingingOutcome.Snoozed -> {
                 Text(
                     stringResource(R.string.alarm_alert_snoozed_text),
                     style = MaterialTheme.typography.headlineLarge,
@@ -215,7 +197,7 @@ private fun Handled(outcome: RingingState.Outcome) {
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
             }
-            RingingState.Outcome.Dismissed ->
+            RingingOutcome.Dismissed ->
                 Text(
                     stringResource(R.string.alarm_alert_off_text),
                     style = MaterialTheme.typography.headlineLarge,

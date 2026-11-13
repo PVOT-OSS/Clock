@@ -3,7 +3,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-plugins { alias(libs.plugins.android.application) }
+plugins {
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.pvot.android.compose)
+}
 
 android {
     namespace = "org.prauga.clock"

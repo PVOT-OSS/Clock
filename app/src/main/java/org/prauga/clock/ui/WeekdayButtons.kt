@@ -17,11 +17,14 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.minimumInteractiveComponentSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.Dp
+import com.prauga.pvot.designsystem.components.list.PvotListRowDefaults
+import com.prauga.pvot.designsystem.theme.PvotSpacing
 import org.prauga.clock.data.DataModel
 import org.prauga.clock.data.Weekdays
 import org.prauga.clock.uidata.UiDataModel
@@ -30,7 +33,7 @@ import org.prauga.clock.uidata.UiDataModel
 fun WeekdayButtons(days: Weekdays, onChange: (Int, Boolean) -> Unit) {
     val order = DataModel.getDataModel().weekdayOrder.calendarDays
     Row(
-        modifier = Modifier.fillMaxWidth().padding(vertical = 12.dp),
+        modifier = Modifier.fillMaxWidth().padding(vertical = PvotSpacing.M),
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {
         for (day in order) {
@@ -38,13 +41,14 @@ fun WeekdayButtons(days: Weekdays, onChange: (Int, Boolean) -> Unit) {
             Box(
                 contentAlignment = Alignment.Center,
                 modifier =
-                    Modifier.size(40.dp)
+                    Modifier.minimumInteractiveComponentSize()
+                        .size(PvotListRowDefaults.LeadingSize)
                         .clip(CircleShape)
                         .background(
                             if (on) MaterialTheme.colorScheme.primary
                             else MaterialTheme.colorScheme.surface
                         )
-                        .border(1.dp, MaterialTheme.colorScheme.outline, CircleShape)
+                        .border(Dp.Hairline, MaterialTheme.colorScheme.outline, CircleShape)
                         .clickable { onChange(day, !on) },
             ) {
                 Text(

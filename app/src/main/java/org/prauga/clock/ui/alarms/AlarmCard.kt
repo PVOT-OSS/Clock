@@ -28,11 +28,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import com.prauga.pvot.designsystem.components.PvotCard
 import com.prauga.pvot.designsystem.components.PvotSwitch
 import com.prauga.pvot.designsystem.components.button.PvotButton
 import com.prauga.pvot.designsystem.components.button.PvotButtonStyle
+import com.prauga.pvot.designsystem.components.button.PvotIconButtonDefaults
+import com.prauga.pvot.designsystem.theme.PvotSpacing
 import java.util.Calendar
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -63,7 +64,7 @@ fun AlarmCard(
     var editingLabel by remember { mutableStateOf(false) }
     var editingDate by remember { mutableStateOf(false) }
     PvotCard(modifier = modifier.fillMaxWidth(), onClick = onToggleExpanded) {
-        Column(Modifier.padding(16.dp)) {
+        Column(Modifier.padding(PvotSpacing.L)) {
             if (alarm.label.isNotEmpty() || expanded) {
                 Text(
                     text = alarm.label.ifEmpty { stringResource(R.string.add_label) },
@@ -175,10 +176,15 @@ private fun SettingRow(
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        modifier = modifier.fillMaxWidth().clickable(onClick = onClick).padding(vertical = 12.dp),
+        modifier =
+            modifier.fillMaxWidth().clickable(onClick = onClick).padding(vertical = PvotSpacing.M),
     ) {
-        Icon(painterResource(icon), contentDescription = null, modifier = Modifier.size(24.dp))
-        Spacer(Modifier.width(16.dp))
+        Icon(
+            painterResource(icon),
+            contentDescription = null,
+            modifier = Modifier.size(PvotIconButtonDefaults.IconSize),
+        )
+        Spacer(Modifier.width(PvotSpacing.L))
         Text(text, style = MaterialTheme.typography.bodyLarge)
     }
 }
@@ -246,6 +252,6 @@ private fun PredismissButton(alarm: Alarm, version: Int, updater: AlarmUpdateHan
             instance = null
         },
         style = PvotButtonStyle.Tonal,
-        modifier = Modifier.padding(top = 8.dp),
+        modifier = Modifier.padding(top = PvotSpacing.S),
     )
 }

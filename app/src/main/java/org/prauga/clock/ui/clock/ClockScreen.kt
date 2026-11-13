@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -41,7 +42,6 @@ import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.compose.LifecycleResumeEffect
 import com.prauga.pvot.coreui.PvotSectionHeader
@@ -49,6 +49,7 @@ import com.prauga.pvot.designsystem.components.PvotBottomSheet
 import com.prauga.pvot.designsystem.components.PvotCard
 import com.prauga.pvot.designsystem.components.PvotScreen
 import com.prauga.pvot.designsystem.components.PvotSheetItem
+import com.prauga.pvot.designsystem.components.button.PvotIconButtonDefaults
 import com.prauga.pvot.designsystem.motion.pvotReveal
 import com.prauga.pvot.designsystem.theme.PvotSpacing
 import java.util.Calendar
@@ -183,12 +184,15 @@ private fun rememberNow(step: Long): androidx.compose.runtime.State<Long> {
 private fun MainClock(context: Context, now: Long, seconds: Boolean) {
     val locale = LocalConfiguration.current.locales[0]
     val model = DataModel.getDataModel()
-    Column(modifier = Modifier.fillMaxWidth().padding(vertical = 16.dp)) {
+    Column(modifier = Modifier.fillMaxWidth().padding(vertical = PvotSpacing.L)) {
         if (model.clockStyle == DataModel.ClockStyle.ANALOG) {
             AndroidView(
                 factory = { AnalogClock(it) },
                 update = { it.enableSeconds(seconds) },
-                modifier = Modifier.size(240.dp).align(Alignment.CenterHorizontally),
+                modifier =
+                    Modifier.fillMaxWidth(ANALOG_FRACTION)
+                        .aspectRatio(1f)
+                        .align(Alignment.CenterHorizontally),
             )
         } else {
             Text(
@@ -207,14 +211,14 @@ private fun MainClock(context: Context, now: Long, seconds: Boolean) {
         Utils.getNextAlarm(context)?.let { alarm ->
             Row(
                 verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.padding(top = 4.dp),
+                modifier = Modifier.padding(top = PvotSpacing.XS),
             ) {
                 Icon(
                     painterResource(R.drawable.ic_t_alarm),
                     contentDescription = null,
-                    modifier = Modifier.size(16.dp),
+                    modifier = Modifier.size(PvotIconButtonDefaults.SmallIconSize),
                 )
-                Spacer(Modifier.width(6.dp))
+                Spacer(Modifier.width(PvotSpacing.XS))
                 Text(alarm, style = MaterialTheme.typography.titleSmall)
             }
         }
@@ -225,7 +229,7 @@ private fun MainClock(context: Context, now: Long, seconds: Boolean) {
 private fun CityCard(context: Context, city: City, now: Long, modifier: Modifier = Modifier) {
     PvotCard(modifier = modifier.fillMaxWidth()) {
         Row(
-            modifier = Modifier.fillMaxWidth().padding(16.dp),
+            modifier = Modifier.fillMaxWidth().padding(PvotSpacing.L),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Column(modifier = Modifier.weight(1f)) {
@@ -251,7 +255,8 @@ private fun formatTime(context: Context, now: Long, zone: TimeZone, seconds: Boo
         }
     val format =
         android.icu.text.SimpleDateFormat(
-            DateFormat.getBestDateTimePattern(java.util.Locale.getDefault(), skeleton)
+            DateFormat.getBestDateTimePattern(java.util.Locale.getDefault(), skeleton),
+            java.util.Locale.getDefault(),
         )
     format.timeZone = android.icu.util.TimeZone.getTimeZone(zone.id)
     return format.format(Date(now))
@@ -276,3 +281,5 @@ private fun difference(context: Context, city: City, now: Long): String? {
         )
     } else text
 }
+
+private const val ANALOG_FRACTION = 0.6f

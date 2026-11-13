@@ -36,7 +36,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import com.prauga.pvot.designsystem.components.PvotScreen
 import com.prauga.pvot.designsystem.components.button.PvotFab
 import com.prauga.pvot.designsystem.components.button.PvotIconButton
@@ -84,7 +83,7 @@ fun StopwatchScreen(padding: PaddingValues, listState: LazyListState) {
                     style = MaterialTheme.typography.displayLarge,
                     fontWeight = FontWeight.Light,
                     textAlign = TextAlign.Center,
-                    modifier = Modifier.fillMaxWidth().padding(vertical = 24.dp),
+                    modifier = Modifier.fillMaxWidth().padding(vertical = PvotSpacing.L),
                 )
             }
             if (laps.isNotEmpty() && !stopwatch.isReset) {
@@ -104,7 +103,7 @@ fun StopwatchScreen(padding: PaddingValues, listState: LazyListState) {
                 Modifier.align(Alignment.BottomCenter)
                     .navigationBarsPadding()
                     .padding(bottom = LocalPvotNavBarSizes.current.barHeight + PvotSpacing.L),
-            horizontalArrangement = Arrangement.spacedBy(24.dp),
+            horizontalArrangement = Arrangement.spacedBy(PvotSpacing.L),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             if (!stopwatch.isReset) {
@@ -128,7 +127,6 @@ fun StopwatchScreen(padding: PaddingValues, listState: LazyListState) {
                 onClick = {
                     if (stopwatch.isRunning) model.pauseStopwatch() else model.startStopwatch()
                 },
-                modifier = Modifier.size(72.dp),
             )
             if (stopwatch.isRunning) {
                 PvotIconButton(

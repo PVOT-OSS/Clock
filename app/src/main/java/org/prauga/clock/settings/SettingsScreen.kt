@@ -41,11 +41,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
+import androidx.core.content.edit
 import androidx.lifecycle.compose.LifecycleResumeEffect
 import com.prauga.pvot.designsystem.components.PvotDialog
 import com.prauga.pvot.designsystem.components.PvotDialogAction
 import com.prauga.pvot.designsystem.components.PvotDialogActionStyle
+import com.prauga.pvot.designsystem.components.button.PvotIconButtonDefaults
 import com.prauga.pvot.designsystem.components.list.PvotListGroup
 import com.prauga.pvot.designsystem.components.list.PvotListGroupScope
 import com.prauga.pvot.designsystem.components.list.PvotPreferenceRow
@@ -262,9 +263,7 @@ fun SettingsScreen(onBack: () -> Unit) {
                         title = stringResource(R.string.automatic_home_clock),
                         summary = stringResource(R.string.automatic_home_clock_summary),
                         checked = autoHome,
-                        onCheckedChange = {
-                            prefs.edit().putBoolean(KEY_AUTO_HOME_CLOCK, it).apply()
-                        },
+                        onCheckedChange = { prefs.edit { putBoolean(KEY_AUTO_HOME_CLOCK, it) } },
                     )
                 }
                 // A zone the list doesn't name (an alias such as Asia/Calcutta) shows by name.
@@ -377,7 +376,7 @@ fun SettingsScreen(onBack: () -> Unit) {
             onDismiss = { open = null },
             onSelect = { index ->
                 val chosen = sheet.values[index]
-                prefs.edit().putString(sheet.key, chosen).apply()
+                prefs.edit { putString(sheet.key, chosen) }
                 if (sheet.key == Sunrise.KEY_MINUTES) Sunrise.onSettingChanged(context, chosen)
                 open = null
             },
@@ -471,7 +470,8 @@ private fun AlarmVolumeRow() {
             Icon(
                 painterResource(R.drawable.ic_t_bell),
                 contentDescription = null,
-                modifier = Modifier.padding(end = PvotSpacing.M).size(20.dp),
+                modifier =
+                    Modifier.padding(end = PvotSpacing.M).size(PvotIconButtonDefaults.IconSize),
             )
             PvotSlider(
                 value = volume,

@@ -34,9 +34,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
+import androidx.core.net.toUri
 import com.prauga.pvot.coreui.PvotEmptyContent
 import com.prauga.pvot.designsystem.components.PvotScreen
+import com.prauga.pvot.designsystem.components.button.PvotIconButtonDefaults
 import com.prauga.pvot.designsystem.motion.pvotReveal
 import java.time.LocalTime
 import java.util.concurrent.Executors
@@ -112,7 +113,7 @@ fun AlarmsScreen(
                     Icon(
                         painterResource(R.drawable.ic_t_alarm),
                         contentDescription = null,
-                        modifier = Modifier.size(48.dp),
+                        modifier = Modifier.size(PvotIconButtonDefaults.Size),
                     )
                 },
             )
@@ -158,7 +159,7 @@ fun AlarmsScreen(
     )
 }
 
-private val PROVIDER: Uri = Uri.parse("content://${BuildConfig.APPLICATION_ID}/")
+private val PROVIDER: Uri = "content://${BuildConfig.APPLICATION_ID}/".toUri()
 
 private val ORDER = compareBy<Alarm>({ it.hour }, { it.minutes }, { -it.id })
 

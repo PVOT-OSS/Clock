@@ -34,7 +34,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.compose.LifecycleResumeEffect
 import com.prauga.pvot.designsystem.components.PvotCard
@@ -44,6 +43,7 @@ import com.prauga.pvot.designsystem.components.PvotScreen
 import com.prauga.pvot.designsystem.components.PvotSwitch
 import com.prauga.pvot.designsystem.components.button.PvotButton
 import com.prauga.pvot.designsystem.components.button.PvotButtonStyle
+import com.prauga.pvot.designsystem.theme.PvotSpacing
 import java.time.LocalTime
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -101,7 +101,7 @@ fun BedtimeScreen(padding: PaddingValues, listState: LazyListState) {
                             }
                             pickBedtime = true
                         },
-                        modifier = Modifier.padding(top = 8.dp),
+                        modifier = Modifier.padding(top = PvotSpacing.S),
                     )
                 }
             }
@@ -134,7 +134,7 @@ fun BedtimeScreen(padding: PaddingValues, listState: LazyListState) {
                     modifier =
                         Modifier.fillMaxWidth()
                             .clickable { pickReminder = true }
-                            .padding(vertical = 8.dp),
+                            .padding(vertical = PvotSpacing.S),
                 )
             }
         }
@@ -230,7 +230,7 @@ private fun Card(
     content: @Composable () -> Unit,
 ) {
     PvotCard(Modifier.fillMaxWidth()) {
-        Column(Modifier.padding(16.dp)) {
+        Column(Modifier.padding(PvotSpacing.L)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(
                     title,
@@ -362,8 +362,8 @@ private fun SleepSoundsCard(settings: BedtimeSettings, changed: () -> Unit) {
         )
     Card(stringResource(R.string.sleep_sounds_title)) {
         Row(
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-            modifier = Modifier.padding(top = 8.dp),
+            horizontalArrangement = Arrangement.spacedBy(PvotSpacing.S),
+            modifier = Modifier.padding(top = PvotSpacing.S),
         ) {
             noises.forEachIndexed { i, label ->
                 PvotButton(
@@ -379,8 +379,8 @@ private fun SleepSoundsCard(settings: BedtimeSettings, changed: () -> Unit) {
             }
         }
         Row(
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-            modifier = Modifier.padding(top = 8.dp),
+            horizontalArrangement = Arrangement.spacedBy(PvotSpacing.S),
+            modifier = Modifier.padding(top = PvotSpacing.S),
         ) {
             SLEEP_LENGTHS.forEach { minutes ->
                 PvotButton(
@@ -413,7 +413,7 @@ private fun SleepSoundsCard(settings: BedtimeSettings, changed: () -> Unit) {
                 }
                 changed()
             },
-            modifier = Modifier.padding(top = 8.dp),
+            modifier = Modifier.padding(top = PvotSpacing.S),
         )
     }
 }

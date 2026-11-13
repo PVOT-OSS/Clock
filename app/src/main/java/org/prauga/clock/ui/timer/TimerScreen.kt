@@ -22,7 +22,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.neverEqualPolicy
@@ -35,7 +34,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import com.prauga.pvot.designsystem.components.PvotCard
 import com.prauga.pvot.designsystem.components.PvotScreen
 import com.prauga.pvot.designsystem.components.button.PvotButton
@@ -44,6 +42,7 @@ import com.prauga.pvot.designsystem.components.button.PvotIconButton
 import com.prauga.pvot.designsystem.components.picker.PvotDurationPicker
 import com.prauga.pvot.designsystem.components.progress.PvotLinearProgress
 import com.prauga.pvot.designsystem.motion.pvotReveal
+import com.prauga.pvot.designsystem.theme.PvotSpacing
 import kotlin.math.abs
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.minutes
@@ -60,25 +59,21 @@ private val PRESETS = listOf(5, 10, 30, 45)
 @Composable
 fun TimerScreen(padding: PaddingValues, listState: LazyListState, setupRequests: Int) {
     val model = DataModel.getDataModel()
-    // Timer.equals compares ids only, so updates look equal without these.
+    // Timer.equals compares ids only, so an updated list looks equal to the old one.
     var timers by remember { mutableStateOf(model.timers.toList(), neverEqualPolicy()) }
-    var version by remember { mutableIntStateOf(0) }
     DisposableEffect(Unit) {
         val listener =
             object : TimerListener {
                 override fun timerAdded(timer: Timer) {
                     timers = model.timers.toList()
-                    version++
                 }
 
                 override fun timerUpdated(before: Timer, after: Timer) {
                     timers = model.timers.toList()
-                    version++
                 }
 
                 override fun timerRemoved(timer: Timer) {
                     timers = model.timers.toList()
-                    version++
                 }
             }
         model.addTimerListener(listener)
@@ -99,7 +94,7 @@ fun TimerScreen(padding: PaddingValues, listState: LazyListState, setupRequests:
                 },
             )
         } else {
-            TimerList(timers, version, listState, padding, onAdd = { adding = true })
+            TimerList(timers, listState, padding, onAdd = { adding = true })
         }
     }
 }
@@ -119,17 +114,17 @@ private fun TimerSetup(
     }
     Box(modifier.fillMaxSize()) {
         Column(
-            Modifier.fillMaxWidth().padding(horizontal = 16.dp),
+            Modifier.fillMaxWidth().padding(horizontal = PvotSpacing.L),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             PvotDurationPicker(
                 duration = duration,
                 onDurationChange = { duration = it },
-                modifier = Modifier.fillMaxWidth().padding(top = 16.dp),
+                modifier = Modifier.fillMaxWidth().padding(top = PvotSpacing.L),
             )
             Row(
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                modifier = Modifier.padding(top = 16.dp),
+                horizontalArrangement = Arrangement.spacedBy(PvotSpacing.S),
+                modifier = Modifier.padding(top = PvotSpacing.L),
             ) {
                 PRESETS.forEach { minutes ->
                     PvotButton(
@@ -144,7 +139,7 @@ private fun TimerSetup(
                     text = stringResource(android.R.string.cancel),
                     onClick = onCancel,
                     style = PvotButtonStyle.Text,
-                    modifier = Modifier.padding(top = 8.dp),
+                    modifier = Modifier.padding(top = PvotSpacing.S),
                 )
             }
         }
@@ -154,7 +149,6 @@ private fun TimerSetup(
 @Composable
 private fun TimerList(
     timers: List<Timer>,
-    version: Int,
     listState: LazyListState,
     padding: PaddingValues,
     onAdd: () -> Unit,
@@ -174,8 +168,9 @@ private fun TimerList(
                     timer,
                     timer.state,
                     timer.remainingTime,
+                    timer.label,
+                    timer.totalLength,
                     now,
-                    version,
                     Modifier.pvotReveal(index),
                 )
             }
@@ -188,12 +183,13 @@ private fun TimerCard(
     timer: Timer,
     state: Timer.State,
     remainingAtBind: Long,
+    label: String,
+    length: Long,
     now: Long,
-    @Suppress("UNUSED_PARAMETER") version: Int,
     modifier: Modifier = Modifier,
 ) {
     val model = DataModel.getDataModel()
-    // Timer.equals compares ids only, so the state is passed in to redraw the card.
+    // Timer.equals compares ids only, so the changing fields are passed in to redraw the card.
     val remaining =
         if (state == Timer.State.RUNNING || state == Timer.State.EXPIRED) {
             timer.remainingTime
@@ -201,9 +197,9 @@ private fun TimerCard(
             remainingAtBind
         }
     PvotCard(modifier.fillMaxWidth()) {
-        Column(Modifier.padding(16.dp)) {
+        Column(Modifier.padding(PvotSpacing.L)) {
             Text(
-                text = timer.label.ifEmpty { stringResource(R.string.timer_notification_label) },
+                text = label.ifEmpty { stringResource(R.string.timer_notification_label) },
                 style = MaterialTheme.typography.titleMedium,
             )
             Text(
@@ -216,12 +212,12 @@ private fun TimerCard(
             )
             PvotLinearProgress(
                 progress = {
-                    (1f - remaining.toFloat() / timer.totalLength.coerceAtLeast(1)).coerceIn(0f, 1f)
+                    (1f - remaining.toFloat() / length.coerceAtLeast(1)).coerceIn(0f, 1f)
                 },
-                modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
+                modifier = Modifier.fillMaxWidth().padding(vertical = PvotSpacing.S),
             )
             Row(
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                horizontalArrangement = Arrangement.spacedBy(PvotSpacing.S),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 PvotButton(

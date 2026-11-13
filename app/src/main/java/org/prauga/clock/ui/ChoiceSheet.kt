@@ -13,8 +13,9 @@ import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.dp
 import com.prauga.pvot.designsystem.components.PvotBottomSheet
 import com.prauga.pvot.designsystem.components.list.PvotListRow
 import org.prauga.clock.R
@@ -31,7 +32,10 @@ fun ChoiceSheet(
     PvotBottomSheet(visible = visible, onDismissRequest = onDismiss, title = title) {
         val state = rememberLazyListState()
         LaunchedEffect(visible) { if (visible && selected > 0) state.scrollToItem(selected) }
-        LazyColumn(state = state, modifier = Modifier.heightIn(max = 520.dp)) {
+        val maxHeight =
+            with(LocalDensity.current) { LocalWindowInfo.current.containerSize.height.toDp() } *
+                MAX_HEIGHT_FRACTION
+        LazyColumn(state = state, modifier = Modifier.heightIn(max = maxHeight)) {
             itemsIndexed(entries) { index, entry ->
                 PvotListRow(
                     title = entry,
@@ -53,3 +57,5 @@ fun ChoiceSheet(
         }
     }
 }
+
+private const val MAX_HEIGHT_FRACTION = 0.6f

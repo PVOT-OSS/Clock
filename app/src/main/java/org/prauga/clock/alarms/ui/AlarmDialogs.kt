@@ -23,9 +23,7 @@ import androidx.compose.ui.res.stringResource
 import com.prauga.pvot.designsystem.components.PvotDialog
 import com.prauga.pvot.designsystem.components.PvotDialogAction
 import com.prauga.pvot.designsystem.components.PvotDialogActionStyle
-import com.prauga.pvot.designsystem.components.picker.PvotClockPicker
 import com.prauga.pvot.designsystem.components.textfield.PvotTextField
-import java.time.LocalTime
 import java.util.Calendar
 import java.util.concurrent.TimeUnit
 import org.prauga.clock.R
@@ -33,30 +31,6 @@ import org.prauga.clock.provider.Alarm
 import org.prauga.clock.provider.AlarmDates
 
 private val DAY_MILLIS = TimeUnit.DAYS.toMillis(1)
-
-@Composable
-fun TimeDialog(
-    visible: Boolean,
-    initial: LocalTime,
-    onDismiss: () -> Unit,
-    onConfirm: (LocalTime) -> Unit,
-) {
-    var time by remember(visible) { mutableStateOf(initial) }
-    PvotDialog(
-        visible = visible,
-        onDismissRequest = onDismiss,
-        title = null,
-        content = { PvotClockPicker(time = time, onTimeChange = { time = it }) },
-        actions = {
-            PvotDialogAction(
-                label = stringResource(android.R.string.ok),
-                onClick = { onConfirm(time) },
-                style = PvotDialogActionStyle.Primary,
-            )
-            PvotDialogAction(label = stringResource(android.R.string.cancel), onClick = onDismiss)
-        },
-    )
-}
 
 @Composable
 fun LabelDialog(

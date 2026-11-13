@@ -39,6 +39,7 @@ import org.prauga.clock.R
 import org.prauga.clock.Utils
 import org.prauga.clock.alarms.AlarmDatePicker
 import org.prauga.clock.common.WeekdayButtons
+import org.prauga.clock.common.formatTime
 import org.prauga.clock.data.DataModel
 import org.prauga.clock.provider.Alarm
 import org.prauga.clock.provider.AlarmInstance
@@ -184,15 +185,6 @@ private fun summary(context: android.content.Context, alarm: Alarm): String {
             else R.string.alarm_today
         )
     return if (silent) "$day · ${context.getString(R.string.alarm_badge_silent)}" else day
-}
-
-internal fun formatTime(context: android.content.Context, hour: Int, minute: Int): String {
-    val calendar =
-        Calendar.getInstance().apply {
-            set(Calendar.HOUR_OF_DAY, hour)
-            set(Calendar.MINUTE, minute)
-        }
-    return android.text.format.DateFormat.getTimeFormat(context).format(calendar.time)
 }
 
 @Composable

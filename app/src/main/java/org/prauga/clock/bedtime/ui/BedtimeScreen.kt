@@ -49,12 +49,12 @@ import com.prauga.pvot.designsystem.theme.PvotSpacing
 import java.time.LocalTime
 import org.prauga.clock.R
 import org.prauga.clock.alarms.data.AlarmRepository
-import org.prauga.clock.alarms.ui.TimeDialog
-import org.prauga.clock.alarms.ui.formatTime
 import org.prauga.clock.bedtime.data.BedtimeRepository
 import org.prauga.clock.bedtime.data.BedtimeSnapshot
 import org.prauga.clock.bedtime.data.WakeUpAlarm
+import org.prauga.clock.common.TimeDialog
 import org.prauga.clock.common.WeekdayButtons
+import org.prauga.clock.common.formatTime
 import org.prauga.clock.common.screenPadding
 import org.prauga.clock.data.DataModel
 import org.prauga.clock.data.Weekdays

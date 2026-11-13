@@ -37,6 +37,7 @@ import java.time.LocalTime
 import org.prauga.clock.R
 import org.prauga.clock.alarms.data.AlarmRepository
 import org.prauga.clock.common.ScreenFab
+import org.prauga.clock.common.TimeDialog
 import org.prauga.clock.common.screenPadding
 import org.prauga.clock.data.DataModel
 

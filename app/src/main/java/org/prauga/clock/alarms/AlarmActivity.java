@@ -18,13 +18,6 @@ package org.prauga.clock.alarms;
 import static android.accessibilityservice.AccessibilityServiceInfo.FEEDBACK_GENERIC;
 
 import android.accessibilityservice.AccessibilityServiceInfo;
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
-import android.animation.TimeInterpolator;
-import android.animation.ValueAnimator;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -32,63 +25,44 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.pm.ActivityInfo;
-import android.graphics.Color;
-import android.graphics.Rect;
-import android.graphics.drawable.ColorDrawable;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.accessibility.AccessibilityManager;
-import android.widget.ImageView;
-import android.widget.TextClock;
-import android.widget.TextView;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
-import androidx.core.graphics.ColorUtils;
-import androidx.core.view.animation.PathInterpolatorCompat;
 
-import org.prauga.clock.AnimatorUtils;
 import org.prauga.clock.BaseActivity;
 import org.prauga.clock.LogUtils;
 import org.prauga.clock.R;
-import org.prauga.clock.ThemeUtils;
-import org.prauga.clock.Utils;
 import org.prauga.clock.data.DataModel;
 import org.prauga.clock.data.DataModel.AlarmVolumeButtonBehavior;
 import org.prauga.clock.events.Events;
 import org.prauga.clock.provider.AlarmInstance;
-import org.prauga.clock.widget.CircleView;
+import org.prauga.clock.ui.ringing.AlarmRinging;
+import org.prauga.clock.ui.ringing.RingingState;
 
 import java.util.List;
 
-public class AlarmActivity extends BaseActivity
-        implements View.OnClickListener, View.OnTouchListener {
+/**
+ * The full-screen ringing alarm: snooze or dismiss it by sliding, by tapping (a setting, or with an
+ * accessibility service on), or with the volume keys. The screen itself is
+ * {@link AlarmRinging}, in Compose.
+ */
+public class AlarmActivity extends BaseActivity {
 
     private static final LogUtils.Logger LOGGER = new LogUtils.Logger("AlarmActivity");
 
-    private static final TimeInterpolator PULSE_INTERPOLATOR =
-            PathInterpolatorCompat.create(0.4f, 0.0f, 0.2f, 1.0f);
-    private static final TimeInterpolator REVEAL_INTERPOLATOR =
-            PathInterpolatorCompat.create(0.0f, 0.0f, 0.2f, 1.0f);
-
-    private static final int PULSE_DURATION_MILLIS = 1000;
-    private static final int ALARM_BOUNCE_DURATION_MILLIS = 500;
-    private static final int ALERT_REVEAL_DURATION_MILLIS = 500;
-    private static final int ALERT_FADE_DURATION_MILLIS = 500;
     private static final int ALERT_DISMISS_DELAY_MILLIS = 2000;
 
-    private static final float BUTTON_SCALE_DEFAULT = 0.7f;
-    private static final int BUTTON_DRAWABLE_ALPHA_DEFAULT = 165;
-
     private final Handler mHandler = new Handler(Looper.myLooper());
+
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -128,32 +102,14 @@ public class AlarmActivity extends BaseActivity
         }
     };
 
+    private final RingingState mRingingState = new RingingState();
+
     private AlarmInstance mAlarmInstance;
     private boolean mAlarmHandled;
     private AlarmVolumeButtonBehavior mVolumeBehavior;
-    private int mCurrentHourColor;
     private boolean mReceiverRegistered;
     /** Whether the AlarmService is currently bound */
     private boolean mServiceBound;
-
-    private AccessibilityManager mAccessibilityManager;
-
-    private ViewGroup mAlertView;
-    private TextView mAlertTitleView;
-    private TextView mAlertInfoView;
-
-    private ViewGroup mContentView;
-    private ImageView mAlarmButton;
-    private ImageView mSnoozeButton;
-    private ImageView mDismissButton;
-    private TextView mHintView;
-
-    private ValueAnimator mAlarmAnimator;
-    private ValueAnimator mSnoozeAnimator;
-    private ValueAnimator mDismissAnimator;
-    private ValueAnimator mPulseAnimator;
-
-    private int mInitialPointerIndex = MotionEvent.INVALID_POINTER_ID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -198,45 +154,14 @@ public class AlarmActivity extends BaseActivity
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
         }
 
-        mAccessibilityManager = (AccessibilityManager) getSystemService(ACCESSIBILITY_SERVICE);
-
-        setContentView(R.layout.alarm_activity);
-
-        mAlertView = findViewById(R.id.alert);
-        mAlertTitleView = mAlertView.findViewById(R.id.alert_title);
-        mAlertInfoView = mAlertView.findViewById(R.id.alert_info);
-
-        mContentView = findViewById(R.id.content);
-        mAlarmButton = mContentView.findViewById(R.id.alarm);
-        mSnoozeButton = mContentView.findViewById(R.id.snooze);
-        mDismissButton = mContentView.findViewById(R.id.dismiss);
-        mHintView = mContentView.findViewById(R.id.hint);
-
-        final TextView titleView = mContentView.findViewById(R.id.title);
-        final TextClock digitalClock = mContentView.findViewById(R.id.digital_clock);
-        final CircleView pulseView = mContentView.findViewById(R.id.pulse);
-
-        titleView.setText(mAlarmInstance.getLabelOrDefault(this));
-        Utils.setTimeFormat(digitalClock, false);
-
-        mCurrentHourColor = ThemeUtils.resolveColor(this, android.R.attr.windowBackground);
-        getWindow().setBackgroundDrawable(new ColorDrawable(mCurrentHourColor));
-
-        mAlarmButton.setOnTouchListener(this);
-        mSnoozeButton.setOnClickListener(this);
-        mDismissButton.setOnClickListener(this);
-
-        mAlarmAnimator = AnimatorUtils.getScaleAnimator(mAlarmButton, 1.0f, 0.0f);
-        mSnoozeAnimator = getButtonAnimator(mSnoozeButton, Color.WHITE);
-        mDismissAnimator = getButtonAnimator(mDismissButton, mCurrentHourColor);
-        mPulseAnimator = ObjectAnimator.ofPropertyValuesHolder(pulseView,
-                PropertyValuesHolder.ofFloat(CircleView.RADIUS, 0.0f, pulseView.getRadius()),
-                PropertyValuesHolder.ofObject(CircleView.FILL_COLOR, AnimatorUtils.ARGB_EVALUATOR,
-                        ColorUtils.setAlphaComponent(pulseView.getFillColor(), 0)));
-        mPulseAnimator.setDuration(PULSE_DURATION_MILLIS);
-        mPulseAnimator.setInterpolator(PULSE_INTERPOLATOR);
-        mPulseAnimator.setRepeatCount(ValueAnimator.INFINITE);
-        mPulseAnimator.start();
+        AlarmRinging.show(this, mAlarmInstance.getLabelOrDefault(this),
+                isAccessibilityEnabled() || AlarmGestures.isTapToDismiss(this), mRingingState,
+                () -> {
+                    if (!mAlarmHandled) snooze();
+                },
+                () -> {
+                    if (!mAlarmHandled) dismiss();
+                });
     }
 
     @Override
@@ -270,8 +195,6 @@ public class AlarmActivity extends BaseActivity
         }
 
         bindAlarmService();
-
-        resetAnimations();
     }
 
     @Override
@@ -319,112 +242,6 @@ public class AlarmActivity extends BaseActivity
         return super.dispatchKeyEvent(keyEvent);
     }
 
-    @Override
-    public void onClick(View view) {
-        if (mAlarmHandled) {
-            LOGGER.v("onClick ignored: %s", view);
-            return;
-        }
-        LOGGER.v("onClick: %s", view);
-
-        // If in accessibility mode, allow snooze/dismiss by double tapping on respective icons;
-        // the tap gesture setting does the same with a single tap.
-        if (isAccessibilityEnabled() || AlarmGestures.isTapToDismiss(this)) {
-            if (view == mSnoozeButton) {
-                snooze();
-            } else if (view == mDismissButton) {
-                dismiss();
-            }
-            return;
-        }
-
-        if (view == mSnoozeButton) {
-            hintSnooze();
-        } else if (view == mDismissButton) {
-            hintDismiss();
-        }
-    }
-
-    @Override
-    public boolean onTouch(View view, MotionEvent event) {
-        if (mAlarmHandled) {
-            LOGGER.v("onTouch ignored: %s", event);
-            return false;
-        }
-
-        final int action = event.getActionMasked();
-        if (action == MotionEvent.ACTION_DOWN) {
-            LOGGER.v("onTouch started: %s", event);
-
-            // Track the pointer that initiated the touch sequence.
-            mInitialPointerIndex = event.getPointerId(event.getActionIndex());
-
-            // Stop the pulse, allowing the last pulse to finish.
-            mPulseAnimator.setRepeatCount(0);
-        } else if (action == MotionEvent.ACTION_CANCEL) {
-            LOGGER.v("onTouch canceled: %s", event);
-
-            // Clear the pointer index.
-            mInitialPointerIndex = MotionEvent.INVALID_POINTER_ID;
-
-            // Reset everything.
-            resetAnimations();
-        }
-
-        final int actionIndex = event.getActionIndex();
-        if (mInitialPointerIndex == MotionEvent.INVALID_POINTER_ID
-                || mInitialPointerIndex != event.getPointerId(actionIndex)) {
-            // Ignore any pointers other than the initial one, bail early.
-            return true;
-        }
-
-        final int[] contentLocation = {0, 0};
-        mContentView.getLocationOnScreen(contentLocation);
-
-        final float x = event.getRawX() - contentLocation[0];
-        final float y = event.getRawY() - contentLocation[1];
-
-        final int alarmLeft = mAlarmButton.getLeft() + mAlarmButton.getPaddingLeft();
-        final int alarmRight = mAlarmButton.getRight() - mAlarmButton.getPaddingRight();
-
-        final float snoozeFraction, dismissFraction;
-        if (mContentView.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL) {
-            snoozeFraction = getFraction(alarmRight, mSnoozeButton.getLeft(), x);
-            dismissFraction = getFraction(alarmLeft, mDismissButton.getRight(), x);
-        } else {
-            snoozeFraction = getFraction(alarmLeft, mSnoozeButton.getRight(), x);
-            dismissFraction = getFraction(alarmRight, mDismissButton.getLeft(), x);
-        }
-        setAnimatedFractions(snoozeFraction, dismissFraction);
-
-        if (action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_POINTER_UP) {
-            LOGGER.v("onTouch ended: %s", event);
-
-            mInitialPointerIndex = MotionEvent.INVALID_POINTER_ID;
-            if (snoozeFraction == 1.0f) {
-                snooze();
-            } else if (dismissFraction == 1.0f) {
-                dismiss();
-            } else {
-                if (snoozeFraction > 0.0f || dismissFraction > 0.0f) {
-                    // Animate back to the initial state.
-                    AnimatorUtils.reverse(mAlarmAnimator, mSnoozeAnimator, mDismissAnimator);
-                } else if (mAlarmButton.getTop() <= y && y <= mAlarmButton.getBottom()) {
-                    // User touched the alarm button, hint the dismiss action.
-                    hintDismiss();
-                }
-
-                // Restart the pulse.
-                mPulseAnimator.setRepeatCount(ValueAnimator.INFINITE);
-                if (!mPulseAnimator.isStarted()) {
-                    mPulseAnimator.start();
-                }
-            }
-        }
-
-        return true;
-    }
-
     private void hideNavigationBar() {
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
@@ -436,49 +253,20 @@ public class AlarmActivity extends BaseActivity
      * handling, etc.
      */
     private boolean isAccessibilityEnabled() {
-        if (mAccessibilityManager == null || !mAccessibilityManager.isEnabled()) {
+        final AccessibilityManager accessibilityManager =
+                (AccessibilityManager) getSystemService(ACCESSIBILITY_SERVICE);
+        if (accessibilityManager == null || !accessibilityManager.isEnabled()) {
             // Accessibility is unavailable or disabled.
             return false;
-        } else if (mAccessibilityManager.isTouchExplorationEnabled()) {
+        } else if (accessibilityManager.isTouchExplorationEnabled()) {
             // TalkBack's touch exploration mode is enabled.
             return true;
         }
 
         // Check if "Switch Access" is enabled.
         final List<AccessibilityServiceInfo> enabledAccessibilityServices =
-                mAccessibilityManager.getEnabledAccessibilityServiceList(FEEDBACK_GENERIC);
+                accessibilityManager.getEnabledAccessibilityServiceList(FEEDBACK_GENERIC);
         return !enabledAccessibilityServices.isEmpty();
-    }
-
-    private void hintSnooze() {
-        final int alarmLeft = mAlarmButton.getLeft() + mAlarmButton.getPaddingLeft();
-        final int alarmRight = mAlarmButton.getRight() - mAlarmButton.getPaddingRight();
-        final float translationX = Math.max(mSnoozeButton.getLeft() - alarmRight, 0)
-                + Math.min(mSnoozeButton.getRight() - alarmLeft, 0);
-        getAlarmBounceAnimator(translationX, translationX < 0.0f ?
-                R.string.description_direction_left : R.string.description_direction_right).start();
-    }
-
-    private void hintDismiss() {
-        final int alarmLeft = mAlarmButton.getLeft() + mAlarmButton.getPaddingLeft();
-        final int alarmRight = mAlarmButton.getRight() - mAlarmButton.getPaddingRight();
-        final float translationX = Math.max(mDismissButton.getLeft() - alarmRight, 0)
-                + Math.min(mDismissButton.getRight() - alarmLeft, 0);
-        getAlarmBounceAnimator(translationX, translationX < 0.0f ?
-                R.string.description_direction_left : R.string.description_direction_right).start();
-    }
-
-    /**
-     * Set animators to initial values and restart pulse on alarm button.
-     */
-    private void resetAnimations() {
-        // Set the animators to their initial values.
-        setAnimatedFractions(0.0f /* snoozeFraction */, 0.0f /* dismissFraction */);
-        // Restart the pulse.
-        mPulseAnimator.setRepeatCount(ValueAnimator.INFINITE);
-        if (!mPulseAnimator.isStarted()) {
-            mPulseAnimator.start();
-        }
     }
 
     /**
@@ -488,23 +276,13 @@ public class AlarmActivity extends BaseActivity
         mAlarmHandled = true;
         LOGGER.v("Snoozed: %s", mAlarmInstance);
 
-        setAnimatedFractions(1.0f /* snoozeFraction */, 0.0f /* dismissFraction */);
-
-        final int snoozeMinutes = DataModel.getDataModel().getSnoozeLength();
-        final String infoText = getResources().getQuantityString(
-                R.plurals.alarm_alert_snooze_duration, snoozeMinutes, snoozeMinutes);
-        final String accessibilityText = getResources().getQuantityString(
-                R.plurals.alarm_alert_snooze_set, snoozeMinutes, snoozeMinutes);
-
-        getAlertAnimator(mSnoozeButton, R.string.alarm_alert_snoozed_text, infoText,
-                accessibilityText, Color.DKGRAY, mCurrentHourColor).start();
-
+        mRingingState.snoozed(DataModel.getDataModel().getSnoozeLength());
         AlarmStateManager.setSnoozeState(this, mAlarmInstance, false /* showToast */);
-
         Events.sendAlarmEvent(R.string.action_snooze, R.string.label_deskclock);
 
         // Unbind here, otherwise alarm will keep ringing until activity finishes.
         unbindAlarmService();
+        finishSoon();
     }
 
     /**
@@ -514,18 +292,18 @@ public class AlarmActivity extends BaseActivity
         mAlarmHandled = true;
         LOGGER.v("Dismissed: %s", mAlarmInstance);
 
-        setAnimatedFractions(0.0f /* snoozeFraction */, 1.0f /* dismissFraction */);
-
-        getAlertAnimator(mDismissButton, R.string.alarm_alert_off_text, null /* infoText */,
-                getString(R.string.alarm_alert_off_text) /* accessibilityText */,
-                Color.DKGRAY, mCurrentHourColor).start();
-
+        mRingingState.dismissed();
         AlarmStateManager.deleteInstanceAndUpdateParent(this, mAlarmInstance);
-
         Events.sendAlarmEvent(R.string.action_dismiss, R.string.label_deskclock);
 
         // Unbind here, otherwise alarm will keep ringing until activity finishes.
         unbindAlarmService();
+        finishSoon();
+    }
+
+    /** Leaves the outcome on screen for a moment, then closes. */
+    private void finishSoon() {
+        mHandler.postDelayed(this::finish, ALERT_DISMISS_DELAY_MILLIS);
     }
 
     /**
@@ -547,112 +325,5 @@ public class AlarmActivity extends BaseActivity
             unbindService(mConnection);
             mServiceBound = false;
         }
-    }
-
-    private void setAnimatedFractions(float snoozeFraction, float dismissFraction) {
-        final float alarmFraction = Math.max(snoozeFraction, dismissFraction);
-        mAlarmAnimator.setCurrentFraction(alarmFraction);
-        mSnoozeAnimator.setCurrentFraction(snoozeFraction);
-        mDismissAnimator.setCurrentFraction(dismissFraction);
-    }
-
-    private float getFraction(float x0, float x1, float x) {
-        return Math.max(Math.min((x - x0) / (x1 - x0), 1.0f), 0.0f);
-    }
-
-    private ValueAnimator getButtonAnimator(ImageView button, int tintColor) {
-        return ObjectAnimator.ofPropertyValuesHolder(button,
-                PropertyValuesHolder.ofFloat(View.SCALE_X, BUTTON_SCALE_DEFAULT, 1.0f),
-                PropertyValuesHolder.ofFloat(View.SCALE_Y, BUTTON_SCALE_DEFAULT, 1.0f),
-                PropertyValuesHolder.ofInt(AnimatorUtils.BACKGROUND_ALPHA, 0, 255),
-                PropertyValuesHolder.ofInt(AnimatorUtils.DRAWABLE_ALPHA,
-                        BUTTON_DRAWABLE_ALPHA_DEFAULT, 255),
-                PropertyValuesHolder.ofObject(AnimatorUtils.DRAWABLE_TINT,
-                        AnimatorUtils.ARGB_EVALUATOR, Color.WHITE, tintColor));
-    }
-
-    private ValueAnimator getAlarmBounceAnimator(float translationX, final int hintResId) {
-        final ValueAnimator bounceAnimator = ObjectAnimator.ofFloat(mAlarmButton,
-                View.TRANSLATION_X, mAlarmButton.getTranslationX(), translationX, 0.0f);
-        bounceAnimator.setInterpolator(AnimatorUtils.DECELERATE_ACCELERATE_INTERPOLATOR);
-        bounceAnimator.setDuration(ALARM_BOUNCE_DURATION_MILLIS);
-        bounceAnimator.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationStart(Animator animator) {
-                mHintView.setText(hintResId);
-                if (mHintView.getVisibility() != View.VISIBLE) {
-                    mHintView.setVisibility(View.VISIBLE);
-                    ObjectAnimator.ofFloat(mHintView, View.ALPHA, 0.0f, 1.0f).start();
-                }
-            }
-        });
-        return bounceAnimator;
-    }
-
-    private Animator getAlertAnimator(final View source, final int titleResId,
-            final String infoText, final String accessibilityText, final int revealColor,
-            final int backgroundColor) {
-        final ViewGroup containerView = findViewById(android.R.id.content);
-
-        final Rect sourceBounds = new Rect(0, 0, source.getHeight(), source.getWidth());
-        containerView.offsetDescendantRectToMyCoords(source, sourceBounds);
-
-        final int centerX = sourceBounds.centerX();
-        final int centerY = sourceBounds.centerY();
-
-        final int xMax = Math.max(centerX, containerView.getWidth() - centerX);
-        final int yMax = Math.max(centerY, containerView.getHeight() - centerY);
-
-        final float startRadius = Math.max(sourceBounds.width(), sourceBounds.height()) / 2.0f;
-        final float endRadius = (float) Math.sqrt(xMax * xMax + yMax * yMax);
-
-        final CircleView revealView = new CircleView(this)
-                .setCenterX(centerX)
-                .setCenterY(centerY)
-                .setFillColor(revealColor);
-        containerView.addView(revealView);
-
-        // TODO: Fade out source icon over the reveal (like LOLLIPOP version).
-
-        final Animator revealAnimator = ObjectAnimator.ofFloat(
-                revealView, CircleView.RADIUS, startRadius, endRadius);
-        revealAnimator.setDuration(ALERT_REVEAL_DURATION_MILLIS);
-        revealAnimator.setInterpolator(REVEAL_INTERPOLATOR);
-        revealAnimator.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animator) {
-                mAlertView.setVisibility(View.VISIBLE);
-                mAlertTitleView.setText(titleResId);
-
-                if (infoText != null) {
-                    mAlertInfoView.setText(infoText);
-                    mAlertInfoView.setVisibility(View.VISIBLE);
-                }
-                mContentView.setVisibility(View.GONE);
-
-                getWindow().setBackgroundDrawable(new ColorDrawable(backgroundColor));
-            }
-        });
-
-        final ValueAnimator fadeAnimator = ObjectAnimator.ofFloat(revealView, View.ALPHA, 0.0f);
-        fadeAnimator.setDuration(ALERT_FADE_DURATION_MILLIS);
-        fadeAnimator.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                containerView.removeView(revealView);
-            }
-        });
-
-        final AnimatorSet alertAnimator = new AnimatorSet();
-        alertAnimator.play(revealAnimator).before(fadeAnimator);
-        alertAnimator.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animator) {
-                mAlertView.announceForAccessibility(accessibilityText);
-                mHandler.postDelayed(() -> finish(), ALERT_DISMISS_DELAY_MILLIS);
-            }
-        });
-
-        return alertAnimator;
     }
 }

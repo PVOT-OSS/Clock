@@ -187,4 +187,8 @@
     <string name="search_cities">Search cities</string>
     <!-- Row in the "Add place" dialog that picks the place's time zone -->
     <string name="add_place_zone">Time zone</string>
+    <!-- Hint above the ringing alarm's puck: sliding it up dismisses the alarm -->
+    <string name="alarm_slide_dismiss">Slide up to dismiss</string>
+    <!-- Hint below the ringing alarm's puck: sliding it down snoozes the alarm -->
+    <string name="alarm_slide_snooze">Slide down to snooze</string>
 </resources>

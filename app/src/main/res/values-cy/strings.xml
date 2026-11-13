@@ -56,16 +56,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Ar oediad nes <xliff:g id="time">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Larwm yn dod i fyny</string>
-    <string name="timer_notifications_less_min">Llai na funud i fynd</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES" example="2 minutes">%2$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g> <xliff:g id="MINUTES" example="2 minutes">%2$s</xliff:g> yn weddill</string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS" example="2 seconds">%4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES" example="2 minutes">%2$s</xliff:g> <xliff:g id="SECONDS" example="2 seconds">%4$s</xliff:g> <xliff:g id="REMAINING" example="remaining">%3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g> <xliff:g id="SECONDS" example="2 seconds"> %4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g><xliff:g id="MINUTES" example="2 minutes"> %2$s</xliff:g><xliff:g id="SECONDS" example="2 seconds"> %4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">yn weddill</string>
-    <string name="timer_remaining_multiple">yn weddill</string>
     <string-array name="alarm_set">
         <item>Mae\u2019r larwm wedi\u2019i osod ar gyfer llai na funud o nawr.</item>
         <item>Gosodwyd y larwm i ganu ymhen <xliff:g id="DAYS" example="2 days">%1$s</xliff:g> o nawr.</item>
@@ -115,14 +105,6 @@
         <item quantity="few"><xliff:g id="number" example="7">%s</xliff:g> mun</item>
         <item quantity="many"><xliff:g id="number" example="7">%s</xliff:g> mun</item>
         <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> mun</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="zero"><xliff:g id="number" example="7">%s</xliff:g> eiliadau</item>
-        <item quantity="one">1 eiliad</item>
-        <item quantity="two"><xliff:g id="number" example="7">%s</xliff:g> eiliad</item>
-        <item quantity="few"><xliff:g id="number" example="7">%s</xliff:g> eiliad</item>
-        <item quantity="many"><xliff:g id="number" example="7">%s</xliff:g> eiliad</item>
-        <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> eiliad</item>
     </plurals>
     <string name="every_day">Pob dydd</string>
     <string name="day_concat">", "</string>
@@ -223,9 +205,6 @@
     <string name="menu_timer">Amserydd</string>
     <string name="menu_clock">Cloc</string>
     <string name="menu_stopwatch">Cloc amseru</string>
-    <string name="button_alarms">Ychwanegu larwm</string>
-    <string name="button_cities">Dinasoedd</string>
-    <string name="menu_item_settings">Gosodiadau</string>
     <string name="menu_item_sort_by_gmt_offset">Trefnu\'n ôl amser</string>
     <string name="menu_item_sort_by_name">Trefnu\'n ôl enw</string>
     <string name="selected_cities_label">Dinasoedd a Ddewiswyd</string>
@@ -239,8 +218,6 @@
     <string name="timer_add_timer">Ychwanegu Amserydd</string>
     <string name="timer_start">Dechrau</string>
     <string name="timer_delete">Dileu</string>
-    <string name="timer_plus_one">Ychwanegu 1 Munud</string>
-    <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Ychwanegu 1 munud</string>
     <string name="timer_stop">Stopio</string>
     <string name="timer_stop_all">Stopio pob amserydd</string>
@@ -269,9 +246,6 @@
     <string name="automatic_home_clock">Cloc adref awtomatig</string>
     <string name="automatic_home_clock_summary">Wrth deithio rhywle ble Mae\u2019r amser yn wahanol, ychwanega cloc ar gyfer adref.</string>
     <string name="home_time_zone">Cylchfa amser adref</string>
-    <string name="home_time_zone_title">Cylchfa amser adref</string>
-    <string name="city_checked"><xliff:g id="city_name">%s</xliff:g> wedi ei ddewis</string>
-    <string name="city_unchecked"><xliff:g id="city_name">%s</xliff:g> heb ei ddewis</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"Ynysoedd Marshall"</item>
         <item>"Ynys Midway"</item>
@@ -373,9 +347,6 @@
     <string name="timer_service_desc">Mae\'n prosesu gweithredoedd o hysbysiadau amseru.</string>
     <string name="stopwatch_service_desc">Mae\'n prosesu gweithredoedd o hysbysiadau stopwats.</string>
     <string name="swn_paused">Wedi seibio</string>
-    <string name="description_direction_right">Llusga i\u2019r dde i\'w ddiystyru</string>
-    <string name="description_direction_left">Llusga i\u2019r chwith i\'w oedi</string>
-    <string name="description_direction_both">Llusga i\u2019r chwith i oedi neu i\u2019r dde i ddiffodd y larwm</string>
     <string name="timer_settings">Amseryddion</string>
     <string name="timer_vibrate_title">Dirgryniad amserydd</string>
     <string name="timer_paused">Amserydd wedi ei rewi</string>

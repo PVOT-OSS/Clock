@@ -48,16 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Şu saate kadar ertelendi: <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Yaklaşan alarm</string>
-    <string name="timer_notifications_less_min">Bir dakikadan az kaldı</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g> kaldı</string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS">%4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">kaldı</string>
-    <string name="timer_remaining_multiple">kaldı</string>
     <string-array name="alarm_set">
         <item>Alarmın çalmasına şu andan itibaren bir dakikadan az var.</item>
         <item>Alarmın çalmasına şu andan itibaren <xliff:g id="DAYS">%1$s</xliff:g> var.</item>
@@ -87,10 +77,6 @@
     <plurals name="minutes_short">
         <item quantity="one">1 dk.</item>
         <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> dk.</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="one">1 saniye</item>
-        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> saniye</item>
     </plurals>
     <string name="every_day">Her gün</string>
     <string name="day_concat">", "</string>
@@ -187,9 +173,6 @@
     <string name="menu_timer">Zamanlayıcı</string>
     <string name="menu_clock">Saat</string>
     <string name="menu_stopwatch">Kronometre</string>
-    <string name="button_alarms">Alarm ekle</string>
-    <string name="button_cities">Şehirler</string>
-    <string name="menu_item_settings">Ayarlar</string>
     <string name="menu_item_sort_by_gmt_offset">Saate göre sırala</string>
     <string name="menu_item_sort_by_name">Ada göre sırala</string>
     <string name="selected_cities_label">Seçilen Şehirler</string>
@@ -203,8 +186,6 @@
     <string name="timer_add_timer">Zamanlayıcı Ekle</string>
     <string name="timer_start">Başlat</string>
     <string name="timer_delete">Sil</string>
-    <string name="timer_plus_one">1 Dakika Ekle</string>
-    <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">1 dk ekle</string>
     <string name="timer_stop">Durdur</string>
     <string name="timer_stop_all">Tüm zamanlayıcılr durdur</string>
@@ -232,9 +213,6 @@
     <string name="automatic_home_clock">Otomatik ev saati</string>
     <string name="automatic_home_clock_summary">Saat diliminin farklı olduğu bir bölgede seyahat ederken yaşadığınız yerin saatini ekleyin</string>
     <string name="home_time_zone">Ev saat dilimi</string>
-    <string name="home_time_zone_title">Ev saat dilimi</string>
-    <string name="city_checked"><xliff:g id="CITY_NAME">%s</xliff:g> işaretlendi</string>
-    <string name="city_unchecked"><xliff:g id="CITY_NAME">%s</xliff:g> işareti kaldırıldı</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"Marshall Adaları"</item>
         <item>"Midway Adası"</item>
@@ -336,9 +314,6 @@
     <string name="timer_service_desc">Zamanlayıcı bildirimlerinden gelen etkinlikleri işler.</string>
     <string name="stopwatch_service_desc">Kronometre bildirimlerinden gelen etkinlikleri işler.</string>
     <string name="swn_paused">Duraklatıldı</string>
-    <string name="description_direction_right">Kapatmak için hızlıca sağa kaydırın</string>
-    <string name="description_direction_left">Ertelemek için hızlıca sola kaydırın</string>
-    <string name="description_direction_both">Ertelemek için sola, kapatmak için sağa hızlıca kaydırın</string>
     <string name="timer_settings">Zamanlayıcılar</string>
     <string name="timer_vibrate_title">Zamanlayıcı titreşimi</string>
     <string name="timer_paused">Zamanlayıcı duraklatıldı</string>

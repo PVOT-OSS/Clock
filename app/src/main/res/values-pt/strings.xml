@@ -50,16 +50,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until" msgid="6958013659168344550">"Em soneca até <xliff:g id="TIME">%s</xliff:g>"</string>
     <string name="alarm_alert_predismiss_title" msgid="5723945586913705445">"Alarme próximo"</string>
-    <string name="timer_notifications_less_min" msgid="5481375048976427255">"Resta menos de um minuto"</string>
-    <string name="timer_notifications_hours" msgid="1613266446037145138">"<xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g>"</string>
-    <string name="timer_notifications_minutes" msgid="8543138714519498893">"<xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g>"</string>
-    <string name="timer_notifications_hours_minutes" msgid="4788475350933275505">"<xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g> restante(s)"</string>
-    <string name="timer_notifications_seconds" msgid="122102514929728907">"<xliff:g id="SECONDS">%4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g>"</string>
-    <string name="timer_notifications_minutes_seconds" msgid="7059651926379491350">"<xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g>"</string>
-    <string name="timer_notifications_hours_seconds" msgid="8168090805113197804">"<xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g>"</string>
-    <string name="timer_notifications_hours_minutes_seconds" msgid="4666176878038730417">"<xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g>"</string>
-    <string name="timer_remaining_single" msgid="6782851171906765864">"restante"</string>
-    <string name="timer_remaining_multiple" msgid="6052775962092160851">"restantes"</string>
   <string-array name="alarm_set">
     <item msgid="6450913786084215050">"Alarme definido para menos de um minuto a partir de agora."</item>
     <item msgid="6002066367368421848">"Alarme definido para <xliff:g id="DAYS">%1$s</xliff:g> a partir de agora."</item>
@@ -89,10 +79,6 @@
     <plurals name="minutes_short" formatted="false" msgid="6397328304369080233">
       <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> min</item>
       <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> min</item>
-    </plurals>
-    <plurals name="seconds" formatted="false" msgid="670343577734266047">
-      <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> segundo</item>
-      <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> segundos</item>
     </plurals>
     <string name="every_day" msgid="4100909974923444602">"Todos os dias"</string>
     <string name="day_concat" msgid="971998564991636532">", "</string>
@@ -189,9 +175,6 @@
     <string name="menu_timer" msgid="6459070074762877114">"Timer"</string>
     <string name="menu_clock" msgid="5612760670606829805">"Relógio"</string>
     <string name="menu_stopwatch" msgid="3396117705293574701">"Cronômetro"</string>
-    <string name="button_alarms" msgid="3907838219512538763">"Adicionar alarme"</string>
-    <string name="button_cities" msgid="4555761857494501363">"Cidades"</string>
-    <string name="menu_item_settings" msgid="1413723516369078665">"Configurações"</string>
     <string name="menu_item_sort_by_gmt_offset" msgid="3120860422682721706">"Classificar por horário"</string>
     <string name="menu_item_sort_by_name" msgid="1762931290495104106">"Classificar por nome"</string>
     <string name="selected_cities_label" msgid="3607479399424246605">"Cidades selecionadas"</string>
@@ -205,8 +188,6 @@
     <string name="timer_add_timer" msgid="862733633862574752">"Adicionar timer"</string>
     <string name="timer_start" msgid="6158486445614356442">"Iniciar"</string>
     <string name="timer_delete" msgid="8699122001991909302">"Excluir"</string>
-    <string name="timer_plus_one" msgid="6631211310420106116">"Adicionar um minuto"</string>
-    <string name="timer_add_minute" msgid="207816824783281446">"+ 1:00"</string>
     <string name="timer_plus_1_min" msgid="8645224089494875062">"Adicionar 1 min"</string>
     <string name="timer_stop" msgid="3361154678667736722">"Parar"</string>
     <string name="timer_stop_all" msgid="9080780442843034376">"Parar todos os timers"</string>
@@ -236,9 +217,6 @@
     <string name="automatic_home_clock" msgid="6274174710735449252">"Relógio de casa automático"</string>
     <string name="automatic_home_clock_summary" msgid="6020476321040807273">"Ao viajar para outro fuso horário, adicionar um relógio para casa."</string>
     <string name="home_time_zone" msgid="9199730676287974501">"Fuso horário de casa"</string>
-    <string name="home_time_zone_title" msgid="807894493443834624">"Fuso horário de casa"</string>
-    <string name="city_checked" msgid="616847871968019">"Cidade marcada: <xliff:g id="CITY_NAME">%s</xliff:g>"</string>
-    <string name="city_unchecked" msgid="710212932781145918">"Cidade desmarcada: <xliff:g id="CITY_NAME">%s</xliff:g>"</string>
   <string-array name="timezone_labels">
     <item msgid="5495601234086197399">"Ilhas Marshall"</item>
     <item msgid="4196408495909011020">"Ilhas Midway"</item>
@@ -340,9 +318,6 @@
     <string name="timer_service_desc" msgid="2256002649882602433">"Processa ações de notificações do timer."</string>
     <string name="stopwatch_service_desc" msgid="9220132827343760767">"Processa ações de notificações do cronômetro."</string>
     <string name="swn_paused" msgid="6364358842808263589">"Pausado"</string>
-    <string name="description_direction_right" msgid="5709209043267548985">"Deslize para a direita para dispensar"</string>
-    <string name="description_direction_left" msgid="7448141043674998679">"Deslize para a esquerda para adiar"</string>
-    <string name="description_direction_both" msgid="1841309486023845685">"Deslize para a esquerda para adiar ou para a direita para dispensar"</string>
     <string name="timer_settings" msgid="7955522143086154795">"Timers"</string>
     <string name="timer_vibrate_title" msgid="7788920024785587518">"Vibração do timer"</string>
     <string name="timer_paused" msgid="5941160896040771462">"Timer pausado"</string>

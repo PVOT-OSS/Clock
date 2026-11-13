@@ -48,16 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until"><xliff:g id="TIME">%s</xliff:g> पर्यंत स्नूझ करा</string>
     <string name="alarm_alert_predismiss_title">आगामी अलार्म</string>
-    <string name="timer_notifications_less_min">एका मिनिटापेक्षा कमी वेळ शिल्लक</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="MINUTES"> %2$s</xliff:g> शिल्लक</string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS">%4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">शिल्लक</string>
-    <string name="timer_remaining_multiple">शिल्लक</string>
     <string-array name="alarm_set">
         <item>आतापासून 1 मिनिटापेक्षा कमीसाठी अलार्म सेट केला.</item>
         <item>आतापासून <xliff:g id="DAYS">%1$s</xliff:g> साठी अलार्म सेट केला.</item>
@@ -87,10 +77,6 @@
     <plurals name="minutes_short">
         <item quantity="one">1 मिनिट</item>
         <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> मिनिटे</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="one">1 सेकंद</item>
-        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> सेकंद</item>
     </plurals>
     <string name="every_day">दररोज</string>
     <string name="day_concat">", "</string>
@@ -187,9 +173,6 @@
     <string name="menu_timer">टायमर</string>
     <string name="menu_clock">घड्याळ</string>
     <string name="menu_stopwatch">स्टॉपवॉच</string>
-    <string name="button_alarms">अलार्म जोडा</string>
-    <string name="button_cities">शहरे</string>
-    <string name="menu_item_settings">सेटिंग्ज</string>
     <string name="menu_item_sort_by_gmt_offset">वेळेनुसार क्रमवारी लावा</string>
     <string name="menu_item_sort_by_name">नावानुसार क्रमवारी लावा</string>
     <string name="selected_cities_label">निवडक शहरे</string>
@@ -203,8 +186,6 @@
     <string name="timer_add_timer">टायमर जोडा</string>
     <string name="timer_start">प्रारंभ करा</string>
     <string name="timer_delete">हटवा</string>
-    <string name="timer_plus_one">1 मिनिट जोडा</string>
-    <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">1 मिनिट जोडा</string>
     <string name="timer_stop">थांबा</string>
     <string name="timer_stop_all">सर्व टायमर थांबवा</string>
@@ -232,9 +213,6 @@
     <string name="automatic_home_clock">स्वयंचलित घरचे घड्याळ</string>
     <string name="automatic_home_clock_summary">वेळ भिन्न असते अशा क्षेत्रामध्ये प्रवास करत असताना, घरचे घड्याळ जोडा</string>
     <string name="home_time_zone">घरचे टाइम झोन</string>
-    <string name="home_time_zone_title">घरचे टाइम झोन</string>
-    <string name="city_checked"><xliff:g id="CITY_NAME">%s</xliff:g> चेक केला</string>
-    <string name="city_unchecked"><xliff:g id="CITY_NAME">%s</xliff:g> अनचेक केला</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"मार्शल बेटे"</item>
         <item>"मिडवे बेट"</item>
@@ -336,9 +314,6 @@
     <string name="timer_service_desc">टायमर सूचनांमधील क्रियांवर प्रक्रिया करते.</string>
     <string name="stopwatch_service_desc">स्टॉपवॉच सूचनांमधील क्रियांवर प्रक्रिया करते.</string>
     <string name="swn_paused">विराम दिला</string>
-    <string name="description_direction_right">डिसमिस करण्यासाठी उजवीकडे स्वाइप करा</string>
-    <string name="description_direction_left">स्नूझ करण्यासाठी डावीकडे स्वाइप करा</string>
-    <string name="description_direction_both">स्नूझ करण्‍यासाठी डावीकडे किंवा डिसमिस करण्‍यासाठी उजवीकडे स्वाइप करा</string>
     <string name="timer_settings">टायमर</string>
     <string name="timer_vibrate_title">टायमर कंपन</string>
     <string name="timer_paused">टायमरला विराम दिला</string>

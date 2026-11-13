@@ -48,16 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Blundar fram til <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Næsti vekjari</string>
-    <string name="timer_notifications_less_min">Innan við mínúta eftir</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g> eftir</string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS">%4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">eftir</string>
-    <string name="timer_remaining_multiple">eftir</string>
     <string-array name="alarm_set">
         <item>Vekjari stilltur á innan við mínútu héðan í frá.</item>
         <item>Vekjari stilltur á <xliff:g id="DAYS">%1$s</xliff:g> héðan í frá.</item>
@@ -87,10 +77,6 @@
     <plurals name="minutes_short">
         <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> mín.</item>
         <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> mín.</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> sekúnda</item>
-        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> sekúndur</item>
     </plurals>
     <string name="every_day">Alla daga</string>
     <string name="day_concat">", "</string>
@@ -187,9 +173,6 @@
     <string name="menu_timer">Teljari</string>
     <string name="menu_clock">Klukka</string>
     <string name="menu_stopwatch">Skeiðklukka</string>
-    <string name="button_alarms">Bæta vekjara við</string>
-    <string name="button_cities">Borgir</string>
-    <string name="menu_item_settings">Stillingar</string>
     <string name="menu_item_sort_by_gmt_offset">Raða eftir tíma</string>
     <string name="menu_item_sort_by_name">Raða eftir heiti</string>
     <string name="selected_cities_label">Valdar borgir</string>
@@ -203,8 +186,6 @@
     <string name="timer_add_timer">Bæta teljara við</string>
     <string name="timer_start">Byrja</string>
     <string name="timer_delete">Eyða</string>
-    <string name="timer_plus_one">Bæta 1 mínútu við</string>
-    <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Bæta 1 mín. við</string>
     <string name="timer_stop">Stöðva</string>
     <string name="timer_stop_all">Stöðva alla teljara</string>
@@ -232,9 +213,6 @@
     <string name="automatic_home_clock">Sjálfvirk heimaklukka</string>
     <string name="automatic_home_clock_summary">Bæta við heimaklukku þegar ferðast er um svæði þar sem tíminn er annar</string>
     <string name="home_time_zone">Heimatímabelti</string>
-    <string name="home_time_zone_title">Heimatímabelti</string>
-    <string name="city_checked">Merkt við <xliff:g id="CITY_NAME">%s</xliff:g></string>
-    <string name="city_unchecked">Ekki merkt við <xliff:g id="CITY_NAME">%s</xliff:g></string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"Marshall-eyjar"</item>
         <item>"Midway Island"</item>
@@ -336,9 +314,6 @@
     <string name="timer_service_desc">Vinnur úr aðgerðum með tilkynningum frá teljara.</string>
     <string name="stopwatch_service_desc">Vinnur úr aðgerðum með tilkynningum frá skeiðklukku.</string>
     <string name="swn_paused">Í bið</string>
-    <string name="description_direction_right">Strjúktu til hægri til að hunsa</string>
-    <string name="description_direction_left">Strjúktu til vinstri til að þagga tímabundið</string>
-    <string name="description_direction_both">Strjúktu til vinstri til að blunda eða til hægri til að hunsa</string>
     <string name="timer_settings">Teljarar</string>
     <string name="timer_vibrate_title">Teljari með titringi</string>
     <string name="timer_paused">Hlé gert á teljara</string>

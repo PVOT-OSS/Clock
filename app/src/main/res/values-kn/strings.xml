@@ -48,16 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until"><xliff:g id="TIME">%s</xliff:g> ವರೆಗೆ ಸ್ನೂಜಿಂಗ್ ಆಗುತ್ತದೆ</string>
     <string name="alarm_alert_predismiss_title">ಮುಂಬರುವ ಅಲಾರಮ್</string>
-    <string name="timer_notifications_less_min">ಒಂದು ನಿಮಿಷಕ್ಕಿಂತ ಕಡಿಮೆ ಉಳಿದಿದೆ</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="MINUTES"> %2$s</xliff:g> ಉಳಿದಿದೆ</string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS">%4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">ಉಳಿದಿದೆ</string>
-    <string name="timer_remaining_multiple">ಉಳಿದಿದೆ</string>
     <string-array name="alarm_set">
         <item>ಈಗಿನಿಂದ 1 ನಿಮಿಷಕ್ಕೂ ಕಡಿಮೆ ಅವಧಿಗೆ ಅಲಾರಮ್ ಹೊಂದಿಸಲಾಗಿದೆ.</item>
         <item>ಈಗಿನಿಂದ <xliff:g id="DAYS">%1$s</xliff:g> ಅಲಾರಮ್ ಹೊಂದಿಸಲಾಗಿದೆ.</item>
@@ -87,10 +77,6 @@
     <plurals name="minutes_short">
         <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> ನಿಮಿಷ</item>
         <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ನಿಮಿಷ</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> ಸೆಕೆಂಡುಗಳು</item>
-        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ಸೆಕೆಂಡುಗಳು</item>
     </plurals>
     <string name="every_day">ಪ್ರತಿ ದಿನ</string>
     <string name="day_concat">", "</string>
@@ -187,9 +173,6 @@
     <string name="menu_timer">ಟೈಮರ್</string>
     <string name="menu_clock">ಗಡಿಯಾರ</string>
     <string name="menu_stopwatch">ಸ್ಟಾಪ್‌ವಾಚ್</string>
-    <string name="button_alarms">ಅಲಾರಮ್ ಸೇರಿಸಿ</string>
-    <string name="button_cities">ನಗರಗಳು</string>
-    <string name="menu_item_settings">ಸೆಟ್ಟಿಂಗ್‌ಗಳು</string>
     <string name="menu_item_sort_by_gmt_offset">ಸಮಯದ ಪ್ರಕಾರ ವಿಂಗಡಿಸಿ</string>
     <string name="menu_item_sort_by_name">ಹೆಸರಿನ ಪ್ರಕಾರ ವಿಂಗಡಿಸಿ</string>
     <string name="selected_cities_label">ಆಯ್ದ ನಗರಗಳು</string>
@@ -203,8 +186,6 @@
     <string name="timer_add_timer">ಟೈಮರ್ ಸೇರಿಸಿ</string>
     <string name="timer_start">ಪ್ರಾರಂಭಿಸಿ</string>
     <string name="timer_delete">ಅಳಿಸಿ</string>
-    <string name="timer_plus_one">1 ನಿಮಿಷ ಸೇರಿಸಿ</string>
-    <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">1 ನಿಮಿಷ ಸೇರಿಸಿ</string>
     <string name="timer_stop">ನಿಲ್ಲಿಸಿ</string>
     <string name="timer_stop_all">ಎಲ್ಲಾ ಟೈಮರ್‌ಗಳನ್ನು ನಿಲ್ಲಿಸಿ</string>
@@ -232,9 +213,6 @@
     <string name="automatic_home_clock">ಸ್ವಯಂಚಾಲಿತ ಹೋಮ್ ಗಡಿಯಾರ</string>
     <string name="automatic_home_clock_summary">ಸಮಯವು ಭಿನ್ನವಾಗಿರುವ ಪ್ರದೇಶದಲ್ಲಿ ಪ್ರಯಾಣಿಸುವಾಗ ಹೋಮ್‌ನಲ್ಲಿ ಗಡಿಯಾರ ಸೇರಿಸಿ</string>
     <string name="home_time_zone">ಸ್ಥಳೀಯ ಸಮಯ ವಲಯ</string>
-    <string name="home_time_zone_title">ಸ್ಥಳೀಯ ಸಮಯ ವಲಯ</string>
-    <string name="city_checked"><xliff:g id="CITY_NAME">%s</xliff:g> ಪರಿಶೀಲಿಸಲಾಗಿದೆ</string>
-    <string name="city_unchecked"><xliff:g id="CITY_NAME">%s</xliff:g> ಪರಿಶೀಲನೆ ರದ್ದುಮಾಡಲಾಗಿದೆ</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"ಮಾರ್ಷಲ್ ದ್ವೀಪಗಳು"</item>
         <item>"ಮಿಡ್‌ವೇ ಐಲ್ಯಾಂಡ್‌"</item>
@@ -336,9 +314,6 @@
     <string name="timer_service_desc">ಟೈಮರ್‌ ಅಧಿಸೂಚನೆಗಳಿಂದ ಪ್ರಕ್ರಿಯೆಗಳ ಕ್ರಮಗಳು.</string>
     <string name="stopwatch_service_desc">ಸ್ಟಾಪ್‌ವಾಚ್ ಅಧಿಸೂಚನೆಗಳಿಂದ ಪ್ರಕ್ರಿಯೆಗಳ ಕ್ರಮಗಳು.</string>
     <string name="swn_paused">ವಿರಾಮಗೊಳಿಸಲಾಗಿದೆ</string>
-    <string name="description_direction_right">ವಜಾಗೊಳಿಸಲು ಬಲಕ್ಕೆ ಸ್ವೈಪ್ ಮಾಡಿ</string>
-    <string name="description_direction_left">ಸ್ನೂಜ್ ಮಾಡಲು ಎಡಕ್ಕೆ ಸ್ವೈಪ್ ಮಾಡಿ</string>
-    <string name="description_direction_both">ಸ್ನೂಜ್ ಮಾಡಲು ಎಡಕ್ಕೆ ಅಥವಾ ವಜಾಗೊಳಿಸಲು ಬಲಕ್ಕೆ ಸ್ವೈಪ್ ಮಾಡಿ</string>
     <string name="timer_settings">ಟೈಮರ್‌ಗಳು</string>
     <string name="timer_vibrate_title">ಟೈಮರ್ ವೈಬ್ರೇಟ್</string>
     <string name="timer_paused">ಟೈಮರ್ ವಿರಾಮಗೊಳಿಸಲಾಗಿದೆ</string>

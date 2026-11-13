@@ -48,16 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Snoozer indtil <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Kommende alarm</string>
-    <string name="timer_notifications_less_min">Mindre end ét minut tilbage</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes"><xliff:g id="HOURS">%1$s</xliff:g> og <xliff:g id="MINUTES"> %2$s</xliff:g> tilbage</string>
-    <string name="timer_notifications_seconds">Der er <xliff:g id="SECONDS">%4$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds">Der er <xliff:g id="MINUTES">%2$s</xliff:g> og <xliff:g id="SECONDS"> %4$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds">Der er <xliff:g id="HOURS">%1$s</xliff:g> og <xliff:g id="SECONDS"> %4$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds">Der er <xliff:g id="HOURS">%1$s</xliff:g>, <xliff:g id="MINUTES"> %2$s</xliff:g> og <xliff:g id="SECONDS"> %4$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">tilbage</string>
-    <string name="timer_remaining_multiple">tilbage</string>
     <string-array name="alarm_set">
         <item>Alarmen er indstillet til mindre end 1 minut fra nu.</item>
         <item>Alarmen er indstillet til <xliff:g id="DAYS">%1$s</xliff:g> fra nu.</item>
@@ -87,10 +77,6 @@
     <plurals name="minutes_short">
         <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> min.</item>
         <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> min.</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> sekund</item>
-        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> sekunder</item>
     </plurals>
     <string name="every_day">Hver dag</string>
     <string name="day_concat">", "</string>
@@ -187,9 +173,6 @@
     <string name="menu_timer">Timer</string>
     <string name="menu_clock">Ur</string>
     <string name="menu_stopwatch">Stopur</string>
-    <string name="button_alarms">Tilføj alarm</string>
-    <string name="button_cities">Byer</string>
-    <string name="menu_item_settings">Indstillinger</string>
     <string name="menu_item_sort_by_gmt_offset">Sortér efter tidszone</string>
     <string name="menu_item_sort_by_name">Sortér efter navn</string>
     <string name="selected_cities_label">Valgte byer</string>
@@ -203,8 +186,6 @@
     <string name="timer_add_timer">Tilføj timer</string>
     <string name="timer_start">Start</string>
     <string name="timer_delete">Slet</string>
-    <string name="timer_plus_one">Tilføj 1 minut</string>
-    <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Tilføj 1 min.</string>
     <string name="timer_stop">Stop</string>
     <string name="timer_stop_all">Stop alle timere</string>
@@ -232,9 +213,6 @@
     <string name="automatic_home_clock">Automatisk ur for egen tidszone</string>
     <string name="automatic_home_clock_summary">Når du befinder dig i en anden tidszone, vises der et ur, der viser tiden derhjemme</string>
     <string name="home_time_zone">Egen tidszone</string>
-    <string name="home_time_zone_title">Egen tidszone</string>
-    <string name="city_checked"><xliff:g id="CITY_NAME">%s</xliff:g> blev markeret</string>
-    <string name="city_unchecked">Markeringen af <xliff:g id="CITY_NAME">%s</xliff:g> blev fjernet</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"Marshalløerne"</item>
         <item>"Midwayøen"</item>
@@ -336,9 +314,6 @@
     <string name="timer_service_desc">Behandler handlinger fra notifikationer for timeren.</string>
     <string name="stopwatch_service_desc">Behandler handlinger fra notifikationer for stopuret.</string>
     <string name="swn_paused">Sat på pause</string>
-    <string name="description_direction_right">Stryg til højre for at slå fra</string>
-    <string name="description_direction_left">Stryg til venstre for at udsætte</string>
-    <string name="description_direction_both">Stryg til venstre for at udsætte eller til højre for at slå fra</string>
     <string name="timer_settings">Timere</string>
     <string name="timer_vibrate_title">Vibration for timer</string>
     <string name="timer_paused">Timeren blev sat på pause</string>

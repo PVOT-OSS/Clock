@@ -17,20 +17,16 @@
 <!-- These resources are around just to allow their values to be customized
      for different hardware and product builds. -->
 <resources>
-    <dimen name="label_text_size">18sp</dimen>
     <dimen name="time_margin_top">48dip</dimen>
     <dimen name="screensaver_margin">20dip</dimen>
     <dimen name="alarm_label_padding">64dip</dimen>
-    <dimen name="bottom_text_size">18sp</dimen>
     <dimen name="bottom_text_spacing_digital">-18dp</dimen>
     <dimen name="bottom_text_spacing_analog">18dp</dimen>
 
     <dimen name="main_clock_font_size">125sp</dimen>
     <dimen name="big_font_size">115sp</dimen>
     <dimen name="label_font_size">18sp</dimen>
-    <dimen name="alarm_info_font_size">48sp</dimen>
 
-    <dimen name="fab_alarm_size">80dp</dimen>
 
 
     <dimen name="label_margin_big">8dp</dimen>

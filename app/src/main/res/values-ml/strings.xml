@@ -48,16 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until"><xliff:g id="TIME">%s</xliff:g> വരെ സ്‌നൂസ് ചെയ്യുന്നു</string>
     <string name="alarm_alert_predismiss_title">വരാനിരിക്കുന്ന അലാറം</string>
-    <string name="timer_notifications_less_min">ഒരു മിനിറ്റിലും താഴെ ശേഷിക്കുന്നു</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g> ശേഷിക്കുന്നു</string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS">%4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">ശേഷിക്കുന്നു</string>
-    <string name="timer_remaining_multiple">ശേഷിക്കുന്നു</string>
     <string-array name="alarm_set">
         <item>ഇപ്പോൾ 1 മിനിറ്റിൽ താഴെ സമയത്തിനുള്ളിൽ അടിക്കാൻ അലാറം സജ്ജമാക്കി.</item>
         <item>ഇപ്പോൾ മുതൽ <xliff:g id="DAYS">%1$s</xliff:g> കാലയളവിലേക്ക് അലാറം സജ്ജമാക്കി.</item>
@@ -87,10 +77,6 @@
     <plurals name="minutes_short">
         <item quantity="one">ഒരു മിനിറ്റ്</item>
         <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> മിനിറ്റ്</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="one">ഒരു സെക്കൻഡ്</item>
-        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> സെക്കൻഡ്</item>
     </plurals>
     <string name="every_day">എല്ലാ ദിവസവും</string>
     <string name="day_concat">", "</string>
@@ -187,9 +173,6 @@
     <string name="menu_timer">ടൈമർ</string>
     <string name="menu_clock">ക്ലോക്ക്</string>
     <string name="menu_stopwatch">സ്‌റ്റോപ്പ്‌വാച്ച്</string>
-    <string name="button_alarms">അലാറം ചേർക്കുക</string>
-    <string name="button_cities">നഗരങ്ങൾ</string>
-    <string name="menu_item_settings">ക്രമീകരണം</string>
     <string name="menu_item_sort_by_gmt_offset">സമയപ്രകാരം അടുക്കുക</string>
     <string name="menu_item_sort_by_name">പേര് പ്രകാരം അടുക്കുക</string>
     <string name="selected_cities_label">തിരഞ്ഞെടുത്ത നഗരങ്ങൾ</string>
@@ -203,8 +186,6 @@
     <string name="timer_add_timer">ടൈമർ ചേർക്കുക</string>
     <string name="timer_start">ആരംഭിക്കൂ</string>
     <string name="timer_delete">ഇല്ലാതാക്കുക</string>
-    <string name="timer_plus_one">ഒരു മിനിറ്റ് ചേർക്കുക</string>
-    <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">ഒരു മിനിറ്റ് ചേർക്കുക</string>
     <string name="timer_stop">നിര്‍ത്തുക</string>
     <string name="timer_stop_all">എല്ലാ ടൈമറുകളും നിർത്തുക</string>
@@ -232,9 +213,6 @@
     <string name="automatic_home_clock">ഓട്ടമാറ്റിക് ഹോം ക്ലോക്ക്</string>
     <string name="automatic_home_clock_summary">മറ്റൊരു സമയമേഖലയിൽ സഞ്ചരിക്കുമ്പോൾ സ്വദേശത്തെ സമയമറിയാൻ ഒരു ക്ലോക്ക് ചേർക്കുക</string>
     <string name="home_time_zone">സ്വരാജ്യത്തെ സമയമേഖല</string>
-    <string name="home_time_zone_title">സ്വരാജ്യത്തെ സമയമേഖല</string>
-    <string name="city_checked"><xliff:g id="CITY_NAME">%s</xliff:g> ചെക്കുചെയ്തു</string>
-    <string name="city_unchecked"><xliff:g id="CITY_NAME">%s</xliff:g> അൺചെക്കുചെയ്തു</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"മാര്‍ഷല്‍ ഐലന്‍ഡ്സ്"</item>
         <item>"മിഡ്‌‌വേ ഐലന്റ്"</item>
@@ -336,9 +314,6 @@
     <string name="timer_service_desc">ടൈമർ അറിയിപ്പുകളിൽ നിന്നുള്ള പ്രവർത്തനങ്ങൾ പ്രോസസ്സുചെയ്യുന്നു.</string>
     <string name="stopwatch_service_desc">സ്റ്റോപ്പ്‌വാച്ച് അറിയിപ്പുകളിൽ നിന്നുള്ള പ്രവർത്തനങ്ങൾ പ്രോസസ്സുചെയ്യുന്നു.</string>
     <string name="swn_paused">താല്‍ക്കാലം നിര്‍ത്തി</string>
-    <string name="description_direction_right">നിരസിക്കാൻ വലത്തോട്ട് സ്വൈപ്പുചെയ്യുക</string>
-    <string name="description_direction_left">സ്‌നൂസ് ചെയ്യാൻ ഇടത്തോട്ട് സ്വൈപ്പുചെയ്യുക</string>
-    <string name="description_direction_both">സ്‌നൂസ് ചെയ്യാൻ ഇടത്തോട്ടോ നിരസിക്കാൻ വലത്തോട്ടോ സ്വൈപ്പുചെയ്യുക</string>
     <string name="timer_settings">ടൈമറുകൾ</string>
     <string name="timer_vibrate_title">ടൈമർ വൈബ്രേഷൻ</string>
     <string name="timer_paused">ടൈമർ തൽക്കാലം നിർത്തി</string>

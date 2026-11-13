@@ -48,16 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until"><xliff:g id="TIME">%s</xliff:g> के बाद दोबारा याद दिलाया जाएगा</string>
     <string name="alarm_alert_predismiss_title">आगामी अलार्म</string>
-    <string name="timer_notifications_less_min">एक मिनट से कम समय शेष है</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g> शेष</string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS">%4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">शेष</string>
-    <string name="timer_remaining_multiple">शेष</string>
     <string-array name="alarm_set">
         <item>अब से 1 मिनट या उससे भी कम के भीतर का अलार्म सेट है.</item>
         <item>अलार्म अब से <xliff:g id="DAYS">%1$s</xliff:g> के लिए सेट.</item>
@@ -87,10 +77,6 @@
     <plurals name="minutes_short">
         <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> मिनट</item>
         <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> मिनट</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> सेकंड</item>
-        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> सेकंड</item>
     </plurals>
     <string name="every_day">प्रत्येक दिन</string>
     <string name="day_concat">", "</string>
@@ -187,9 +173,6 @@
     <string name="menu_timer">टाइमर</string>
     <string name="menu_clock">घड़ी</string>
     <string name="menu_stopwatch">स्टॉपवॉच</string>
-    <string name="button_alarms">अलार्म जोड़ें</string>
-    <string name="button_cities">शहर</string>
-    <string name="menu_item_settings">सेटिंग</string>
     <string name="menu_item_sort_by_gmt_offset">समय द्वारा क्रमित करें</string>
     <string name="menu_item_sort_by_name">नाम द्वारा क्रमित करें</string>
     <string name="selected_cities_label">चुनिंदा शहर</string>
@@ -203,8 +186,6 @@
     <string name="timer_add_timer">टाइमर जोड़ें</string>
     <string name="timer_start">प्रारंभ करें</string>
     <string name="timer_delete">हटाएं</string>
-    <string name="timer_plus_one">1 मिनट जोड़ें</string>
-    <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">1 मिनट जोड़ें</string>
     <string name="timer_stop">रोकें</string>
     <string name="timer_stop_all">सभी टाइमर रोकें</string>
@@ -232,9 +213,6 @@
     <string name="automatic_home_clock">स्वचालित रूप से देश की घड़ी दिखाएं</string>
     <string name="automatic_home_clock_summary">भिन्न समय वाले किसी क्षेत्र में यात्रा करते समय, अपने देश की घड़ी जोड़ें</string>
     <string name="home_time_zone">देश का समय क्षेत्र</string>
-    <string name="home_time_zone_title">देश का समय क्षेत्र</string>
-    <string name="city_checked"><xliff:g id="CITY_NAME">%s</xliff:g> को चेक किया गया</string>
-    <string name="city_unchecked"><xliff:g id="CITY_NAME">%s</xliff:g> को अनचेक किया गया</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"मार्शल द्वीप समूह"</item>
         <item>"मिडवे द्वीप"</item>
@@ -336,9 +314,6 @@
     <string name="timer_service_desc">टाइमर नोटिफ़िकेशन से कार्यवाइयां संसाधित करती है.</string>
     <string name="stopwatch_service_desc">स्‍टॉपवॉच नोटिफ़िकेशन से कार्यवाइयां संसाधित करती है.</string>
     <string name="swn_paused">रोका गया</string>
-    <string name="description_direction_right">ख़ारिज करने के लिए दाएं स्वाइप करें</string>
-    <string name="description_direction_left">याद दिलाने के लिए बाएं स्वाइप करें</string>
-    <string name="description_direction_both">याद दिलाने के लिए बाएं या ख़ारिज करने के लिए दाएं स्‍वाइप करें</string>
     <string name="timer_settings">टाइमर</string>
     <string name="timer_vibrate_title">टाइमर कंपन</string>
     <string name="timer_paused">टाइमर रोका गया</string>

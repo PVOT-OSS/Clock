@@ -48,16 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Snoozen tot <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Volgende wekker</string>
-    <string name="timer_notifications_less_min">Nog minder dan een minuut</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g> resterend</string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS">%4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">resterend</string>
-    <string name="timer_remaining_multiple">resterend</string>
     <string-array name="alarm_set">
         <item>Wekker gaat over minder dan 1 minuut.</item>
         <item>Wekker gaat over <xliff:g id="DAYS">%1$s</xliff:g>.</item>
@@ -87,10 +77,6 @@
     <plurals name="minutes_short">
         <item quantity="one">1 min.</item>
         <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> min.</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="one">1 seconde</item>
-        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> seconden</item>
     </plurals>
     <string name="every_day">Elke dag</string>
     <string name="day_concat">", "</string>
@@ -187,9 +173,6 @@
     <string name="menu_timer">Timer</string>
     <string name="menu_clock">Klok</string>
     <string name="menu_stopwatch">Stopwatch</string>
-    <string name="button_alarms">Wekker toevoegen</string>
-    <string name="button_cities">Plaatsen</string>
-    <string name="menu_item_settings">Instellingen</string>
     <string name="menu_item_sort_by_gmt_offset">Sorteren op tijd</string>
     <string name="menu_item_sort_by_name">Sorteren op naam</string>
     <string name="selected_cities_label">Geselecteerde plaatsen</string>
@@ -203,8 +186,6 @@
     <string name="timer_add_timer">Timer toevoegen</string>
     <string name="timer_start">Starten</string>
     <string name="timer_delete">Verwijderen</string>
-    <string name="timer_plus_one">1 minuut toevoegen</string>
-    <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">1 min. toevoegen</string>
     <string name="timer_stop">Stoppen</string>
     <string name="timer_stop_all">Alle timers stoppen</string>
@@ -232,9 +213,6 @@
     <string name="automatic_home_clock">Automatische klok voor thuis</string>
     <string name="automatic_home_clock_summary">Voeg een klok voor thuis toe wanneer je in een andere tijdzone reist.</string>
     <string name="home_time_zone">Eigen tijdzone</string>
-    <string name="home_time_zone_title">Eigen tijdzone</string>
-    <string name="city_checked"><xliff:g id="CITY_NAME">%s</xliff:g> aangevinkt</string>
-    <string name="city_unchecked"><xliff:g id="CITY_NAME">%s</xliff:g> niet aangevinkt</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"Marshalleilanden"</item>
         <item>"Midway Island"</item>
@@ -336,9 +314,6 @@
     <string name="timer_service_desc">Verwerkt acties van timermeldingen.</string>
     <string name="stopwatch_service_desc">Verwerkt acties van stopwatchmeldingen.</string>
     <string name="swn_paused">Onderbroken</string>
-    <string name="description_direction_right">Veeg naar rechts om uit te zetten</string>
-    <string name="description_direction_left">Veeg naar links om te snoozen</string>
-    <string name="description_direction_both">Veeg naar links om te snoozen of naar rechts om te sluiten</string>
     <string name="timer_settings">Timers</string>
     <string name="timer_vibrate_title">Trillen voor timer</string>
     <string name="timer_paused">Timer gepauzeerd</string>

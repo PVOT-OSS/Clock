@@ -48,16 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until"><xliff:g id="TIME">%s</xliff:g> வரை உறக்கநிலையில் வை</string>
     <string name="alarm_alert_predismiss_title">அடுத்த அலாரம்</string>
-    <string name="timer_notifications_less_min">ஒரு நிமிடத்திற்கும் குறைவான நேரமே மீதமுள்ளது</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g> மீதமுள்ளன</string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS">%4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">மீதமுள்ளது</string>
-    <string name="timer_remaining_multiple">மீதமுள்ளன</string>
     <string-array name="alarm_set">
         <item>1 நிமிடத்திற்கும் குறைவான நேரத்தில் அலாரம் அடிக்கும்.</item>
         <item>இப்போதிலிருந்து <xliff:g id="DAYS">%1$s</xliff:g> கழித்து அலாரம் அடிக்கும்.</item>
@@ -87,10 +77,6 @@
     <plurals name="minutes_short">
         <item quantity="one">1 நி</item>
         <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> நி</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="one">1 வினாடி</item>
-        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> வினாடிகள்</item>
     </plurals>
     <string name="every_day">ஒவ்வொரு நாளும்</string>
     <string name="day_concat">", "</string>
@@ -187,9 +173,6 @@
     <string name="menu_timer">டைமர்</string>
     <string name="menu_clock">கடிகாரம்</string>
     <string name="menu_stopwatch">நிறுத்தக்கடிகாரம்</string>
-    <string name="button_alarms">அலாரத்தைச் சேர்</string>
-    <string name="button_cities">நகரங்கள்</string>
-    <string name="menu_item_settings">அமைப்பு</string>
     <string name="menu_item_sort_by_gmt_offset">நேர வரிசையில்</string>
     <string name="menu_item_sort_by_name">அகர வரிசையில்</string>
     <string name="selected_cities_label">தேர்ந்தெடுத்த நகரங்கள்</string>
@@ -203,8 +186,6 @@
     <string name="timer_add_timer">டைமரைச் சேர்</string>
     <string name="timer_start">தொடங்கு</string>
     <string name="timer_delete">நீக்கு</string>
-    <string name="timer_plus_one">1 நிமிடத்தைச் சேர்</string>
-    <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">1 நிமிடம் சேர்</string>
     <string name="timer_stop">நிறுத்து</string>
     <string name="timer_stop_all">எல்லா டைமர்களையும் நிறுத்து</string>
@@ -233,9 +214,6 @@
     <string name="automatic_home_clock">தாய்நாட்டு நேரத்தை இயக்கு</string>
     <string name="automatic_home_clock_summary">நேரம் மாறுபடும் இடத்தில் பயணம் மேற்கொள்ளும்போது, தாய்நாட்டு நேர மண்டலத்திற்குக் கடிகாரத்தை அமைக்கவும்</string>
     <string name="home_time_zone">தாய்நாட்டின் நேரமண்டலம்</string>
-    <string name="home_time_zone_title">தாய்நாட்டின் நேரமண்டலம்</string>
-    <string name="city_checked"><xliff:g id="CITY_NAME">%s</xliff:g> தேர்ந்தெடுக்கப்பட்டது</string>
-    <string name="city_unchecked"><xliff:g id="CITY_NAME">%s</xliff:g> தேர்வுநீக்கப்பட்டது</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"மார்ஷல் தீவுகள்"</item>
         <item>"மிட்வே தீவு"</item>
@@ -337,9 +315,6 @@
     <string name="timer_service_desc">டைமர் அறிவிப்புகள் தொடர்பான செயல்பாடுகளைச் செயலாக்கும்.</string>
     <string name="stopwatch_service_desc">ஸ்டாப்வாட்ச் அறிவிப்புகள் தொடர்பான செயல்பாடுகளைச் செயலாக்கும்.</string>
     <string name="swn_paused">இடைநிறுத்தப்பட்டது</string>
-    <string name="description_direction_right">நிராகரிக்க வலதுபுறம் ஸ்வைப் செய்யவும்</string>
-    <string name="description_direction_left">உறக்கநிலையில் வைக்க இடதுபுறம் ஸ்வைப் செய்யவும்</string>
-    <string name="description_direction_both">உறக்கநிலையாக்க இடதுபுறம் அல்லது விலக்க வலதுபுறம் ஸ்வைப் செய்யவும்</string>
     <string name="timer_settings">டைமர்கள்</string>
     <string name="timer_vibrate_title">டைமர் அதிர்வு</string>
     <string name="timer_paused">டைமர் இடைநிறுத்தப்பட்டது</string>

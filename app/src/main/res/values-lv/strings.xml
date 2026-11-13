@@ -50,16 +50,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Atlikts līdz: <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Gaidāms signāls</string>
-    <string name="timer_notifications_less_min">Atlikušais laiks: mazāk par minūti</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes">Atlikušais laiks: <xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g></string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS">%4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">atlikusi</string>
-    <string name="timer_remaining_multiple">atlikušas</string>
     <string-array name="alarm_set">
         <item>Modinātājs zvanīs pēc mazāk nekā 1 minūtes.</item>
         <item>Modinātājs zvanīs pēc <xliff:g id="DAYS">%1$s</xliff:g>.</item>
@@ -94,11 +84,6 @@
         <item quantity="zero"><xliff:g id="NUMBER">%s</xliff:g> min</item>
         <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> min</item>
         <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> min</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="zero"><xliff:g id="NUMBER">%s</xliff:g> sekunžu</item>
-        <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> sekunde</item>
-        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> sekundes</item>
     </plurals>
     <string name="every_day">Katru dienu</string>
     <string name="day_concat">", "</string>
@@ -196,9 +181,6 @@
     <string name="menu_timer">Taimeris</string>
     <string name="menu_clock">Pulkstenis</string>
     <string name="menu_stopwatch">Hronometrs</string>
-    <string name="button_alarms">Pievienot signālu</string>
-    <string name="button_cities">Pilsētas</string>
-    <string name="menu_item_settings">Iestatījumi</string>
     <string name="menu_item_sort_by_gmt_offset">Kārtot pēc laika</string>
     <string name="menu_item_sort_by_name">Kārtot pēc nosaukuma</string>
     <string name="selected_cities_label">Atlasītās pilsētas</string>
@@ -212,8 +194,6 @@
     <string name="timer_add_timer">Pievienot taimeri</string>
     <string name="timer_start">Sākt</string>
     <string name="timer_delete">Dzēst</string>
-    <string name="timer_plus_one">Pievienot 1 minūti</string>
-    <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Pievienot 1 minūti</string>
     <string name="timer_stop">Apturēt</string>
     <string name="timer_stop_all">Apturēt visus taimerus</string>
@@ -241,9 +221,6 @@
     <string name="automatic_home_clock">Rādīt dzīvesvietas laiku</string>
     <string name="automatic_home_clock_summary">Ceļojot teritorijā, kurā ir atšķirīgs laiks, pievienot mājas laiku</string>
     <string name="home_time_zone">Dzīvesvietas laika josla</string>
-    <string name="home_time_zone_title">Dzīvesvietas laika josla</string>
-    <string name="city_checked">Pilsēta <xliff:g id="CITY_NAME">%s</xliff:g> ir atzīmēta</string>
-    <string name="city_unchecked">Pilsētas <xliff:g id="CITY_NAME">%s</xliff:g> atzīme ir noņemta</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"Māršala Salas"</item>
         <item>"Midveja sala"</item>
@@ -345,9 +322,6 @@
     <string name="timer_service_desc">Apstrādā darbības no taimera paziņojumiem.</string>
     <string name="stopwatch_service_desc">Apstrādā darbības no hronometra paziņojumiem.</string>
     <string name="swn_paused">Pārtraukts</string>
-    <string name="description_direction_right">Lai nerādītu, velciet pa labi</string>
-    <string name="description_direction_left">Lai atliktu, velciet pa kreisi</string>
-    <string name="description_direction_both">Velciet pa kreisi, lai atliktu, vai pa labi, lai noraidītu</string>
     <string name="timer_settings">Taimeri</string>
     <string name="timer_vibrate_title">Taimera vibrācija</string>
     <string name="timer_paused">Taimeris apturēts</string>

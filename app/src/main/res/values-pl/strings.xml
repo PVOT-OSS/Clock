@@ -52,16 +52,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Drzemka do <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Nadchodzący alarm</string>
-    <string name="timer_notifications_less_min">Jeszcze niecała minuta</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes">Pozostało <xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g></string>
-    <string name="timer_notifications_seconds"><xliff:g id="REMAINING"> %3$s</xliff:g><xliff:g id="SECONDS">%4$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="REMAINING"> %3$s</xliff:g><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="REMAINING"> %3$s</xliff:g><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="REMAINING"> %3$s</xliff:g><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g></string>
-    <string name="timer_remaining_single">pozostała</string>
-    <string name="timer_remaining_multiple">pozostało</string>
     <string-array name="alarm_set">
         <item>Alarm włączy się za mniej niż 1 minutę</item>
         <item>Alarm włączy się za <xliff:g id="DAYS">%1$s</xliff:g></item>
@@ -101,12 +91,6 @@
         <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> min</item>
         <item quantity="many"><xliff:g id="NUMBER">%s</xliff:g> min</item>
         <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> min</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="one">1 sekunda</item>
-        <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> sekundy</item>
-        <item quantity="many"><xliff:g id="NUMBER">%s</xliff:g> sekund</item>
-        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> sekundy</item>
     </plurals>
     <string name="every_day">Codziennie</string>
     <string name="day_concat">", "</string>
@@ -205,9 +189,6 @@
     <string name="menu_timer">Minutnik</string>
     <string name="menu_clock">Zegar</string>
     <string name="menu_stopwatch">Stoper</string>
-    <string name="button_alarms">Dodaj alarm</string>
-    <string name="button_cities">Miasta</string>
-    <string name="menu_item_settings">Ustawienia</string>
     <string name="menu_item_sort_by_gmt_offset">Sortuj według czasu </string>
     <string name="menu_item_sort_by_name">Sortuj według nazwy</string>
     <string name="selected_cities_label">Wybrane miasta</string>
@@ -221,8 +202,6 @@
     <string name="timer_add_timer">Dodaj minutnik</string>
     <string name="timer_start">Start</string>
     <string name="timer_delete">Usuń</string>
-    <string name="timer_plus_one">Dodaj 1 minutę</string>
-    <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Dodaj 1 min</string>
     <string name="timer_stop">Zatrzymaj</string>
     <string name="timer_stop_all">Zatrzymaj wszystkie minutniki</string>
@@ -251,9 +230,6 @@
     <string name="automatic_home_clock">Zegar dla domowej strefy czasowej</string>
     <string name="automatic_home_clock_summary">Gdy jestem w innej strefie czasowej, pokazuj też czas w moim kraju</string>
     <string name="home_time_zone">Domowa strefa czasowa</string>
-    <string name="home_time_zone_title">Domowa strefa czasowa</string>
-    <string name="city_checked"><xliff:g id="CITY_NAME">%s</xliff:g> zaznaczono</string>
-    <string name="city_unchecked"><xliff:g id="CITY_NAME">%s</xliff:g> niezaznaczono</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"Wyspy Marshalla"</item>
         <item>"Midway"</item>
@@ -355,9 +331,6 @@
     <string name="timer_service_desc">Przetwarza działania z powiadomień minutnika.</string>
     <string name="stopwatch_service_desc">Przetwarza działania z powiadomień stopera.</string>
     <string name="swn_paused">Wstrzymano</string>
-    <string name="description_direction_right">Przesuń w prawo, by odwołać</string>
-    <string name="description_direction_left">Przesuń w lewo, aby odłożyć</string>
-    <string name="description_direction_both">Przesuń w lewo, aby odłożyć lub w prawo, aby odwołać</string>
     <string name="timer_settings">Minutniki</string>
     <string name="timer_vibrate_title">Wibracje minutnika</string>
     <string name="timer_paused">Minutnik wstrzymany</string>

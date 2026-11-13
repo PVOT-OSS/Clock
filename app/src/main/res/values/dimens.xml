@@ -18,8 +18,6 @@
 <!-- These resources are around just to allow their values to be customized
      for different hardware and product builds. -->
 <resources>
-    <dimen name="label_text_size">14sp</dimen>
-    <dimen name="label_edittext_padding">21dp</dimen>
     <dimen name="time_margin_top">32dip</dimen>
     <dimen name="screensaver_margin">16dip</dimen>
     <dimen name="alarm_label_padding">8dip</dimen>
@@ -29,21 +27,13 @@
     <dimen name="alarm_clock_vertical_margin">12dip</dimen>
 
     <!-- Analog clock size in the the screen saver -->
-    <dimen name="bottom_text_size">16sp</dimen>
 
-    <dimen name="circletimer_circle_size">6dp</dimen>
-    <dimen name="max_timer_circle_size">240dp</dimen>
 
-    <dimen name="alarm_lockscreen_alarm_horizontal_padding">16dp</dimen>
-    <dimen name="alarm_lockscreen_alarm_vertical_padding">48dp</dimen>
-    <dimen name="alarm_lockscreen_pulse_radius">128dp</dimen>
-    <dimen name="alarm_lockscreen_bottom_margin">40dp</dimen>
 
     <dimen name="main_clock_font_size">64sp</dimen>
     <dimen name="big_font_size">32sp</dimen>
     <dimen name="label_font_size">16sp</dimen>
     <dimen name="header_font_size">24sp</dimen>
-    <dimen name="alarm_info_font_size">36sp</dimen>
 
     <dimen name="alarm_picker_dialog_horizontal_margin">30dp</dimen>
     <dimen name="alarm_picker_dialog_vertical_margin">20dp</dimen>
@@ -52,13 +42,11 @@
 
     <dimen name="alarm_icon_padding">6dp</dimen>
 
-    <dimen name="fab_alarm_size">56dp</dimen>
 
     <dimen name="style_label_space">4dip</dimen>
 
     <dimen name="label_margin_big">4dp</dimen>
 
-    <dimen name="cities_list_item_height">56dip</dimen>
 
     <!-- Size of margin for circles. -->
     <dimen name="analog_clock_size">294dp</dimen>
@@ -95,16 +83,11 @@
 
 
     <dimen name="gutter_horizontal_padding">24.0dip</dimen>
-    <dimen name="gutter_horizontal_padding_extreme_thin">4.0dip</dimen>
-    <dimen name="gutter_horizontal_padding_thin">16.0dip</dimen>
-    <dimen name="gutter_horizontal_padding_very_thin">8.0dip</dimen>
 
 
-    <dimen name="settings_padding">4dp</dimen>
 
 
     <dimen name="widget_configuration_background_corner_radius">12dp</dimen>
     <dimen name="widget_padding">16dp</dimen>
     <dimen name="analog_face_preview_size">96dp</dimen>
-    <dimen name="add_place_padding">24dp</dimen>
 </resources>

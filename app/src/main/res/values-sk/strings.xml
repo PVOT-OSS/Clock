@@ -52,16 +52,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Odložené do <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Nadchádzajúci budík</string>
-    <string name="timer_notifications_less_min">Zostáva menej ako minúta</string>
-    <string name="timer_notifications_hours"><xliff:g id="REMAINING"> %3$s</xliff:g>: <xliff:g id="HOURS">%1$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="REMAINING"> %3$s</xliff:g>: <xliff:g id="MINUTES">%2$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes">Zostávajúci čas: <xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g></string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS">%4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">- zostávajúci čas</string>
-    <string name="timer_remaining_multiple">- zostávajúci čas</string>
     <string-array name="alarm_set">
         <item>Budík sa spustí o menej než 1 minútu</item>
         <item>Budík sa spustí o <xliff:g id="DAYS">%1$s</xliff:g></item>
@@ -101,12 +91,6 @@
         <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> min</item>
         <item quantity="many"><xliff:g id="NUMBER">%s</xliff:g> min</item>
         <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> min</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="one">1 sekunda</item>
-        <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> sekundy</item>
-        <item quantity="many"><xliff:g id="NUMBER">%s</xliff:g> sekundy</item>
-        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> sekúnd</item>
     </plurals>
     <string name="every_day">každý deň</string>
     <string name="day_concat">", "</string>
@@ -205,9 +189,6 @@
     <string name="menu_timer">Časovač</string>
     <string name="menu_clock">Hodiny</string>
     <string name="menu_stopwatch">Stopky</string>
-    <string name="button_alarms">Pridať budík</string>
-    <string name="button_cities">Mestá</string>
-    <string name="menu_item_settings">Nastavenia</string>
     <string name="menu_item_sort_by_gmt_offset">Zoradiť podľa času</string>
     <string name="menu_item_sort_by_name">Zoradiť podľa názvu</string>
     <string name="selected_cities_label">Vybrané mestá</string>
@@ -221,8 +202,6 @@
     <string name="timer_add_timer">Pridať časovač</string>
     <string name="timer_start">Spustiť</string>
     <string name="timer_delete">Odstrániť</string>
-    <string name="timer_plus_one">Pridať 1 minútu</string>
-    <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Pridať 1 min</string>
     <string name="timer_stop">Zastaviť</string>
     <string name="timer_stop_all">Zastaviť všetky časovače</string>
@@ -250,9 +229,6 @@
     <string name="automatic_home_clock">Automatické domovské hodiny</string>
     <string name="automatic_home_clock_summary">Pri cestách v odlišnom časovom pásme pridať hodiny s domovským časom</string>
     <string name="home_time_zone">Domovské časové pásmo</string>
-    <string name="home_time_zone_title">Domovské časové pásmo</string>
-    <string name="city_checked">Mesto <xliff:g id="CITY_NAME">%s</xliff:g> je začiarknuté</string>
-    <string name="city_unchecked">Mesto <xliff:g id="CITY_NAME">%s</xliff:g> nie je začiarknuté</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"Marshallove ostrovy"</item>
         <item>"Midwayské ostrovy"</item>
@@ -354,9 +330,6 @@
     <string name="timer_service_desc">Spracuje akcie z upozornení časovača.</string>
     <string name="stopwatch_service_desc">Spracuje akcie z upozornení stopiek.</string>
     <string name="swn_paused">Pozastavené</string>
-    <string name="description_direction_right">Prejdením prstom doprava budík zrušíte</string>
-    <string name="description_direction_left">Prejdením prstom doľava budík odložíte</string>
-    <string name="description_direction_both">Prejdením prstom doľava budík odložíte, prejdením prstom doprava ho zrušíte</string>
     <string name="timer_settings">Časovače</string>
     <string name="timer_vibrate_title">Vibrovanie časovača</string>
     <string name="timer_paused">Časovač pozastavený</string>

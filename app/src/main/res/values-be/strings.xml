@@ -52,16 +52,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Перанос да <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Хутка прагучыць будзільнік</string>
-    <string name="timer_notifications_less_min">Застаецца менш за хвiлiну</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes">Застаецца <xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g></string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS">%4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">застаецца</string>
-    <string name="timer_remaining_multiple">застаецца</string>
     <string-array name="alarm_set">
         <item>Будзільнік спрацуе менш чым праз 1 хвіліну.</item>
         <item>Будзільнік спрацуе праз <xliff:g id="DAYS">%1$s</xliff:g>.</item>
@@ -101,12 +91,6 @@
         <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> хв</item>
         <item quantity="many"><xliff:g id="NUMBER">%s</xliff:g> хв</item>
         <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> хв</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> секунда</item>
-        <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> секунды</item>
-        <item quantity="many"><xliff:g id="NUMBER">%s</xliff:g> секунд</item>
-        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> секунды</item>
     </plurals>
     <string name="every_day">Штодзень</string>
     <string name="day_concat">", "</string>
@@ -205,9 +189,6 @@
     <string name="menu_timer">Таймер</string>
     <string name="menu_clock">Гадзіннік</string>
     <string name="menu_stopwatch">Секундамер</string>
-    <string name="button_alarms">Дадаць будзільнік</string>
-    <string name="button_cities">Гарады</string>
-    <string name="menu_item_settings">Налады</string>
     <string name="menu_item_sort_by_gmt_offset">Сартаваць па часе</string>
     <string name="menu_item_sort_by_name">Сартаваць па назве</string>
     <string name="selected_cities_label">Выбраныя гарады</string>
@@ -221,8 +202,6 @@
     <string name="timer_add_timer">Дадаць таймер</string>
     <string name="timer_start">Запусціць</string>
     <string name="timer_delete">Выдаліць</string>
-    <string name="timer_plus_one">Дадаць 1 хвiліну</string>
-    <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Дадаць 1 хв</string>
     <string name="timer_stop">Спыніць</string>
     <string name="timer_stop_all">Спыніць усе таймеры</string>
@@ -250,9 +229,6 @@
     <string name="automatic_home_clock">Гадзіннік майго часавага пояса</string>
     <string name="automatic_home_clock_summary">Паказваць на асобным гадзінніку, колькі часу дома, калі я знаходжуся ў іншым часавым поясе</string>
     <string name="home_time_zone">Дамашні часавы пояс</string>
-    <string name="home_time_zone_title">Дамашні часавы пояс</string>
-    <string name="city_checked">Адзначаны горад <xliff:g id="CITY_NAME">%s</xliff:g></string>
-    <string name="city_unchecked">Знята адзнака з горада <xliff:g id="CITY_NAME">%s</xliff:g></string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"Маршалавы астравы"</item>
         <item>"Востраў Мідуэй"</item>
@@ -354,9 +330,6 @@
     <string name="timer_service_desc">Апрацоўвае дзеянні з апавяшчэнняў таймера.</string>
     <string name="stopwatch_service_desc">Апрацоўвае дзеянні з апавяшчэнняў секундамера.</string>
     <string name="swn_paused">Прыпынены</string>
-    <string name="description_direction_right">Правядзіце пальцам направа, каб выключыць</string>
-    <string name="description_direction_left">Правядзіце пальцам налева, каб адкласці</string>
-    <string name="description_direction_both">Правядзіце пальцам налева, каб адкласці, або направа, каб адключыць</string>
     <string name="timer_settings">Таймеры</string>
     <string name="timer_vibrate_title">Вібрацыя таймера</string>
     <string name="timer_paused">Таймер прыпынены</string>

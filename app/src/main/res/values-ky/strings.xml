@@ -48,16 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until"><xliff:g id="TIME">%s</xliff:g> чейин тындыруу</string>
     <string name="alarm_alert_predismiss_title">Кийинки ойготкуч</string>
-    <string name="timer_notifications_less_min">Бир мүнөткө жетпеген убакыт калды</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes"><xliff:g id="HOURS">%1$s</xliff:g> саат <xliff:g id="MINUTES"> %2$s</xliff:g> мүнөт калды</string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS">%4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">калды</string>
-    <string name="timer_remaining_multiple">калды</string>
     <string-array name="alarm_set">
         <item>Ойготкуч 1 мүнөткө жетпеген убакыттан кийин чырылдайт.</item>
         <item>Ойготкуч <xliff:g id="DAYS">%1$s</xliff:g> кийин чырылдайт.</item>
@@ -87,10 +77,6 @@
     <plurals name="minutes_short">
         <item quantity="one">1 мүн.</item>
         <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> мүн.</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="one">1 секунд</item>
-        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> секунд</item>
     </plurals>
     <string name="every_day">Күн сайын</string>
     <string name="day_concat">", "</string>
@@ -187,9 +173,6 @@
     <string name="menu_timer">Таймер</string>
     <string name="menu_clock">Саат</string>
     <string name="menu_stopwatch">Секундомер</string>
-    <string name="button_alarms">Ойготкуч кошуу</string>
-    <string name="button_cities">Шаарлар</string>
-    <string name="menu_item_settings">Жөндөөлөр</string>
     <string name="menu_item_sort_by_gmt_offset">Убакыт боюнча иргөө</string>
     <string name="menu_item_sort_by_name">Аталышы боюнча иргөө</string>
     <string name="selected_cities_label">Тандалган шаарлар</string>
@@ -203,8 +186,6 @@
     <string name="timer_add_timer">Таймер кошуу</string>
     <string name="timer_start">Баштоо</string>
     <string name="timer_delete">Жок кылуу</string>
-    <string name="timer_plus_one">1 мүнөт кошуу</string>
-    <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">1 мүн кошуу</string>
     <string name="timer_stop">Токтотуу</string>
     <string name="timer_stop_all">Бардык таймрлрди токтотуу</string>
@@ -232,9 +213,6 @@
     <string name="automatic_home_clock">Үйдөгү убакытты көрсөтүү</string>
     <string name="automatic_home_clock_summary">Башка убакыт алкагында саякаттап жүргөндө, үйдөгү убакыт көрүнүп турат</string>
     <string name="home_time_zone">Үйдөгү убакыт аймагы</string>
-    <string name="home_time_zone_title">Үйдөгү убакыт аймагы</string>
-    <string name="city_checked"><xliff:g id="CITY_NAME">%s</xliff:g> белгиленди</string>
-    <string name="city_unchecked"><xliff:g id="CITY_NAME">%s</xliff:g> белгиленген жок</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"Маршал аралдары"</item>
         <item>"Мидуэй аралы"</item>
@@ -336,9 +314,6 @@
     <string name="timer_service_desc">Таймер эскертмелериндеги аракеттерди иштетет.</string>
     <string name="stopwatch_service_desc">Секундомер эскертмелериндеги аракеттерди иштетет.</string>
     <string name="swn_paused">Тындырылды</string>
-    <string name="description_direction_right">Койгуңуз келбесе оңго сүрүңүз</string>
-    <string name="description_direction_left">Тындыруу үчүн солго сүрүңүз.</string>
-    <string name="description_direction_both">Тындыруу үчүн солго же этибарга албоо үчүн оңго серпиңиз</string>
     <string name="timer_settings">Таймерлер</string>
     <string name="timer_vibrate_title">Таймер дирилдөөсү</string>
     <string name="timer_paused">Таймер тындырылды</string>

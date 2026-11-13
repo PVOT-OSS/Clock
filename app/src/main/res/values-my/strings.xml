@@ -46,16 +46,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until"><xliff:g id="TIME">%s</xliff:g>အထိ မှေးရန်</string>
     <string name="alarm_alert_predismiss_title">လာတော့မည့် နှိုးစက်</string>
-    <string name="timer_notifications_less_min">ကျန်ရှိနေသည်မှာ တစ်မိနစ်ထက် နည်း</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g> ကျန်ရှိသည်</string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS">%4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">ကျန်ရှိနေသော</string>
-    <string name="timer_remaining_multiple">ကျန်ရှိနေသော</string>
     <string-array name="alarm_set">
         <item>နှိုးစက် သတ်မှတ်ချိန်မှာ ယခု အချိန်မှ ၁ မိနစ်ထက် နည်းနေသည်။</item>
         <item>ယခု အချိန်မှ စပြီး <xliff:g id="DAYS">%1$s</xliff:g> အကြာမှာ နှိုးစက် သတ်မှတ်ထားသည်။</item>
@@ -80,9 +70,6 @@
     </plurals>
     <plurals name="minutes_short">
         <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> မိနစ်</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> စက္ကန့်</item>
     </plurals>
     <string name="every_day">နေ့တိုင်း</string>
     <string name="day_concat">", "</string>
@@ -178,9 +165,6 @@
     <string name="menu_timer">တိုင်မာ</string>
     <string name="menu_clock">နာရီ</string>
     <string name="menu_stopwatch">အချိန်ဖမ်းနာရီ</string>
-    <string name="button_alarms">နှိုးစက် ထည့်ရန်</string>
-    <string name="button_cities">မြို့များ</string>
-    <string name="menu_item_settings">ဆက်တင်များ</string>
     <string name="menu_item_sort_by_gmt_offset">အချိန်အလိုက် စီရန်</string>
     <string name="menu_item_sort_by_name">အမည်အလိုက် စီရန်</string>
     <string name="selected_cities_label">ရွေးထားသည့် မြို့များ</string>
@@ -194,8 +178,6 @@
     <string name="timer_add_timer">တိုင်မာ ထည့်ရန်</string>
     <string name="timer_start">စတင်ရန်</string>
     <string name="timer_delete">ဖျက်ရန်</string>
-    <string name="timer_plus_one">၁ မိနစ် ထည့်ရန်</string>
-    <string name="timer_add_minute">+ ၁:၀၀</string>
     <string name="timer_plus_1_min">၁ မိနစ် ထည့်ရန်</string>
     <string name="timer_stop">ရပ်တန့်ရန်</string>
     <string name="timer_stop_all">အချိန်တိုင်းကိရိယာများအားလုံး ရပ်ရန်</string>
@@ -223,9 +205,6 @@
     <string name="automatic_home_clock">အလိုအလျောက် အိမ် နာရီ</string>
     <string name="automatic_home_clock_summary">အချိန်မတူသည့် ဒေသမှာ ခရီးထွက်နေစဉ်၊ အိမ်အတွက် နာရီကို ထည့်ပါ</string>
     <string name="home_time_zone">အိမ်၏ အချိန်ဇုန်</string>
-    <string name="home_time_zone_title">အိမ်၏ အချိန် ဇုန်</string>
-    <string name="city_checked"><xliff:g id="CITY_NAME">%s</xliff:g> ကို ခြစ်ထားသည်</string>
-    <string name="city_unchecked"><xliff:g id="CITY_NAME">%s</xliff:g> ခြစ်မထား</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"မာရှယ်ကျွန်းစု"</item>
         <item>"မီးဒ်ဝေးကျွန်းစု"</item>
@@ -327,9 +306,6 @@
     <string name="timer_service_desc">အချိန်ကိုက်နာရီ အသိပေးချက်မှ လုပ်ဆောင်ချက်များကို လုပ်ဆောင်ပါ</string>
     <string name="stopwatch_service_desc">အချိန်ရပ်နာရီ အသိပေးချက်များမှ လုပ်ဆောင်ချက်များကို လုပ်ဆောင်ပါ</string>
     <string name="swn_paused">ဆိုင်းငံ့ထား</string>
-    <string name="description_direction_right">ပိတ်ရန် ညာဘက်သို့ ပွတ်ဆွဲပါ</string>
-    <string name="description_direction_left">တစ်မှေးအိပ်ရန် ဘယ်ဘက်သို့ ပွတ်ဆွဲပါ</string>
-    <string name="description_direction_both">ပြန်မှေးရန် ဘယ်ဘက်နှင့် ပိတ်ရန် ညာဘက်သို့ ပွတ်ဆွဲပါ။</string>
     <string name="timer_settings">အချိန်တိုင်းစက်များ</string>
     <string name="timer_vibrate_title">တိုင်မာ တုန်ခါမှု</string>
     <string name="timer_paused">တိုင်မာ ရပ်တန့်ထား</string>

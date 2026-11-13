@@ -48,16 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Atzeratu ordu honetara arte: <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Hurrengo alarma</string>
-    <string name="timer_notifications_less_min">Minutu bat baino gutxiago geratzen da</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes"><xliff:g id="HOURS">%1$s</xliff:g> eta <xliff:g id="MINUTES"> %2$s</xliff:g> geratzen dira</string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS">%4$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> eta <xliff:g id="SECONDS"> %4$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> eta <xliff:g id="SECONDS"> %4$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g>, <xliff:g id="MINUTES"> %2$s</xliff:g> eta <xliff:g id="SECONDS"> %4$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">geratzen da</string>
-    <string name="timer_remaining_multiple">geratzen dira</string>
     <string-array name="alarm_set">
         <item>Alarma 1 minutu baino gutxiago barru jotzeko ezarri da.</item>
         <item>Alarma <xliff:g id="DAYS">%1$s</xliff:g> barru jotzeko ezarri da.</item>
@@ -87,10 +77,6 @@
     <plurals name="minutes_short">
         <item quantity="one">1 min</item>
         <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> min</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="one">1 segundo</item>
-        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> segundo</item>
     </plurals>
     <string name="every_day">Egunero</string>
     <string name="day_concat">", "</string>
@@ -187,9 +173,6 @@
     <string name="menu_timer">Tenporizadorea</string>
     <string name="menu_clock">Erlojua</string>
     <string name="menu_stopwatch">Kronometroa</string>
-    <string name="button_alarms">Gehitu alarma</string>
-    <string name="button_cities">Hiriak</string>
-    <string name="menu_item_settings">Ezarpenak</string>
     <string name="menu_item_sort_by_gmt_offset">Ordenatu orduaren arabera</string>
     <string name="menu_item_sort_by_name">Ordenatu izenaren arabera</string>
     <string name="selected_cities_label">Hautatutako hiriak</string>
@@ -203,8 +186,6 @@
     <string name="timer_add_timer">Gehitu tenporizadorea</string>
     <string name="timer_start">Hasi</string>
     <string name="timer_delete">Ezabatu</string>
-    <string name="timer_plus_one">Gehitu 1 minutu</string>
-    <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Gehitu 1 minutu</string>
     <string name="timer_stop">Gelditu</string>
     <string name="timer_stop_all">Gelditu tenporizadoreak</string>
@@ -232,9 +213,6 @@
     <string name="automatic_home_clock">Etxeko erloju automatikoa</string>
     <string name="automatic_home_clock_summary">Beste ordu-zona batean dagoen lurralde batera bidaiatzen duzunean, gehitu etxeko ordua duen erloju bat</string>
     <string name="home_time_zone">Etxeko ordu-zona</string>
-    <string name="home_time_zone_title">Etxeko ordu-zona</string>
-    <string name="city_checked"><xliff:g id="CITY_NAME">%s</xliff:g> markatu da</string>
-    <string name="city_unchecked">Marka kendu zaio <xliff:g id="CITY_NAME">%s</xliff:g> koadroari</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"Marshall uharteak"</item>
         <item>"Midway uhartea"</item>
@@ -336,9 +314,6 @@
     <string name="timer_service_desc">Ekintzak prozesatzen ditu tenporizadorearen jakinarazpenetatik abiatuta.</string>
     <string name="stopwatch_service_desc">Ekintzak prozesatzen ditu kronometroaren jakinarazpenetatik abiatuta.</string>
     <string name="swn_paused">Pausatu da kronometroa</string>
-    <string name="description_direction_right">Baztertzeko, pasatu hatza eskuinera</string>
-    <string name="description_direction_left">Atzeratzeko, pasatu hatza ezkerrera</string>
-    <string name="description_direction_both">Atzeratzeko, pasatu hatza ezkerrera. Baztertzeko, pasatu hatza eskuinera.</string>
     <string name="timer_settings">Tenporizadoreak</string>
     <string name="timer_vibrate_title">Tenporizadorearen dardara</string>
     <string name="timer_paused">Pausatu da tenporizadorea</string>

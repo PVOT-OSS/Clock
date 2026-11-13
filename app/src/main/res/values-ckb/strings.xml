@@ -48,16 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">دوادەخرێت تا <xliff:g id="time">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">وریاکەرەوەی داهاتوو</string>
-    <string name="timer_notifications_less_min">کەمتر لە خولەکێک ماوە</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES" example="2 minutes">%2$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g><xliff:g id="MINUTES" example="2 minutes"> %2$s</xliff:g> ماوە</string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS" example="2 seconds">%4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES" example="2 minutes">%2$s</xliff:g> <xliff:g id="SECONDS" example="2 seconds"> %4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g> <xliff:g id="SECONDS" example="2 seconds"> %4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g><xliff:g id="MINUTES" example="2 minutes"> %2$s</xliff:g><xliff:g id="SECONDS" example="2 seconds"> %4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">ماوە</string>
-    <string name="timer_remaining_multiple">ماوە</string>
     <string-array name="alarm_set">
         <item>وریاکەرەوە دانرا بۆ کەمتر لە 1 خولەکی تر لە ئێستاوە.</item>
         <item>وریاکەرەوە دانرا بۆ <xliff:g id="DAYS" example="2 days">%1$s</xliff:g>ی تر لە ئێستاوە.</item>
@@ -87,10 +77,6 @@
     <plurals name="minutes_short">
         <item quantity="one">1 خولەک</item>
         <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> خولەک</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="one">1 چرکە</item>
-        <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> چرکە</item>
     </plurals>
     <string name="every_day">هەموو ڕۆژێک</string>
     <string name="day_concat">"، "</string>
@@ -187,9 +173,6 @@
     <string name="menu_timer">کاتپێو</string>
     <string name="menu_clock">کاتژمێر</string>
     <string name="menu_stopwatch">ژمێرەری کات</string>
-    <string name="button_alarms">زیادکردنی وریاکەرەوە</string>
-    <string name="button_cities">شارەکان</string>
-    <string name="menu_item_settings">ڕێکخستنەکان</string>
     <string name="menu_item_sort_by_gmt_offset">ڕیزکردن بەپێی کات</string>
     <string name="menu_item_sort_by_name">ڕیزکردن بەپێی ناو</string>
     <string name="selected_cities_label">شارە هەڵبژێردراوەکان</string>
@@ -203,8 +186,6 @@
     <string name="timer_add_timer">زیادکردنی کاتپێو</string>
     <string name="timer_start">دەستپێکردن</string>
     <string name="timer_delete">سڕینەوە</string>
-    <string name="timer_plus_one">زیادکردنی 1 خولەک</string>
-    <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">زیادکردنی 1 خولەک</string>
     <string name="timer_stop">بوەستێنە</string>
     <string name="timer_stop_all">وەستاندنی هەموو کاتپێوەکان</string>
@@ -233,9 +214,6 @@
     <string name="automatic_home_clock">کاتژمێری خۆکاری ماڵەوە</string>
     <string name="automatic_home_clock_summary">لە کاتی گەشتکردن بۆ ناوچەیەک کە کاتەکەی جیاوازە، کاتژمێرێک بۆ ماڵەوە زیادبکە</string>
     <string name="home_time_zone">کاتی ناوخۆیی وڵات</string>
-    <string name="home_time_zone_title">کاتی ناوخۆیی وڵات</string>
-    <string name="city_checked"><xliff:g id="city_name">%s</xliff:g> هەڵبژێردرا</string>
-    <string name="city_unchecked"><xliff:g id="city_name">%s</xliff:g> لادرا</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"Marshall Islands"</item>
         <item>"Midway Island"</item>
@@ -337,9 +315,6 @@
     <string name="timer_service_desc">کردارەکانی ئاگادارییەکانی کاتپێو جێبەجێ دەکات.</string>
     <string name="stopwatch_service_desc">کردارەکانی ئاگادارییەکانی ژمێرەری کات جێبەجێ دەکات.</string>
     <string name="swn_paused">ڕاگیراوە</string>
-    <string name="description_direction_right">بۆ لای ڕاست پەنجە ڕابکێشە بۆ بێدەنگکردن</string>
-    <string name="description_direction_left">بۆ لای چەپ پەنجە ڕابکێشە بۆ دواخستن</string>
-    <string name="description_direction_both">بۆ لای چەپ پەنجە ڕابکێشە بۆ دواخستن یان لای ڕاست بۆ بێدەنگکردن</string>
     <string name="timer_settings">کاتپێوەکان</string>
     <string name="timer_vibrate_title">لەرینەوەی کاتپێو</string>
     <string name="timer_paused">کاتپێو ڕاگیراوە</string>

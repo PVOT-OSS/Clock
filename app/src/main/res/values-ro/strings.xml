@@ -50,16 +50,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Se amână până <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Alarma următoare</string>
-    <string name="timer_notifications_less_min">A rămas mai puțin de un minut</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes">Timp rămas: <xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g></string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS">%4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">rămas</string>
-    <string name="timer_remaining_multiple">rămase</string>
     <string-array name="alarm_set">
         <item>Alarmă setată peste mai puțin de 1 minut.</item>
         <item>Alarmă setată peste <xliff:g id="DAYS">%1$s</xliff:g>.</item>
@@ -94,11 +84,6 @@
         <item quantity="one">1 min.</item>
         <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> min.</item>
         <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> min.</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="one">O secundă</item>
-        <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> secunde</item>
-        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> de secunde</item>
     </plurals>
     <string name="every_day">În fiecare zi</string>
     <string name="day_concat">", "</string>
@@ -196,9 +181,6 @@
     <string name="menu_timer">Temporizator</string>
     <string name="menu_clock">Ceas</string>
     <string name="menu_stopwatch">Cronometru</string>
-    <string name="button_alarms">Adăugați o alarmă</string>
-    <string name="button_cities">Orașe</string>
-    <string name="menu_item_settings">Setări</string>
     <string name="menu_item_sort_by_gmt_offset">Sortați după oră</string>
     <string name="menu_item_sort_by_name">Sortați după nume</string>
     <string name="selected_cities_label">Orașele selectate</string>
@@ -212,8 +194,6 @@
     <string name="timer_add_timer">Adăugați un temporizator</string>
     <string name="timer_start">Start</string>
     <string name="timer_delete">Ștergeți</string>
-    <string name="timer_plus_one">Adăugați 1 minut</string>
-    <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Adăugați 1 min.</string>
     <string name="timer_stop">Opriți</string>
     <string name="timer_stop_all">Opriți temporizatoarele</string>
@@ -242,9 +222,6 @@
     <string name="automatic_home_clock">Ceas automat pentru ora de acasă</string>
     <string name="automatic_home_clock_summary">Când călătoriți într-o zonă în care ora este diferită, adăugați un ceas pentru ora de acasă</string>
     <string name="home_time_zone">Fusul orar de acasă</string>
-    <string name="home_time_zone_title">Fusul orar de acasă</string>
-    <string name="city_checked">Orașul <xliff:g id="CITY_NAME">%s</xliff:g> a fost bifat</string>
-    <string name="city_unchecked">Orașul <xliff:g id="CITY_NAME">%s</xliff:g> a fost debifat</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"Insulele Marshall"</item>
         <item>"Insula Midway"</item>
@@ -346,9 +323,6 @@
     <string name="timer_service_desc">Procesează acțiunile din notificările de la temporizator.</string>
     <string name="stopwatch_service_desc">Procesează acțiunile din notificările de la cronometru.</string>
     <string name="swn_paused">Întrerupt</string>
-    <string name="description_direction_right">Glisați spre dreapta pentru a închide</string>
-    <string name="description_direction_left">Glisați spre stânga pentru a amâna</string>
-    <string name="description_direction_both">Glisați spre stânga pentru a amâna sau spre dreapta pentru a închide</string>
     <string name="timer_settings">Temporizatoare</string>
     <string name="timer_vibrate_title">Vibrare pentru temporizator</string>
     <string name="timer_paused">Temporizator întrerupt</string>

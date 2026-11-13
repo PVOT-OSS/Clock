@@ -48,16 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until"><xliff:g id="TIME">%s</xliff:g> বজালৈকে স্নুজ কৰি থকা হৈছে</string>
     <string name="alarm_alert_predismiss_title">পৰবৰ্তী এলাৰ্ম</string>
-    <string name="timer_notifications_less_min">এক মিনিটতকৈ কম সময় বাকী আছে</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g> বাকী আছে</string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS">%4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">বাকী আছে</string>
-    <string name="timer_remaining_multiple">বাকী আছে</string>
     <string-array name="alarm_set">
         <item>এলাৰ্মক এতিয়াৰ পৰা ১ মিনিটতকৈও কম সময়ৰ বাবে ছেট কৰা হ’ল।</item>
         <item>এলাৰ্মক এতিয়াৰ পৰা <xliff:g id="DAYS">%1$s</xliff:g>ৰ বাবে ছেট কৰা হ’ল।</item>
@@ -87,10 +77,6 @@
     <plurals name="minutes_short">
         <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> মিনিট</item>
         <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> মিনিট</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> ছেকেণ্ড</item>
-        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ছেকেণ্ড</item>
     </plurals>
     <string name="every_day">সদায়</string>
     <string name="day_concat">", "</string>
@@ -187,9 +173,6 @@
     <string name="menu_timer">টাইমাৰ</string>
     <string name="menu_clock">ঘড়ী</string>
     <string name="menu_stopwatch">স্টপৱাচ্চ</string>
-    <string name="button_alarms">এলাৰ্ম যোগ কৰক</string>
-    <string name="button_cities">চহৰবোৰ</string>
-    <string name="menu_item_settings">ছেটিংসমূহ</string>
     <string name="menu_item_sort_by_gmt_offset">সময় অনুসৰি সজাওক</string>
     <string name="menu_item_sort_by_name">নাম অনুসৰি সজাওক</string>
     <string name="selected_cities_label">বাছনি কৰা চহৰবোৰ</string>
@@ -203,8 +186,6 @@
     <string name="timer_add_timer">টাইমাৰ যোগ কৰক</string>
     <string name="timer_start">আৰম্ভ কৰক</string>
     <string name="timer_delete">মচক</string>
-    <string name="timer_plus_one">১ মিনিট যোগ কৰক</string>
-    <string name="timer_add_minute">+ ১:০০</string>
     <string name="timer_plus_1_min">১ মিনিট যোগ কৰক</string>
     <string name="timer_stop">বন্ধ কৰক</string>
     <string name="timer_stop_all">সকলো টাইমাৰক ৰখাওক</string>
@@ -232,9 +213,6 @@
     <string name="automatic_home_clock">স্ৱয়ংক্ৰিয়ভাৱে দেশৰ ঘড়ী দেখুৱাওক</string>
     <string name="automatic_home_clock_summary">ভিন্ন সময় থকা কোনো ক্ষেত্ৰত যাত্ৰা কৰাৰ সময় নিজৰ দেশৰ সময় দেখুওৱা ঘড়ী যোগ কৰক</string>
     <string name="home_time_zone">দেশৰ সময় ক্ষেত্ৰ</string>
-    <string name="home_time_zone_title">দেশৰ সময় ক্ষেত্ৰ</string>
-    <string name="city_checked"><xliff:g id="CITY_NAME">%s</xliff:g>ত টিক চিহ্ন লগোৱা হ’ল</string>
-    <string name="city_unchecked"><xliff:g id="CITY_NAME">%s</xliff:g>ৰ পৰা টিক চিহ্ন আঁতৰোৱা হ’ল</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"মাৰ্শ্বেল দ্ৱীপসমূহ"</item>
         <item>"মিডওৱে দ্ৱীপ"</item>
@@ -336,9 +314,6 @@
     <string name="timer_service_desc">স্টপৱাচ্চ জাননীৰ পৰা কাৰ্যবিলাকত প্ৰক্ৰিয়া চলায়</string>
     <string name="stopwatch_service_desc">স্টপৱাচ্চ জাননীৰ পৰা কাৰ্যবিলাকত প্ৰক্ৰিয়া চলায়</string>
     <string name="swn_paused">পজ কৰা হ’ল</string>
-    <string name="description_direction_right">বাতিল কৰিবলৈ সোঁফালে ছুৱাইপ কৰক</string>
-    <string name="description_direction_left">স্নুজ কৰিবলৈ বাওঁফাললৈ ছোৱাইপ কৰক</string>
-    <string name="description_direction_both">স্নুজ কৰিবলৈ বাওঁফালে বা বাতিল কৰিবলৈ সোঁফালে ছুৱাইপ কৰক</string>
     <string name="timer_settings">টাইমাৰবোৰ</string>
     <string name="timer_vibrate_title">টাইমাৰ কম্পন</string>
     <string name="timer_paused">টাইমাৰ প\'জ কৰা হ’ল</string>

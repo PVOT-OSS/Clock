@@ -48,16 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Αναβολή έως τις <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Επόμενο ξυπνητήρι</string>
-    <string name="timer_notifications_less_min">Απομένει λιγότερο από ένα λεπτό</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes">Απομένουν <xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g></string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS">%4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">απομένουν</string>
-    <string name="timer_remaining_multiple">απομένουν</string>
     <string-array name="alarm_set">
         <item>Το ξυπνητήρι έχει οριστεί σε λιγότερο από 1 λεπτό από τώρα.</item>
         <item>Το ξυπνητήρι έχει οριστεί σε <xliff:g id="DAYS">%1$s</xliff:g> από τώρα.</item>
@@ -87,10 +77,6 @@
     <plurals name="minutes_short">
         <item quantity="one">1 λ.</item>
         <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> λ.</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="one">1 δευτερόλεπτο</item>
-        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> δευτερόλεπτα</item>
     </plurals>
     <string name="every_day">Κάθε ημέρα</string>
     <string name="day_concat">", "</string>
@@ -187,9 +173,6 @@
     <string name="menu_timer">Χρονοδιακόπτης</string>
     <string name="menu_clock">Ρολόι</string>
     <string name="menu_stopwatch">Χρονόμετρο</string>
-    <string name="button_alarms">Προσθήκη ξυπνητηριού</string>
-    <string name="button_cities">Πόλεις</string>
-    <string name="menu_item_settings">Ρυθμίσεις</string>
     <string name="menu_item_sort_by_gmt_offset">Ταξινόμηση κατά ώρα</string>
     <string name="menu_item_sort_by_name">Ταξινόμηση κατά όνομα</string>
     <string name="selected_cities_label">Επιλεγμένες πόλεις</string>
@@ -203,8 +186,6 @@
     <string name="timer_add_timer">Προσθήκη χρονοδιακόπτη</string>
     <string name="timer_start">Έναρξη</string>
     <string name="timer_delete">Διαγραφή</string>
-    <string name="timer_plus_one">Προσθήκη 1 λεπτού</string>
-    <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Προσθήκη 1 λεπτού</string>
     <string name="timer_stop">Διακοπή</string>
     <string name="timer_stop_all">Διακοπή των χρονομέτρων</string>
@@ -233,9 +214,6 @@
     <string name="automatic_home_clock">Αυτόματη ώρα χώρας προέλευσης</string>
     <string name="automatic_home_clock_summary">Όταν ταξιδεύετε σε μια περιοχή με διαφορετική ώρα, να προστίθεται ένα ρολόι με την ώρα της χώρας προέλευσής σας</string>
     <string name="home_time_zone">Βασική ζώνη ώρας</string>
-    <string name="home_time_zone_title">Βασική ζώνη ώρας</string>
-    <string name="city_checked">Έχει επιλεχθεί η πόλη <xliff:g id="CITY_NAME">%s</xliff:g></string>
-    <string name="city_unchecked">Έχει καταργηθεί η επιλογή της πόλης <xliff:g id="CITY_NAME">%s</xliff:g></string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"Νήσοι Μάρσαλ"</item>
         <item>"Νήσος Μιντγουέι"</item>
@@ -337,9 +315,6 @@
     <string name="timer_service_desc">Επεξεργάζεται ενέργειες από τις ειδοποιήσεις χρονοδιακόπτη.</string>
     <string name="stopwatch_service_desc">Επεξεργάζεται ενέργειες από τις ειδοποιήσεις του χρονομέτρου.</string>
     <string name="swn_paused">Σε παύση</string>
-    <string name="description_direction_right">Σύρετε δεξιά για παράβλεψη</string>
-    <string name="description_direction_left">Σύρετε αριστερά για αναβολή</string>
-    <string name="description_direction_both">Σύρετε το δάχτυλό σας προς τα αριστερά για αναβολή ή προς τα δεξιά για απόρριψη</string>
     <string name="timer_settings">Χρονόμετρα</string>
     <string name="timer_vibrate_title">Δόνηση χρονοδιακόπτη</string>
     <string name="timer_paused">Χρονοδιακόπτης σε παύση</string>

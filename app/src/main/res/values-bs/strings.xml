@@ -50,16 +50,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Odlaganje do <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Predstojeći alarm</string>
-    <string name="timer_notifications_less_min">Preostalo je manje od minute</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes">Preostalo je još <xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g></string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS">%4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">preostalo</string>
-    <string name="timer_remaining_multiple">preostalo</string>
     <string-array name="alarm_set">
         <item>Alarm će se aktivirati za manje od 1 minute.</item>
         <item>Alarm postavljen za <xliff:g id="DAYS">%1$s</xliff:g> od sada.</item>
@@ -94,11 +84,6 @@
         <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> min.</item>
         <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> min.</item>
         <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> min.</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> sekunda</item>
-        <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> sekunde</item>
-        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> sekundi</item>
     </plurals>
     <string name="every_day">Svakog dana</string>
     <string name="day_concat">", "</string>
@@ -196,9 +181,6 @@
     <string name="menu_timer">Tajmer</string>
     <string name="menu_clock">Sat</string>
     <string name="menu_stopwatch">Štoperica</string>
-    <string name="button_alarms">Dodaj alarm</string>
-    <string name="button_cities">Gradovi</string>
-    <string name="menu_item_settings">Postavke</string>
     <string name="menu_item_sort_by_gmt_offset">Sortiraj po vremenu</string>
     <string name="menu_item_sort_by_name">Sortiraj po nazivu</string>
     <string name="selected_cities_label">Odabrani gradovi</string>
@@ -212,8 +194,6 @@
     <string name="timer_add_timer">Dodaj tajmer</string>
     <string name="timer_start">Pokreni</string>
     <string name="timer_delete">Izbriši</string>
-    <string name="timer_plus_one">Dodajte 1 minutu</string>
-    <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Dodaj 1 min.</string>
     <string name="timer_stop">Zaustavi</string>
     <string name="timer_stop_all">Zaustavi sve tajmere</string>
@@ -241,9 +221,6 @@
     <string name="automatic_home_clock">Automatski sat s vremenom kod kuće</string>
     <string name="automatic_home_clock_summary">Dok putujete u područje u kojem vrijedi drugo vrijeme, dodajte sat za vrijeme kod kuće</string>
     <string name="home_time_zone">Matična vremenska zona</string>
-    <string name="home_time_zone_title">Matična vremenska zona</string>
-    <string name="city_checked">Grad <xliff:g id="CITY_NAME">%s</xliff:g> potvrđen</string>
-    <string name="city_unchecked">Grad <xliff:g id="CITY_NAME">%s</xliff:g> nije potvrđen</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"Maršalova ostrva"</item>
         <item>"Otok Midway"</item>
@@ -345,9 +322,6 @@
     <string name="timer_service_desc">Obrađuje radnje iz obavijesti tajmera.</string>
     <string name="stopwatch_service_desc">Obrađuje radnje iz obavijesti štoperice.</string>
     <string name="swn_paused">Pauzirana</string>
-    <string name="description_direction_right">Prevucite desno da odbacite</string>
-    <string name="description_direction_left">Prevucite lijevo da odložite</string>
-    <string name="description_direction_both">Prevucite lijevo da odložite ili desno da odbacite</string>
     <string name="timer_settings">Tajmeri</string>
     <string name="timer_vibrate_title">Vibracija za mjerač vremena</string>
     <string name="timer_paused">Tajmer pauziran</string>

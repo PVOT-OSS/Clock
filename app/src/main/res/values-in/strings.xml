@@ -46,16 +46,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Menunda hingga <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Alarm mendatang</string>
-    <string name="timer_notifications_less_min">Sisa kurang dari satu menit</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes">Sisa <xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g></string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS">%4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">tersisa</string>
-    <string name="timer_remaining_multiple">tersisa</string>
     <string-array name="alarm_set">
         <item>Alarm disetel untuk kurang dari 1 menit dari sekarang.</item>
         <item>Alarm disetel untuk <xliff:g id="DAYS">%1$s</xliff:g> dari sekarang.</item>
@@ -80,9 +70,6 @@
     </plurals>
     <plurals name="minutes_short">
         <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> mnt</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> detik</item>
     </plurals>
     <string name="every_day">Setiap hari</string>
     <string name="day_concat">", "</string>
@@ -178,9 +165,6 @@
     <string name="menu_timer">Timer</string>
     <string name="menu_clock">Jam</string>
     <string name="menu_stopwatch">Stopwatch</string>
-    <string name="button_alarms">Tambahkan alarm</string>
-    <string name="button_cities">Kota</string>
-    <string name="menu_item_settings">Setelan</string>
     <string name="menu_item_sort_by_gmt_offset">Urutkan menurut waktu</string>
     <string name="menu_item_sort_by_name">Urutkan menurut nama</string>
     <string name="selected_cities_label">Kota yang Dipilih</string>
@@ -194,8 +178,6 @@
     <string name="timer_add_timer">Tambahkan Timer</string>
     <string name="timer_start">Mulai</string>
     <string name="timer_delete">Hapus</string>
-    <string name="timer_plus_one">Tambah 1 menit</string>
-    <string name="timer_add_minute">+ 1.00</string>
     <string name="timer_plus_1_min">Tambahkan 1 mnt</string>
     <string name="timer_stop">Hentikan</string>
     <string name="timer_stop_all">Menghentikan semua pewaktu</string>
@@ -223,9 +205,6 @@
     <string name="automatic_home_clock">Jam domestik otomatis</string>
     <string name="automatic_home_clock_summary">Saat bepergian di wilayah dengan waktu yang berbeda, tambahkan jam untuk rumah</string>
     <string name="home_time_zone">Zona waktu domestik</string>
-    <string name="home_time_zone_title">Zona waktu domestik</string>
-    <string name="city_checked"><xliff:g id="CITY_NAME">%s</xliff:g> dicentang</string>
-    <string name="city_unchecked"><xliff:g id="CITY_NAME">%s</xliff:g> dihapus centangnya</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"Kepulauan Marshall"</item>
         <item>"Pulau Midway"</item>
@@ -327,9 +306,6 @@
     <string name="timer_service_desc">Memproses tindakan dari notifikasi pewaktu.</string>
     <string name="stopwatch_service_desc">Memproses tindakan dari notifikasi stopwatch.</string>
     <string name="swn_paused">Dijeda</string>
-    <string name="description_direction_right">Geser ke kanan untuk menutup</string>
-    <string name="description_direction_left">Geser ke kiri untuk menunda</string>
-    <string name="description_direction_both">Geser ke kiri untuk menunda atau ke kanan untuk menutup</string>
     <string name="timer_settings">Timer</string>
     <string name="timer_vibrate_title">Timer bergetar</string>
     <string name="timer_paused">Timer dijeda</string>

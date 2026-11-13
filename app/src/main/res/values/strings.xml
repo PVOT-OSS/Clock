@@ -137,14 +137,6 @@
 
     <!-- Timer notification: how long from now until timer goes off.
          (Also used for timer accessibility announcements.) -->
-    <string name="timer_notifications_less_min">Less than a minute remaining</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES" example="2 minutes">%2$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g><xliff:g id="MINUTES" example="2 minutes"> %2$s</xliff:g> remaining</string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS" example="2 seconds">%4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES" example="2 minutes">%2$s</xliff:g> <xliff:g id="SECONDS" example="2 seconds"> %4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g> <xliff:g id="SECONDS" example="2 seconds"> %4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g><xliff:g id="MINUTES" example="2 minutes"> %2$s</xliff:g><xliff:g id="SECONDS" example="2 seconds"> %4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
 
     <!-- Timer accessibility announcements -->
 
@@ -152,12 +144,10 @@
         Verb inflection to use for single time units remaining
         Ex. "1 minute remaining"
     -->
-    <string name="timer_remaining_single">remaining</string>
     <!--
         Verb inflection to use for multiple time units remaining
         Ex. "2 minutes remaining"
     -->
-    <string name="timer_remaining_multiple">remaining</string>
 
     <!-- Alarm confirmation toast: Describes how long from now until alarm fires -->
     <string-array name="alarm_set">
@@ -210,12 +200,6 @@
     </plurals>
 
     <!-- Timer accessibility announcement -->
-    <plurals name="seconds">
-        <!-- Duration for one second -->
-        <item quantity="one">1 second</item>
-        <!-- Duration for more than one minute -->
-        <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> seconds</item>
-    </plurals>
 
     <!-- Repeat options that appear under an alarm on main Alarm Clock
          screen to identify repetition schedule: special case for when
@@ -469,11 +453,8 @@
 
     <!-- Clock view buttons strings-->
     <!-- Describes the purpose of the button to start the activity to add/edit/delete alarms -->
-    <string name="button_alarms">Add alarm</string>
     <!-- Describes the purpose of the button which provides a list of cities for the world clock settings -->
-    <string name="button_cities">Cities</string>
     <!-- Menu item on most screens to get to more settings -->
-    <string name="menu_item_settings">Settings</string>
     <!-- Menu item on clock screen to enter screen saver. -->
     <!-- Menu item on Cities screen to sort by GMT offset -->
     <string name="menu_item_sort_by_gmt_offset">Sort by time</string>
@@ -529,9 +510,7 @@
     <string name="timer_delete">Delete</string>
     <!-- Talkback description for deleting a number. -->
     <!-- Describes the purpose of the button increase the remaining time on a timer by one minute. -->
-    <string name="timer_plus_one">Add 1 Minute</string>
     <!-- Label for adding one minute to a timer. [CHAR LIMIT=10] -->
-    <string name="timer_add_minute">+ 1:00</string>
     <!-- Like "timer_plus_one", but with 'minute' abbreviated for the notification. -->
     <string name="timer_plus_1_min">Add 1 min</string>
     <!-- Describes the purpose of the button to stop the timer. -->
@@ -608,18 +587,15 @@
     <!-- Title in the preferences change the time zone for the user's home -->
     <string name="home_time_zone">Home time zone</string>
     <!-- Title in a list dialog box to pick a time zone for the user's home -->
-    <string name="home_time_zone_title">Home time zone</string>
 
     <!--
         Accessibility string read when a city checkbox is checked.
         Ex. "Ann Arbor checked"
     -->
-    <string name="city_checked"><xliff:g id="city_name">%s</xliff:g> checked</string>
     <!--
         Accessibility string read when a city checkbox is unchecked.
         Ex. "Ann Arbor unchecked"
     -->
-    <string name="city_unchecked"><xliff:g id="city_name">%s</xliff:g> unchecked</string>
 
     <!-- Choices for timezones, must be kept in sync with timezone_values. CHAR LIMIT=25] -->
     <string-array name="timezone_labels" tools:ignore="Typos">
@@ -843,15 +819,12 @@
     <!-- Text instruction for dismiss alarm on alarm lock screen. The dismiss button will still
          be on the right even on RTL languages so please do not reverse this during
          translation. -->
-    <string name="description_direction_right">Swipe right to dismiss</string>
     <!-- Text instruction for snooze alarm on alarm lock screen. The snooze button will still
          be on the left even on RTL languages so please do not reverse this during
          translation. -->
-    <string name="description_direction_left">Swipe left to snooze</string>
     <!-- Text instruction for alarm icon on alarm lock screen. The snooze button will still
          be on the left even on RTL languages so please do not reverse this during
          translation. -->
-    <string name="description_direction_both">Swipe left to snooze or right to dismiss</string>
 
     <!-- Header in the preferences settings for the section pertaining to timers. -->
     <string name="timer_settings">Timers</string>

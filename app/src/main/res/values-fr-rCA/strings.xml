@@ -48,16 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Répéter à <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Alarme imminente</string>
-    <string name="timer_notifications_less_min">Il reste moins d\'une minute…</string>
-    <string name="timer_notifications_hours"><xliff:g id="REMAINING"> %3$s</xliff:g> <xliff:g id="HOURS">%1$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="REMAINING"> %3$s</xliff:g> <xliff:g id="MINUTES">%2$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes">Il reste <xliff:g id="HOURS">%1$s</xliff:g> et <xliff:g id="MINUTES"> %2$s</xliff:g></string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS">%4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">Il reste</string>
-    <string name="timer_remaining_multiple">Il reste</string>
     <string-array name="alarm_set">
         <item>Prochaine alarme prévue dans moins d\'une minute.</item>
         <item>Prochaine alarme prévue dans <xliff:g id="DAYS">%1$s</xliff:g>.</item>
@@ -87,10 +77,6 @@
     <plurals name="minutes_short">
         <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> min</item>
         <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> min</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> seconde</item>
-        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> secondes</item>
     </plurals>
     <string name="every_day">Tous les jours</string>
     <string name="day_concat">", "</string>
@@ -187,9 +173,6 @@
     <string name="menu_timer">Minuterie</string>
     <string name="menu_clock">Horloge</string>
     <string name="menu_stopwatch">Chronomètre</string>
-    <string name="button_alarms">Ajouter une alarme</string>
-    <string name="button_cities">Villes</string>
-    <string name="menu_item_settings">Paramètres</string>
     <string name="menu_item_sort_by_gmt_offset">Trier par heure</string>
     <string name="menu_item_sort_by_name">Trier par nom</string>
     <string name="selected_cities_label">Villes sélectionnées</string>
@@ -203,8 +186,6 @@
     <string name="timer_add_timer">Ajouter une minuterie</string>
     <string name="timer_start">Démarrer</string>
     <string name="timer_delete">Supprimer</string>
-    <string name="timer_plus_one">Ajouter 1 minute</string>
-    <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Ajouter 1 min</string>
     <string name="timer_stop">Arrêter</string>
     <string name="timer_stop_all">Arrêter tous les minuteurs</string>
@@ -232,9 +213,6 @@
     <string name="automatic_home_clock">Horloge automatique du domicile</string>
     <string name="automatic_home_clock_summary">Lors de vos déplacements dans des régions où le fuseau horaire est différent, ajoutez une horloge pour connaître l\'heure de votre domicile.</string>
     <string name="home_time_zone">Mon fuseau horaire</string>
-    <string name="home_time_zone_title">Mon fuseau horaire</string>
-    <string name="city_checked"><xliff:g id="CITY_NAME">%s</xliff:g> coché</string>
-    <string name="city_unchecked"><xliff:g id="CITY_NAME">%s</xliff:g> décoché</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"Îles Marshall"</item>
         <item>"Atoll de Midway"</item>
@@ -336,9 +314,6 @@
     <string name="timer_service_desc">Traite les actions des notifications du minuteur.</string>
     <string name="stopwatch_service_desc">Traite les actions des notifications du chronomètre.</string>
     <string name="swn_paused">Interrompu</string>
-    <string name="description_direction_right">Glissez vers la droite pour supprimer</string>
-    <string name="description_direction_left">Glissez vers la gauche pour répéter</string>
-    <string name="description_direction_both">Glisser le doigt vers la gauche pour répéter, ou vers la droite pour ignorer</string>
     <string name="timer_settings">Minuteries</string>
     <string name="timer_vibrate_title">Vibration du minuteur</string>
     <string name="timer_paused">Minuterie interrompue</string>

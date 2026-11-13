@@ -37,7 +37,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Post-ponende finas a is <xliff:g id="time">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Isvèllia imbeniente</string>
-    <string name="timer_notifications_less_min">Abarrat prus pagu de unu minutu</string>
     <string-array name="alarm_set">
         <item>Isvèllia impostada pro prus pagu de unu minutu dae immoe.</item>
         <item>Isvèllia impostada pro <xliff:g id="DAYS" example="2 days">%1$s</xliff:g> dae immoe.</item>
@@ -146,9 +145,6 @@
     <string name="menu_timer">Contadore de tempus</string>
     <string name="menu_clock">Rellògiu</string>
     <string name="menu_stopwatch">Cronòmetru</string>
-    <string name="button_alarms">Agiunghe isvèllia</string>
-    <string name="button_cities">Tzitades</string>
-    <string name="menu_item_settings">Impostatziones</string>
     <string name="menu_item_sort_by_gmt_offset">Assenta pro ora</string>
     <string name="menu_item_sort_by_name">Assenta pro nùmene</string>
     <string name="selected_cities_label">Tzitades seletzionadas</string>
@@ -161,7 +157,6 @@
     <string name="timer_add_timer">Agiunghe contadore de tempus</string>
     <string name="timer_start">Cumintza</string>
     <string name="timer_delete">Cantzella</string>
-    <string name="timer_plus_one">Agiunghe 1 minutu</string>
     <string name="timer_plus_1_min">Agiunghe 1 min</string>
     <string name="timer_stop">Firma·ddu</string>
     <string name="timer_reset">Torra a impostare</string>
@@ -178,7 +173,6 @@
     <string name="automatic_home_clock">Rellògiu de sa zona tua automàticu</string>
     <string name="automatic_home_clock_summary">Cando biàgias in un\'àrea in ue s\'ora est diversa, agiunghe unu rellògiu pro s\'ora de sa zona tua</string>
     <string name="home_time_zone">Fusu oràriu de sa zona tua</string>
-    <string name="home_time_zone_title">Fusu oràriu de sa zona tua</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"Ìsulas Marshall"</item>
         <item>"Ìsula de Midway"</item>
@@ -268,9 +262,6 @@
     </string-array>
     <string name="shortcut_start_stopwatch_short">Cumintza</string>
     <string name="alarm_settings">Isvèllias</string>
-    <string name="description_direction_right">Iscurre a dereta pro iscartare</string>
-    <string name="description_direction_left">Iscurre a manca pro post-pònnere</string>
-    <string name="description_direction_both">Iscurre a manca pro post-pònnere o a dereta pro iscartare</string>
     <string name="timers_in_use"><xliff:g id="number" example="7">%d</xliff:g> contadores de tempus</string>
     <string name="night_mode_title">Modalidade noturna</string>
     <string name="night_mode_summary">Ischermu oscuru a beru (pro logos oscuros)</string>

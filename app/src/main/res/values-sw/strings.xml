@@ -48,16 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Imeahirishwa hadi <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Kengele ijayo</string>
-    <string name="timer_notifications_less_min">Imesalia chini ya dakika moja</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes">Zimesalia <xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="MINUTES"> %2$s</xliff:g></string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS">%4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">imesalia</string>
-    <string name="timer_remaining_multiple">zimesalia</string>
     <string-array name="alarm_set">
         <item>Kengele imewashwa na italia baada ya chini ya dakika 1 kutoka sasa.</item>
         <item>Kengele imewashwa na italia baada ya <xliff:g id="DAYS">%1$s</xliff:g> kutoka sasa.</item>
@@ -87,10 +77,6 @@
     <plurals name="minutes_short">
         <item quantity="one">Dakika 1</item>
         <item quantity="other">Dakika <xliff:g id="NUMBER">%s</xliff:g></item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="one">Sekunde 1</item>
-        <item quantity="other">Sekunde <xliff:g id="NUMBER">%s</xliff:g></item>
     </plurals>
     <string name="every_day">Kila siku</string>
     <string name="day_concat">", "</string>
@@ -187,9 +173,6 @@
     <string name="menu_timer">Kipima wakati</string>
     <string name="menu_clock">Saa</string>
     <string name="menu_stopwatch">Saa ya kusitisha</string>
-    <string name="button_alarms">Ongeza kengele</string>
-    <string name="button_cities">Miji</string>
-    <string name="menu_item_settings">Mipangilio</string>
     <string name="menu_item_sort_by_gmt_offset">Panga kwa saa</string>
     <string name="menu_item_sort_by_name">Panga kwa jina</string>
     <string name="selected_cities_label">Miji Iliyochaguliwa</string>
@@ -203,8 +186,6 @@
     <string name="timer_add_timer">Ongeza Kipima wakati</string>
     <string name="timer_start">Anza</string>
     <string name="timer_delete">Futa</string>
-    <string name="timer_plus_one">Ongeza Dakika 1</string>
-    <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Ongeza dakika 1</string>
     <string name="timer_stop">Simamisha</string>
     <string name="timer_stop_all">Komesha vipima muda vyote</string>
@@ -232,9 +213,6 @@
     <string name="automatic_home_clock">Saa otomatiki ya nyumbani</string>
     <string name="automatic_home_clock_summary">Unaposafiri katika eneo ambalo majira ya saa ni tofauti, ongeza saa ya nyumbani</string>
     <string name="home_time_zone">Majira ya nyumbani</string>
-    <string name="home_time_zone_title">Majira ya nyumbani</string>
-    <string name="city_checked"><xliff:g id="CITY_NAME">%s</xliff:g> imeteuliwa</string>
-    <string name="city_unchecked"><xliff:g id="CITY_NAME">%s</xliff:g> imeondolewa uteuzi</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"Visiwa vya Marshall"</item>
         <item>"Kisiwa cha Midway"</item>
@@ -336,9 +314,6 @@
     <string name="timer_service_desc">Huchakata vitendo kutoka arifa za kipima muda.</string>
     <string name="stopwatch_service_desc">Huchakata vitendo kutoka arifa za saa ya kupima muda.</string>
     <string name="swn_paused">Imesitishwa</string>
-    <string name="description_direction_right">Telezesha kidole kulia ili uondoe</string>
-    <string name="description_direction_left">Telezesha kidole kushoto ili uahirishe</string>
-    <string name="description_direction_both">Telezesha kidole kushoto ili uhairishe au kulia ili uondoe</string>
     <string name="timer_settings">Vipima muda</string>
     <string name="timer_vibrate_title">Mtetemo wa kipima muda</string>
     <string name="timer_paused">Kipima wakati kimesitishwa</string>

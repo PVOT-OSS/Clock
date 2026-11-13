@@ -48,16 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Slumrar til <xliff:g id="time">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Komande alarm</string>
-    <string name="timer_notifications_less_min">Under eitt minutt att</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES" example="2 minutes">%2$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g> <xliff:g id="MINUTES" example="2 minutes">%2$s</xliff:g> att</string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS" example="2 seconds">%4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES" example="2 minutes">%2$s</xliff:g> <xliff:g id="SECONDS" example="2 seconds">%4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g> <xliff:g id="SECONDS" example="2 seconds">%4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g> <xliff:g id="MINUTES" example="2 minutes">%2$s</xliff:g> <xliff:g id="SECONDS" example="2 seconds">%4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">att</string>
-    <string name="timer_remaining_multiple">att</string>
     <string-array name="alarm_set">
         <item>Alarmen er sett til mindre enn 1 minutt frå no.</item>
         <item>Alarmen ringjer om <xliff:g id="DAYS" example="2 days">%1$s</xliff:g>.</item>
@@ -87,10 +77,6 @@
     <plurals name="minutes_short">
         <item quantity="one">1 min</item>
         <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> min</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="one">1 sekund</item>
-        <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> sekund</item>
     </plurals>
     <string name="every_day">Kvar dag</string>
     <string name="day_concat">", "</string>
@@ -187,9 +173,6 @@
     <string name="menu_timer">Nedteljing</string>
     <string name="menu_clock">Klokke</string>
     <string name="menu_stopwatch">Stoppeklokke</string>
-    <string name="button_alarms">Legg til alarm</string>
-    <string name="button_cities">Byar</string>
-    <string name="menu_item_settings">Innstillingar</string>
     <string name="menu_item_sort_by_gmt_offset">Sorter etter tid</string>
     <string name="menu_item_sort_by_name">Sorter etter namn</string>
     <string name="selected_cities_label">Valde byar</string>
@@ -203,8 +186,6 @@
     <string name="timer_add_timer">Legg til nedteljing</string>
     <string name="timer_start">Start</string>
     <string name="timer_delete">Slett</string>
-    <string name="timer_plus_one">Legg til 1 minutt</string>
-    <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Legg til 1 min</string>
     <string name="timer_stop">Stopp</string>
     <string name="timer_stop_all">Stopp alle nedteljingar</string>
@@ -233,9 +214,6 @@
     <string name="automatic_home_clock">Automatisk heimeklokke</string>
     <string name="automatic_home_clock_summary">Legg til ei klokke for heimstaden når du reiser i område med ei anna tid</string>
     <string name="home_time_zone">Heime-tidssone</string>
-    <string name="home_time_zone_title">Heime-tidssone</string>
-    <string name="city_checked"><xliff:g id="city_name">%s</xliff:g> er vald</string>
-    <string name="city_unchecked">Valet for <xliff:g id="city_name">%s</xliff:g> er fjerna</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"Marshalløyane"</item>
         <item>"Midwayøya"</item>
@@ -337,9 +315,6 @@
     <string name="timer_service_desc">Gjer handlingar frå nedteljingsvarsel.</string>
     <string name="stopwatch_service_desc">Gjer handlingar frå stoppeklokkevarsel.</string>
     <string name="swn_paused">Sett på pause</string>
-    <string name="description_direction_right">Sveip til høgre for å avvisa</string>
-    <string name="description_direction_left">Sveip til venstre for å slumra</string>
-    <string name="description_direction_both">Sveip til venstre for å slumra eller til høgre for å avvisa</string>
     <string name="timer_settings">Nedteljingar</string>
     <string name="timer_vibrate_title">Vibrering for nedteljing</string>
     <string name="timer_paused">Nedteljing sett på pause</string>

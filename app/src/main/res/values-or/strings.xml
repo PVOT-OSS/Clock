@@ -48,16 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until"><xliff:g id="TIME">%s</xliff:g> ପର୍ଯ୍ୟନ୍ତ ସ୍ନୁଜ୍ କରିବ</string>
     <string name="alarm_alert_predismiss_title">ଆଗାମୀ ଆଲାର୍ମ</string>
-    <string name="timer_notifications_less_min">ଗୋଟିଏ ମିନିଟ୍‌ରୁ କମ୍ ବଳକା ରହିଛି</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g> ବଳକା ଅଛି</string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS">%4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">ବଳକା ଅଛି</string>
-    <string name="timer_remaining_multiple">ବଳକା ଅଛି</string>
     <string-array name="alarm_set">
         <item>ଆଲାର୍ମ ଏବେଠାରୁ 1 ମିନିଟ୍‌ରୁ କମ୍ ପାଇଁ ସେଟ୍ ହୋଇଛି।</item>
         <item>ଆଲାର୍ମ ଏବେଠାରୁ <xliff:g id="DAYS">%1$s</xliff:g> ପାଇଁ ସେଟ୍।</item>
@@ -87,10 +77,6 @@
     <plurals name="minutes_short">
         <item quantity="one">1 ମିନିଟ୍</item>
         <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ମିନିଟ୍</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="one">1 ସେକେଣ୍ଡ</item>
-        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ସେକେଣ୍ଡ</item>
     </plurals>
     <string name="every_day">ପ୍ରତିଦିନ</string>
     <string name="day_concat">", "</string>
@@ -187,9 +173,6 @@
     <string name="menu_timer">ଟାଇମର୍</string>
     <string name="menu_clock">ଘଣ୍ଟା</string>
     <string name="menu_stopwatch">ଷ୍ଟପୱାଚ୍</string>
-    <string name="button_alarms">ଆଲାର୍ମ ଯୋଡ଼ନ୍ତୁ</string>
-    <string name="button_cities">ସହର</string>
-    <string name="menu_item_settings">ସେଟିଙ୍ଗ</string>
     <string name="menu_item_sort_by_gmt_offset">ସମୟ ଅନୁସାରେ ସଜାନ୍ତୁ</string>
     <string name="menu_item_sort_by_name">ନାମ ଅନୁସାରେ ସର୍ଟ କରନ୍ତୁ</string>
     <string name="selected_cities_label">ଚୟନିତ ସହର</string>
@@ -203,8 +186,6 @@
     <string name="timer_add_timer">ଟାଇମର୍ ଯୋଡ଼ନ୍ତୁ</string>
     <string name="timer_start">ଆରମ୍ଭ କରନ୍ତୁ</string>
     <string name="timer_delete">ଡିଲିଟ୍ କରନ୍ତୁ</string>
-    <string name="timer_plus_one">1 ମିନିଟ୍ ଯୋଡ଼ନ୍ତୁ</string>
-    <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">1 ମିନିଟ୍ ଯୋଡ଼ନ୍ତୁ</string>
     <string name="timer_stop">ବନ୍ଦ କରନ୍ତୁ</string>
     <string name="timer_stop_all">ସବୁ ଟାଇମର୍‌କୁ ବନ୍ଦ କରନ୍ତୁ</string>
@@ -232,9 +213,6 @@
     <string name="automatic_home_clock">ସ୍ୱଚାଳିତ ଭାବେ ଦେଶର ଘଣ୍ଟା ଦେଖାନ୍ତୁ</string>
     <string name="automatic_home_clock_summary">ଭିନ୍ନ ସମୟ ଥିବା ଅଞ୍ଚଳରେ ଯାତ୍ରା କରୁଥିବା ସମୟରେ, ନିଜ ଦେଶ ପାଇଁ ଗୋଟିଏ ଘଣ୍ଟା ଯୋଡ଼ନ୍ତୁ</string>
     <string name="home_time_zone">ହୋମ୍ ଟାଇମ୍ କ୍ଷେତ୍ର</string>
-    <string name="home_time_zone_title">ଦେଶର ସମୟ କ୍ଷେତ୍ର</string>
-    <string name="city_checked"><xliff:g id="CITY_NAME">%s</xliff:g> ଯାଞ୍ଚ କରାଗଲା</string>
-    <string name="city_unchecked"><xliff:g id="CITY_NAME">%s</xliff:g> ଅଚୟନିତ କରାଗଲା</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"ମାର୍ଶଲ୍ ଦ୍ଵୀପପୁଞ୍ଜ"</item>
         <item>"ମିଡ୍‌ୱେ ଦ୍ୱୀପ"</item>
@@ -336,9 +314,6 @@
     <string name="timer_service_desc">ଟାଇମର୍ ବିଜ୍ଞପ୍ତିରୁ କାର୍ଯ୍ୟ ପ୍ରକ୍ରିୟା କରିଥାଏ।</string>
     <string name="stopwatch_service_desc">ଷ୍ଟପୱାଚ୍ ବିଜ୍ଞପ୍ତିଗୁଡ଼ିକରୁ କାର୍ଯ୍ୟ ପ୍ରକ୍ରିୟା କରିଥାଏ।</string>
     <string name="swn_paused">ପଜ୍‌ କରାଯାଇଛି</string>
-    <string name="description_direction_right">ଖାରଜ କରିବା ପାଇଁ ଡାହାଣକୁ ସ୍ୱାଇପ୍ କରନ୍ତୁ</string>
-    <string name="description_direction_left">ସ୍ନୁଜ୍ କରିବା ପାଇଁ ବାମକୁ ସ୍ୱାଇପ୍ କରନ୍ତୁ</string>
-    <string name="description_direction_both">ସ୍ନୁଜ୍ ପାଇଁ ବାମକୁ କିମ୍ୱା ଖାରଜ କରିବା ପାଇଁ ଡାହାଣକୁ ସ୍ୱାଇପ୍ କରନ୍ତୁ</string>
     <string name="timer_settings">ଟାଇମର୍‌</string>
     <string name="timer_vibrate_title">ଟାଇମର୍ କମ୍ପନ</string>
     <string name="timer_paused">ଟାଇମର୍‌ ପଜ୍ ହୋଇଯାଇଛି</string>

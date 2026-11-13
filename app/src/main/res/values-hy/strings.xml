@@ -48,16 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Հետաձգվում է մինչև <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Սպասվող ազդանշան</string>
-    <string name="timer_notifications_less_min">Մնացել է մեկ րոպեից քիչ:</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes">Մնացել է <xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g></string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS">%4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">է մնացել</string>
-    <string name="timer_remaining_multiple">է մնացել</string>
     <string-array name="alarm_set">
         <item>Զարթուցիչը դրված է այս պահից 1 րոպեից պակաս:</item>
         <item>Զարթուցիչը դրված է այս պահից <xliff:g id="DAYS">%1$s</xliff:g> անց:</item>
@@ -87,10 +77,6 @@
     <plurals name="minutes_short">
         <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> min</item>
         <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> րոպե</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> seconds</item>
-        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> վայրկյան</item>
     </plurals>
     <string name="every_day">Ամեն օր</string>
     <string name="day_concat">", "</string>
@@ -187,9 +173,6 @@
     <string name="menu_timer">Ժամաչափ</string>
     <string name="menu_clock">Ժամացույց</string>
     <string name="menu_stopwatch">Վայրկենաչափ</string>
-    <string name="button_alarms">Ավելացնել զարթուցիչ</string>
-    <string name="button_cities">Քաղաքներ</string>
-    <string name="menu_item_settings">Կարգավորումներ</string>
     <string name="menu_item_sort_by_gmt_offset">Դասակարգել ըստ ժամանակի</string>
     <string name="menu_item_sort_by_name">Դասակարգել ըստ անունների</string>
     <string name="selected_cities_label">Ընտրված քաղաքներ</string>
@@ -203,8 +186,6 @@
     <string name="timer_add_timer">Ավելացնել ժամաչափ</string>
     <string name="timer_start">Մեկնարկել</string>
     <string name="timer_delete">Ջնջել</string>
-    <string name="timer_plus_one">Ավելացնել 1 րոպե</string>
-    <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Ավելացնել 1 րոպե</string>
     <string name="timer_stop">Դադարեցնել</string>
     <string name="timer_stop_all">Կանգնեցնել ժամանակաչափերը</string>
@@ -232,9 +213,6 @@
     <string name="automatic_home_clock">Ավտոմատ տեղական ժամանակ</string>
     <string name="automatic_home_clock_summary">Ճամփորդության ժամանակ, երբ ժամային գոտիները տարբեր են, ցուցադրել տեղական ժամանակը</string>
     <string name="home_time_zone">Տեղական ժամային գոտի</string>
-    <string name="home_time_zone_title">Տեղական ժամային գոտի</string>
-    <string name="city_checked">Նշված է <xliff:g id="CITY_NAME">%s</xliff:g> քաղաքը</string>
-    <string name="city_unchecked"><xliff:g id="CITY_NAME">%s</xliff:g> քաղաքը նշված չէ</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"Մարշալյան Կղզիներ"</item>
         <item>"Միդուեյ Կղզիներ"</item>
@@ -336,9 +314,6 @@
     <string name="timer_service_desc">Մշակում է ժամաչափի ծանուցումներից ծագող գործողությունները:</string>
     <string name="stopwatch_service_desc">Մշակում է վայրկենաչափի ծանուցումներից ծագող գործողությունները:</string>
     <string name="swn_paused">Կանգնեցված է</string>
-    <string name="description_direction_right">Անջատելու համար սահեցրեք աջ</string>
-    <string name="description_direction_left">Հետաձգելու համար սահեցրեք ձախ</string>
-    <string name="description_direction_both">Սահեցրեք ձախ՝ հետաձգելու համար։ Աջ՝ անջատելու համար։</string>
     <string name="timer_settings">Ժամաչափներ</string>
     <string name="timer_vibrate_title">Ժամաչափի թրթռոց</string>
     <string name="timer_paused">Ժամաչափը դադարեցված է</string>

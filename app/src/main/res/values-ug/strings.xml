@@ -48,16 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until"><xliff:g id="TIME">%s</xliff:g> غىچە كېچىكتۈر</string>
     <string name="alarm_alert_predismiss_title">ئالدىن بېكىتىلگەن قوڭغۇراق</string>
-    <string name="timer_notifications_less_min">بىر مىنۇتمۇ قالمىدى</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES" example="2 minutes">%2$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g><xliff:g id="MINUTES" example="2 minutes"> %2$s</xliff:g> قالدى</string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS" example="2 seconds">%4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES" example="2 minutes">%2$s</xliff:g> <xliff:g id="SECONDS" example="2 seconds"> %4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g> <xliff:g id="SECONDS" example="2 seconds"> %4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g><xliff:g id="MINUTES" example="2 minutes"> %2$s</xliff:g><xliff:g id="SECONDS" example="2 seconds"> %4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">قالدى</string>
-    <string name="timer_remaining_multiple">قالدى</string>
     <string-array name="alarm_set">
         <item>قوڭغۇراق ھازىردىن باشلاپ 1 مىنۇتقا يەتمىگەن ۋاقىتتا ئەسكەرتىشكە تەڭشەلدى.</item>
         <item>قوڭغۇراق ھازىردىن باشلاپ <xliff:g id="DAYS">%1$s</xliff:g> دىن كېيىن ئەسكەرتىشكە تەڭشەلدى.</item>
@@ -87,10 +77,6 @@
     <plurals name="minutes_short">
         <item quantity="one">1 مىنۇت</item>
         <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> مىنۇت</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="one">1 سېكۇنت</item>
-        <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> سېكۇنت</item>
     </plurals>
     <string name="every_day">ھەر كۈنى</string>
     <string name="day_concat">"« ،»"</string>
@@ -187,9 +173,6 @@
     <string name="menu_timer">ۋاقىت خاتىرىلىگۈچ</string>
     <string name="menu_clock">سائەت</string>
     <string name="menu_stopwatch">دەقىقە سائەت</string>
-    <string name="button_alarms">قوڭغۇراق قوش</string>
-    <string name="button_cities">شەھەرلەر</string>
-    <string name="menu_item_settings">تەڭشەكلەر</string>
     <string name="menu_item_sort_by_gmt_offset">ۋاقىت بويىچە تەرتىپلە</string>
     <string name="menu_item_sort_by_name">ئات بويىچە تەرتىپلە</string>
     <string name="selected_cities_label">تاللانغان شەھەرلەر</string>
@@ -203,8 +186,6 @@
     <string name="timer_add_timer">ۋاقىت خاتىرىلىگۈچنى قوش</string>
     <string name="timer_start">باشلا</string>
     <string name="timer_delete">ئۆچۈر</string>
-    <string name="timer_plus_one">1 مىنۇت قوش</string>
-    <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">1 مىنۇت قوش</string>
     <string name="timer_stop">توختا</string>
     <string name="timer_stop_all">ھەممە ۋاقىت خاتىرىلىگۈچنى توختىتىدۇ</string>
@@ -233,9 +214,6 @@
     <string name="automatic_home_clock">ئۆيدىكى ۋاقىتنى ئاپتوماتىك كۆرسىتىدۇ</string>
     <string name="automatic_home_clock_summary">باشقا ۋاقىت رايونىدا ساياھەت قىلغاندا ئۆيدىكى ۋاقىتنى كۆرسىتىدۇ</string>
     <string name="home_time_zone">يەرلىك ۋاقىت رايونى</string>
-    <string name="home_time_zone_title">يەرلىك ۋاقىت رايونى</string>
-    <string name="city_checked"><xliff:g id="city_name">%s</xliff:g> تاللاندى</string>
-    <string name="city_unchecked"><xliff:g id="city_name">%s</xliff:g> تاللانمىدى</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"مارشال ئاراللىرى"</item>
         <item>"مىدۋېي ئارىلى"</item>
@@ -337,9 +315,6 @@
     <string name="timer_service_desc">ۋاقىت خاتىرىلىگۈچ ئۇقتۇرۇشىنىڭ مەشغۇلاتىنى بىر تەرەپ قىلىدۇ.</string>
     <string name="stopwatch_service_desc">دەقىقە سائەت ئۇقتۇرۇشىنىڭ مەشغۇلاتىنى بىر تەرەپ قىلىدۇ.</string>
     <string name="swn_paused">ۋاقىتلىق توختىدى</string>
-    <string name="description_direction_right">ئوڭغا سىيرىلسا پەرۋا قىلمايدۇ</string>
-    <string name="description_direction_left">سولغا سىيرىلسا كېچىكتۈرىدۇ</string>
-    <string name="description_direction_both">سولغا سىيرىلسا كېچىكتۈرىدۇ ياكى ئوڭغا سىيرىلسا پەرۋا قىلمايدۇ</string>
     <string name="timer_settings">ۋاقىت خاتىرىلىگۈچ</string>
     <string name="timer_vibrate_title">ۋاقىت خاتىرىلىگۈچ تىترەش</string>
     <string name="timer_paused">ۋاقىت خاتىرىلىگۈچ ۋاقىتلىق توختىتىلدى</string>

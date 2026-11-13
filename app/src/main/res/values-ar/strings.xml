@@ -56,16 +56,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">غفوة إلى <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">التنبيه القادم</string>
-    <string name="timer_notifications_less_min">يتبقى أقل من دقيقة</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes">تتبقى <xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g></string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS">%4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">تتبقى</string>
-    <string name="timer_remaining_multiple">تتبقى</string>
     <string-array name="alarm_set">
         <item>ضبط المنبّه :أقل من دقيقة واحدة من الآن.</item>
         <item>ضبط المنبّه: <xliff:g id="DAYS">%1$s</xliff:g> من الآن.</item>
@@ -115,14 +105,6 @@
         <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> دقائق</item>
         <item quantity="many"><xliff:g id="NUMBER">%s</xliff:g> دقيقة</item>
         <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> دقيقة</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="zero"><xliff:g id="NUMBER">%s</xliff:g> ثانية</item>
-        <item quantity="one">ثانية واحدة</item>
-        <item quantity="two">ثانيتان (<xliff:g id="NUMBER">%s</xliff:g>)</item>
-        <item quantity="few"><xliff:g id="NUMBER">%s</xliff:g> ثوانٍ</item>
-        <item quantity="many"><xliff:g id="NUMBER">%s</xliff:g> ثانية</item>
-        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> ثانية</item>
     </plurals>
     <string name="every_day">كل يوم</string>
     <string name="day_concat">"، "</string>
@@ -223,9 +205,6 @@
     <string name="menu_timer">موقت</string>
     <string name="menu_clock">الساعة</string>
     <string name="menu_stopwatch">ساعة توقيف</string>
-    <string name="button_alarms">إضافة منبه</string>
-    <string name="button_cities">المدن</string>
-    <string name="menu_item_settings">الإعدادات</string>
     <string name="menu_item_sort_by_gmt_offset">تصنيف بحسب الوقت</string>
     <string name="menu_item_sort_by_name">تصنيف بحسب الاسم</string>
     <string name="selected_cities_label">المدن المحددة</string>
@@ -239,8 +218,6 @@
     <string name="timer_add_timer">إضافة موقت</string>
     <string name="timer_start">بدء</string>
     <string name="timer_delete">حذف</string>
-    <string name="timer_plus_one">إضافة دقيقة واحدة</string>
-    <string name="timer_add_minute">+ ١:٠٠</string>
     <string name="timer_plus_1_min">إضافة دقيقة واحدة</string>
     <string name="timer_stop">إيقاف</string>
     <string name="timer_stop_all">إيقاف كل الموقِّتات</string>
@@ -268,9 +245,6 @@
     <string name="automatic_home_clock">ساعة آلية للبلد الأم</string>
     <string name="automatic_home_clock_summary">تتيح لك هذه الميزة إضافة ساعة بتوقيت بلدك الأم عند السفر إلى مكان بمنطقة زمنية مختلفة</string>
     <string name="home_time_zone">المنطقة الزمنية للبلد الأم</string>
-    <string name="home_time_zone_title">المنطقة الزمنية للبلد الأم</string>
-    <string name="city_checked">تم تحديد <xliff:g id="CITY_NAME">%s</xliff:g></string>
-    <string name="city_unchecked">تم إلغاء تحديد <xliff:g id="CITY_NAME">%s</xliff:g></string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"جزر مارشال"</item>
         <item>"جزيرة ميدواي"</item>
@@ -372,9 +346,6 @@
     <string name="timer_service_desc">لمعالجة الإجراءات من إشعارات الموقِّت.</string>
     <string name="stopwatch_service_desc">لمعالجة الإجراءات من إشعارات ساعة الإيقاف.</string>
     <string name="swn_paused">تم الإيقاف مؤقتًا</string>
-    <string name="description_direction_right">مرر بسرعة إلى اليسار للإلغاء</string>
-    <string name="description_direction_left">مرر بسرعة إلى اليمين لإجراء غفوة</string>
-    <string name="description_direction_both">مرر يسارًا للغفوة أو يمينًا للتجاهل</string>
     <string name="timer_settings">الموقتات</string>
     <string name="timer_vibrate_title">اهتزاز الموقت</string>
     <string name="timer_paused">تم إيقاف الموقِّت مؤقتًا</string>

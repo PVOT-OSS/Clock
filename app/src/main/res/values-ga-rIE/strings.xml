@@ -54,16 +54,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Ag cur ar athló go dtí <xliff:g id="time">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Aláram atá le teacht</string>
-    <string name="timer_notifications_less_min">Níos lú ná nóiméad fágtha</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES" example="2 minutes">%2$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g><xliff:g id="MINUTES" example="2 minutes"> %2$s</xliff:g> fágtha</string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS" example="2 seconds">%4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES" example="2 minutes">%2$s</xliff:g> <xliff:g id="SECONDS" example="2 seconds"> %4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g> <xliff:g id="SECONDS" example="2 seconds"> %4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS" example="2 hours">%1$s</xliff:g><xliff:g id="MINUTES" example="2 minutes"> %2$s</xliff:g><xliff:g id="SECONDS" example="2 seconds"> %4$s</xliff:g><xliff:g id="REMAINING" example="remaining"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">atá fágtha</string>
-    <string name="timer_remaining_multiple">atá fágtha</string>
     <string-array name="alarm_set">
         <item>Aláram socraithe le haghaidh níos lú ná nóiméad amháin ó anois.</item>
         <item>Aláram socraithe do <xliff:g id="DAYS" example="2 days">%1$s</xliff:g> ón am i láthair.</item>
@@ -108,13 +98,6 @@
         <item quantity="few"><xliff:g id="number" example="7">%s</xliff:g> nóim</item>
         <item quantity="many"><xliff:g id="number" example="7">%s</xliff:g> nóim</item>
         <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> nóim</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="one">1 soicind</item>
-        <item quantity="two"><xliff:g id="number" example="7">%s</xliff:g> soicind</item>
-        <item quantity="few"><xliff:g id="number" example="7">%s</xliff:g> soicind</item>
-        <item quantity="many"><xliff:g id="number" example="7">%s</xliff:g> soicind</item>
-        <item quantity="other"><xliff:g id="number" example="7">%s</xliff:g> soicind</item>
     </plurals>
     <string name="every_day">Gach lá</string>
     <string name="day_concat">", "</string>
@@ -214,9 +197,6 @@
     <string name="menu_timer">Amaireadóir</string>
     <string name="menu_clock">Clog</string>
     <string name="menu_stopwatch">Stopuaireadóir</string>
-    <string name="button_alarms">Cuir aláram leis</string>
-    <string name="button_cities">Cathracha</string>
-    <string name="menu_item_settings">Socruithe</string>
     <string name="menu_item_sort_by_gmt_offset">Sórtáil de réir ama</string>
     <string name="menu_item_sort_by_name">Sórtáil de réir ainm</string>
     <string name="selected_cities_label">Cathracha Roghnaithe</string>
@@ -230,8 +210,6 @@
     <string name="timer_add_timer">Cuir Amaireoir leis</string>
     <string name="timer_start">Tosaigh</string>
     <string name="timer_delete">Scrios</string>
-    <string name="timer_plus_one">Cuir nóiméad amháin leis</string>
-    <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Cuir 1 nóiméad leis</string>
     <string name="timer_stop">Stop</string>
     <string name="timer_stop_all">Stop gach lasc ama</string>
@@ -260,9 +238,6 @@
     <string name="automatic_home_clock">Clog tí uathoibríoch</string>
     <string name="automatic_home_clock_summary">Agus tú ag taisteal i limistéar ina bhfuil an t-am difriúil, cuir clog leis don bhaile</string>
     <string name="home_time_zone">Crios ama baile</string>
-    <string name="home_time_zone_title">Crios ama baile</string>
-    <string name="city_checked"><xliff:g id="city_name">%s</xliff:g> marcáilte</string>
-    <string name="city_unchecked"><xliff:g id="city_name">%s</xliff:g> gan mharcáil</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"Marshall Islands"</item>
         <item>"Midway Island"</item>
@@ -364,9 +339,6 @@
     <string name="timer_service_desc">Próiseálann sé gníomhartha ó fhógraí lasc ama.</string>
     <string name="stopwatch_service_desc">Próiseálann sé gníomhartha ó fhógraí an chloig stoptha.</string>
     <string name="swn_paused">Curtha ar sos</string>
-    <string name="description_direction_right">Svaip ar dheis chun é a dhíbirt</string>
-    <string name="description_direction_left">Svaidhpáil ar chlé chun cur siar a dhéanamh</string>
-    <string name="description_direction_both">Svaidhpáil ar chlé chun cur siar a dhéanamh, nó ar dheis chun é a dhíbirt</string>
     <string name="timer_settings">Amadóirí</string>
     <string name="timer_vibrate_title">Creathadh an amaadóra</string>
     <string name="timer_paused">Sos curtha leis an amadóir</string>

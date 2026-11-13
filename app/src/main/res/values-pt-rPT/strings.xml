@@ -48,16 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Suspendido até à(s) <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Próximo alarme</string>
-    <string name="timer_notifications_less_min">Menos de um minuto restante</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes">Faltam <xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g></string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS">%4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">Falta</string>
-    <string name="timer_remaining_multiple">Faltam</string>
     <string-array name="alarm_set">
         <item>Alarme definido para daqui a menos de 1 minuto.</item>
         <item>Alarme definido para daqui a <xliff:g id="DAYS">%1$s</xliff:g>.</item>
@@ -87,10 +77,6 @@
     <plurals name="minutes_short">
         <item quantity="one">1 min</item>
         <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> min</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="one">1 segundo</item>
-        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> segundos</item>
     </plurals>
     <string name="every_day">Todos os dias</string>
     <string name="day_concat">", "</string>
@@ -187,9 +173,6 @@
     <string name="menu_timer">Temporizador</string>
     <string name="menu_clock">Relógio</string>
     <string name="menu_stopwatch">Cronómetro</string>
-    <string name="button_alarms">Adicionar alarme</string>
-    <string name="button_cities">Cidades</string>
-    <string name="menu_item_settings">Definições</string>
     <string name="menu_item_sort_by_gmt_offset">Ordenar por hora</string>
     <string name="menu_item_sort_by_name">Ordenar pelo nome</string>
     <string name="selected_cities_label">Cidades selecionadas</string>
@@ -203,8 +186,6 @@
     <string name="timer_add_timer">Adicionar Temporizador</string>
     <string name="timer_start">Iniciar</string>
     <string name="timer_delete">Eliminar</string>
-    <string name="timer_plus_one">Adicionar 1 Minuto</string>
-    <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Adicionar 1 min</string>
     <string name="timer_stop">Parar</string>
     <string name="timer_stop_all">Parar todos os temporiz.</string>
@@ -233,9 +214,6 @@
     <string name="automatic_home_clock">Relógio de casa automático</string>
     <string name="automatic_home_clock_summary">Ao viajar para outro fuso horário, adicione um relógio com a hora do local onde habita.</string>
     <string name="home_time_zone">Fuso horário inicial</string>
-    <string name="home_time_zone_title">Fuso horário inicial</string>
-    <string name="city_checked"><xliff:g id="CITY_NAME">%s</xliff:g> marcado(a)</string>
-    <string name="city_unchecked"><xliff:g id="CITY_NAME">%s</xliff:g> desmarcado(a)</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"Ilhas Marshall"</item>
         <item>"Ilha de Midway"</item>
@@ -337,9 +315,6 @@
     <string name="timer_service_desc">Processa as ações das notificações do temporizador.</string>
     <string name="stopwatch_service_desc">Processa as ações das notificações do cronómetro.</string>
     <string name="swn_paused">Em pausa</string>
-    <string name="description_direction_right">Deslizar rapidamente para a direita para ignorar</string>
-    <string name="description_direction_left">Deslizar rapidamente para a esquerda para suspender</string>
-    <string name="description_direction_both">Deslizar rapidamente para a esquerda para suspender ou para a direita para ignorar</string>
     <string name="timer_settings">Temporizadores</string>
     <string name="timer_vibrate_title">Vibração do temporizador</string>
     <string name="timer_paused">Temporizador interrompido</string>

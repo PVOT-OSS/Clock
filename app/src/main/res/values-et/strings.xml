@@ -48,16 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Äratuse edasilükkamine kuni <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Tulevane äratus</string>
-    <string name="timer_notifications_less_min">Jäänud on vähem kui minut</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes">Jäänud on <xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g></string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS">%4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">on jäänud</string>
-    <string name="timer_remaining_multiple">on jäänud</string>
     <string-array name="alarm_set">
         <item>Äratuseni on jäänud vähem kui 1 minut.</item>
         <item>Äratuseni on jäänud <xliff:g id="DAYS">%1$s</xliff:g>.</item>
@@ -87,10 +77,6 @@
     <plurals name="minutes_short">
         <item quantity="one">1 min</item>
         <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> min</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="one">1 sekund</item>
-        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> sekundit</item>
     </plurals>
     <string name="every_day">Iga päev</string>
     <string name="day_concat">", "</string>
@@ -187,9 +173,6 @@
     <string name="menu_timer">Taimer</string>
     <string name="menu_clock">Kell</string>
     <string name="menu_stopwatch">Stopper</string>
-    <string name="button_alarms">Lisa äratus</string>
-    <string name="button_cities">Linnad</string>
-    <string name="menu_item_settings">Seaded</string>
     <string name="menu_item_sort_by_gmt_offset">Sordi aja järgi</string>
     <string name="menu_item_sort_by_name">Sordi nime järgi</string>
     <string name="selected_cities_label">Valitud linnad</string>
@@ -203,8 +186,6 @@
     <string name="timer_add_timer">Lisa taimer</string>
     <string name="timer_start">Alusta</string>
     <string name="timer_delete">Kustuta</string>
-    <string name="timer_plus_one">Lisa 1 minut</string>
-    <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Lisa 1 min</string>
     <string name="timer_stop">Peata</string>
     <string name="timer_stop_all">Kõigi taimerite peatamine</string>
@@ -232,9 +213,6 @@
     <string name="automatic_home_clock">Automaatne kodu kell</string>
     <string name="automatic_home_clock_summary">Kui reisite teise ajavööndisse jäävas riigis, siis lisage kell kodu vööndiajaga</string>
     <string name="home_time_zone">Kodune ajavöönd</string>
-    <string name="home_time_zone_title">Kodune ajavöönd</string>
-    <string name="city_checked"><xliff:g id="CITY_NAME">%s</xliff:g> on märgitud</string>
-    <string name="city_unchecked"><xliff:g id="CITY_NAME">%s</xliff:g> pole märgitud</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"Marshalli saared"</item>
         <item>"Midway saared"</item>
@@ -336,9 +314,6 @@
     <string name="timer_service_desc">Töötleb taimeri märguannete toiminguid.</string>
     <string name="stopwatch_service_desc">Töötleb stopperi märguannete toiminguid.</string>
     <string name="swn_paused">Peatatud</string>
-    <string name="description_direction_right">Loobumiseks pühkige paremale</string>
-    <string name="description_direction_left">Edasilükkamiseks pühkige vasakule</string>
-    <string name="description_direction_both">Edasilükkamiseks pühkige vasakule ja loobumiseks paremale</string>
     <string name="timer_settings">Taimerid</string>
     <string name="timer_vibrate_title">Taimeri vibratsioon</string>
     <string name="timer_paused">Taimer peatati</string>

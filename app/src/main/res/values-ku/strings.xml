@@ -29,7 +29,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">سووکه‌ نوستن تا <xliff:g id="time">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">ئاگادارکه‌ره‌وه‌ی به‌ڕێگا</string>
-    <string name="timer_notifications_less_min">که‌متر له‌ یه‌ک خوله‌کی ماوه‌</string>
     <string-array name="alarm_set">
         <item>ئاگادارکه‌ره‌وه‌ دانرا بۆ که‌متر له‌ یه‌ک خوله‌ک له‌ ئێستاوه‌.</item>
         <item>ئاگادارکه‌ره‌وه‌ دانرا بۆ <xliff:g id="DAYS" example="2 days">%1$s</xliff:g> له‌ ئێستاوه‌.</item>
@@ -101,8 +100,6 @@
     <string name="menu_timer">کاتپێو</string>
     <string name="menu_clock">کاتژمێر</string>
     <string name="menu_stopwatch">کات وه‌ستێن</string>
-    <string name="button_cities">شاره‌کان</string>
-    <string name="menu_item_settings">ڕێکخستنه‌کان</string>
     <string name="menu_item_sort_by_gmt_offset">ڕیزکردن به‌پێی کات</string>
     <string name="menu_item_sort_by_name">ڕیزکردن به‌ ناو</string>
     <string name="selected_cities_label">شاره‌ دیاریکراوه‌کان</string>
@@ -115,7 +112,6 @@
     <string name="timer_add_timer">دیاریکردنی کاتپێو</string>
     <string name="timer_start">دەستپێکردن</string>
     <string name="timer_delete">سڕینه‌وه‌</string>
-    <string name="timer_plus_one">زیادکردنی یه‌ک خوله‌ک</string>
     <string name="timer_plus_1_min">زیاد کردنی ۱ خوله‌ک</string>
     <string name="timer_stop">وه‌ستاندن</string>
     <string name="timer_reset">ڕێکخستنەوە</string>
@@ -131,7 +127,6 @@
     <string name="automatic_home_clock">کاتژمێری ماڵه‌وه‌ی خۆکارانه‌</string>
     <string name="automatic_home_clock_summary">کاتێک گه‌شت ده‌که‌یت و شوێن ده‌گۆڕیت که‌ کات جیاوازبێت،کاتژمێر زیاد بکه‌ بۆ ماڵ</string>
     <string name="home_time_zone">کاتی ماڵ</string>
-    <string name="home_time_zone_title">کاتی ماڵ</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"دوورگه‌کانی مارشاڵ"</item>
         <item>"دورگه‌کانی میدوه‌ی"</item>

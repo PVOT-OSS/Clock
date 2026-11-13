@@ -48,16 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until"><xliff:g id="TIME">%s</xliff:g> qədər təxirə salma</string>
     <string name="alarm_alert_predismiss_title">Gələcək zənglər</string>
-    <string name="timer_notifications_less_min">Bir dəqiqədən az qaldı.</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g> qalır</string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS">%4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">qaldı</string>
-    <string name="timer_remaining_multiple">qaldı</string>
     <string-array name="alarm_set">
         <item>Siqnalı ən az 1 dəqiqə sonraya qur.</item>
         <item>Siqnalı <xliff:g id="DAYS">%1$s</xliff:g> sonraya qur.</item>
@@ -87,10 +77,6 @@
     <plurals name="minutes_short">
         <item quantity="one">1 dəq</item>
         <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> dəq</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="one">1 saniyə</item>
-        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> saniyə</item>
     </plurals>
     <string name="every_day">Hər gün</string>
     <string name="day_concat">", "</string>
@@ -187,9 +173,6 @@
     <string name="menu_timer">Vaxtölçən</string>
     <string name="menu_clock">Saat</string>
     <string name="menu_stopwatch">Saniyəölçən</string>
-    <string name="button_alarms">Siqnal əlavə edin</string>
-    <string name="button_cities">Şəhərlər</string>
-    <string name="menu_item_settings">Ayarlar</string>
     <string name="menu_item_sort_by_gmt_offset">Vaxta görə sırala</string>
     <string name="menu_item_sort_by_name">Ad üzrə sırala</string>
     <string name="selected_cities_label">Seçilmiş şəhərlər</string>
@@ -203,8 +186,6 @@
     <string name="timer_add_timer">Vaxtölçən əlavə et</string>
     <string name="timer_start">Başlat</string>
     <string name="timer_delete">Sil</string>
-    <string name="timer_plus_one">1 Dəqiqə Əlavə et</string>
-    <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">1 dəqiqə əlavə et</string>
     <string name="timer_stop">Dayandır</string>
     <string name="timer_stop_all">Bütün taymerləri durdurun</string>
@@ -233,9 +214,6 @@
     <string name="automatic_home_clock">Avtomatik yerli vaxt</string>
     <string name="automatic_home_clock_summary">Saat qurşağı fərqli olan sahədə səyahət edərkən, yerli vaxt əlavə edin</string>
     <string name="home_time_zone">Əsas saat qurşağı</string>
-    <string name="home_time_zone_title">Əsas saat qurşağı</string>
-    <string name="city_checked"><xliff:g id="CITY_NAME">%s</xliff:g> yoxlandı</string>
-    <string name="city_unchecked"><xliff:g id="CITY_NAME">%s</xliff:g> yoxlanmadı</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"Marşall Adaları"</item>
         <item>"Miduey adası"</item>
@@ -337,9 +315,6 @@
     <string name="timer_service_desc">Taymer bildirişlərindən fəaliyyətlər icra olunur.</string>
     <string name="stopwatch_service_desc">Saniyəölçən bildirişlərindən fəaliyyətlər icra olunur.</string>
     <string name="swn_paused">Durduruldu</string>
-    <string name="description_direction_right">Kənarlaşdırmaq üçün sağa sürüşdürün</string>
-    <string name="description_direction_left">Mürgü üçün sola sürüşdürün</string>
-    <string name="description_direction_both">Mürgü rejimi üçün sola, və ya ləğv etmək üçün sağa sürüşdürün</string>
     <string name="timer_settings">Vaxtölçən</string>
     <string name="timer_vibrate_title">Taymer vibrasiyası</string>
     <string name="timer_paused">Taymer durdurulub</string>

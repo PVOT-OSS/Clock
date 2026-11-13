@@ -48,16 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Snoozing until <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Upcoming alarm</string>
-    <string name="timer_notifications_less_min">Less than a minute remaining</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g> remaining</string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS">%4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">remaining</string>
-    <string name="timer_remaining_multiple">remaining</string>
     <string-array name="alarm_set">
         <item>Alarm set for less than 1 minute from now.</item>
         <item>Alarm set for <xliff:g id="DAYS">%1$s</xliff:g> from now.</item>
@@ -87,10 +77,6 @@
     <plurals name="minutes_short">
         <item quantity="one">1 min</item>
         <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> min</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="one">1 second</item>
-        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> seconds</item>
     </plurals>
     <string name="every_day">Every day</string>
     <string name="day_concat">", "</string>
@@ -187,9 +173,6 @@
     <string name="menu_timer">Timer</string>
     <string name="menu_clock">Clock</string>
     <string name="menu_stopwatch">Stopwatch</string>
-    <string name="button_alarms">Add alarm</string>
-    <string name="button_cities">Cities</string>
-    <string name="menu_item_settings">Settings</string>
     <string name="menu_item_sort_by_gmt_offset">Sort by time</string>
     <string name="menu_item_sort_by_name">Sort by name</string>
     <string name="selected_cities_label">Selected Cities</string>
@@ -203,8 +186,6 @@
     <string name="timer_add_timer">Add Timer</string>
     <string name="timer_start">Start</string>
     <string name="timer_delete">Delete</string>
-    <string name="timer_plus_one">Add 1 minute</string>
-    <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">Add 1 min</string>
     <string name="timer_stop">Stop</string>
     <string name="timer_stop_all">Stop all timers</string>
@@ -232,9 +213,6 @@
     <string name="automatic_home_clock">Automatic home clock</string>
     <string name="automatic_home_clock_summary">While travelling in an area where the time is different, add a clock for home</string>
     <string name="home_time_zone">Home time zone</string>
-    <string name="home_time_zone_title">Home time zone</string>
-    <string name="city_checked"><xliff:g id="CITY_NAME">%s</xliff:g> ticked</string>
-    <string name="city_unchecked"><xliff:g id="CITY_NAME">%s</xliff:g> unticked</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"Marshall Islands"</item>
         <item>"Midway Island"</item>
@@ -336,9 +314,6 @@
     <string name="timer_service_desc">Processes actions from timer notifications.</string>
     <string name="stopwatch_service_desc">Processes actions from stopwatch notifications.</string>
     <string name="swn_paused">Paused</string>
-    <string name="description_direction_right">Swipe right to dismiss</string>
-    <string name="description_direction_left">Swipe left to snooze</string>
-    <string name="description_direction_both">Swipe left to snooze or right to dismiss</string>
     <string name="timer_settings">Timers</string>
     <string name="timer_vibrate_title">Timer vibrate</string>
     <string name="timer_paused">Timer paused</string>

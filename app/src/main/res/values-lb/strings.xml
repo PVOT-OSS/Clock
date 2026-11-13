@@ -37,7 +37,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">Näipe bis <xliff:g id="time">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">Nächste Wecker</string>
-    <string name="timer_notifications_less_min">Manner wéi eng Minutt iwwreg</string>
     <string-array name="alarm_set">
         <item>Wecker gesat fir manner wéi 1 Minutt vun elo un.</item>
         <item>Wecker gesat fir <xliff:g id="DAYS" example="2 days">%1$s</xliff:g> vun elo un.</item>
@@ -124,9 +123,6 @@
     <string name="menu_timer">Sandauer</string>
     <string name="menu_clock">Auer</string>
     <string name="menu_stopwatch">Stoppauer</string>
-    <string name="button_alarms">Wecker dobäisetzen</string>
-    <string name="button_cities">Stied</string>
-    <string name="menu_item_settings">Astellungen</string>
     <string name="menu_item_sort_by_gmt_offset">No Zäit zortéieren</string>
     <string name="menu_item_sort_by_name">No Numm zortéieren</string>
     <string name="selected_cities_label">Ausgewielt Stied</string>
@@ -139,7 +135,6 @@
     <string name="timer_add_timer">Sandauer dobäisetzen</string>
     <string name="timer_start">Start</string>
     <string name="timer_delete">Läschen</string>
-    <string name="timer_plus_one">Eng Minutt méi</string>
     <string name="timer_plus_1_min">Eng Min. méi</string>
     <string name="timer_stop">Stopp</string>
     <string name="timer_reset">Zrécksetzen</string>
@@ -156,7 +151,6 @@
     <string name="automatic_home_clock">Automatesch Heemechtsauer</string>
     <string name="automatic_home_clock_summary">Beim Reesen an engem Gebitt wou d\'Zäit anescht ass, eng Auer fir d\'Zäit doheem dobäisetzen</string>
     <string name="home_time_zone">Heemechtszäitzon</string>
-    <string name="home_time_zone_title">Heemechtszäitzon</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"Marshallinselen"</item>
         <item>"Midwayinselen"</item>
@@ -246,8 +240,6 @@
     </string-array>
     <string name="shortcut_start_stopwatch_short">Start</string>
     <string name="alarm_settings">Weckeren</string>
-    <string name="description_direction_right">No riets wësche fir ze verwerfen</string>
-    <string name="description_direction_left">No lénks wësche fir ze näipen</string>
     <string name="timers_in_use"><xliff:g id="number" example="7">%d</xliff:g> Sandaueren</string>
     <string name="night_mode_title">Nuetsmodus</string>
     <string name="night_mode_summary">Ganz ofgedonkelte Schierm (fir däischter Raim)</string>

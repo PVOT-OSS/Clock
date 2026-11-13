@@ -46,16 +46,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">延後到<xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">預定的鬧鐘</string>
-    <string name="timer_notifications_less_min">尚餘少於一分鐘</string>
-    <string name="timer_notifications_hours"><xliff:g id="REMAINING"> %3$s</xliff:g> <xliff:g id="HOURS">%1$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="REMAINING"> %3$s</xliff:g> <xliff:g id="MINUTES">%2$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes">尚餘 <xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="MINUTES"> %2$s</xliff:g></string>
-    <string name="timer_notifications_seconds"><xliff:g id="REMAINING"> %3$s</xliff:g> <xliff:g id="SECONDS">%4$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="REMAINING"> %3$s</xliff:g> <xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="REMAINING"> %3$s</xliff:g> <xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="REMAINING"> %3$s</xliff:g> <xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="MINUTES"> %2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g></string>
-    <string name="timer_remaining_single">尚餘</string>
-    <string name="timer_remaining_multiple">尚餘</string>
     <string-array name="alarm_set">
         <item>鬧鐘設定在 1 分鐘內響起。</item>
         <item>鬧鐘設定在 <xliff:g id="DAYS">%1$s</xliff:g>後響起。</item>
@@ -80,9 +70,6 @@
     </plurals>
     <plurals name="minutes_short">
         <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> 分鐘</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> 秒</item>
     </plurals>
     <string name="every_day">每天</string>
     <string name="day_concat">"、 "</string>
@@ -178,9 +165,6 @@
     <string name="menu_timer">計時器</string>
     <string name="menu_clock">時鐘</string>
     <string name="menu_stopwatch">秒錶</string>
-    <string name="button_alarms">新增鬧鐘</string>
-    <string name="button_cities">城市</string>
-    <string name="menu_item_settings">設定</string>
     <string name="menu_item_sort_by_gmt_offset">按時間排序</string>
     <string name="menu_item_sort_by_name">按名稱排序</string>
     <string name="selected_cities_label">選取的城市</string>
@@ -194,8 +178,6 @@
     <string name="timer_add_timer">新增計時器</string>
     <string name="timer_start">開始</string>
     <string name="timer_delete">刪除</string>
-    <string name="timer_plus_one">增加 1 分鐘</string>
-    <string name="timer_add_minute">+ 1:00</string>
     <string name="timer_plus_1_min">多加 1 分鐘</string>
     <string name="timer_stop">停止</string>
     <string name="timer_stop_all">停止所有倒數計時器</string>
@@ -223,9 +205,6 @@
     <string name="automatic_home_clock">自動新增居住地時鐘</string>
     <string name="automatic_home_clock_summary">身處不同時區時新增居住地時鐘</string>
     <string name="home_time_zone">居住地時區</string>
-    <string name="home_time_zone_title">居住地時區</string>
-    <string name="city_checked">已勾選<xliff:g id="CITY_NAME">%s</xliff:g></string>
-    <string name="city_unchecked">未勾選<xliff:g id="CITY_NAME">%s</xliff:g></string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"馬紹爾群島"</item>
         <item>"中途島"</item>
@@ -327,9 +306,6 @@
     <string name="timer_service_desc">計時器通知的處理操作。</string>
     <string name="stopwatch_service_desc">秒錶通知的處理操作。</string>
     <string name="swn_paused">已暫停</string>
-    <string name="description_direction_right">向右快速滑動可關閉鬧鐘</string>
-    <string name="description_direction_left">向左快速滑動可延後</string>
-    <string name="description_direction_both">向左快速滑動以延後，或向右關閉</string>
     <string name="timer_settings">倒數計時器</string>
     <string name="timer_vibrate_title">計時器震動</string>
     <string name="timer_paused">計時器已暫停</string>

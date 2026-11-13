@@ -48,16 +48,6 @@
     </plurals>
     <string name="alarm_alert_snooze_until">تعویق تا <xliff:g id="TIME">%s</xliff:g></string>
     <string name="alarm_alert_predismiss_title">هشدار بعدی</string>
-    <string name="timer_notifications_less_min">کمتر از یک دقیقه باقیمانده است</string>
-    <string name="timer_notifications_hours"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes"><xliff:g id="MINUTES">%2$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes"><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="HOURS">%1$s</xliff:g> باقی‌مانده</string>
-    <string name="timer_notifications_seconds"><xliff:g id="SECONDS">%4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_minutes_seconds"><xliff:g id="MINUTES">%2$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_seconds"><xliff:g id="HOURS">%1$s</xliff:g> <xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_notifications_hours_minutes_seconds"><xliff:g id="HOURS">%1$s</xliff:g><xliff:g id="MINUTES"> %2$s</xliff:g><xliff:g id="SECONDS"> %4$s</xliff:g><xliff:g id="REMAINING"> %3$s</xliff:g></string>
-    <string name="timer_remaining_single">باقیمانده</string>
-    <string name="timer_remaining_multiple">باقیمانده</string>
     <string-array name="alarm_set">
         <item>هشدار برای کمتر از ۱ دقیقه دیگر از حالا تنظیم شد.</item>
         <item>هشدار برای <xliff:g id="DAYS">%1$s</xliff:g> دیگر از حالا تنظیم شد.</item>
@@ -87,10 +77,6 @@
     <plurals name="minutes_short">
         <item quantity="one"><xliff:g id="NUMBER">%s</xliff:g> دقیقه</item>
         <item quantity="other"><xliff:g id="NUMBER">%s</xliff:g> دقیقه</item>
-    </plurals>
-    <plurals name="seconds">
-        <item quantity="one">‏<xliff:g id="NUMBER">%s</xliff:g> ثانیه</item>
-        <item quantity="other">‏<xliff:g id="NUMBER">%s</xliff:g> ثانیه</item>
     </plurals>
     <string name="every_day">هر روز</string>
     <string name="day_concat">"، "</string>
@@ -187,9 +173,6 @@
     <string name="menu_timer">تایمر</string>
     <string name="menu_clock">ساعت</string>
     <string name="menu_stopwatch">کرونومتر</string>
-    <string name="button_alarms">افزودن زنگ ساعت</string>
-    <string name="button_cities">شهرها</string>
-    <string name="menu_item_settings">تنظیمات</string>
     <string name="menu_item_sort_by_gmt_offset">مرتب‌سازی براساس زمان</string>
     <string name="menu_item_sort_by_name">مرتب‌سازی براساس نام</string>
     <string name="selected_cities_label">شهرهای منتخب</string>
@@ -203,8 +186,6 @@
     <string name="timer_add_timer">افزودن تایمر</string>
     <string name="timer_start">شروع</string>
     <string name="timer_delete">حذف</string>
-    <string name="timer_plus_one">افزودن ۱ دقیقه</string>
-    <string name="timer_add_minute">‎+ ۱:۰۰</string>
     <string name="timer_plus_1_min">افزودن ۱ دقیقه</string>
     <string name="timer_stop">توقف</string>
     <string name="timer_stop_all">توقف همه تایمرها</string>
@@ -233,9 +214,6 @@
     <string name="automatic_home_clock">ساعت خودکار برای مبدأ</string>
     <string name="automatic_home_clock_summary">هنگام سفر در منطقه‌ای که با منطقه شما اختلاف زمانی دارد، می‌توانید ساعتی برای محل زندگی‌تان اضافه کنید</string>
     <string name="home_time_zone">منطقهٔ زمانی مبدأ</string>
-    <string name="home_time_zone_title">منطقهٔ زمانی مبدأ</string>
-    <string name="city_checked"><xliff:g id="CITY_NAME">%s</xliff:g> علامت‌گذاری شد</string>
-    <string name="city_unchecked">علامت <xliff:g id="CITY_NAME">%s</xliff:g> برداشته شد</string>
     <string-array name="timezone_labels" tools:ignore="Typos">
         <item>"جزایر مارشال"</item>
         <item>"جزیره میدوی"</item>
@@ -337,9 +315,6 @@
     <string name="timer_service_desc">کنش‌ها را از اعلان‌های تایمر پردازش می‌کند.</string>
     <string name="stopwatch_service_desc">کنش‌ها را از اعلان‌های کرونومتر پردازش می‌کند.</string>
     <string name="swn_paused">متوقف شد</string>
-    <string name="description_direction_right">برای ردکردن، انگشتتان را روی صفحه تند به راست بکشید</string>
-    <string name="description_direction_left">برای تعویق، انگشتتان را روی صفحه تند به چپ بکشید</string>
-    <string name="description_direction_both">برای تعویق، انگشتتان را روی صفحه به چپ و برای رد کردن به راست بکشید</string>
     <string name="timer_settings">تایمرها</string>
     <string name="timer_vibrate_title">لرزش تایمر</string>
     <string name="timer_paused">تایمر متوقف شد</string>

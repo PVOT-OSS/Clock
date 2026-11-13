@@ -105,8 +105,10 @@ fun AlarmDateDialog(alarm: Alarm, onDismiss: () -> Unit, onChanged: () -> Unit) 
                 TextButton(
                     enabled = state.selectedEndDateMillis != null,
                     onClick = {
-                        alarm.pauseStart = state.selectedStartDateMillis!! / DAY_MILLIS
-                        alarm.pauseEnd = state.selectedEndDateMillis!! / DAY_MILLIS
+                        val start = state.selectedStartDateMillis ?: return@TextButton
+                        val end = state.selectedEndDateMillis ?: return@TextButton
+                        alarm.pauseStart = start / DAY_MILLIS
+                        alarm.pauseEnd = end / DAY_MILLIS
                         alarm.enabled = true
                         onChanged()
                     },
@@ -151,7 +153,8 @@ fun AlarmDateDialog(alarm: Alarm, onDismiss: () -> Unit, onChanged: () -> Unit) 
                 TextButton(
                     enabled = state.selectedDateMillis != null,
                     onClick = {
-                        alarm.scheduledDate = state.selectedDateMillis!! / DAY_MILLIS
+                        val date = state.selectedDateMillis ?: return@TextButton
+                        alarm.scheduledDate = date / DAY_MILLIS
                         alarm.enabled = true
                         onChanged()
                     },

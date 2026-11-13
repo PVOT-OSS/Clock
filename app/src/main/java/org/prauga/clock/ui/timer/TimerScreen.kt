@@ -58,7 +58,7 @@ private val PRESETS = listOf(5, 10, 30, 45)
 
 /** The Timer tab: the running timers, or a duration picker to start a new one. */
 @Composable
-fun TimerScreen(padding: PaddingValues, listState: LazyListState) {
+fun TimerScreen(padding: PaddingValues, listState: LazyListState, setupRequests: Int) {
     val model = DataModel.getDataModel()
     // Timer.equals compares ids only: an updated list compares equal to the old one, so the state
     // must store it regardless, and the version tells the cards to redraw.
@@ -86,6 +86,7 @@ fun TimerScreen(padding: PaddingValues, listState: LazyListState) {
         onDispose { model.removeTimerListener(listener) }
     }
     var adding by rememberSaveable { mutableStateOf(false) }
+    LaunchedEffect(setupRequests) { if (setupRequests > 0) adding = true }
 
     Box(Modifier.fillMaxSize().padding(top = padding.calculateTopPadding())) {
         if (timers.isEmpty() || adding) {

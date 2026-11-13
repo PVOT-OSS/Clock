@@ -5,39 +5,28 @@
 
 package org.prauga.clock.ui
 
-import android.content.Context
 import android.content.Intent
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import com.prauga.pvot.designsystem.components.PvotScreenScaffold
-import com.prauga.pvot.designsystem.components.button.PvotButton
 import com.prauga.pvot.designsystem.components.button.PvotFab
 import com.prauga.pvot.designsystem.navigation.PvotNavBar
 import com.prauga.pvot.designsystem.navigation.PvotTabItem
 import com.prauga.pvot.designsystem.navigation.PvotTopBar
 import com.prauga.pvot.designsystem.navigation.PvotTopBarAction
-import org.prauga.clock.DeskClock
 import org.prauga.clock.R
 import org.prauga.clock.settings.SettingsActivity
 import org.prauga.clock.ui.alarms.AlarmsScreen
@@ -45,6 +34,7 @@ import org.prauga.clock.ui.bedtime.BedtimeScreen
 import org.prauga.clock.ui.clock.ClockScreen
 import org.prauga.clock.ui.stopwatch.StopwatchScreen
 import org.prauga.clock.ui.timer.TimerScreen
+import org.prauga.clock.uidata.TabListener
 import org.prauga.clock.uidata.UiDataModel
 import org.prauga.clock.uidata.UiDataModel.Tab
 import org.prauga.clock.worldclock.CitySelectionActivity
@@ -63,9 +53,16 @@ private val NAV_TABS =
     )
 
 @Composable
-fun ClockApp() {
+fun ClockApp(timerSetupRequests: Int) {
     val model = UiDataModel.getUiDataModel()
     var selected by rememberSaveable { mutableIntStateOf(model.selectedTab.ordinal) }
+    // Intents, shortcuts and widgets pick tabs through the model too.
+    DisposableEffect(Unit) {
+        val listener = TabListener { selected = it.ordinal }
+        model.addTabListener(listener)
+        selected = model.selectedTab.ordinal
+        onDispose { model.removeTabListener(listener) }
+    }
     val tab = Tab.entries[selected]
     val context = LocalContext.current
     val listStates = Tab.entries.map { rememberLazyListState() }
@@ -122,31 +119,10 @@ fun ClockApp() {
             when (tab) {
                 Tab.CLOCKS -> ClockScreen(padding, listState)
                 Tab.STOPWATCH -> StopwatchScreen(padding, listState)
-                Tab.TIMERS -> TimerScreen(padding, listState)
+                Tab.TIMERS -> TimerScreen(padding, listState, timerSetupRequests)
                 Tab.ALARMS -> AlarmsScreen(padding, listState)
                 Tab.BEDTIME -> BedtimeScreen(padding, listState)
-                else -> ClassicTab(tab, padding, context)
             }
         }
-    }
-}
-
-/** A tab not yet rebuilt in Compose: opens it in the classic screens. */
-@Composable
-private fun ClassicTab(tab: Tab, padding: PaddingValues, context: Context) {
-    Column(
-        modifier = Modifier.fillMaxSize().padding(padding).padding(24.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
-    ) {
-        Text(text = stringResource(tab.labelResId), style = MaterialTheme.typography.headlineSmall)
-        PvotButton(
-            text = stringResource(R.string.open_classic_view),
-            onClick = {
-                UiDataModel.getUiDataModel().setSelectedTab(tab)
-                context.startActivity(Intent(context, DeskClock::class.java))
-            },
-            modifier = Modifier.padding(top = 16.dp),
-        )
     }
 }

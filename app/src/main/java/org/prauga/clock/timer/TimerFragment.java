@@ -64,7 +64,7 @@ import java.io.Serializable;
  */
 public final class TimerFragment extends DeskClockFragment {
 
-    private static final String EXTRA_TIMER_SETUP = "org.prauga.clock.action.TIMER_SETUP";
+    public static final String EXTRA_TIMER_SETUP = "org.prauga.clock.action.TIMER_SETUP";
 
     private static final String KEY_TIMER_SETUP_STATE = "timer_setup_input";
 

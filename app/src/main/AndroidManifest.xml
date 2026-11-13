@@ -68,19 +68,13 @@
         <!-- Main app components.                                           -->
         <!-- ============================================================== -->
 
-        <!-- The Compose app on PvotLib; becomes the launcher once every tab is rebuilt. -->
         <activity
             android:name=".ui.ClockActivity"
             android:exported="true"
             android:label="@string/app_label"
-            android:theme="@style/Theme.Material3.Dark.NoActionBar" />
-
-        <activity
-            android:name=".DeskClock"
-            android:label="@string/app_label"
             android:launchMode="singleTask"
-            android:exported="true"
-            android:windowSoftInputMode="adjustPan">
+            android:theme="@style/Theme.Material3.Dark.NoActionBar"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -88,6 +82,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Forwards intents still addressed to the classic activity on to ClockActivity. -->
+        <activity
+            android:name=".DeskClock"
+            android:label="@string/app_label"
+            android:launchMode="singleTask"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" />
 
         <activity
             android:name=".ringtone.RingtonePickerActivity"

@@ -57,6 +57,7 @@ import org.prauga.clock.provider.Alarm;
 import org.prauga.clock.stopwatch.StopwatchService;
 import org.prauga.clock.timer.TimerService;
 import org.prauga.clock.uidata.TabListener;
+import org.prauga.clock.ui.ClockActivity;
 import org.prauga.clock.uidata.UiDataModel;
 import org.prauga.clock.widget.toast.SnackbarManager;
 import com.google.android.material.navigation.NavigationBarView;
@@ -144,6 +145,13 @@ public class DeskClock extends BaseActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // The app is the Compose ClockActivity now; intents still addressed here go on to it.
+        startActivity(new Intent(getIntent()).setClass(this, ClockActivity.class));
+        finish();
+        if (true) {
+            return;
+        }
 
         setContentView(R.layout.desk_clock);
         mSnackbarAnchor = findViewById(R.id.content);

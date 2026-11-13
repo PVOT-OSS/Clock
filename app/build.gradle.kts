@@ -7,7 +7,7 @@ plugins { alias(libs.plugins.android.application) }
 
 android {
     namespace = "org.prauga.clock"
-    compileSdk = 37
+    compileSdk { version = release(37) { minorApiLevel = 1 } }
 
     defaultConfig {
         applicationId = "org.prauga.clock"
@@ -50,6 +50,11 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.loader)
+    implementation(libs.pvot.design.system)
+    implementation(libs.pvot.core.ui)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.lifecycle.runtime.compose)
 
     androidTestImplementation(libs.androidx.test.core)
     androidTestImplementation(libs.androidx.test.rules)

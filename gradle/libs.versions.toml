@@ -2,13 +2,16 @@
 # SPDX-License-Identifier: Apache-2.0
 
 [versions]
+activityCompose = "1.12.2"
 agp = "9.5.0"
 appcompat = "1.7.1"
+composeBom = "2026.02.01"
 constraintlayout = "2.0.0"
 core = "1.19.0"
 gridlayout = "1.0.0"
 junit = "4.13.2"
-lifecycle = "2.5.1"
+kotlin = "2.4.21"
+lifecycle = "2.11.0"
 loader = "1.1.0"
 material = "1.14.0-alpha09"
 preference = "1.2.0"
@@ -17,10 +20,16 @@ testCore = "1.5.0"
 testRunner = "1.5.2"
 
 [libraries]
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activityCompose" }
+androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
+androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
+androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
 androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
 androidx-core = { module = "androidx.core:core", version.ref = "core" }
 androidx-gridlayout = { module = "androidx.gridlayout:gridlayout", version.ref = "gridlayout" }
+androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycle" }
+androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
 androidx-loader = { module = "androidx.loader:loader", version.ref = "loader" }
 androidx-preference = { module = "androidx.preference:preference", version.ref = "preference" }
@@ -29,7 +38,11 @@ androidx-test-core = { module = "androidx.test:core", version.ref = "testCore" }
 androidx-test-rules = { module = "androidx.test:rules", version.ref = "testCore" }
 androidx-test-runner = { module = "androidx.test:runner", version.ref = "testRunner" }
 junit = { module = "junit:junit", version.ref = "junit" }
+pvot-core-ui = { module = "com.prauga.pvot:core-ui" }
+pvot-design-system = { module = "com.prauga.pvot:design-system" }
 material = { module = "com.google.android.material:material", version.ref = "material" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+pvot-android-compose = { id = "pvot.android.compose" }

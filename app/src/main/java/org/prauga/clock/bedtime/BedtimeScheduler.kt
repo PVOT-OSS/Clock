@@ -187,6 +187,14 @@ object BedtimeScheduler {
     internal fun isReminder(intent: Intent) = intent.action == ACTION_REMINDER
 }
 
+private val RESCHEDULE_ACTIONS =
+    setOf(
+        Intent.ACTION_BOOT_COMPLETED,
+        Intent.ACTION_MY_PACKAGE_REPLACED,
+        Intent.ACTION_TIME_CHANGED,
+        Intent.ACTION_TIMEZONE_CHANGED,
+    )
+
 class BedtimeReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         if (BedtimeScheduler.isModeAlarm(intent)) {
@@ -195,6 +203,8 @@ class BedtimeReceiver : BroadcastReceiver() {
         }
         if (BedtimeScheduler.isReminder(intent)) {
             BedtimeScheduler.showReminder(context)
+        } else if (intent.action !in RESCHEDULE_ACTIONS) {
+            return
         }
         BedtimeScheduler.schedule(context)
     }

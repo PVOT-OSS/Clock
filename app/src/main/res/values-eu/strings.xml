@@ -378,4 +378,5 @@
     <string name="pick_alarm_to_dismiss">Hautatu baztertu nahi duzun alarma</string>
     <string name="no_firing_alarms">Ez dago alarmarik abian</string>
     <string name="alarm_is_snoozed">10 minutuz atzeratu da <xliff:g id="ALARM_TIME">%s</xliff:g> alarma</string>
+    <string name="no_alarms">Alarmarik ez</string>
 </resources>

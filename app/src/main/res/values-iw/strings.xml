@@ -389,4 +389,5 @@
     <string name="pick_alarm_to_dismiss">בחר איזו התראה לדחות</string>
     <string name="no_firing_alarms">אין התראות הפועלות כעת</string>
     <string name="alarm_is_snoozed">ההתראה של <xliff:g id="ALARM_TIME">%s</xliff:g> הועברה למצב נודניק למשך עשר דקות</string>
+    <string name="no_alarms">ללא התראות</string>
 </resources>

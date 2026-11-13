@@ -369,4 +369,5 @@
     <string name="pick_alarm_to_dismiss">请选择要关闭的闹钟</string>
     <string name="no_firing_alarms">目前没有正在响铃的闹钟</string>
     <string name="alarm_is_snoozed"><xliff:g id="ALARM_TIME">%s</xliff:g> 的闹钟已延后 10 分钟</string>
+    <string name="no_alarms">没有闹钟</string>
 </resources>

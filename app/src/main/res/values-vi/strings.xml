@@ -369,4 +369,5 @@
     <string name="pick_alarm_to_dismiss">Chọn báo thức để loại bỏ</string>
     <string name="no_firing_alarms">Chưa có báo thức kích hoạt nào</string>
     <string name="alarm_is_snoozed">Báo lại báo thức <xliff:g id="ALARM_TIME">%s</xliff:g> sau 10 phút</string>
+    <string name="no_alarms">Không có báo thức</string>
 </resources>

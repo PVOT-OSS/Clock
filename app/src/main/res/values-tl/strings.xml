@@ -378,4 +378,5 @@
     <string name="pick_alarm_to_dismiss">Piliin kung aling alarm ang idi-dismiss</string>
     <string name="no_firing_alarms">Walang mga gumaganang alarm</string>
     <string name="alarm_is_snoozed">Na-snooze sa loob ng 10 minuto ang alarm na <xliff:g id="ALARM_TIME">%s</xliff:g></string>
+    <string name="no_alarms">Walang Mga Alarm</string>
 </resources>

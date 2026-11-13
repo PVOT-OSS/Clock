@@ -378,4 +378,5 @@
     <string name="pick_alarm_to_dismiss">ഡിസ്മിസ് ചെയ്യേണ്ട അലാറം തിരഞ്ഞെടുക്കുക</string>
     <string name="no_firing_alarms">ശബ്ദമുണ്ടാക്കുന്ന അലാറമുകളൊന്നുമില്ല</string>
     <string name="alarm_is_snoozed"><xliff:g id="ALARM_TIME">%s</xliff:g> അലാറം 10 മിനിറ്റ് സ്നൂസ് ചെയ്തു</string>
+    <string name="no_alarms">അലാറങ്ങളില്ല</string>
 </resources>

@@ -399,4 +399,5 @@
     <string name="pick_alarm_to_dismiss">Wybierz, który alarm wyłączyć</string>
     <string name="no_firing_alarms">Brak aktualnych alarmów</string>
     <string name="alarm_is_snoozed">Alarm z <xliff:g id="alarm_time" example="14:20">%s</xliff:g> został odłożony na za 10 minut</string>
+    <string name="no_alarms">Brak alarmów</string>
 </resources>

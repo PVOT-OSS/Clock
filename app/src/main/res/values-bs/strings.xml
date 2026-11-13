@@ -388,4 +388,5 @@
     <string name="pick_alarm_to_dismiss">Odaberite koji će se alarm odbaciti</string>
     <string name="no_firing_alarms">Nema aktivnih alarma</string>
     <string name="alarm_is_snoozed">Alarm za <xliff:g id="ALARM_TIME">%s</xliff:g> odložen na 10 minuta</string>
+    <string name="no_alarms">Nema alarma</string>
 </resources>

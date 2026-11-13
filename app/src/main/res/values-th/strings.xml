@@ -368,4 +368,5 @@
     <string name="pick_alarm_to_dismiss">เลือกการปลุกที่จะปิด</string>
     <string name="no_firing_alarms">ไม่มีการปลุก</string>
     <string name="alarm_is_snoozed">เลื่อนการปลุกเวลา <xliff:g id="ALARM_TIME">%s</xliff:g> ไปอีก 10 นาทีแล้ว</string>
+    <string name="no_alarms">ไม่มีการเตือน</string>
 </resources>

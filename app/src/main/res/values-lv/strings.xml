@@ -388,4 +388,5 @@
     <string name="pick_alarm_to_dismiss">Izvēlieties, kuru signālu atcelt.</string>
     <string name="no_firing_alarms">Nav aktīvu signālu.</string>
     <string name="alarm_is_snoozed">Signāls plkst. <xliff:g id="ALARM_TIME">%s</xliff:g> atlikts uz 10 minūtēm</string>
+    <string name="no_alarms">Bez signāla</string>
 </resources>

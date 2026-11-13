@@ -379,4 +379,5 @@
     <string name="pick_alarm_to_dismiss">Scegli la sveglia da ignorare</string>
     <string name="no_firing_alarms">Nessuna sveglia da attivare</string>
     <string name="alarm_is_snoozed">Sveglia alle <xliff:g id="ALARM_TIME">%s</xliff:g> posticipata di 10 minuti</string>
+    <string name="no_alarms">Nessuna sveglia</string>
 </resources>

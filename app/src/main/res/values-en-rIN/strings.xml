@@ -378,4 +378,5 @@
     <string name="pick_alarm_to_dismiss">Pick which alarm to dismiss</string>
     <string name="no_firing_alarms">No firing alarms</string>
     <string name="alarm_is_snoozed"><xliff:g id="ALARM_TIME">%s</xliff:g> alarm snoozed for 10 minutes</string>
+    <string name="no_alarms">No Alarms</string>
 </resources>

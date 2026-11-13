@@ -369,4 +369,5 @@
     <string name="pick_alarm_to_dismiss">解除するアラームを選択してください</string>
     <string name="no_firing_alarms">作動中のアラームはありません</string>
     <string name="alarm_is_snoozed"><xliff:g id="ALARM_TIME">%s</xliff:g>のアラームを10分間スヌーズしました</string>
+    <string name="no_alarms">アラームはありません</string>
 </resources>

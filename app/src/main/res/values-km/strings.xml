@@ -368,4 +368,5 @@
     <string name="pick_alarm_to_dismiss">រើសម៉ោងរោទិ៍ដែលត្រូវលុប</string>
     <string name="no_firing_alarms">គ្មានម៉ោងរោទិ៍បន្លឺឡើងទេ</string>
     <string name="alarm_is_snoozed">បានផ្អាកម៉ោងរោទិ៍ <xliff:g id="ALARM_TIME">%s</xliff:g> រយៈពេល 10 នាទី</string>
+    <string name="no_alarms">គ្មាន​ការ​ជូនដំណឹង</string>
 </resources>

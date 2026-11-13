@@ -378,4 +378,5 @@
     <string name="pick_alarm_to_dismiss">ਚੁਣੋ ਕਿ ਕਿਹੜਾ ਅਲਾਰਮ ਬਰਖਾਸਤ ਕਰਨਾ ਹੈ</string>
     <string name="no_firing_alarms">ਕੋਈ ਫਾਇਰ ਅਲਾਰਮ ਨਹੀਂ</string>
     <string name="alarm_is_snoozed"><xliff:g id="ALARM_TIME">%s</xliff:g> ਅਲਾਰਮ 10 ਮਿੰਟਾਂ ਲਈ ਸਨੂਜ਼ ਕੀਤਾ</string>
+    <string name="no_alarms">ਕੋਈ ਅਲਾਰਮ ਨਹੀਂ</string>
 </resources>

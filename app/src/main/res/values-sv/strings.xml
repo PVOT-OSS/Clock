@@ -378,4 +378,5 @@
     <string name="pick_alarm_to_dismiss">Välj de alarm som ska ignoreras</string>
     <string name="no_firing_alarms">Inga alarm aktiveras</string>
     <string name="alarm_is_snoozed">Alarmet som är inställt på <xliff:g id="ALARM_TIME">%s</xliff:g> snoozar i tio minuter</string>
+    <string name="no_alarms">Inga alarm</string>
 </resources>

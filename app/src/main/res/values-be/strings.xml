@@ -398,4 +398,5 @@
     <string name="pick_alarm_to_dismiss">Выберыце будзільнік, якія трэба адключыць</string>
     <string name="no_firing_alarms">Няма актыўных будзільнікаў</string>
     <string name="alarm_is_snoozed">Будзільнік на <xliff:g id="ALARM_TIME">%s</xliff:g> адкладзены на 10 хвілін</string>
+    <string name="no_alarms">Няма будзільнікаў</string>
 </resources>

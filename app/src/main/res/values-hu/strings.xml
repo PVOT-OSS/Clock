@@ -379,4 +379,5 @@
     <string name="pick_alarm_to_dismiss">Válassza ki az elvetni kívánt ébresztést</string>
     <string name="no_firing_alarms">Nincs beállítva ébresztés</string>
     <string name="alarm_is_snoozed"><xliff:g id="ALARM_TIME">%s</xliff:g> – ébresztés elhalasztva 10 perccel</string>
+    <string name="no_alarms">Nincs ébresztés</string>
 </resources>

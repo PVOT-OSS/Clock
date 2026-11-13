@@ -379,4 +379,5 @@
     <string name="pick_alarm_to_dismiss">Selecionar o alarme a ignorar</string>
     <string name="no_firing_alarms">Nenhum alarme acionado</string>
     <string name="alarm_is_snoozed">Alarme das <xliff:g id="ALARM_TIME">%s</xliff:g> suspendido durante 10 minutos</string>
+    <string name="no_alarms">Sem alarmes</string>
 </resources>

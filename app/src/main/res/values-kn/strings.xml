@@ -378,4 +378,5 @@
     <string name="pick_alarm_to_dismiss">ಯಾವ ಅಲಾರಮ್ ವಜಾಗೊಳಿಸಬೇಕೆಂಬುದನ್ನು ಆಯ್ಕೆಮಾಡಿ</string>
     <string name="no_firing_alarms">ಯಾವುದೇ ಅಲಾರಮ್‌ಗಳಿಲ್ಲ</string>
     <string name="alarm_is_snoozed"><xliff:g id="ALARM_TIME">%s</xliff:g> ಅಲಾರಮ್ 10 ನಿಮಿಷಗಳವರೆಗೆ ಸ್ನೂಜ್ ಮಾಡಲಾಗಿದೆ</string>
+    <string name="no_alarms">ಯಾವುದೇ ಅಲಾರಮ್‌ಗಳಿಲ್ಲ</string>
 </resources>

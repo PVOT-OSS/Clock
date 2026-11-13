@@ -378,4 +378,5 @@
     <string name="pick_alarm_to_dismiss">Bekor qilinishi kerak bo‘lgan signalni tanlang</string>
     <string name="no_firing_alarms">Hech qanday faol signal yo‘q</string>
     <string name="alarm_is_snoozed"><xliff:g id="ALARM_TIME">%s</xliff:g> dagi signal 10 daqiqa surildi</string>
+    <string name="no_alarms">Hech qanday signal o‘rnatilmagan</string>
 </resources>

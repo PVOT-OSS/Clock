@@ -14,9 +14,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -38,11 +37,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.prauga.pvot.designsystem.components.PvotCard
+import com.prauga.pvot.designsystem.components.PvotScreen
 import com.prauga.pvot.designsystem.components.button.PvotButton
 import com.prauga.pvot.designsystem.components.button.PvotButtonStyle
 import com.prauga.pvot.designsystem.components.button.PvotIconButton
 import com.prauga.pvot.designsystem.components.picker.PvotDurationPicker
 import com.prauga.pvot.designsystem.components.progress.PvotLinearProgress
+import com.prauga.pvot.designsystem.motion.pvotReveal
 import kotlin.math.abs
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.minutes
@@ -52,6 +53,7 @@ import org.prauga.clock.data.DataModel
 import org.prauga.clock.data.Timer
 import org.prauga.clock.data.TimerListener
 import org.prauga.clock.ui.ScreenFab
+import org.prauga.clock.ui.screenPadding
 
 private val PRESETS = listOf(5, 10, 30, 45)
 
@@ -87,9 +89,10 @@ fun TimerScreen(padding: PaddingValues, listState: LazyListState, setupRequests:
     var adding by rememberSaveable { mutableStateOf(false) }
     LaunchedEffect(setupRequests) { if (setupRequests > 0) adding = true }
 
-    Box(Modifier.fillMaxSize().padding(top = padding.calculateTopPadding())) {
+    Box(Modifier.fillMaxSize()) {
         if (timers.isEmpty() || adding) {
             TimerSetup(
+                modifier = Modifier.padding(top = padding.calculateTopPadding()),
                 canCancel = timers.isNotEmpty(),
                 onCancel = { adding = false },
                 onStart = { length ->
@@ -98,20 +101,25 @@ fun TimerScreen(padding: PaddingValues, listState: LazyListState, setupRequests:
                 },
             )
         } else {
-            TimerList(timers, version, listState, onAdd = { adding = true })
+            TimerList(timers, version, listState, padding, onAdd = { adding = true })
         }
     }
 }
 
 @Composable
-private fun TimerSetup(canCancel: Boolean, onCancel: () -> Unit, onStart: (Long) -> Unit) {
+private fun TimerSetup(
+    canCancel: Boolean,
+    onCancel: () -> Unit,
+    onStart: (Long) -> Unit,
+    modifier: Modifier = Modifier,
+) {
     var duration by rememberSaveable(stateSaver = DurationSaver) { mutableStateOf(Duration.ZERO) }
     if (duration > Duration.ZERO) {
         ScreenFab(R.drawable.ic_t_player_play, R.string.timer_start) {
             onStart(duration.inWholeMilliseconds)
         }
     }
-    Box(Modifier.fillMaxSize()) {
+    Box(modifier.fillMaxSize()) {
         Column(
             Modifier.fillMaxWidth().padding(horizontal = 16.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -150,6 +158,7 @@ private fun TimerList(
     timers: List<Timer>,
     version: Int,
     listState: LazyListState,
+    padding: PaddingValues,
     onAdd: () -> Unit,
 ) {
     var now by remember { mutableLongStateOf(System.currentTimeMillis()) }
@@ -161,13 +170,16 @@ private fun TimerList(
     }
     ScreenFab(R.drawable.ic_t_plus, R.string.new_timer, onAdd)
     Box(Modifier.fillMaxSize()) {
-        LazyColumn(
-            state = listState,
-            contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 220.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp),
-        ) {
-            items(timers, key = { it.id }) { timer ->
-                TimerCard(timer, timer.state, timer.remainingTime, now, version)
+        PvotScreen(state = listState, contentPadding = screenPadding(padding, withFab = true)) {
+            itemsIndexed(timers, key = { _, timer -> timer.id }) { index, timer ->
+                TimerCard(
+                    timer,
+                    timer.state,
+                    timer.remainingTime,
+                    now,
+                    version,
+                    Modifier.pvotReveal(index),
+                )
             }
         }
     }
@@ -180,6 +192,7 @@ private fun TimerCard(
     remainingAtBind: Long,
     now: Long,
     @Suppress("UNUSED_PARAMETER") version: Int,
+    modifier: Modifier = Modifier,
 ) {
     val model = DataModel.getDataModel()
     // Timer.equals compares ids only, so the state and the clock are passed in to redraw the
@@ -190,7 +203,7 @@ private fun TimerCard(
         } else {
             remainingAtBind
         }
-    PvotCard(Modifier.fillMaxWidth()) {
+    PvotCard(modifier.fillMaxWidth()) {
         Column(Modifier.padding(16.dp)) {
             Text(
                 text = timer.label.ifEmpty { stringResource(R.string.timer_notification_label) },

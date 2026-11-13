@@ -368,4 +368,5 @@
     <string name="pick_alarm_to_dismiss">Pilih alarm mana yang harus ditutup</string>
     <string name="no_firing_alarms">Tidak ada alarm yang aktif</string>
     <string name="alarm_is_snoozed">Alarm pukul <xliff:g id="ALARM_TIME">%s</xliff:g> ditunda selama 10 menit</string>
+    <string name="no_alarms">Tidak Ada Alarm</string>
 </resources>

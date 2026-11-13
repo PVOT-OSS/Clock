@@ -368,4 +368,5 @@
     <string name="pick_alarm_to_dismiss">취소할 알람 선택</string>
     <string name="no_firing_alarms">실행 중인 알람 없음</string>
     <string name="alarm_is_snoozed"><xliff:g id="ALARM_TIME">%s</xliff:g> 알람이 10분 동안 일시 중지됨</string>
+    <string name="no_alarms">알람 없음</string>
 </resources>

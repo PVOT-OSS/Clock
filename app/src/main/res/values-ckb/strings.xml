@@ -379,4 +379,5 @@
     <string name="pick_alarm_to_dismiss">هەڵبژاردنی ئەو وریاکەرەوەیەی دەتەوێت بێدەنگی بکەیت</string>
     <string name="no_firing_alarms">هیچ وریاکەرەوەیەک لێنادات</string>
     <string name="alarm_is_snoozed">وریاکەرەوەی <xliff:g id="alarm_time" example="14:20">%s</xliff:g> بۆ ماوەی 10 خولەک دواخرا</string>
+    <string name="no_alarms">هیچ وریاکەرەوەیەک نییە</string>
 </resources>

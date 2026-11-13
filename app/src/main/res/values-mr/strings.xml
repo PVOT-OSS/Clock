@@ -378,4 +378,5 @@
     <string name="pick_alarm_to_dismiss">कोणता अलार्म डिसमिस करायचा ते निवडा</string>
     <string name="no_firing_alarms">अलार्म वाजत नाही</string>
     <string name="alarm_is_snoozed"><xliff:g id="ALARM_TIME">%s</xliff:g> अलार्म 10 मिनिटांसाठी स्नूझ केला</string>
+    <string name="no_alarms">कोणतेही अलार्म नाहीत</string>
 </resources>

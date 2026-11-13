@@ -379,4 +379,5 @@
     <string name="pick_alarm_to_dismiss">تاقىلىدىغان قوڭغۇراقلىق سائەت تاللىنىدۇ</string>
     <string name="no_firing_alarms">جىرىڭلاۋاتقان قوڭغۇراق يوق</string>
     <string name="alarm_is_snoozed"><xliff:g id="alarm_time" example="14:20">%s</xliff:g>  قوڭغۇراقلىق سائەت 10 مىنۇت كېچىكتۈرۈلدى</string>
+    <string name="no_alarms">قوڭغۇراقلىق سائەت يوق</string>
 </resources>

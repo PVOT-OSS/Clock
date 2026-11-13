@@ -378,4 +378,5 @@
     <string name="pick_alarm_to_dismiss">কোন অ্যালার্ম খারিজ করবেন তা বাছুন</string>
     <string name="no_firing_alarms">কোনো অগ্নিসংযোগের অ্যালার্ম নেই</string>
     <string name="alarm_is_snoozed"><xliff:g id="ALARM_TIME">%s</xliff:g> অ্যালার্ম ১০ মিনিটে মনে করিয়ে দেওয়ার জন্য চিহ্নিত করা হয়েছে</string>
+    <string name="no_alarms">কোনো অ্যালার্ম নাই</string>
 </resources>

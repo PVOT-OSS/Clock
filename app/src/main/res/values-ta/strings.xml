@@ -379,4 +379,5 @@
     <string name="pick_alarm_to_dismiss">விலக்க வேண்டிய அலாரத்தைத் தேர்வுசெய்க</string>
     <string name="no_firing_alarms">இயக்கத்தில் உள்ள அலாரங்கள் எதுவுமில்லை</string>
     <string name="alarm_is_snoozed"><xliff:g id="ALARM_TIME">%s</xliff:g> அலாரம் 10 நிமிடங்களுக்கு உறக்கநிலையில் வைக்கப்பட்டது</string>
+    <string name="no_alarms">அலாரங்கள் இல்லை</string>
 </resources>

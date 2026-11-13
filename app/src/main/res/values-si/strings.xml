@@ -378,4 +378,5 @@
     <string name="pick_alarm_to_dismiss">ඉවත ලෑමට අවශ්‍ය සීනුව තෝරන්න</string>
     <string name="no_firing_alarms">ගිනි එලාම නැත</string>
     <string name="alarm_is_snoozed"><xliff:g id="ALARM_TIME">%s</xliff:g> එලාමය මිනිත්තු 10 ක් ස්නූස් කරන ලදී</string>
+    <string name="no_alarms">සීනු නැත</string>
 </resources>

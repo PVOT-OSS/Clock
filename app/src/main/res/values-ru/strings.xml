@@ -399,4 +399,5 @@
     <string name="pick_alarm_to_dismiss">Выберите будильник, который нужно отключить</string>
     <string name="no_firing_alarms">Нет активных будильников</string>
     <string name="alarm_is_snoozed">Будильник на <xliff:g id="ALARM_TIME">%s</xliff:g> отложен на 10 минут</string>
+    <string name="no_alarms">Нет будильников</string>
 </resources>

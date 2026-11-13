@@ -8,16 +8,15 @@ package org.prauga.clock.ui.stopwatch
 import android.content.Intent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -38,12 +37,17 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.prauga.pvot.designsystem.components.PvotScreen
 import com.prauga.pvot.designsystem.components.button.PvotFab
 import com.prauga.pvot.designsystem.components.button.PvotIconButton
+import com.prauga.pvot.designsystem.motion.pvotReveal
+import com.prauga.pvot.designsystem.navigation.LocalPvotNavBarSizes
+import com.prauga.pvot.designsystem.theme.PvotSpacing
 import org.prauga.clock.R
 import org.prauga.clock.data.DataModel
 import org.prauga.clock.data.Lap
 import org.prauga.clock.data.StopwatchListener
+import org.prauga.clock.ui.screenPadding
 
 /** The Stopwatch tab: running time, laps, and reset / start-pause / lap-or-share controls. */
 @Composable
@@ -70,32 +74,37 @@ fun StopwatchScreen(padding: PaddingValues, listState: LazyListState) {
     }
 
     Box(Modifier.fillMaxSize().padding(top = padding.calculateTopPadding())) {
-        Column(Modifier.fillMaxSize()) {
-            Text(
-                text = format(total, hundredths = true),
-                style = MaterialTheme.typography.displayLarge,
-                fontWeight = FontWeight.Light,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth().padding(vertical = 32.dp),
-            )
-            LazyColumn(
-                state = listState,
-                contentPadding = PaddingValues(start = 24.dp, end = 24.dp, bottom = 220.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
-            ) {
-                if (laps.isNotEmpty() && !stopwatch.isReset) {
-                    item(key = "current") {
-                        val current = total - (laps.firstOrNull()?.accumulatedTime ?: 0L)
-                        LapRow(laps.size + 1, current, total, Color.Unspecified)
-                    }
+        PvotScreen(
+            state = listState,
+            contentPadding = screenPadding(PaddingValues(), withFab = true),
+            verticalArrangement = Arrangement.spacedBy(PvotSpacing.S),
+        ) {
+            item(key = "time") {
+                Text(
+                    text = format(total, hundredths = true),
+                    style = MaterialTheme.typography.displayLarge,
+                    fontWeight = FontWeight.Light,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.fillMaxWidth().padding(vertical = 24.dp),
+                )
+            }
+            if (laps.isNotEmpty() && !stopwatch.isReset) {
+                item(key = "current") {
+                    val current = total - (laps.firstOrNull()?.accumulatedTime ?: 0L)
+                    LapRow(laps.size + 1, current, total, Color.Unspecified)
                 }
-                items(laps, key = { it.lapNumber }) { lap ->
+            }
+            itemsIndexed(laps, key = { _, lap -> lap.lapNumber }) { index, lap ->
+                Box(Modifier.pvotReveal(index)) {
                     LapRow(lap.lapNumber, lap.lapTime, lap.accumulatedTime, lapColor(lap, laps))
                 }
             }
         }
         Row(
-            modifier = Modifier.align(Alignment.BottomCenter).padding(bottom = 120.dp),
+            modifier =
+                Modifier.align(Alignment.BottomCenter)
+                    .navigationBarsPadding()
+                    .padding(bottom = LocalPvotNavBarSizes.current.barHeight + PvotSpacing.L),
             horizontalArrangement = Arrangement.spacedBy(24.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {

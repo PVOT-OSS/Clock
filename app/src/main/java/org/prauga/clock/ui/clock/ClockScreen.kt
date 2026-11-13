@@ -9,7 +9,6 @@ import android.content.Context
 import android.content.Intent
 import android.text.format.DateFormat
 import android.text.format.DateUtils
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -18,9 +17,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -37,10 +35,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
+import com.prauga.pvot.coreui.PvotSectionHeader
 import com.prauga.pvot.designsystem.components.PvotCard
+import com.prauga.pvot.designsystem.components.PvotScreen
+import com.prauga.pvot.designsystem.motion.pvotReveal
+import com.prauga.pvot.designsystem.theme.PvotSpacing
 import java.util.Calendar
 import java.util.Date
 import java.util.TimeZone
@@ -52,6 +55,7 @@ import org.prauga.clock.data.City
 import org.prauga.clock.data.CityListener
 import org.prauga.clock.data.DataModel
 import org.prauga.clock.ui.ScreenFab
+import org.prauga.clock.ui.screenPadding
 import org.prauga.clock.worldclock.CitySelectionActivity
 
 /** The Clock tab: the time here, then the world clocks. */
@@ -71,19 +75,23 @@ fun ClockScreen(padding: PaddingValues, listState: LazyListState) {
         onDispose { model.removeCityListener(listener) }
     }
 
-    LazyColumn(
+    PvotScreen(
         state = listState,
-        contentPadding =
-            PaddingValues(
-                start = 16.dp,
-                end = 16.dp,
-                top = padding.calculateTopPadding() + 8.dp,
-                bottom = 160.dp,
-            ),
-        verticalArrangement = Arrangement.spacedBy(12.dp),
+        contentPadding = screenPadding(padding, withFab = true),
+        horizontalAlignment = Alignment.Start,
     ) {
         item { MainClock(context, now, seconds) }
-        items(cities, key = { it.id }) { city -> CityCard(context, city, now) }
+        if (cities.isNotEmpty()) {
+            item(key = "cities") {
+                PvotSectionHeader(
+                    stringResource(R.string.cities_activity_title),
+                    Modifier.padding(top = PvotSpacing.L),
+                )
+            }
+        }
+        itemsIndexed(cities, key = { _, city -> city.id }) { index, city ->
+            CityCard(context, city, now, Modifier.pvotReveal(index))
+        }
     }
 }
 
@@ -150,8 +158,8 @@ private fun MainClock(context: Context, now: Long, seconds: Boolean) {
 }
 
 @Composable
-private fun CityCard(context: Context, city: City, now: Long) {
-    PvotCard(modifier = Modifier.fillMaxWidth()) {
+private fun CityCard(context: Context, city: City, now: Long, modifier: Modifier = Modifier) {
+    PvotCard(modifier = modifier.fillMaxWidth()) {
         Row(
             modifier = Modifier.fillMaxWidth().padding(16.dp),
             verticalAlignment = Alignment.CenterVertically,

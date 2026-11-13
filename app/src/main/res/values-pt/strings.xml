@@ -382,4 +382,5 @@
     <string name="pick_alarm_to_dismiss" msgid="5408769235866082896">"Escolher qual alarme dispensar"</string>
     <string name="no_firing_alarms" msgid="4986161963178722289">"Nenhum alarme disparando"</string>
     <string name="alarm_is_snoozed" msgid="7044644119744928846">"Alarme <xliff:g id="ALARM_TIME">%s</xliff:g> adiado por 10 minutos"</string>
+    <string name="no_alarms" msgid="6429431324842022917">"Nenhum alarme"</string>
 </resources>

@@ -379,4 +379,5 @@
     <string name="pick_alarm_to_dismiss">Sielç la svee di distudâ</string>
     <string name="no_firing_alarms">No sta sunant nissune svee</string>
     <string name="alarm_is_snoozed">Svee des <xliff:g id="alarm_time" example="14:20">%s</xliff:g> posticipade di 10 minûts</string>
+    <string name="no_alarms">Nissune svee</string>
 </resources>

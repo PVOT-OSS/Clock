@@ -368,4 +368,5 @@
     <string name="pick_alarm_to_dismiss">ເລືອກວ່າ​ຈະ​ປິດ​ໂມງ​ປຸກ​ໃດ​ໄວ້</string>
     <string name="no_firing_alarms">ບໍ່​ມີ​ສັນ​ຍານ​ເຕືອນ​ໄຟ​ໄໝ້</string>
     <string name="alarm_is_snoozed"><xliff:g id="ALARM_TIME">%s</xliff:g> ໂມງ​ປຸກ​ຖືກ​ເລື່ອນ​ແຈ້ງ​ເຕືອນ​ໄປ​ເປັນ​ເວ​ລາ 10 ວິ​ນາ​ທີ</string>
+    <string name="no_alarms">ບໍ່ມີການຕັ້ງໂມງປຸກ</string>
 </resources>

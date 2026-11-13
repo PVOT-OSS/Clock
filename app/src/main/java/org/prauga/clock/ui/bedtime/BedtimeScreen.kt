@@ -21,7 +21,6 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -43,6 +42,7 @@ import androidx.lifecycle.compose.LifecycleResumeEffect
 import com.prauga.pvot.designsystem.components.PvotCard
 import com.prauga.pvot.designsystem.components.PvotDialog
 import com.prauga.pvot.designsystem.components.PvotDialogAction
+import com.prauga.pvot.designsystem.components.PvotScreen
 import com.prauga.pvot.designsystem.components.PvotSwitch
 import com.prauga.pvot.designsystem.components.button.PvotButton
 import com.prauga.pvot.designsystem.components.button.PvotButtonStyle
@@ -61,6 +61,7 @@ import org.prauga.clock.provider.Alarm
 import org.prauga.clock.ui.WeekdayButtons
 import org.prauga.clock.ui.alarms.TimeDialog
 import org.prauga.clock.ui.alarms.formatTime
+import org.prauga.clock.ui.screenPadding
 
 private val REMINDERS = listOf(0, 15, 30, 45, 60)
 private val SLEEP_LENGTHS = listOf(15, 30, 60)
@@ -85,16 +86,10 @@ fun BedtimeScreen(padding: PaddingValues, listState: LazyListState) {
     var pickWakeUp by remember { mutableStateOf(false) }
     var afterBedtime by remember { mutableStateOf<(() -> Unit)?>(null) }
 
-    LazyColumn(
+    PvotScreen(
         state = listState,
-        contentPadding =
-            PaddingValues(
-                start = 16.dp,
-                end = 16.dp,
-                top = padding.calculateTopPadding() + 8.dp,
-                bottom = 160.dp,
-            ),
-        verticalArrangement = Arrangement.spacedBy(12.dp),
+        contentPadding = screenPadding(padding),
+        horizontalAlignment = Alignment.Start,
     ) {
         if (!settings.introDone) {
             item(key = "intro") {

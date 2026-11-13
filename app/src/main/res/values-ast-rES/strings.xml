@@ -374,4 +374,5 @@
     <string name="pick_alarm_to_dismiss">Escueyi qué alarma escartar</string>
     <string name="no_firing_alarms">Nun hai nenguna alarma activa</string>
     <string name="alarm_is_snoozed">L\'alarma «<xliff:g id="alarm_time" example="14:20">%s</xliff:g>» aplazóse 10 minutos</string>
+    <string name="no_alarms">Nun hai nenguna alarma</string>
 </resources>

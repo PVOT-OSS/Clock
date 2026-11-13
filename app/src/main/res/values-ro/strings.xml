@@ -389,4 +389,5 @@
     <string name="pick_alarm_to_dismiss">Alegeți alarma pe care doriți să o închideți</string>
     <string name="no_firing_alarms">Nicio alarmă activată</string>
     <string name="alarm_is_snoozed">Alarma de la <xliff:g id="ALARM_TIME">%s</xliff:g> a fost amânată cu 10 minute</string>
+    <string name="no_alarms">Nu sunt alarme</string>
 </resources>

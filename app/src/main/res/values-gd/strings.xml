@@ -399,4 +399,5 @@
     <string name="pick_alarm_to_dismiss">Tagh dè a’ chaismeachd a leigeas tu seachad</string>
     <string name="no_firing_alarms">Chan eil caismeachd ghnìomhach ann</string>
     <string name="alarm_is_snoozed">Chaidh a’ chaismeachd aig <xliff:g id="alarm_time" example="14:20">%s</xliff:g> a chur ’na dùsal fad 10 mionaidean</string>
+    <string name="no_alarms">Chan eil caismeachd ann</string>
 </resources>

@@ -378,4 +378,5 @@
     <string name="pick_alarm_to_dismiss">Vælg, hvilken alarm der skal slås fra</string>
     <string name="no_firing_alarms">Ingen aktive alarmer</string>
     <string name="alarm_is_snoozed">Alarmen kl. <xliff:g id="ALARM_TIME">%s</xliff:g> er udsat i 10 minutter</string>
+    <string name="no_alarms">Ingen alarmer</string>
 </resources>

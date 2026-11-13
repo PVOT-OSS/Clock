@@ -379,4 +379,5 @@
     <string name="pick_alarm_to_dismiss">Vel kva for ein alarm som skal avvisast</string>
     <string name="no_firing_alarms">Ingen alarmar ringjer no</string>
     <string name="alarm_is_snoozed">Alarmen kl. <xliff:g id="alarm_time" example="14:20">%s</xliff:g> er slumra i 10 minutt</string>
+    <string name="no_alarms">Ingen alarmar</string>
 </resources>

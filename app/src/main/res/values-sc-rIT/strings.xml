@@ -291,4 +291,5 @@
     <string name="pick_alarm_to_dismiss">Sèbera s\'isvèllia chi boles iscartare</string>
     <string name="no_firing_alarms">Non b\'at isvèllias ativas</string>
     <string name="alarm_is_snoozed"><xliff:g id="alarm_time" example="14:20">%s</xliff:g> isvèllia post-posta pro 10 minutos</string>
+    <string name="no_alarms">Peruna isvèllia</string>
 </resources>

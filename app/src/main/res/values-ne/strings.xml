@@ -378,4 +378,5 @@
     <string name="pick_alarm_to_dismiss">कुन अलार्म खारेज गर्ने हो छान्नुहोस्</string>
     <string name="no_firing_alarms">कुनै बजिरहेका अलार्महरू छैनन्</string>
     <string name="alarm_is_snoozed"><xliff:g id="ALARM_TIME">%s</xliff:g> अलार्म १० मिनेटका लागि  स्नुज गरियो</string>
+    <string name="no_alarms">आलार्महरू छैनन्</string>
 </resources>

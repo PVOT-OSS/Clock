@@ -378,4 +378,5 @@
     <string name="pick_alarm_to_dismiss">Khetha ukuthi iyiphi i-alamu engacashiswa</string>
     <string name="no_firing_alarms">Awekho ama-alamu akhalayo</string>
     <string name="alarm_is_snoozed"><xliff:g id="ALARM_TIME">%s</xliff:g> i-alamu isnuzwe ngamaminithi angu-10</string>
+    <string name="no_alarms">Awekho ama-alamu</string>
 </resources>

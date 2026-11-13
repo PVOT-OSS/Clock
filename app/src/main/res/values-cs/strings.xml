@@ -398,4 +398,5 @@
     <string name="pick_alarm_to_dismiss">Vyberte, který budík chcete zrušit.</string>
     <string name="no_firing_alarms">Žádné zvonící budíky</string>
     <string name="alarm_is_snoozed">Budík v čase <xliff:g id="ALARM_TIME">%s</xliff:g> byl odložen o 10 minut</string>
+    <string name="no_alarms">Žádné budíky</string>
 </resources>

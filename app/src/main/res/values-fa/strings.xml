@@ -379,4 +379,5 @@
     <string name="pick_alarm_to_dismiss">هشدار موردنظر را برای رد کردن انتخاب کنید</string>
     <string name="no_firing_alarms">هیچ زنگ هشدار آتش‌سوزی وجود ندارد</string>
     <string name="alarm_is_snoozed">زنگ هشدار <xliff:g id="ALARM_TIME">%s</xliff:g> به مدت ۱۰ دقیقه به تعویق افتاد</string>
+    <string name="no_alarms">بدون هشدار</string>
 </resources>

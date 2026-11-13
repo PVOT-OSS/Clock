@@ -45,6 +45,7 @@ import org.prauga.clock.ui.WeekdayButtons
 
 @Composable
 fun AlarmCard(
+    modifier: Modifier = Modifier,
     alarm: Alarm,
     @Suppress("UNUSED_PARAMETER") version: Int,
     expanded: Boolean,
@@ -55,7 +56,7 @@ fun AlarmCard(
     val context = LocalContext.current
     var editingLabel by remember { mutableStateOf(false) }
     var editingDate by remember { mutableStateOf(false) }
-    PvotCard(modifier = Modifier.fillMaxWidth(), onClick = onToggleExpanded) {
+    PvotCard(modifier = modifier.fillMaxWidth(), onClick = onToggleExpanded) {
         Column(Modifier.padding(16.dp)) {
             if (alarm.label.isNotEmpty() || expanded) {
                 Text(

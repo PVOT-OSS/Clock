@@ -240,6 +240,25 @@ public final class Alarm implements Parcelable, ClockContract.AlarmsColumns {
         return result;
     }
 
+    /**
+     * Get every alarm with the state of its current instance, if any, as the alarm list shows them.
+     *
+     * @param cr to perform the query on.
+     * @return all alarms, each with {@link #instanceState} and {@link #instanceId} filled in.
+     */
+    public static List<Alarm> getAlarmsWithInstances(ContentResolver cr) {
+        final List<Alarm> result = new LinkedList<>();
+        try (Cursor cursor = cr.query(ALARMS_WITH_INSTANCES_URI,
+                QUERY_ALARMS_WITH_INSTANCES_COLUMNS, null, null, DEFAULT_SORT_ORDER)) {
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    result.add(new Alarm(cursor));
+                } while (cursor.moveToNext());
+            }
+        }
+        return result;
+    }
+
     public static boolean isTomorrow(Alarm alarm, Calendar now) {
         if (alarm.instanceState == AlarmInstance.SNOOZE_STATE) {
             return false;

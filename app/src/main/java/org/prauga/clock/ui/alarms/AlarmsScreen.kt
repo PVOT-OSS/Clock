@@ -65,7 +65,7 @@ fun AlarmsScreen(
         val main = Handler(Looper.getMainLooper())
         val reload = {
             Executors.newSingleThreadExecutor().execute {
-                val list = Alarm.getAlarms(context.contentResolver, null).sortedWith(ORDER)
+                val list = Alarm.getAlarmsWithInstances(context.contentResolver).sortedWith(ORDER)
                 main.post {
                     alarms = list
                     loaded = true

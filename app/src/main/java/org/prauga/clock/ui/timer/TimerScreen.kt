@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -57,7 +58,7 @@ private val PRESETS = listOf(5, 10, 30, 45)
 
 /** The Timer tab: the running timers, or a duration picker to start a new one. */
 @Composable
-fun TimerScreen(padding: PaddingValues) {
+fun TimerScreen(padding: PaddingValues, listState: LazyListState) {
     val model = DataModel.getDataModel()
     // Timer.equals compares ids only: an updated list compares equal to the old one, so the state
     // must store it regardless, and the version tells the cards to redraw.
@@ -97,7 +98,7 @@ fun TimerScreen(padding: PaddingValues) {
                 },
             )
         } else {
-            TimerList(timers, version, onAdd = { adding = true })
+            TimerList(timers, version, listState, onAdd = { adding = true })
         }
     }
 }
@@ -153,7 +154,12 @@ private fun TimerSetup(canCancel: Boolean, onCancel: () -> Unit, onStart: (Long)
 }
 
 @Composable
-private fun TimerList(timers: List<Timer>, version: Int, onAdd: () -> Unit) {
+private fun TimerList(
+    timers: List<Timer>,
+    version: Int,
+    listState: LazyListState,
+    onAdd: () -> Unit,
+) {
     var now by remember { mutableLongStateOf(System.currentTimeMillis()) }
     val ticking = timers.any { it.isRunning || it.isExpired }
     LaunchedEffect(ticking) {
@@ -163,6 +169,7 @@ private fun TimerList(timers: List<Timer>, version: Int, onAdd: () -> Unit) {
     }
     Box(Modifier.fillMaxSize()) {
         LazyColumn(
+            state = listState,
             contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 220.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {

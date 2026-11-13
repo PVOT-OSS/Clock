@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -46,7 +47,7 @@ import org.prauga.clock.provider.Alarm
 
 /** The Alarms tab: every alarm as a card that expands into its settings. */
 @Composable
-fun AlarmsScreen(padding: PaddingValues) {
+fun AlarmsScreen(padding: PaddingValues, listState: LazyListState) {
     val context = LocalContext.current
     // Alarm.equals compares ids only: store every reload and redraw the cards on each version.
     var alarms by remember { mutableStateOf(emptyList<Alarm>(), neverEqualPolicy()) }
@@ -77,6 +78,7 @@ fun AlarmsScreen(padding: PaddingValues) {
 
     Box(Modifier.fillMaxSize().padding(top = padding.calculateTopPadding())) {
         LazyColumn(
+            state = listState,
             contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 220.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp),
         ) {

@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -51,7 +52,7 @@ import org.prauga.clock.data.DataModel
 
 /** The Clock tab: the time here, then the world clocks. */
 @Composable
-fun ClockScreen(padding: PaddingValues) {
+fun ClockScreen(padding: PaddingValues, listState: LazyListState) {
     val context = LocalContext.current
     val model = DataModel.getDataModel()
     val seconds = model.displayClockSeconds
@@ -64,6 +65,7 @@ fun ClockScreen(padding: PaddingValues) {
     }
 
     LazyColumn(
+        state = listState,
         contentPadding =
             PaddingValues(
                 start = 16.dp,

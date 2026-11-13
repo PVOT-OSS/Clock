@@ -12,13 +12,16 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -38,6 +41,7 @@ import org.prauga.clock.DeskClock
 import org.prauga.clock.R
 import org.prauga.clock.settings.SettingsActivity
 import org.prauga.clock.ui.alarms.AlarmsScreen
+import org.prauga.clock.ui.bedtime.BedtimeScreen
 import org.prauga.clock.ui.clock.ClockScreen
 import org.prauga.clock.ui.stopwatch.StopwatchScreen
 import org.prauga.clock.ui.timer.TimerScreen
@@ -64,11 +68,21 @@ fun ClockApp() {
     var selected by rememberSaveable { mutableIntStateOf(model.selectedTab.ordinal) }
     val tab = Tab.entries[selected]
     val context = LocalContext.current
+    val listStates = Tab.entries.map { rememberLazyListState() }
+    val listState = listStates[selected]
+    // The large title folds into a compact frosted bar once the tab's list scrolls.
+    val compact by
+        remember(listState) {
+            derivedStateOf {
+                listState.firstVisibleItemIndex > 0 || listState.firstVisibleItemScrollOffset > 0
+            }
+        }
 
     PvotScreenScaffold(
         topBar = {
             PvotTopBar(
                 title = stringResource(tab.labelResId),
+                compact = compact,
                 actions = {
                     PvotTopBarAction(
                         icon = painterResource(R.drawable.ic_settings),
@@ -106,10 +120,11 @@ fun ClockApp() {
             LocalContentColor provides MaterialTheme.colorScheme.onBackground
         ) {
             when (tab) {
-                Tab.CLOCKS -> ClockScreen(padding)
-                Tab.STOPWATCH -> StopwatchScreen(padding)
-                Tab.TIMERS -> TimerScreen(padding)
-                Tab.ALARMS -> AlarmsScreen(padding)
+                Tab.CLOCKS -> ClockScreen(padding, listState)
+                Tab.STOPWATCH -> StopwatchScreen(padding, listState)
+                Tab.TIMERS -> TimerScreen(padding, listState)
+                Tab.ALARMS -> AlarmsScreen(padding, listState)
+                Tab.BEDTIME -> BedtimeScreen(padding, listState)
                 else -> ClassicTab(tab, padding, context)
             }
         }

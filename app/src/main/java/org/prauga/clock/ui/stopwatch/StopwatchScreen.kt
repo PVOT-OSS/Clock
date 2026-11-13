@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -46,7 +47,7 @@ import org.prauga.clock.data.StopwatchListener
 
 /** The Stopwatch tab: running time, laps, and reset / start-pause / lap-or-share controls. */
 @Composable
-fun StopwatchScreen(padding: PaddingValues) {
+fun StopwatchScreen(padding: PaddingValues, listState: LazyListState) {
     val model = DataModel.getDataModel()
     val context = LocalContext.current
     var stopwatch by remember { mutableStateOf(model.stopwatch) }
@@ -77,6 +78,7 @@ fun StopwatchScreen(padding: PaddingValues) {
                 modifier = Modifier.fillMaxWidth().padding(vertical = 32.dp),
             )
             LazyColumn(
+                state = listState,
                 contentPadding = PaddingValues(start = 24.dp, end = 24.dp, bottom = 220.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
             ) {

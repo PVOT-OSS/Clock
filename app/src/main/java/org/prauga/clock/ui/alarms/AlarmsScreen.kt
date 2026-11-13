@@ -22,6 +22,7 @@ import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableLongStateOf
@@ -47,7 +48,12 @@ import org.prauga.clock.provider.Alarm
 
 /** The Alarms tab: every alarm as a card that expands into its settings. */
 @Composable
-fun AlarmsScreen(padding: PaddingValues, listState: LazyListState) {
+fun AlarmsScreen(
+    padding: PaddingValues,
+    listState: LazyListState,
+    createRequests: Int,
+    shownAlarm: Long,
+) {
     val context = LocalContext.current
     // Alarm.equals compares ids only: store every reload and redraw the cards on each version.
     var alarms by remember { mutableStateOf(emptyList<Alarm>(), neverEqualPolicy()) }
@@ -75,6 +81,14 @@ fun AlarmsScreen(padding: PaddingValues, listState: LazyListState) {
     var expanded by rememberSaveable { mutableLongStateOf(-1L) }
     var editingTime by remember { mutableStateOf<Alarm?>(null) }
     var adding by rememberSaveable { mutableStateOf(false) }
+    LaunchedEffect(createRequests) { if (createRequests > 0) adding = true }
+    LaunchedEffect(shownAlarm, alarms) {
+        val index = alarms.indexOfFirst { it.id == shownAlarm }
+        if (index >= 0) {
+            expanded = shownAlarm
+            listState.animateScrollToItem(index)
+        }
+    }
 
     Box(Modifier.fillMaxSize().padding(top = padding.calculateTopPadding())) {
         LazyColumn(

@@ -53,7 +53,7 @@ private val NAV_TABS =
     )
 
 @Composable
-fun ClockApp(timerSetupRequests: Int) {
+fun ClockApp(timerSetupRequests: Int, createAlarmRequests: Int, shownAlarm: Long) {
     val model = UiDataModel.getUiDataModel()
     var selected by rememberSaveable { mutableIntStateOf(model.selectedTab.ordinal) }
     // Intents, shortcuts and widgets pick tabs through the model too.
@@ -120,7 +120,7 @@ fun ClockApp(timerSetupRequests: Int) {
                 Tab.CLOCKS -> ClockScreen(padding, listState)
                 Tab.STOPWATCH -> StopwatchScreen(padding, listState)
                 Tab.TIMERS -> TimerScreen(padding, listState, timerSetupRequests)
-                Tab.ALARMS -> AlarmsScreen(padding, listState)
+                Tab.ALARMS -> AlarmsScreen(padding, listState, createAlarmRequests, shownAlarm)
                 Tab.BEDTIME -> BedtimeScreen(padding, listState)
             }
         }

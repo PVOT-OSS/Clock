@@ -45,8 +45,8 @@ import org.prauga.clock.data.Weekdays;
 import org.prauga.clock.events.Events;
 import org.prauga.clock.provider.Alarm;
 import org.prauga.clock.provider.AlarmInstance;
-import org.prauga.clock.timer.TimerFragment;
 import org.prauga.clock.timer.TimerService;
+import org.prauga.clock.ui.ClockActivity;
 import org.prauga.clock.uidata.UiDataModel;
 
 import java.util.ArrayList;
@@ -327,7 +327,7 @@ public class HandleApiCalls extends Activity {
             // Intent has no time or an invalid time, open the alarm creation UI.
             final Intent createAlarm = Alarm.createIntent(this, DeskClock.class, Alarm.INVALID_ID)
                     .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                    .putExtra(AlarmClockFragment.ALARM_CREATE_NEW_INTENT_EXTRA, true);
+                    .putExtra(ClockActivity.EXTRA_CREATE_ALARM, true);
 
             // Open DeskClock which is now positioned on the alarms tab.
             startActivity(createAlarm);
@@ -453,7 +453,7 @@ public class HandleApiCalls extends Activity {
             UiDataModel.getUiDataModel().setSelectedTab(TIMERS);
 
             // Open DeskClock which is now positioned on the timers tab and show the timer setup.
-            startActivity(TimerFragment.createTimerSetupIntent(this));
+            startActivity(ClockActivity.timerSetupIntent(this));
             LOGGER.i("Showing timer setup");
             return;
         }
@@ -513,7 +513,7 @@ public class HandleApiCalls extends Activity {
 
             // Open DeskClock which is now positioned on the alarms tab.
             final Intent showAlarm = Alarm.createIntent(this, DeskClock.class, instance.mAlarmId)
-                    .putExtra(AlarmClockFragment.SCROLL_TO_ALARM_INTENT_EXTRA, instance.mAlarmId)
+                    .putExtra(ClockActivity.EXTRA_SHOW_ALARM, instance.mAlarmId)
                     .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(showAlarm);
         }

@@ -15,7 +15,7 @@ import android.widget.RemoteViews
 import android.widget.Toast
 import org.prauga.clock.R
 import org.prauga.clock.data.DataModel
-import org.prauga.clock.timer.TimerFragment
+import org.prauga.clock.ui.ClockActivity
 import org.prauga.clock.uidata.UiDataModel
 
 /** Home screen widget that starts a timer of a common length with one tap. */
@@ -48,8 +48,7 @@ class TimerStarterAppWidgetProvider : AppWidgetProvider() {
                 ),
             )
         }
-        val setup =
-            TimerFragment.createTimerSetupIntent(context).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        val setup = ClockActivity.timerSetupIntent(context).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         views.setOnClickPendingIntent(
             R.id.timer_widget_new,
             PendingIntent.getActivity(context, 0, setup, PendingIntent.FLAG_IMMUTABLE),

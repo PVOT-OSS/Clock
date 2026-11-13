@@ -33,7 +33,6 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 
-import org.prauga.clock.AlarmClockFragment;
 import org.prauga.clock.AlarmUtils;
 import org.prauga.clock.DeskClock;
 import org.prauga.clock.LogUtils;
@@ -42,6 +41,7 @@ import org.prauga.clock.R;
 import org.prauga.clock.ThemeUtils;
 import org.prauga.clock.provider.Alarm;
 import org.prauga.clock.provider.AlarmInstance;
+import org.prauga.clock.ui.ClockActivity;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -437,7 +437,7 @@ public final class AlarmNotifications {
     static Intent createViewAlarmIntent(Context context, AlarmInstance instance) {
         final long alarmId = instance.mAlarmId == null ? Alarm.INVALID_ID : instance.mAlarmId;
         return Alarm.createIntent(context, DeskClock.class, alarmId)
-                .putExtra(AlarmClockFragment.SCROLL_TO_ALARM_INTENT_EXTRA, alarmId)
+                .putExtra(ClockActivity.EXTRA_SHOW_ALARM, alarmId)
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     }
 

@@ -33,7 +33,6 @@ import android.widget.Toast;
 import androidx.core.app.NotificationManagerCompat;
 
 import org.prauga.clock.AlarmAlertWakeLock;
-import org.prauga.clock.AlarmClockFragment;
 import org.prauga.clock.AlarmUtils;
 import org.prauga.clock.AsyncHandler;
 import org.prauga.clock.DeskClock;
@@ -45,6 +44,7 @@ import org.prauga.clock.events.Events;
 import org.prauga.clock.provider.Alarm;
 import org.prauga.clock.provider.AlarmDates;
 import org.prauga.clock.provider.AlarmInstance;
+import org.prauga.clock.ui.ClockActivity;
 
 import java.util.Calendar;
 import java.util.List;
@@ -899,7 +899,7 @@ public final class AlarmStateManager extends BroadcastReceiver {
 
             long alarmId = instance.mAlarmId == null ? Alarm.INVALID_ID : instance.mAlarmId;
             final Intent viewAlarmIntent = Alarm.createIntent(context, DeskClock.class, alarmId)
-                    .putExtra(AlarmClockFragment.SCROLL_TO_ALARM_INTENT_EXTRA, alarmId)
+                    .putExtra(ClockActivity.EXTRA_SHOW_ALARM, alarmId)
                     .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
             // Open DeskClock which is now positioned on the alarms tab.

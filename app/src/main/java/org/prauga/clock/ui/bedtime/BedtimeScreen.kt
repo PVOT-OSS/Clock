@@ -309,6 +309,7 @@ private fun WakeUpCard(settings: BedtimeSettings, version: Int, onChoose: () -> 
 @Composable
 private fun WakeUpChooser(settings: BedtimeSettings, onDone: () -> Unit) {
     val context = LocalContext.current
+    val wakeUpTitle = stringResource(R.string.wakeup_title)
     var alarms by remember { mutableStateOf<List<Alarm>?>(null) }
     LaunchedEffect(Unit) {
         alarms =
@@ -358,7 +359,7 @@ private fun WakeUpChooser(settings: BedtimeSettings, onDone: () -> Unit) {
                             Alarm(wake / 60, wake % 60).apply {
                                 daysOfWeek = settings.days
                                 enabled = true
-                                label = context.getString(R.string.wakeup_title)
+                                label = wakeUpTitle
                             }
                         )
                     onDone()

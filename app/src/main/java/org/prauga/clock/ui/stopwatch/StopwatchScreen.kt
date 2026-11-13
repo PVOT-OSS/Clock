@@ -50,6 +50,7 @@ import org.prauga.clock.data.StopwatchListener
 fun StopwatchScreen(padding: PaddingValues, listState: LazyListState) {
     val model = DataModel.getDataModel()
     val context = LocalContext.current
+    val shareTitle = stringResource(R.string.sw_share_button)
     var stopwatch by remember { mutableStateOf(model.stopwatch) }
     var laps by remember { mutableStateOf(model.laps.toList()) }
     DisposableEffect(Unit) {
@@ -147,7 +148,7 @@ fun StopwatchScreen(padding: PaddingValues, listState: LazyListState) {
                                 Intent(Intent.ACTION_SEND)
                                     .setType("text/plain")
                                     .putExtra(Intent.EXTRA_TEXT, text),
-                                context.getString(R.string.sw_share_button),
+                                shareTitle,
                             )
                         )
                     },

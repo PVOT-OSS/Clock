@@ -33,6 +33,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -102,6 +103,7 @@ private fun rememberNow(step: Long): androidx.compose.runtime.State<Long> {
 
 @Composable
 private fun MainClock(context: Context, now: Long, seconds: Boolean) {
+    val locale = LocalConfiguration.current.locales[0]
     val model = DataModel.getDataModel()
     Column(modifier = Modifier.fillMaxWidth().padding(vertical = 16.dp)) {
         if (model.clockStyle == DataModel.ClockStyle.ANALOG) {
@@ -119,10 +121,7 @@ private fun MainClock(context: Context, now: Long, seconds: Boolean) {
         }
         Text(
             text =
-                DateFormat.format(
-                        DateFormat.getBestDateTimePattern(java.util.Locale.getDefault(), "EEEMMMd"),
-                        now,
-                    )
+                DateFormat.format(DateFormat.getBestDateTimePattern(locale, "EEEMMMd"), now)
                     .toString()
                     .uppercase(),
             style = MaterialTheme.typography.titleSmall,

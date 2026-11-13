@@ -5,9 +5,9 @@
 
 package org.prauga.clock.ui.ringing
 
-import android.app.Activity
 import android.text.format.DateUtils
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.LocalActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -36,7 +36,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.withFrameMillis
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import com.prauga.pvot.designsystem.components.PvotCard
@@ -70,7 +69,7 @@ object ExpiredTimers {
 @Composable
 private fun ExpiredTimersScreen() {
     val model = DataModel.getDataModel()
-    val activity = LocalContext.current as Activity
+    val activity = LocalActivity.current
     // Timer.equals compares ids only: keep every update, and redraw on each version.
     var timers by remember { mutableStateOf(model.expiredTimers.toList(), neverEqualPolicy()) }
     var version by remember { mutableIntStateOf(0) }
@@ -91,7 +90,7 @@ private fun ExpiredTimersScreen() {
         model.addTimerListener(listener)
         onDispose { model.removeTimerListener(listener) }
     }
-    LaunchedEffect(timers) { if (timers.isEmpty()) activity.finish() }
+    LaunchedEffect(timers) { if (timers.isEmpty()) activity?.finish() }
     var now by remember { mutableLongStateOf(0L) }
     LaunchedEffect(Unit) {
         while (true) {

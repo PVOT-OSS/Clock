@@ -31,13 +31,9 @@ import androidx.compose.runtime.neverEqualPolicy
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.prauga.pvot.designsystem.components.button.PvotFab
 import java.time.LocalTime
 import java.util.concurrent.Executors
 import org.prauga.clock.BuildConfig
@@ -45,6 +41,7 @@ import org.prauga.clock.R
 import org.prauga.clock.alarms.AlarmUpdateHandler
 import org.prauga.clock.alarms.ScrollHandler
 import org.prauga.clock.provider.Alarm
+import org.prauga.clock.ui.ScreenFab
 
 /** The Alarms tab: every alarm as a card that expands into its settings. */
 @Composable
@@ -90,6 +87,8 @@ fun AlarmsScreen(
         }
     }
 
+    ScreenFab(R.drawable.ic_t_plus, R.string.new_alarm) { adding = true }
+
     Box(Modifier.fillMaxSize().padding(top = padding.calculateTopPadding())) {
         LazyColumn(
             state = listState,
@@ -107,12 +106,6 @@ fun AlarmsScreen(
                 )
             }
         }
-        PvotFab(
-            icon = painterResource(R.drawable.ic_t_plus),
-            contentDescription = stringResource(R.string.button_alarms),
-            onClick = { adding = true },
-            modifier = Modifier.align(Alignment.BottomCenter).padding(bottom = 120.dp),
-        )
     }
 
     val target = editingTime

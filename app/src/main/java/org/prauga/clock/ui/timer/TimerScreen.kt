@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
@@ -41,7 +40,6 @@ import androidx.compose.ui.unit.dp
 import com.prauga.pvot.designsystem.components.PvotCard
 import com.prauga.pvot.designsystem.components.button.PvotButton
 import com.prauga.pvot.designsystem.components.button.PvotButtonStyle
-import com.prauga.pvot.designsystem.components.button.PvotFab
 import com.prauga.pvot.designsystem.components.button.PvotIconButton
 import com.prauga.pvot.designsystem.components.picker.PvotDurationPicker
 import com.prauga.pvot.designsystem.components.progress.PvotLinearProgress
@@ -53,6 +51,7 @@ import org.prauga.clock.R
 import org.prauga.clock.data.DataModel
 import org.prauga.clock.data.Timer
 import org.prauga.clock.data.TimerListener
+import org.prauga.clock.ui.ScreenFab
 
 private val PRESETS = listOf(5, 10, 30, 45)
 
@@ -107,6 +106,11 @@ fun TimerScreen(padding: PaddingValues, listState: LazyListState, setupRequests:
 @Composable
 private fun TimerSetup(canCancel: Boolean, onCancel: () -> Unit, onStart: (Long) -> Unit) {
     var duration by rememberSaveable(stateSaver = DurationSaver) { mutableStateOf(Duration.ZERO) }
+    if (duration > Duration.ZERO) {
+        ScreenFab(R.drawable.ic_t_player_play, R.string.timer_start) {
+            onStart(duration.inWholeMilliseconds)
+        }
+    }
     Box(Modifier.fillMaxSize()) {
         Column(
             Modifier.fillMaxWidth().padding(horizontal = 16.dp),
@@ -129,25 +133,12 @@ private fun TimerSetup(canCancel: Boolean, onCancel: () -> Unit, onStart: (Long)
                     )
                 }
             }
-        }
-        Row(
-            modifier = Modifier.align(Alignment.BottomCenter).padding(bottom = 120.dp),
-            horizontalArrangement = Arrangement.spacedBy(24.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
             if (canCancel) {
-                PvotIconButton(
-                    icon = painterResource(R.drawable.ic_t_x),
-                    contentDescription = stringResource(android.R.string.cancel),
+                PvotButton(
+                    text = stringResource(android.R.string.cancel),
                     onClick = onCancel,
-                )
-            }
-            if (duration > Duration.ZERO) {
-                PvotFab(
-                    icon = painterResource(R.drawable.ic_t_player_play),
-                    contentDescription = stringResource(R.string.timer_start),
-                    onClick = { onStart(duration.inWholeMilliseconds) },
-                    modifier = Modifier.size(72.dp),
+                    style = PvotButtonStyle.Text,
+                    modifier = Modifier.padding(top = 8.dp),
                 )
             }
         }
@@ -168,6 +159,7 @@ private fun TimerList(
             withFrameMillis { now = System.currentTimeMillis() }
         }
     }
+    ScreenFab(R.drawable.ic_t_plus, R.string.new_timer, onAdd)
     Box(Modifier.fillMaxSize()) {
         LazyColumn(
             state = listState,
@@ -178,12 +170,6 @@ private fun TimerList(
                 TimerCard(timer, timer.state, timer.remainingTime, now, version)
             }
         }
-        PvotFab(
-            icon = painterResource(R.drawable.ic_t_plus),
-            contentDescription = stringResource(R.string.timer_add_timer),
-            onClick = onAdd,
-            modifier = Modifier.align(Alignment.BottomCenter).padding(bottom = 120.dp),
-        )
     }
 }
 

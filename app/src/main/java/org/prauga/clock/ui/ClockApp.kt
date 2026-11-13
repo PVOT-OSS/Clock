@@ -22,7 +22,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import com.prauga.pvot.designsystem.components.PvotScreenScaffold
-import com.prauga.pvot.designsystem.components.button.PvotFab
 import com.prauga.pvot.designsystem.navigation.PvotNavBar
 import com.prauga.pvot.designsystem.navigation.PvotTabItem
 import com.prauga.pvot.designsystem.navigation.PvotTopBar
@@ -37,7 +36,6 @@ import org.prauga.clock.ui.timer.TimerScreen
 import org.prauga.clock.uidata.TabListener
 import org.prauga.clock.uidata.UiDataModel
 import org.prauga.clock.uidata.UiDataModel.Tab
-import org.prauga.clock.worldclock.CitySelectionActivity
 
 private val NAV_TABS =
     listOf(
@@ -71,6 +69,9 @@ fun ClockApp(timerSetupRequests: Int, createAlarmRequests: Int, shownAlarm: Long
             }
         }
 
+    val fab = remember { FloatingActionSlot() }
+    fab.expanded = !compact
+
     PvotScreenScaffold(
         topBar = {
             PvotTopBar(
@@ -97,20 +98,11 @@ fun ClockApp(timerSetupRequests: Int, createAlarmRequests: Int, shownAlarm: Long
                 tabs = NAV_TABS,
             )
         },
-        floatingAction = {
-            if (tab == Tab.CLOCKS) {
-                PvotFab(
-                    icon = painterResource(R.drawable.ic_t_world),
-                    contentDescription = stringResource(R.string.button_cities),
-                    onClick = {
-                        context.startActivity(Intent(context, CitySelectionActivity::class.java))
-                    },
-                )
-            }
-        },
+        floatingAction = { fab.content?.invoke() },
     ) { padding ->
         CompositionLocalProvider(
-            LocalContentColor provides MaterialTheme.colorScheme.onBackground
+            LocalContentColor provides MaterialTheme.colorScheme.onBackground,
+            LocalFloatingActionSlot provides fab,
         ) {
             when (tab) {
                 Tab.CLOCKS -> ClockScreen(padding, listState)

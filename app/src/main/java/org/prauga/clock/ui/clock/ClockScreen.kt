@@ -6,6 +6,7 @@
 package org.prauga.clock.ui.clock
 
 import android.content.Context
+import android.content.Intent
 import android.text.format.DateFormat
 import android.text.format.DateUtils
 import androidx.compose.foundation.layout.Arrangement
@@ -50,6 +51,8 @@ import org.prauga.clock.Utils
 import org.prauga.clock.data.City
 import org.prauga.clock.data.CityListener
 import org.prauga.clock.data.DataModel
+import org.prauga.clock.ui.ScreenFab
+import org.prauga.clock.worldclock.CitySelectionActivity
 
 /** The Clock tab: the time here, then the world clocks. */
 @Composable
@@ -59,6 +62,9 @@ fun ClockScreen(padding: PaddingValues, listState: LazyListState) {
     val seconds = model.displayClockSeconds
     val now by rememberNow(if (seconds) DateUtils.SECOND_IN_MILLIS else DateUtils.MINUTE_IN_MILLIS)
     var cities by remember { mutableStateOf(worldClocks()) }
+    ScreenFab(R.drawable.ic_t_world, R.string.add_city) {
+        context.startActivity(Intent(context, CitySelectionActivity::class.java))
+    }
     DisposableEffect(Unit) {
         val listener = CityListener { cities = worldClocks() }
         model.addCityListener(listener)

@@ -38,6 +38,7 @@ import org.prauga.clock.DeskClock
 import org.prauga.clock.R
 import org.prauga.clock.settings.SettingsActivity
 import org.prauga.clock.ui.clock.ClockScreen
+import org.prauga.clock.ui.stopwatch.StopwatchScreen
 import org.prauga.clock.uidata.UiDataModel
 import org.prauga.clock.uidata.UiDataModel.Tab
 import org.prauga.clock.worldclock.CitySelectionActivity
@@ -104,6 +105,7 @@ fun ClockApp() {
         ) {
             when (tab) {
                 Tab.CLOCKS -> ClockScreen(padding)
+                Tab.STOPWATCH -> StopwatchScreen(padding)
                 else -> ClassicTab(tab, padding, context)
             }
         }

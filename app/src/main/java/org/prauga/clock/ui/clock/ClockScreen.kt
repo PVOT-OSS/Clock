@@ -39,6 +39,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.lifecycle.compose.LifecycleResumeEffect
 import com.prauga.pvot.coreui.PvotSectionHeader
 import com.prauga.pvot.designsystem.components.PvotCard
 import com.prauga.pvot.designsystem.components.PvotScreen
@@ -63,7 +64,12 @@ import org.prauga.clock.worldclock.CitySelectionActivity
 fun ClockScreen(padding: PaddingValues, listState: LazyListState) {
     val context = LocalContext.current
     val model = DataModel.getDataModel()
-    val seconds = model.displayClockSeconds
+    // Settings is its own screen: read the choice again whenever the tab comes back.
+    var seconds by remember { mutableStateOf(model.displayClockSeconds) }
+    LifecycleResumeEffect(Unit) {
+        seconds = model.displayClockSeconds
+        onPauseOrDispose {}
+    }
     val now by rememberNow(if (seconds) DateUtils.SECOND_IN_MILLIS else DateUtils.MINUTE_IN_MILLIS)
     var cities by remember { mutableStateOf(worldClocks()) }
     ScreenFab(R.drawable.ic_t_world, R.string.add_city) {

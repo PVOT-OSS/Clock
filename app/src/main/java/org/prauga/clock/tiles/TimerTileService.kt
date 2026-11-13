@@ -14,7 +14,6 @@ import android.service.quicksettings.TileService
 import org.prauga.clock.ui.ClockActivity
 import org.prauga.clock.uidata.UiDataModel
 
-/** Quick Settings tile that opens the timer keypad to start a new timer. */
 class TimerTileService : TileService() {
 
     override fun onStartListening() {

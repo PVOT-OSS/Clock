@@ -16,10 +16,8 @@ import android.os.Build
 import android.provider.Settings
 import android.view.View
 
-/** Device states, beyond silence, that keep alarms from ringing the way they should. */
 object AlarmReliability {
 
-    /** Whether alarms may launch their full-screen ringing activity (revocable from API 34). */
     @JvmStatic
     fun canUseFullScreenIntent(context: Context): Boolean =
         Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE ||
@@ -31,7 +29,7 @@ object AlarmReliability {
             openAppSetting(v.context, Settings.ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT)
         }
 
-    /** Whether exact alarms are allowed; USE_EXACT_ALARM grants it, but a ROM may still deny. */
+    // USE_EXACT_ALARM grants this, but some ROMs still deny it.
     @JvmStatic
     fun canScheduleExactAlarms(context: Context): Boolean =
         context.getSystemService(AlarmManager::class.java).canScheduleExactAlarms()
@@ -42,7 +40,6 @@ object AlarmReliability {
             openAppSetting(v.context, Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM)
         }
 
-    /** Whether the user restricted the app's background work in its battery settings. */
     @JvmStatic
     fun isBackgroundRestricted(context: Context): Boolean =
         context.getSystemService(ActivityManager::class.java).isBackgroundRestricted
@@ -53,7 +50,6 @@ object AlarmReliability {
             openAppSetting(v.context, Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
         }
 
-    /** Whether the alarm stream is audible but below a quarter of its range. */
     @JvmStatic
     fun isAlarmVolumeLow(context: Context): Boolean {
         val audio = context.getSystemService(AudioManager::class.java)
@@ -61,7 +57,6 @@ object AlarmReliability {
         return volume > 0 && volume * 4 < audio.getStreamMaxVolume(AudioManager.STREAM_ALARM)
     }
 
-    /** Raises the alarm stream to 11/16 of its range (a fresh install's level) and shows it. */
     @JvmField
     val increaseAlarmVolume =
         View.OnClickListener { v ->

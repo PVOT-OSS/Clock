@@ -24,10 +24,6 @@ import androidx.core.app.NotificationManagerCompat
 import org.prauga.clock.R
 import org.prauga.clock.provider.AlarmInstance
 
-/**
- * Sunrise: the screen slowly brightens from a dark red to a warm white over the minutes before the
- * next alarm, as a gentler start than the sound alone.
- */
 object Sunrise {
 
     const val KEY_MINUTES = "sunrise_minutes"
@@ -43,7 +39,6 @@ object Sunrise {
             ?.toIntOrNull() ?: 0
     }
 
-    /** Schedules the sunrise before [nextAlarm], or clears it when there is none. */
     @JvmStatic
     @JvmOverloads
     fun schedule(context: Context, nextAlarm: AlarmInstance?, minutes: Int = minutes(context)) {
@@ -60,7 +55,6 @@ object Sunrise {
         }
     }
 
-    /** Applies a new sunrise length from the settings before it is saved. */
     @JvmStatic
     fun onSettingChanged(context: Context, newValue: Any?) {
         val minutes = newValue?.toString()?.toIntOrNull() ?: 0
@@ -113,7 +107,6 @@ object Sunrise {
     }
 }
 
-/** Starts the sunrise when it is due. */
 class SunriseReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val alarmTime = intent.getLongExtra(Sunrise.EXTRA_ALARM_TIME, 0L)
@@ -123,7 +116,6 @@ class SunriseReceiver : BroadcastReceiver() {
     }
 }
 
-/** A full-screen sunrise over the lock screen until the alarm rings or the user taps it away. */
 class SunriseActivity : ComponentActivity() {
 
     private var animator: ValueAnimator? = null
@@ -159,7 +151,6 @@ class SunriseActivity : ComponentActivity() {
                 }
                 start()
             }
-        // The alarm takes over the screen when it rings.
         view.postDelayed({ finish() }, remaining + 1_000)
     }
 

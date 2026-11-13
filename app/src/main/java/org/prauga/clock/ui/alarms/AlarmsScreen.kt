@@ -48,7 +48,6 @@ import org.prauga.clock.provider.Alarm
 import org.prauga.clock.ui.ScreenFab
 import org.prauga.clock.ui.screenPadding
 
-/** The Alarms tab: every alarm as a card that expands into its settings. */
 @Composable
 fun AlarmsScreen(
     padding: PaddingValues,
@@ -138,8 +137,6 @@ fun AlarmsScreen(
         }
     }
 
-    // The dialog keeps its alarm and mode after closing, so it shows the same time while it eases
-    // out.
     val target = editingTime.takeUnless { adding }
     TimeDialog(
         visible = timeDialogOpen,

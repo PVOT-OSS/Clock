@@ -65,12 +65,10 @@ import org.prauga.clock.ui.ScreenFab
 import org.prauga.clock.ui.screenPadding
 import org.prauga.clock.worldclock.CitySelectionActivity
 
-/** The Clock tab: the time here, then the world clocks. */
 @Composable
 fun ClockScreen(padding: PaddingValues, listState: LazyListState) {
     val context = LocalContext.current
     val model = DataModel.getDataModel()
-    // Settings is its own screen: read the choice again whenever the tab comes back.
     var seconds by remember { mutableStateOf(model.displayClockSeconds) }
     LifecycleResumeEffect(Unit) {
         seconds = model.displayClockSeconds
@@ -125,7 +123,6 @@ fun ClockScreen(padding: PaddingValues, listState: LazyListState) {
         }
     }
 
-    // Long-press menu of a world clock; it keeps its city while it slides away.
     val shown = menuCity
     if (shown != null) {
         val selected = model.selectedCities
@@ -169,7 +166,6 @@ private fun worldClocks(): List<City> {
     return listOfNotNull(home) + model.selectedCities
 }
 
-/** The current time in milliseconds, updated on each [step] boundary. */
 @Composable
 private fun rememberNow(step: Long): androidx.compose.runtime.State<Long> {
     val now = remember { mutableLongStateOf(System.currentTimeMillis()) }
@@ -261,7 +257,6 @@ private fun formatTime(context: Context, now: Long, zone: TimeZone, seconds: Boo
     return format.format(Date(now))
 }
 
-/** "5 hr 30 min behind", with "Yesterday"/"Tomorrow" when the day differs; null when equal. */
 private fun difference(context: Context, city: City, now: Long): String? {
     val delta = city.timeZone.getOffset(now) - TimeZone.getDefault().getOffset(now).toLong()
     val hours = (delta / DateUtils.HOUR_IN_MILLIS).toInt()

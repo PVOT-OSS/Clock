@@ -11,12 +11,8 @@ import android.content.Intent
 import androidx.core.content.ContextCompat
 import org.prauga.clock.provider.AlarmInstance
 
-/**
- * Receives the alarm instance state changes scheduled with AlarmManager. An exact alarm's broadcast
- * may start a foreground service from the background, which a service PendingIntent may not when
- * Clock is not a system app, so only the change to firing hands over to [AlarmService]; every other
- * change is applied here.
- */
+// Only an exact alarm's broadcast may start a foreground service from the background, so state
+// changes arrive here and only firing hands over to AlarmService.
 class AlarmStateChangeReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {

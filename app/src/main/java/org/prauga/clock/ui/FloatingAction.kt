@@ -18,20 +18,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import com.prauga.pvot.designsystem.components.button.PvotFab
 
-/**
- * The scaffold's floating action, filled by whichever screen is showing: the button sits above the
- * nav bar's end, where every Pvot app keeps it, while the screen owns what it does.
- */
 class FloatingActionSlot {
     var content by mutableStateOf<(@Composable () -> Unit)?>(null)
 
-    /** Whether the label shows; it folds away while the list is scrolled. */
     var expanded by mutableStateOf(true)
 }
 
 val LocalFloatingActionSlot = staticCompositionLocalOf { FloatingActionSlot() }
 
-/** Puts a labelled [PvotFab] in the scaffold for as long as the calling screen is shown. */
 @Composable
 fun ScreenFab(@DrawableRes icon: Int, @StringRes text: Int, onClick: () -> Unit) {
     val slot = LocalFloatingActionSlot.current

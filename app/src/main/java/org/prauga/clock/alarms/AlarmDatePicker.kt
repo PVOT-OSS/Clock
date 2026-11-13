@@ -13,15 +13,10 @@ import org.prauga.clock.R
 import org.prauga.clock.provider.Alarm
 import org.prauga.clock.provider.AlarmDates
 
-/**
- * The date row of an expanded alarm: a one-time alarm picks the date it rings on, a repeating alarm
- * picks a range of dates to stay quiet.
- */
 object AlarmDatePicker {
 
     private val DAY_MILLIS = TimeUnit.DAYS.toMillis(1)
 
-    /** Text of the row in the expanded alarm. */
     @JvmStatic
     fun rowText(context: Context, alarm: Alarm): String =
         summary(context, alarm, Calendar.getInstance())
@@ -30,7 +25,6 @@ object AlarmDatePicker {
                 else R.string.alarm_schedule_date
             )
 
-    /** Date-based description of when the alarm rings, or null to fall back to the weekdays. */
     @JvmStatic
     fun summary(context: Context, alarm: Alarm, now: Calendar): String? =
         when {

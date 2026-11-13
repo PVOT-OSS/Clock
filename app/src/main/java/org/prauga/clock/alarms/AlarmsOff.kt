@@ -13,10 +13,8 @@ import java.util.concurrent.Executors
 import org.prauga.clock.R
 import org.prauga.clock.provider.Alarm
 
-/** "Turn off all alarms" in settings, which asks first. */
 object AlarmsOff {
 
-    /** Switches every alarm off, then says how many with a toast. */
     fun turnOff(context: Context) {
         val app = context.applicationContext
         Executors.newSingleThreadExecutor().execute {

@@ -8,14 +8,8 @@ package org.prauga.clock.ui
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 
-/**
- * Snackbars raised anywhere in the app ("Alarm set for…", Undo), shown by the main screen's
- * PvotSnackbarHost. A message while that screen isn't showing is dropped, as a View snackbar
- * without a window was.
- */
 object ClockSnackbars {
 
-    /** One snackbar; `null` on the flow dismisses the current one. */
     class Message(
         val text: String,
         val long: Boolean,

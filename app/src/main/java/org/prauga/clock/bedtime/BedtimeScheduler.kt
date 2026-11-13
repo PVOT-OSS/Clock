@@ -20,7 +20,6 @@ import org.prauga.clock.DeskClock
 import org.prauga.clock.R
 import org.prauga.clock.provider.Alarm
 
-/** Schedules the bedtime reminder and keeps it scheduled across reboots and clock changes. */
 object BedtimeScheduler {
 
     const val ACTION_SHOW_BEDTIME = "org.prauga.clock.action.SHOW_BEDTIME"
@@ -30,7 +29,6 @@ object BedtimeScheduler {
     private const val CHANNEL_ID = "bedtime"
     private const val NOTIFICATION_ID = 0x0bed
 
-    /** Sets the AlarmManager alarm for the next reminder, or clears it when there is none. */
     @JvmStatic
     fun schedule(context: Context) {
         val alarms = context.getSystemService(AlarmManager::class.java)
@@ -43,7 +41,6 @@ object BedtimeScheduler {
         scheduleMode(context, alarms, settings)
     }
 
-    /** Bedtime mode turns on at the next bedtime and off at the following wake-up. */
     private fun scheduleMode(context: Context, alarms: AlarmManager, settings: BedtimeSettings) {
         val on = intent(context, ACTION_MODE_ON, 1)
         val off = intent(context, ACTION_MODE_OFF, 2)
@@ -72,7 +69,6 @@ object BedtimeScheduler {
         alarms.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, nextBedtime.timeInMillis, on)
     }
 
-    /** The linked wake-up alarm's next ring after [bedtime], or eight hours later. */
     private fun wakeUpAfter(
         context: Context,
         settings: BedtimeSettings,
@@ -191,7 +187,6 @@ object BedtimeScheduler {
     internal fun isReminder(intent: Intent) = intent.action == ACTION_REMINDER
 }
 
-/** Shows the bedtime reminder, and reschedules it after a reboot or a clock change. */
 class BedtimeReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         if (BedtimeScheduler.isModeAlarm(intent)) {

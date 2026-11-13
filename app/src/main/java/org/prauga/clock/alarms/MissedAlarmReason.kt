@@ -10,15 +10,10 @@ import android.content.Intent
 import androidx.core.app.NotificationCompat
 import org.prauga.clock.R
 
-/**
- * Why alarms are found missed when the instances are re-checked: the phone was off, or the clock
- * moved past them. Alarms that rang until they were silenced carry no reason.
- */
 object MissedAlarmReason {
 
     @Volatile private var reason = 0
 
-    /** Records why the instances are being re-checked, from AlarmInitReceiver's broadcast. */
     @JvmStatic
     fun begin(action: String?) {
         reason =
@@ -36,7 +31,6 @@ object MissedAlarmReason {
         reason = 0
     }
 
-    /** Adds the reason, if any, under the missed alarm's time and label. */
     @JvmStatic
     fun apply(context: Context, builder: NotificationCompat.Builder, text: CharSequence) {
         val current = reason

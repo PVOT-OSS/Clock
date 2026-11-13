@@ -57,12 +57,10 @@ import org.prauga.clock.ui.screenPadding
 
 private val PRESETS = listOf(5, 10, 30, 45)
 
-/** The Timer tab: the running timers, or a duration picker to start a new one. */
 @Composable
 fun TimerScreen(padding: PaddingValues, listState: LazyListState, setupRequests: Int) {
     val model = DataModel.getDataModel()
-    // Timer.equals compares ids only: an updated list compares equal to the old one, so the state
-    // must store it regardless, and the version tells the cards to redraw.
+    // Timer.equals compares ids only, so updates look equal without these.
     var timers by remember { mutableStateOf(model.timers.toList(), neverEqualPolicy()) }
     var version by remember { mutableIntStateOf(0) }
     DisposableEffect(Unit) {
@@ -195,8 +193,7 @@ private fun TimerCard(
     modifier: Modifier = Modifier,
 ) {
     val model = DataModel.getDataModel()
-    // Timer.equals compares ids only, so the state and the clock are passed in to redraw the
-    // card whenever either changes.
+    // Timer.equals compares ids only, so the state is passed in to redraw the card.
     val remaining =
         if (state == Timer.State.RUNNING || state == Timer.State.EXPIRED) {
             timer.remainingTime
@@ -269,7 +266,6 @@ private fun TimerCard(
     }
 }
 
-/** Rounds up like the classic timer while positive; overtime counts up after a minus sign. */
 private fun format(remaining: Long): String {
     val seconds =
         if (remaining >= 0) (remaining + DateUtils.SECOND_IN_MILLIS - 1) / 1000

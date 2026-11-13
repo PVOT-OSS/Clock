@@ -65,12 +65,10 @@ import org.prauga.clock.ui.screenPadding
 private val REMINDERS = listOf(0, 15, 30, 45, 60)
 private val SLEEP_LENGTHS = listOf(15, 30, 60)
 
-/** The Bedtime tab: schedule and reminder, wake-up alarm, Do Not Disturb, sounds, tomorrow. */
 @Composable
 fun BedtimeScreen(padding: PaddingValues, listState: LazyListState) {
     val context = LocalContext.current
     val settings = remember { BedtimeSettings(context) }
-    // The settings are preferences; the version redraws after every change.
     var version by remember { mutableIntStateOf(0) }
     val changed: () -> Unit = {
         BedtimeScheduler.schedule(context)
@@ -298,7 +296,6 @@ private fun WakeUpChooser(visible: Boolean, settings: BedtimeSettings, onDone: (
     val context = LocalContext.current
     val wakeUpTitle = stringResource(R.string.wakeup_title)
     var alarms by remember { mutableStateOf<List<Alarm>?>(null) }
-    // Loads on each opening, off the main thread; the list stays while the dialog eases out.
     LaunchedEffect(visible) {
         if (visible) {
             alarms =
@@ -329,7 +326,6 @@ private fun WakeUpChooser(visible: Boolean, settings: BedtimeSettings, onDone: (
             PvotDialogAction(
                 label = stringResource(R.string.wakeup_new_alarm),
                 onClick = {
-                    // A new alarm on the bedtime days, eight hours after bedtime.
                     val wake = (settings.hour * 60 + settings.minute + 8 * 60) % 1440
                     AlarmUpdateHandler(
                             context,

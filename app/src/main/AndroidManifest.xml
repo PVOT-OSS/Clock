@@ -83,7 +83,6 @@
             </intent-filter>
         </activity>
 
-        <!-- Forwards intents still addressed to the classic activity on to ClockActivity. -->
         <activity
             android:name=".DeskClock"
             android:label="@string/app_label"

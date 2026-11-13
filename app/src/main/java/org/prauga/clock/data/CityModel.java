@@ -184,9 +184,6 @@ final class CityModel {
                 CityOrder.merge(mPrefs, CityDAO.getSelectedCities(mPrefs, getCityMap()), cities));
     }
 
-    /**
-     * Saves the selected cities in exactly the given order.
-     */
     private void saveSelectedCities(Collection<City> cities) {
         CityDAO.setSelectedCities(mPrefs, cities);
 
@@ -199,18 +196,11 @@ final class CityModel {
         fireCitiesChanged();
     }
 
-    /**
-     * Moves a selected city {@code delta} places up (negative) or down the list; from then on the
-     * world clocks keep the user's order.
-     */
     void moveSelectedCity(City city, int delta) {
         CityOrder.setCustom(mPrefs);
         saveSelectedCities(CityOrder.move(getSelectedCities(), city, delta));
     }
 
-    /**
-     * Adds a place of the user's own and selects it as a world clock.
-     */
     void addCustomPlace(String name, String timeZoneId) {
         final String id = CustomPlaces.add(mPrefs, name, timeZoneId);
         mCityMap = null;

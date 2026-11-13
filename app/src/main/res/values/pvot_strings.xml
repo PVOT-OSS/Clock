@@ -6,31 +6,18 @@
 <resources xmlns:tools="http://schemas.android.com/tools"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"
     tools:ignore="MissingTranslation">
-    <!-- Snackbar shown when the app may not show alarms full screen -->
     <string name="full_screen_alarms_blocked">Alarms can\'t open full screen</string>
-    <!-- Snackbar shown when the app may not schedule exact alarms -->
     <string name="exact_alarms_blocked">Alarms may go off late</string>
-    <!-- Snackbar shown when battery settings restrict the app in the background -->
     <string name="background_restricted">Battery settings may delay alarms</string>
-    <!-- Snackbar shown when the alarm volume is set very low -->
     <string name="alarm_volume_low">Alarm volume is low</string>
-    <!-- Action on the low alarm volume snackbar -->
     <string name="increase_alarm_volume">Increase</string>
-    <!-- Row in an expanded one-time alarm that picks the date it rings on -->
     <string name="alarm_schedule_date">Schedule alarm</string>
-    <!-- Row in an expanded repeating alarm that pauses it for a range of dates -->
     <string name="alarm_pause">Pause alarm</string>
-    <!-- Summary of a paused repeating alarm; args are the first and last paused dates -->
     <string name="alarm_paused_range">Paused <xliff:g id="start" example="21 Nov">%1$s</xliff:g> – <xliff:g id="end" example="25 Nov">%2$s</xliff:g></string>
-    <!-- Title of the date picker for a one-time alarm -->
     <string name="alarm_schedule_date_title">Ring on</string>
-    <!-- Title of the date range picker that pauses a repeating alarm -->
     <string name="alarm_pause_title">Pause alarm on these dates</string>
-    <!-- Picker button that removes the date from a one-time alarm -->
     <string name="alarm_date_remove">Remove date</string>
-    <!-- Picker button that ends a pause of a repeating alarm -->
     <string name="alarm_pause_resume">Resume</string>
-    <!-- Setting: how a ringing alarm is snoozed or stopped -->
     <string name="dismiss_gesture_title">Snooze and stop gesture</string>
     <string-array name="dismiss_gesture_entries">
         <item>Swipe</item>
@@ -40,98 +27,61 @@
         <item>swipe</item>
         <item>tap</item>
     </string-array>
-    <!-- Spoken with a collapsed alarm that has no sound but vibrates -->
-    <!-- Spoken with a collapsed alarm that has no sound and does not vibrate -->
     <string name="alarm_badge_silent">Silent</string>
-    <!-- Sound picker row that opens a recorder app to record a new alarm sound -->
     <string name="record_new_sound">Record new sound</string>
-    <!-- Title of a recorded alarm sound; arg is when it was recorded -->
     <string name="recorded_sound_title">Recording <xliff:g id="when" example="13 Nov 2026 2:45 am">%s</xliff:g></string>
-    <!-- Timer setup button that fills in a common duration; arg is a number of minutes -->
     <string name="timer_preset_minutes"><xliff:g id="minutes" example="5">%d</xliff:g> min</string>
-    <!-- Spoken for a timer preset button; arg is a number of minutes -->
     <plurals name="timer_preset_minutes_description">
         <item quantity="one">Set timer for <xliff:g id="minutes" example="1">%d</xliff:g> minute</item>
         <item quantity="other">Set timer for <xliff:g id="minutes" example="5">%d</xliff:g> minutes</item>
     </plurals>
-    <!-- Quick Settings stopwatch tile subtitle while it runs -->
     <string name="tile_stopwatch_running">Running</string>
-    <!-- Quick Settings stopwatch tile subtitle while it is reset -->
     <string name="tile_stopwatch_start">Tap to start</string>
-    <!-- Long-press menu of a world clock -->
     <string name="city_move_up">Move up</string>
     <string name="city_move_down">Move down</string>
     <string name="city_remove">Remove city</string>
-    <!-- Description of the stopwatch home screen widget in the widget picker -->
     <string name="stopwatch_widget_description">Start, pause and lap the stopwatch</string>
-    <!-- Description of the timer home screen widget in the widget picker -->
     <string name="timer_widget_description">Start a 5, 10 or 30 minute timer with one tap</string>
-    <!-- Bottom navigation tab and screen title for bedtime -->
     <string name="menu_bedtime">Bedtime</string>
-    <!-- Title of the card that sets when to go to bed -->
     <string name="bedtime_schedule_title">Bedtime</string>
-    <!-- Title of the bedtime reminder choice -->
     <string name="bedtime_reminder_title">Reminder notification</string>
-    <!-- Bedtime reminder turned off -->
     <string name="bedtime_reminder_off">No reminder</string>
-    <!-- Bedtime reminder; arg is minutes before bedtime -->
     <plurals name="bedtime_reminder_before">
         <item quantity="one">Remind <xliff:g id="minutes" example="1">%d</xliff:g> minute before</item>
         <item quantity="other">Remind <xliff:g id="minutes" example="15">%d</xliff:g> minutes before</item>
     </plurals>
-    <!-- Notification channel of the bedtime reminder -->
     <string name="bedtime_channel_name">Bedtime</string>
-    <!-- Bedtime reminder notification; arg is the bedtime -->
     <string name="bedtime_reminder_notification">Bedtime at <xliff:g id="time" example="10:30 pm">%s</xliff:g></string>
-    <!-- Text of the bedtime reminder notification -->
     <string name="bedtime_reminder_notification_text">Time to start winding down</string>
-    <!-- Title of the bedtime card about the alarm that wakes the user -->
     <string name="wakeup_title">Wake-up</string>
-    <!-- Wake-up card when no alarm is linked -->
     <string name="wakeup_not_set">Not set</string>
-    <!-- Hint on the wake-up card when no alarm is linked -->
     <string name="wakeup_choose_hint">Choose the alarm that wakes you up</string>
-    <!-- Button on the wake-up card -->
     <string name="wakeup_choose">Choose alarm</string>
-    <!-- Wake-up alarm choice that creates a new alarm -->
     <string name="wakeup_new_alarm">New alarm</string>
-    <!-- A one-time alarm in the wake-up alarm choice -->
     <string name="wakeup_once">Once</string>
-    <!-- Wake-up card when the linked alarm is switched off -->
     <string name="wakeup_alarm_off">Alarm off</string>
-    <!-- Hours and minutes of sleep between bedtime and the wake-up alarm -->
     <string name="wakeup_sleep_duration"><xliff:g id="hours" example="8 hours">%1$s</xliff:g> <xliff:g id="minutes" example="0 minutes">%2$s</xliff:g> of sleep</string>
-    <!-- Bedtime card that turns on Do Not Disturb during bedtime -->
     <string name="bedtime_mode_title">Bedtime mode</string>
-    <!-- Summary of the bedtime mode card -->
     <string name="bedtime_mode_summary">Do Not Disturb from bedtime until you wake up</string>
-    <!-- Summary of the bedtime mode card while Do Not Disturb access is missing -->
     <string name="bedtime_mode_needs_access">Tap to allow Do Not Disturb access</string>
-    <!-- Bedtime card that plays a calming noise -->
     <string name="sleep_sounds_title">Sleep sounds</string>
     <string name="sleep_sound_white">White noise</string>
     <string name="sleep_sound_pink">Pink noise</string>
     <string name="sleep_sound_brown">Brown noise</string>
-    <!-- Short names of the noises on the sleep sounds card buttons -->
     <string name="sleep_sound_white_short">White</string>
     <string name="sleep_sound_pink_short">Pink</string>
     <string name="sleep_sound_brown_short">Brown</string>
-    <!-- Lengths a sleep sound plays for -->
     <string name="sleep_sound_play">Play</string>
     <string name="sleep_sound_stop">Stop</string>
-    <!-- Notification channel and notification of a playing sleep sound -->
     <string name="sleep_sound_channel">Sleep sounds</string>
     <string name="sleep_sound_playing"><xliff:g id="sound" example="Brown noise">%s</xliff:g></string>
     <string name="sleep_sound_stops_at">Stops at <xliff:g id="time" example="11:30 pm">%s</xliff:g></string>
-    <!-- Bedtime card with tomorrow's first calendar event -->
     <string name="calendar_title">Tomorrow</string>
-    <!-- First event tomorrow; args are its start time and title -->
     <string name="calendar_first_event"><xliff:g id="time" example="9:00 am">%1$s</xliff:g> · <xliff:g id="title" example="Stand-up">%2$s</xliff:g></string>
     <string name="calendar_no_event">Nothing on your calendar</string>
     <string name="calendar_untitled">(No title)</string>
     <string name="calendar_permission_hint">See tomorrow\'s first event before you go to bed</string>
     <string name="calendar_allow">Allow calendar access</string>
-    <!-- Setting: brighten the screen slowly before an alarm -->
     <string name="sunrise_title">Sunrise before alarms</string>
     <string-array name="sunrise_entries">
         <item>Off</item>
@@ -145,10 +95,8 @@
         <item>20</item>
         <item>30</item>
     </string-array>
-    <!-- Notification channel and notification of the sunrise before an alarm -->
     <string name="sunrise_channel">Sunrise</string>
     <string name="sunrise_notification">Sunrise before your alarm</string>
-    <!-- Settings action that switches every alarm off -->
     <string name="turn_off_all_alarms">Turn off all alarms</string>
     <string name="turn_off_all_alarms_message">All alarms will be switched off. You can turn them on again one by one.</string>
     <string name="turn_off_all_alarms_confirm">Turn off</string>
@@ -156,39 +104,25 @@
         <item quantity="one"><xliff:g id="count" example="1">%d</xliff:g> alarm turned off</item>
         <item quantity="other"><xliff:g id="count" example="3">%d</xliff:g> alarms turned off</item>
     </plurals>
-    <!-- Spoken after the fastest and the slowest recorded lap -->
-    <!-- Why an alarm was missed, under the missed alarm notification -->
     <string name="alarm_missed_phone_off">Your phone was off when it was due</string>
     <string name="alarm_missed_time_changed">The time or time zone changed past it</string>
-    <!-- Name and description of the stacked digital clock widget -->
     <string name="stacked_widget_label">Stacked clock</string>
     <string name="stacked_widget_description">Large hours above minutes, with the date</string>
-    <!-- Analog widget face picker -->
     <string name="analog_face_title">Choose a clock face</string>
     <string name="analog_face_classic">Classic</string>
     <string name="analog_face_material">Material</string>
     <string name="analog_face_minimal">Minimal</string>
-    <!-- City list menu item and dialog that add a place of the user's own -->
     <string name="add_place">Add place</string>
     <string name="add_place_name">Name</string>
     <string name="add_place_add">Add</string>
-    <!-- First-run introduction at the top of the Bedtime tab -->
     <string name="bedtime_intro_title">A steady sleep schedule</string>
     <string name="bedtime_intro_text">Set when you go to bed and the alarm that wakes you. Clock can remind you, quiet your phone overnight and play a sleep sound.</string>
     <string name="bedtime_intro_start">Get started</string>
-    <!-- Button on a tab of the new screens that isn't rebuilt yet; opens the classic screens -->
-    <!-- Floating button on the Alarms tab that adds an alarm -->
     <string name="new_alarm">New alarm</string>
-    <!-- Floating button on the Timer tab that sets up another timer -->
     <string name="new_timer">New timer</string>
-    <!-- Floating button on the Clock tab that adds a city's clock -->
     <string name="add_city">Add city</string>
-    <!-- Placeholder of the search field above the list of cities -->
     <string name="search_cities">Search cities</string>
-    <!-- Row in the "Add place" dialog that picks the place's time zone -->
     <string name="add_place_zone">Time zone</string>
-    <!-- Hint above the ringing alarm's puck: sliding it up dismisses the alarm -->
     <string name="alarm_slide_dismiss">Slide up to dismiss</string>
-    <!-- Hint below the ringing alarm's puck: sliding it down snoozes the alarm -->
     <string name="alarm_slide_snooze">Slide down to snooze</string>
 </resources>

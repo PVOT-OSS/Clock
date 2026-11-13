@@ -10,7 +10,6 @@ import android.content.SharedPreferences
 import java.util.Calendar
 import org.prauga.clock.data.Weekdays
 
-/** The bedtime schedule, kept in device-protected preferences next to the other settings. */
 class BedtimeSettings(context: Context) {
 
     private val prefs: SharedPreferences =
@@ -34,22 +33,18 @@ class BedtimeSettings(context: Context) {
         get() = Weekdays.fromBits(prefs.getInt(KEY_DAYS, ALL_DAYS))
         set(value) = prefs.edit().putInt(KEY_DAYS, value.bits).apply()
 
-    /** Id of the alarm that wakes the user, or -1. */
     var wakeUpAlarmId: Long
         get() = prefs.getLong(KEY_WAKEUP_ALARM, -1)
         set(value) = prefs.edit().putLong(KEY_WAKEUP_ALARM, value).apply()
 
-    /** Whether Do Not Disturb follows bedtime. */
     var modeEnabled: Boolean
         get() = prefs.getBoolean(KEY_MODE, false)
         set(value) = prefs.edit().putBoolean(KEY_MODE, value).apply()
 
-    /** Id of our Do Not Disturb rule, once created. */
     var zenRuleId: String?
         get() = prefs.getString(KEY_ZEN_RULE, null)
         set(value) = prefs.edit().putString(KEY_ZEN_RULE, value).apply()
 
-    /** Ordinal of the last sleep sound played, and for how long. */
     var sleepSound: Int
         get() = prefs.getInt(KEY_SLEEP_SOUND, 2)
         set(value) = prefs.edit().putInt(KEY_SLEEP_SOUND, value).apply()
@@ -58,17 +53,14 @@ class BedtimeSettings(context: Context) {
         get() = prefs.getInt(KEY_SLEEP_SOUND_MINUTES, 30)
         set(value) = prefs.edit().putInt(KEY_SLEEP_SOUND_MINUTES, value).apply()
 
-    /** Whether the first-run introduction was completed. */
     var introDone: Boolean
         get() = prefs.getBoolean(KEY_INTRO_DONE, false)
         set(value) = prefs.edit().putBoolean(KEY_INTRO_DONE, value).apply()
 
-    /** Minutes before bedtime to remind; 0 is off. */
     var reminderMinutes: Int
         get() = prefs.getInt(KEY_REMINDER, 15)
         set(value) = prefs.edit().putInt(KEY_REMINDER, value).apply()
 
-    /** The next bedtime after [now] on one of the chosen days, or null when off. */
     fun nextBedtime(now: Calendar = Calendar.getInstance()): Calendar? {
         if (!enabled || !days.isRepeating) {
             return null

@@ -12,10 +12,6 @@ import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-/**
- * Pads a scrolling list by the navigation bar so its last item can scroll clear of the gesture
- * handle while the list itself still draws edge to edge.
- */
 fun View.padForNavigationBar() {
     val initialBottom = paddingBottom
     (this as? ViewGroup)?.clipToPadding = false

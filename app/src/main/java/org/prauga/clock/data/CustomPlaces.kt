@@ -8,16 +8,11 @@ package org.prauga.clock.data
 import android.content.SharedPreferences
 import java.util.TimeZone
 
-/**
- * Places the user added for world clocks that aren't in the built-in city list: a name and a time
- * zone, kept offline in the preferences.
- */
 object CustomPlaces {
 
     private const val KEY = "custom_places"
     private const val ID_PREFIX = "custom_"
 
-    /** The custom places as cities, keyed by their ids. */
     @JvmStatic
     fun load(prefs: SharedPreferences): Map<String, City> =
         entries(prefs)
@@ -31,7 +26,6 @@ object CustomPlaces {
             }
             .toMap()
 
-    /** Adds a place and returns its city id. */
     @JvmStatic
     fun add(prefs: SharedPreferences, name: String, zone: String): String {
         val entries = entries(prefs) + (name.replace("\n", " ") to zone)

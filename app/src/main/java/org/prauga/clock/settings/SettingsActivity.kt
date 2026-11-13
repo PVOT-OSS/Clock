@@ -9,7 +9,6 @@ import android.os.Bundle
 import com.prauga.pvot.designsystem.platform.PvotBaseActivity
 import com.prauga.pvot.designsystem.theme.PvotAppTheme
 
-/** Clock's settings, on Pvot rows. */
 class SettingsActivity : PvotBaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -41,7 +41,6 @@ fun TimeDialog(
     onDismiss: () -> Unit,
     onConfirm: (LocalTime) -> Unit,
 ) {
-    // Starts from [initial] each time it opens, and keeps the picked time while it eases out.
     var time by remember(visible) { mutableStateOf(initial) }
     PvotDialog(
         visible = visible,
@@ -83,7 +82,6 @@ fun LabelDialog(
     )
 }
 
-/** A date for a one-time alarm, or a range of dates to pause a repeating one. */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AlarmDateDialog(alarm: Alarm, onDismiss: () -> Unit, onChanged: () -> Unit) {

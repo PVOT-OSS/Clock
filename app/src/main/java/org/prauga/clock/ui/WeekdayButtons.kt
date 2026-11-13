@@ -26,7 +26,6 @@ import org.prauga.clock.data.DataModel
 import org.prauga.clock.data.Weekdays
 import org.prauga.clock.uidata.UiDataModel
 
-/** Seven round day toggles in the user's week order; [onChange] gets a Calendar day. */
 @Composable
 fun WeekdayButtons(days: Weekdays, onChange: (Int, Boolean) -> Unit) {
     val order = DataModel.getDataModel().weekdayOrder.calendarDays

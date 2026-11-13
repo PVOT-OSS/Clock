@@ -15,11 +15,7 @@ import androidx.core.content.FileProvider
 import java.io.File
 import org.prauga.clock.R
 
-/**
- * Sounds recorded by a recorder app (MediaStore.Audio.Media.RECORD_SOUND_ACTION) for use as alarm
- * sounds. The recorder only lends its result, so each recording is copied into the app's files and
- * served from our own FileProvider; those uris need no persisted grant.
- */
+// The recorder only lends its result, so recordings are copied and served from our FileProvider.
 object RecordedSounds {
 
     private const val DIR = "sounds"
@@ -32,11 +28,9 @@ object RecordedSounds {
 
     private fun authority(context: Context) = "${context.packageName}.sounds"
 
-    /** Whether [uri] is one of our copied recordings. */
     @JvmStatic
     fun isRecordedSound(context: Context, uri: Uri): Boolean = uri.authority == authority(context)
 
-    /** Copies the recording at [source] and returns its uri and title; null if it can't be read. */
     @JvmStatic
     fun importRecording(context: Context, source: Uri): Pair<Uri, String>? {
         val resolver = context.contentResolver
@@ -63,7 +57,6 @@ object RecordedSounds {
         return FileProvider.getUriForFile(context, authority(context), file) to title
     }
 
-    /** Deletes the file behind a recorded sound uri; other uris are left alone. */
     @JvmStatic
     fun delete(context: Context, uri: Uri) {
         if (isRecordedSound(context, uri)) {

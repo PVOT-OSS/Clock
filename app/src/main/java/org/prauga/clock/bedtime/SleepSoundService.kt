@@ -28,10 +28,6 @@ import kotlin.random.Random
 import org.prauga.clock.DeskClock
 import org.prauga.clock.R
 
-/**
- * Plays a generated noise until a stop time: white, pink or brown noise made on the device, so no
- * recordings have to be shipped or licensed. Fades in and out.
- */
 class SleepSoundService : Service() {
 
     enum class Noise(val labelRes: Int) {
@@ -125,7 +121,6 @@ class SleepSoundService : Service() {
         try {
             while (playing) {
                 val now = System.currentTimeMillis()
-                // Fade in over the first 10 s and out over the last 30 s.
                 val gain =
                     minOf(1f, (now - start) / FADE_IN_MS, maxOf(0f, (stopAt - now) / FADE_OUT_MS))
                 for (i in buffer.indices) {
@@ -186,7 +181,6 @@ class SleepSoundService : Service() {
         return CHANNEL_ID
     }
 
-    /** White noise, and pink and brown noise filtered from it. */
     private class NoiseGenerator(private val noise: Noise) {
         private val random = Random(System.nanoTime())
         private var b0 = 0f
@@ -223,7 +217,6 @@ class SleepSoundService : Service() {
         private const val FADE_OUT_MS = 30_000f
         private const val LEVEL = 0.6f
 
-        /** Whether a sleep sound is playing in this process. */
         @Volatile
         var isPlaying = false
             private set

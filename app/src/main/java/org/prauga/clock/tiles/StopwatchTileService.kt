@@ -11,7 +11,6 @@ import org.prauga.clock.R
 import org.prauga.clock.data.DataModel
 import org.prauga.clock.data.StopwatchListener
 
-/** Quick Settings tile that starts and pauses the stopwatch without opening the app. */
 class StopwatchTileService : TileService() {
 
     private val listener = StopwatchListener { _, _ -> updateTile() }

@@ -13,7 +13,6 @@ import java.util.Calendar
 import java.util.Date
 import org.prauga.clock.R
 
-/** Tomorrow's first timed calendar event, described for the bedtime screens. */
 object TomorrowsEvent {
 
     @JvmStatic

@@ -4,7 +4,6 @@
   SPDX-License-Identifier: Apache-2.0
   -->
 <resources>
-    <!-- Material You colours of the stopwatch and timer widgets -->
     <color name="widget_background">@android:color/system_accent2_50</color>
     <color name="widget_text">@android:color/system_accent1_900</color>
     <color name="widget_text_secondary">@android:color/system_accent2_700</color>

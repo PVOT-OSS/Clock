@@ -20,7 +20,6 @@ import org.prauga.clock.data.DataModel
 import org.prauga.clock.data.StopwatchListener
 import org.prauga.clock.stopwatch.StopwatchService
 
-/** Home screen stopwatch: the running time with reset, start/pause and lap buttons. */
 class StopwatchAppWidgetProvider : AppWidgetProvider() {
 
     override fun onUpdate(context: Context, manager: AppWidgetManager, ids: IntArray) {
@@ -36,7 +35,6 @@ class StopwatchAppWidgetProvider : AppWidgetProvider() {
             ACTION_RESET -> model.resetStopwatch()
             else -> return super.onReceive(context, intent)
         }
-        // The stopwatch listener redraws the widgets.
     }
 
     companion object {
@@ -44,7 +42,6 @@ class StopwatchAppWidgetProvider : AppWidgetProvider() {
         private const val ACTION_LAP = "org.prauga.clock.widget.STOPWATCH_LAP"
         private const val ACTION_RESET = "org.prauga.clock.widget.STOPWATCH_RESET"
 
-        /** Keeps the widgets in step with the stopwatch, however it is changed. */
         @JvmStatic
         fun observe(context: Context) {
             val app = context.applicationContext

@@ -21,16 +21,12 @@ import org.prauga.clock.timer.TimerService
 import org.prauga.clock.uidata.UiDataModel
 import org.prauga.clock.uidata.UiDataModel.Tab
 
-/** The Compose app on PvotLib: five tabs in a floating navigation bar. */
 class ClockActivity : PvotBaseActivity() {
 
-    /** Bumped when an intent asks for the timer keypad, so the Timer tab opens it. */
     private val timerSetupRequests = mutableIntStateOf(0)
 
-    /** Bumped when an intent asks to create an alarm, so the Alarms tab opens the time picker. */
     private val createAlarmRequests = mutableIntStateOf(0)
 
-    /** The alarm an intent asks to show, expanded in the Alarms tab; -1 for none. */
     private val shownAlarm = mutableLongStateOf(-1L)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,7 +57,6 @@ class ClockActivity : PvotBaseActivity() {
         route(intent)
     }
 
-    /** Selects the tab an intent from a notification, shortcut or another app asks for. */
     private fun route(intent: Intent) {
         val model = UiDataModel.getUiDataModel()
         when (intent.action) {
@@ -85,13 +80,10 @@ class ClockActivity : PvotBaseActivity() {
     }
 
     companion object {
-        /** Opens the timer keypad. */
         const val EXTRA_TIMER_SETUP = "org.prauga.clock.action.TIMER_SETUP"
 
-        /** Opens the time picker for a new alarm. */
         const val EXTRA_CREATE_ALARM = "deskclock.create.new"
 
-        /** Shows the alarm with this id. */
         const val EXTRA_SHOW_ALARM = "deskclock.scroll.to.alarm"
 
         @JvmStatic
@@ -100,7 +92,6 @@ class ClockActivity : PvotBaseActivity() {
     }
 
     override fun onStart() {
-        // Timer and stopwatch notifications hide while the app is open.
         DataModel.getDataModel().setApplicationInForeground(true)
         super.onStart()
     }

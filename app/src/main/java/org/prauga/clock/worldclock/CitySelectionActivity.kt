@@ -53,7 +53,6 @@ import org.prauga.clock.data.DataModel
 import org.prauga.clock.ui.ChoiceSheet
 import org.prauga.clock.ui.SubScreen
 
-/** Picks the cities shown as world clocks. */
 class CitySelectionActivity : PvotBaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,17 +61,14 @@ class CitySelectionActivity : PvotBaseActivity() {
     }
 }
 
-/** Cities shown together on one card, under [title]; [index] is the fast scroller's label. */
 private class Section(val title: String?, val index: String, val cities: List<City>)
 
 @Composable
 private fun CitySelectionScreen(onBack: () -> Unit) {
     val context = LocalContext.current
     val model = DataModel.getDataModel()
-    // Bumped when the list itself changes: sorting, or a place added.
     var version by remember { mutableIntStateOf(0) }
     var query by rememberSaveable { mutableStateOf("") }
-    // The cities chosen when the screen opened stay on top; checks are saved when it pauses.
     val original = remember(version) { model.selectedCities }
     val checked = remember(version) { original.toMutableStateList() }
     val save = { model.setSelectedCities(checked.toList()) }
@@ -206,7 +202,6 @@ private fun timeIn(zone: TimeZone, twentyFour: Boolean): String {
     return DateFormat.format(pattern, calendar).toString()
 }
 
-/** "Add place": a world clock with any name in any time zone, for places not in the list. */
 @Composable
 private fun AddPlaceDialog(
     visible: Boolean,

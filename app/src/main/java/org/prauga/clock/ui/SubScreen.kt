@@ -32,7 +32,6 @@ import com.prauga.pvot.designsystem.components.PvotScreenScaffold
 import com.prauga.pvot.designsystem.navigation.PvotTopBar
 import com.prauga.pvot.designsystem.theme.PvotSpacing
 
-/** A screen below the tabs: a back button and a large title that folds as the list scrolls. */
 @Composable
 fun SubScreen(
     title: String,

@@ -32,7 +32,6 @@ import org.prauga.clock.ui.ringing.ExpiredTimers;
  * This activity is designed to be shown over the lock screen. As such, it displays the expired
  * timers and a single button to reset them all. Each expired timer can also be reset to one minute
  * with a button in the user interface. All other timer operations are disabled in this activity.
- * The screen itself is {@link ExpiredTimers}, in Compose; it finishes when no timer is left.
  */
 public class ExpiredTimersActivity extends BaseActivity {
 

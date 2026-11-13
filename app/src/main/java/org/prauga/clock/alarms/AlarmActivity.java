@@ -50,11 +50,6 @@ import org.prauga.clock.ui.ringing.RingingState;
 
 import java.util.List;
 
-/**
- * The full-screen ringing alarm: snooze or dismiss it by sliding, by tapping (a setting, or with an
- * accessibility service on), or with the volume keys. The screen itself is
- * {@link AlarmRinging}, in Compose.
- */
 public class AlarmActivity extends BaseActivity {
 
     private static final LogUtils.Logger LOGGER = new LogUtils.Logger("AlarmActivity");
@@ -301,7 +296,6 @@ public class AlarmActivity extends BaseActivity {
         finishSoon();
     }
 
-    /** Leaves the outcome on screen for a moment, then closes. */
     private void finishSoon() {
         mHandler.postDelayed(this::finish, ALERT_DISMISS_DELAY_MILLIS);
     }

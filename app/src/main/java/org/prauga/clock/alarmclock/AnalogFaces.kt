@@ -17,7 +17,6 @@ import android.widget.TextView
 import androidx.core.view.setPadding
 import org.prauga.clock.R
 
-/** The faces of the analog widget, chosen per widget. */
 object AnalogFaces {
 
     enum class Face(val layout: Int, val label: Int) {
@@ -45,7 +44,6 @@ object AnalogFaces {
     }
 }
 
-/** Lets the user pick a face when adding the analog widget, or later from the launcher. */
 class AnalogWidgetConfigActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

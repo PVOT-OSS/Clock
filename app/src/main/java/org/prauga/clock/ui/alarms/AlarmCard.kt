@@ -208,7 +208,6 @@ internal fun formatTime(context: android.content.Context, hour: Int, minute: Int
     return android.text.format.DateFormat.getTimeFormat(context).format(calendar.time)
 }
 
-/** Stops a snoozed alarm, or one about to ring (its notification is up), before it goes off. */
 @Composable
 private fun PredismissButton(alarm: Alarm, version: Int, updater: AlarmUpdateHandler) {
     val context = LocalContext.current

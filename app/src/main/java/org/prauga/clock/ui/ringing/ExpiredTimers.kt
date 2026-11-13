@@ -49,7 +49,6 @@ import org.prauga.clock.data.DataModel
 import org.prauga.clock.data.Timer
 import org.prauga.clock.data.TimerListener
 
-/** The screen of timers that have run out, in Compose; ExpiredTimersActivity keeps the rest. */
 object ExpiredTimers {
 
     @JvmStatic
@@ -156,7 +155,6 @@ private fun ExpiredTimerCard(timer: Timer) {
     }
 }
 
-/** Time past the end, counting up after a minus sign. */
 private fun overtime(remaining: Long): String {
     val total = abs(remaining) / DateUtils.SECOND_IN_MILLIS
     val text =

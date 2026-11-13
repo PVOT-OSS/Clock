@@ -16,10 +16,6 @@ import android.util.Log
 import org.prauga.clock.DeskClock
 import org.prauga.clock.R
 
-/**
- * Bedtime mode: an automatic Do Not Disturb rule of our own that the bedtime alarms switch on at
- * bedtime and off at the wake-up time. Needs Do Not Disturb access.
- */
 object BedtimeMode {
 
     private val CONDITION_ID: Uri = Uri.parse("condition://org.prauga.clock/bedtime")
@@ -28,7 +24,6 @@ object BedtimeMode {
     fun hasAccess(context: Context): Boolean =
         context.getSystemService(NotificationManager::class.java).isNotificationPolicyAccessGranted
 
-    /** Turns the mode on or off now; creates the rule the first time. */
     fun setActive(context: Context, active: Boolean) {
         if (!hasAccess(context)) {
             return
@@ -51,7 +46,6 @@ object BedtimeMode {
         }
     }
 
-    /** Removes the rule when the mode is switched off in the app. */
     fun remove(context: Context) {
         if (!hasAccess(context)) {
             return

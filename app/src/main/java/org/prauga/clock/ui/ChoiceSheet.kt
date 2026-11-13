@@ -19,7 +19,6 @@ import com.prauga.pvot.designsystem.components.PvotBottomSheet
 import com.prauga.pvot.designsystem.components.list.PvotListRow
 import org.prauga.clock.R
 
-/** One of [entries], picked from a sheet; the current one is checked and scrolled into view. */
 @Composable
 fun ChoiceSheet(
     visible: Boolean,

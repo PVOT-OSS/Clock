@@ -50,7 +50,6 @@ import com.prauga.pvot.designsystem.theme.PvotSpacing
 import kotlinx.coroutines.delay
 import org.prauga.clock.R
 
-/** What happened to a ringing alarm; set by AlarmActivity, shown until it finishes. */
 class RingingState {
     var outcome by mutableStateOf<Outcome?>(null)
         private set
@@ -70,13 +69,8 @@ class RingingState {
     }
 }
 
-/** The ringing alarm's screen, in Compose: AlarmActivity keeps the ringing logic. */
 object AlarmRinging {
 
-    /**
-     * Shows the alarm called [label]. [tapToAct] (a setting, or an accessibility service on) gives
-     * two buttons instead of the slider.
-     */
     @JvmStatic
     fun show(
         activity: ComponentActivity,

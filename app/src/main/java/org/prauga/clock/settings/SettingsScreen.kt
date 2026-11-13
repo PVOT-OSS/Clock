@@ -79,7 +79,6 @@ import org.prauga.clock.settings.SettingsActivity.Companion.KEY_WEEK_START
 import org.prauga.clock.ui.ChoiceSheet
 import org.prauga.clock.ui.SubScreen
 
-/** A choice stored as a string, as the old ListPreferences stored it. */
 internal class ListSetting(
     val key: String,
     @StringRes val title: Int,
@@ -88,7 +87,7 @@ internal class ListSetting(
     val default: String,
 )
 
-/** The app's preferences, in device-protected storage so alarms can read them before unlock. */
+// Device-protected so alarms can read the settings before the first unlock.
 internal fun settingsPrefs(context: Context): SharedPreferences {
     val storage = context.createDeviceProtectedStorageContext()
     return storage.getSharedPreferences("${storage.packageName}_preferences", Context.MODE_PRIVATE)
@@ -99,7 +98,6 @@ fun SettingsScreen(onBack: () -> Unit) {
     val context = LocalContext.current
     val prefs = remember { settingsPrefs(context) }
     val model = DataModel.getDataModel()
-    // Bumped on every preference change and on resume (the ringtone picker is its own screen).
     var version by remember { mutableIntStateOf(0) }
     DisposableEffect(prefs) {
         val listener = SharedPreferences.OnSharedPreferenceChangeListener { _, _ -> version++ }
@@ -369,7 +367,6 @@ fun SettingsScreen(onBack: () -> Unit) {
         }
     }
 
-    // The sheet keeps its last setting while it slides away.
     val sheet = shown
     if (sheet != null) {
         ChoiceSheet(
@@ -431,7 +428,6 @@ private fun autoSilenceText(context: Context, value: String): String {
 
 private const val PREVIEW_MILLIS = 2000L
 
-/** The alarm stream's volume, previewed with the default alarm sound after each change. */
 @Composable
 private fun AlarmVolumeRow() {
     val context = LocalContext.current

@@ -18,7 +18,6 @@ import org.prauga.clock.data.DataModel
 import org.prauga.clock.ui.ClockActivity
 import org.prauga.clock.uidata.UiDataModel
 
-/** Home screen widget that starts a timer of a common length with one tap. */
 class TimerStarterAppWidgetProvider : AppWidgetProvider() {
 
     override fun onUpdate(context: Context, manager: AppWidgetManager, ids: IntArray) {

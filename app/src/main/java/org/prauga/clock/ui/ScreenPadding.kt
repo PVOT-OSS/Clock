@@ -17,11 +17,7 @@ import com.prauga.pvot.designsystem.components.button.PvotFabDefaults
 import com.prauga.pvot.designsystem.navigation.LocalPvotNavBarSizes
 import com.prauga.pvot.designsystem.theme.PvotSpacing
 
-/**
- * A tab's `PvotScreen` padding: below the scaffold's top bar, and clear of the nav bar and, when
- * the tab shows one, the floating action above it. The nav bar floats above the system navigation
- * bar, which PvotScreenDefaults leaves out, so that inset is added here.
- */
+// PvotScreenDefaults leaves out the system navigation bar under the floating nav bar.
 @Composable
 fun screenPadding(scaffold: PaddingValues, withFab: Boolean = false): PaddingValues =
     PvotScreenDefaults.contentPadding(

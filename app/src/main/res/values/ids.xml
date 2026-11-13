@@ -23,7 +23,6 @@
     <item name="menu_item_settings" type="id" />
     <item name="menu_item_add_place" type="id" />
 
-    <!-- Tabs of the main screen. -->
     <item name="page_alarm" type="id" />
     <item name="page_clock" type="id" />
     <item name="page_timer" type="id" />

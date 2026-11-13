@@ -15,16 +15,7 @@ import org.prauga.clock.data.DataModel
 import org.prauga.clock.stopwatch.StopwatchService
 import org.prauga.clock.uidata.UiDataModel
 
-/**
- * Deep links for automation, laid out like Google Clock's `clock-app://` links:
- * - `alarm/create?hour=7&minutes=30&label=Gym`, `alarm/show`
- * - `timer/create?length=300&label=Tea`, `timer/show`
- * - `stopwatch/start|pause|reset|lap|show`
- * - `clock/view`, `bedtime/view`
- *
- * Any app or web page can open a link, so creating alarms and timers always shows the UI rather
- * than acting silently the way the SET_ALARM permission allows.
- */
+// Any app or web page can open these links, so creating alarms and timers always shows the UI.
 class HandleUris : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

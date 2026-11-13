@@ -37,7 +37,6 @@ import org.prauga.clock.data.DataModel
 import org.prauga.clock.ui.ChoiceSheet
 import org.prauga.clock.ui.SubScreen
 
-/** How the screen saver's clock looks, on Pvot rows. */
 class ScreensaverSettingsActivity : PvotBaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -209,7 +208,6 @@ private fun ScreensaverSettingsScreen(onBack: () -> Unit) {
 @Composable
 private fun BrightnessRow(prefs: SharedPreferences, initial: Int, enabled: Boolean) {
     var percent by remember { mutableFloatStateOf(initial.toFloat()) }
-    // Dimmed like the rows above it while night mode is off.
     Column(
         Modifier.padding(horizontal = PvotSpacing.L, vertical = PvotSpacing.M)
             .alpha(if (enabled) 1f else DISABLED_ALPHA)

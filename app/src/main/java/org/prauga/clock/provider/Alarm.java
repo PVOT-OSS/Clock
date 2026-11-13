@@ -240,12 +240,6 @@ public final class Alarm implements Parcelable, ClockContract.AlarmsColumns {
         return result;
     }
 
-    /**
-     * Get every alarm with the state of its current instance, if any, as the alarm list shows them.
-     *
-     * @param cr to perform the query on.
-     * @return all alarms, each with {@link #instanceState} and {@link #instanceId} filled in.
-     */
     public static List<Alarm> getAlarmsWithInstances(ContentResolver cr) {
         final List<Alarm> result = new LinkedList<>();
         try (Cursor cursor = cr.query(ALARMS_WITH_INSTANCES_URI,
@@ -310,9 +304,7 @@ public final class Alarm implements Parcelable, ClockContract.AlarmsColumns {
     public Uri alert;
     public boolean deleteAfterUse;
     public boolean increasingVolume;
-    /** Epoch day a one-time alarm is set for, or {@link AlarmDates#NONE}. */
     public long scheduledDate = AlarmDates.NONE;
-    /** Epoch days a repeating alarm is paused for (inclusive), or {@link AlarmDates#NONE}. */
     public long pauseStart = AlarmDates.NONE;
     public long pauseEnd = AlarmDates.NONE;
     public int instanceState;

@@ -77,7 +77,6 @@ import java.util.concurrent.Executors;
 public class RingtonePickerActivity extends ToolbarBaseActivity
         implements LoaderManager.LoaderCallbacks<List<ItemAdapter.ItemHolder<Uri>>> {
 
-    /** Request code for a sound recorded by a recorder app. */
     private static final int REQUEST_RECORD_SOUND = 1;
 
     /** Key to an extra that defines resource id to the title of this activity. */
@@ -474,7 +473,6 @@ public class RingtonePickerActivity extends ToolbarBaseActivity
      * This task locates a displayable string in the background that is fit for use as the title of
      * the audio content. It adds a custom ringtone using the uri and title on the main thread.
      */
-    /** Copies a recording into our own files and adds it as a custom ringtone. */
     private void addRecordedSoundAsync(Uri recording) {
         final Context context = getApplicationContext();
         Executors.newSingleThreadExecutor().execute(() -> {

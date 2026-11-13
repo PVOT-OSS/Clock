@@ -17,7 +17,6 @@ import org.prauga.clock.ItemAdapter
 import org.prauga.clock.R
 import org.prauga.clock.ThemeUtils
 
-/** The "Record new sound" row under the user's own sounds. */
 class RecordSoundHolder : ItemAdapter.ItemHolder<Uri>(null, RecyclerView.NO_ID) {
     override fun getItemViewType(): Int = RecordSoundViewHolder.VIEW_TYPE_RECORD
 }

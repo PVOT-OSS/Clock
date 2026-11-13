@@ -14,7 +14,6 @@ import android.widget.RemoteViews
 import org.prauga.clock.DeskClock
 import org.prauga.clock.R
 
-/** Hours above minutes in large type, with the date; TextClocks keep it current by themselves. */
 class DigitalStackedAppWidgetProvider : AppWidgetProvider() {
 
     override fun onUpdate(context: Context, manager: AppWidgetManager, ids: IntArray) {

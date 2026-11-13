@@ -9,16 +9,10 @@ import java.time.LocalDate
 import java.util.Calendar
 import java.util.TimeZone
 
-/**
- * Calendar dates on top of the weekday schedule: a one-time alarm may be set for a given date, and
- * a repeating alarm may be paused for a range of dates. Dates are stored as epoch days.
- */
 object AlarmDates {
 
-    /** Stored when no date is set. */
     const val NONE = -1L
 
-    /** Next time [alarm] should ring after [now], honouring its date and pause range. */
     @JvmStatic
     fun nextAlarmTime(alarm: Alarm, now: Calendar): Calendar {
         if (!alarm.daysOfWeek.isRepeating && alarm.scheduledDate != NONE) {
@@ -37,7 +31,6 @@ object AlarmDates {
         return next
     }
 
-    /** Whether [alarm] has a pause range that has not ended yet. */
     @JvmStatic
     fun isPaused(alarm: Alarm, now: Calendar): Boolean =
         alarm.daysOfWeek.isRepeating && alarm.pauseStart != NONE && epochDay(now) <= alarm.pauseEnd

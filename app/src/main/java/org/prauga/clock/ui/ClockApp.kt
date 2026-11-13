@@ -56,7 +56,6 @@ private val NAV_TABS =
 fun ClockApp(timerSetupRequests: Int, createAlarmRequests: Int, shownAlarm: Long) {
     val model = UiDataModel.getUiDataModel()
     var selected by rememberSaveable { mutableIntStateOf(model.selectedTab.ordinal) }
-    // Intents, shortcuts and widgets pick tabs through the model too.
     DisposableEffect(Unit) {
         val listener = TabListener { selected = it.ordinal }
         model.addTabListener(listener)
@@ -67,7 +66,6 @@ fun ClockApp(timerSetupRequests: Int, createAlarmRequests: Int, shownAlarm: Long
     val context = LocalContext.current
     val listStates = Tab.entries.map { rememberLazyListState() }
     val listState = listStates[selected]
-    // The large title folds into a compact frosted bar once the tab's list scrolls.
     val compact by
         remember(listState) {
             derivedStateOf {
@@ -76,7 +74,6 @@ fun ClockApp(timerSetupRequests: Int, createAlarmRequests: Int, shownAlarm: Long
         }
 
     val snackbars = remember { SnackbarHostState() }
-    // Messages from the alarm code; a new one, or a dismiss, replaces the one showing.
     LaunchedEffect(snackbars) {
         ClockSnackbars.messages.collectLatest { message ->
             if (message != null) {

@@ -10,7 +10,6 @@ import android.content.Intent
 import android.os.Bundle
 import org.prauga.clock.ui.ClockActivity
 
-/** The classic entry point, kept for intents and shortcuts addressed to it: forwards them on. */
 class DeskClock : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

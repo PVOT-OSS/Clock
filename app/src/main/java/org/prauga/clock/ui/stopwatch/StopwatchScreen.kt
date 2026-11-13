@@ -49,7 +49,6 @@ import org.prauga.clock.data.Lap
 import org.prauga.clock.data.StopwatchListener
 import org.prauga.clock.ui.screenPadding
 
-/** The Stopwatch tab: running time, laps, and reset / start-pause / lap-or-share controls. */
 @Composable
 fun StopwatchScreen(padding: PaddingValues, listState: LazyListState) {
     val model = DataModel.getDataModel()
@@ -191,7 +190,6 @@ private fun LapRow(number: Int, lapTime: Long, total: Long, color: Color) {
     }
 }
 
-/** Fastest lap in the primary colour, slowest in the error colour, once there are two. */
 @Composable
 private fun lapColor(lap: Lap, laps: List<Lap>): Color {
     if (laps.size < 2) return Color.Unspecified

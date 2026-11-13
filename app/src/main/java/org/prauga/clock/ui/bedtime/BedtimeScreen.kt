@@ -47,7 +47,8 @@ import com.prauga.pvot.designsystem.components.PvotSwitch
 import com.prauga.pvot.designsystem.components.button.PvotButton
 import com.prauga.pvot.designsystem.components.button.PvotButtonStyle
 import java.time.LocalTime
-import java.util.concurrent.Executors
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import org.prauga.clock.R
 import org.prauga.clock.alarms.AlarmUpdateHandler
 import org.prauga.clock.alarms.ScrollHandler
@@ -260,10 +261,7 @@ private fun WakeUpCard(settings: BedtimeSettings, version: Int, onChoose: () -> 
         val id = settings.wakeUpAlarmId
         alarm =
             if (id < 0) null
-            else
-                Executors.newSingleThreadExecutor()
-                    .submit<Alarm?> { Alarm.getAlarm(context.contentResolver, id) }
-                    .get()
+            else withContext(Dispatchers.IO) { Alarm.getAlarm(context.contentResolver, id) }
     }
     Card(stringResource(R.string.wakeup_title)) {
         val linked = alarm
@@ -302,16 +300,14 @@ private fun WakeUpChooser(visible: Boolean, settings: BedtimeSettings, onDone: (
     val context = LocalContext.current
     val wakeUpTitle = stringResource(R.string.wakeup_title)
     var alarms by remember { mutableStateOf<List<Alarm>?>(null) }
-    // Loads on each opening; the list stays while the dialog eases out.
+    // Loads on each opening, off the main thread; the list stays while the dialog eases out.
     LaunchedEffect(visible) {
         if (visible) {
             alarms =
-                Executors.newSingleThreadExecutor()
-                    .submit<List<Alarm>> {
-                        Alarm.getAlarms(context.contentResolver, null)
-                            .sortedWith(compareBy({ it.hour }, { it.minutes }))
-                    }
-                    .get()
+                withContext(Dispatchers.IO) {
+                    Alarm.getAlarms(context.contentResolver, null)
+                        .sortedWith(compareBy({ it.hour }, { it.minutes }))
+                }
         }
     }
     val order = DataModel.getDataModel().weekdayOrder
@@ -446,10 +442,7 @@ private fun TomorrowCard() {
         }
     LaunchedEffect(granted) {
         if (granted) {
-            text =
-                Executors.newSingleThreadExecutor()
-                    .submit<String> { TomorrowsEvent.describe(context) }
-                    .get()
+            text = withContext(Dispatchers.IO) { TomorrowsEvent.describe(context) }
         }
     }
     Card(stringResource(R.string.calendar_title)) {

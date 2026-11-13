@@ -84,7 +84,12 @@ fun LabelDialog(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AlarmDateDialog(alarm: Alarm, onDismiss: () -> Unit, onChanged: () -> Unit) {
+fun AlarmDateDialog(
+    alarm: Alarm,
+    onDismiss: () -> Unit,
+    onSetDate: (Long) -> Unit,
+    onSetPause: (Long, Long) -> Unit,
+) {
     val today = AlarmDates.epochDay(Calendar.getInstance())
     val future =
         object : SelectableDates {
@@ -107,10 +112,7 @@ fun AlarmDateDialog(alarm: Alarm, onDismiss: () -> Unit, onChanged: () -> Unit) 
                     onClick = {
                         val start = state.selectedStartDateMillis ?: return@TextButton
                         val end = state.selectedEndDateMillis ?: return@TextButton
-                        alarm.pauseStart = start / DAY_MILLIS
-                        alarm.pauseEnd = end / DAY_MILLIS
-                        alarm.enabled = true
-                        onChanged()
+                        onSetPause(start / DAY_MILLIS, end / DAY_MILLIS)
                     },
                 ) {
                     Text(stringResource(android.R.string.ok))
@@ -120,9 +122,7 @@ fun AlarmDateDialog(alarm: Alarm, onDismiss: () -> Unit, onChanged: () -> Unit) 
                 TextButton(
                     onClick = {
                         if (paused) {
-                            alarm.pauseStart = AlarmDates.NONE
-                            alarm.pauseEnd = AlarmDates.NONE
-                            onChanged()
+                            onSetPause(AlarmDates.NONE, AlarmDates.NONE)
                         } else onDismiss()
                     }
                 ) {
@@ -154,9 +154,7 @@ fun AlarmDateDialog(alarm: Alarm, onDismiss: () -> Unit, onChanged: () -> Unit) 
                     enabled = state.selectedDateMillis != null,
                     onClick = {
                         val date = state.selectedDateMillis ?: return@TextButton
-                        alarm.scheduledDate = date / DAY_MILLIS
-                        alarm.enabled = true
-                        onChanged()
+                        onSetDate(date / DAY_MILLIS)
                     },
                 ) {
                     Text(stringResource(android.R.string.ok))
@@ -166,8 +164,7 @@ fun AlarmDateDialog(alarm: Alarm, onDismiss: () -> Unit, onChanged: () -> Unit) 
                 TextButton(
                     onClick = {
                         if (dated) {
-                            alarm.scheduledDate = AlarmDates.NONE
-                            onChanged()
+                            onSetDate(AlarmDates.NONE)
                         } else onDismiss()
                     }
                 ) {

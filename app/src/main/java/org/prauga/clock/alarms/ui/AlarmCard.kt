@@ -17,7 +17,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -35,32 +34,27 @@ import com.prauga.pvot.designsystem.components.button.PvotButtonStyle
 import com.prauga.pvot.designsystem.components.button.PvotIconButtonDefaults
 import com.prauga.pvot.designsystem.theme.PvotSpacing
 import java.util.Calendar
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import org.prauga.clock.AlarmUtils
 import org.prauga.clock.R
 import org.prauga.clock.Utils
 import org.prauga.clock.alarms.AlarmDatePicker
-import org.prauga.clock.alarms.AlarmStateManager
-import org.prauga.clock.alarms.AlarmUpdateHandler
 import org.prauga.clock.common.WeekdayButtons
 import org.prauga.clock.data.DataModel
 import org.prauga.clock.provider.Alarm
-import org.prauga.clock.provider.AlarmDates
 import org.prauga.clock.provider.AlarmInstance
 import org.prauga.clock.ringtone.RingtonePickerActivity
 
 @Composable
 fun AlarmCard(
-    modifier: Modifier = Modifier,
-    alarm: Alarm,
-    version: Int,
+    item: AlarmItem,
     expanded: Boolean,
     onToggleExpanded: () -> Unit,
     onEditTime: () -> Unit,
-    updater: AlarmUpdateHandler,
+    onEvent: (AlarmEvent) -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     val context = LocalContext.current
+    val alarm = item.alarm
     var editingLabel by remember { mutableStateOf(false) }
     var editingDate by remember { mutableStateOf(false) }
     PvotCard(modifier = modifier.fillMaxWidth(), onClick = onToggleExpanded) {
@@ -85,29 +79,19 @@ fun AlarmCard(
                 )
                 PvotSwitch(
                     checked = alarm.enabled,
-                    onCheckedChange = {
-                        alarm.enabled = it
-                        updater.asyncUpdateAlarm(alarm, it, false)
-                    },
+                    onCheckedChange = { onEvent(AlarmEvent.SetEnabled(item.id, it)) },
                 )
             }
             Text(text = summary(context, alarm), style = MaterialTheme.typography.bodyMedium)
-            PredismissButton(alarm, version, updater)
+            PredismissButton(item) { onEvent(AlarmEvent.Predismiss(item.id)) }
 
             if (expanded) {
                 WeekdayButtons(alarm.daysOfWeek) { calendarDay, on ->
-                    alarm.daysOfWeek = alarm.daysOfWeek.setBit(calendarDay, on)
-                    if (alarm.daysOfWeek.isRepeating) {
-                        alarm.scheduledDate = AlarmDates.NONE
-                    } else {
-                        alarm.pauseStart = AlarmDates.NONE
-                        alarm.pauseEnd = AlarmDates.NONE
-                    }
-                    updater.asyncUpdateAlarm(alarm, true, false)
+                    onEvent(AlarmEvent.SetDay(item.id, calendarDay, on))
                 }
                 SettingRow(
                     icon = R.drawable.ic_t_bell,
-                    text = DataModel.getDataModel().getRingtoneTitle(alarm.alert),
+                    text = item.ringtoneTitle,
                     onClick = {
                         context.startActivity(
                             RingtonePickerActivity.createAlarmRingtonePickerIntent(context, alarm)
@@ -118,18 +102,12 @@ fun AlarmCard(
                     SettingRow(
                         icon = R.drawable.ic_t_device_mobile_vibration,
                         text = stringResource(R.string.alarm_vibrate),
-                        onClick = {
-                            alarm.vibrate = !alarm.vibrate
-                            updater.asyncUpdateAlarm(alarm, false, true)
-                        },
+                        onClick = { onEvent(AlarmEvent.SetVibrate(item.id, !item.vibrate)) },
                         modifier = Modifier.weight(1f),
                     )
                     PvotSwitch(
-                        checked = alarm.vibrate,
-                        onCheckedChange = {
-                            alarm.vibrate = it
-                            updater.asyncUpdateAlarm(alarm, false, true)
-                        },
+                        checked = item.vibrate,
+                        onCheckedChange = { onEvent(AlarmEvent.SetVibrate(item.id, it)) },
                     )
                 }
                 SettingRow(
@@ -139,7 +117,7 @@ fun AlarmCard(
                 )
                 PvotButton(
                     text = stringResource(R.string.delete),
-                    onClick = { updater.asyncDeleteAlarm(alarm) },
+                    onClick = { onEvent(AlarmEvent.Delete(item.id)) },
                     style = PvotButtonStyle.Text,
                 )
             }
@@ -150,8 +128,7 @@ fun AlarmCard(
         initial = alarm.label,
         onDismiss = { editingLabel = false },
         onConfirm = {
-            alarm.label = it
-            updater.asyncUpdateAlarm(alarm, false, true)
+            onEvent(AlarmEvent.SetLabel(item.id, it))
             editingLabel = false
         },
     )
@@ -159,8 +136,12 @@ fun AlarmCard(
         AlarmDateDialog(
             alarm = alarm,
             onDismiss = { editingDate = false },
-            onChanged = {
-                updater.asyncUpdateAlarm(alarm, alarm.enabled, false)
+            onSetDate = {
+                onEvent(AlarmEvent.SetDate(item.id, it))
+                editingDate = false
+            },
+            onSetPause = { start, end ->
+                onEvent(AlarmEvent.SetPause(item.id, start, end))
                 editingDate = false
             },
         )
@@ -215,42 +196,20 @@ internal fun formatTime(context: android.content.Context, hour: Int, minute: Int
 }
 
 @Composable
-private fun PredismissButton(alarm: Alarm, version: Int, updater: AlarmUpdateHandler) {
+private fun PredismissButton(item: AlarmItem, onDismiss: () -> Unit) {
     val context = LocalContext.current
-    var instance by remember { mutableStateOf<AlarmInstance?>(null) }
-    LaunchedEffect(alarm.id, alarm.instanceId, alarm.instanceState, version) {
-        instance =
-            if (alarm.canPreemptivelyDismiss()) {
-                withContext(Dispatchers.IO) {
-                    AlarmInstance.getInstance(context.contentResolver, alarm.instanceId.toLong())
-                }
-            } else {
-                null
-            }
-    }
-    val shown = instance ?: return
+    val instance = item.instance ?: return
     PvotButton(
         text =
-            if (alarm.instanceState == AlarmInstance.SNOOZE_STATE) {
+            if (item.instanceState == AlarmInstance.SNOOZE_STATE) {
                 stringResource(
                     R.string.alarm_alert_snooze_until,
-                    AlarmUtils.getAlarmText(context, shown, false),
+                    AlarmUtils.getAlarmText(context, instance, false),
                 )
             } else {
                 stringResource(R.string.alarm_alert_dismiss_text)
             },
-        onClick = {
-            context.startService(
-                AlarmStateManager.createStateChangeIntent(
-                    context,
-                    AlarmStateManager.ALARM_DISMISS_TAG,
-                    shown,
-                    AlarmInstance.PREDISMISSED_STATE,
-                )
-            )
-            updater.showPredismissToast(shown)
-            instance = null
-        },
+        onClick = onDismiss,
         style = PvotButtonStyle.Tonal,
         modifier = Modifier.padding(top = PvotSpacing.S),
     )

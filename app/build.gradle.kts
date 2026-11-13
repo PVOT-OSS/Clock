@@ -54,6 +54,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.loader)
     implementation(libs.pvot.design.system)
+    implementation(libs.pvot.design.system.views)
     implementation(libs.pvot.core.ui)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.lifecycle.viewmodel.compose)

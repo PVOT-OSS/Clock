@@ -27,7 +27,6 @@ import org.prauga.clock.controller.Controller;
 import org.prauga.clock.data.DataModel;
 import org.prauga.clock.events.LogEventTracker;
 import org.prauga.clock.uidata.UiDataModel;
-import com.google.android.material.color.DynamicColors;
 
 public class DeskClockApplication extends Application {
 
@@ -43,7 +42,6 @@ public class DeskClockApplication extends Application {
         StopwatchAppWidgetProvider.observe(applicationContext);
         Controller.getController().setContext(applicationContext);
         Controller.getController().addEventTracker(new LogEventTracker(applicationContext));
-        DynamicColors.applyToActivitiesIfAvailable(this);
     }
 
     /**

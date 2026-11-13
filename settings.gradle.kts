@@ -26,6 +26,8 @@ includeBuild("PvotLib") {
     dependencySubstitution {
         substitute(module("com.prauga.pvot:design-system")).using(project(":design-system"))
         substitute(module("com.prauga.pvot:core-ui")).using(project(":core-ui"))
+        substitute(module("com.prauga.pvot:design-system-views"))
+            .using(project(":design-system-views"))
     }
 }
 

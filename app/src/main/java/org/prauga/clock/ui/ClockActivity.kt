@@ -39,7 +39,7 @@ class ClockActivity : PvotBaseActivity() {
             route(intent)
         }
         setPvotContent {
-            PvotAppTheme(dynamicColor = true) {
+            PvotAppTheme {
                 ClockApp(
                     timerSetupRequests = timerSetupRequests.intValue,
                     createAlarmRequests = createAlarmRequests.intValue,

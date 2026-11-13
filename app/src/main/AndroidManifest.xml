@@ -68,6 +68,13 @@
         <!-- Main app components.                                           -->
         <!-- ============================================================== -->
 
+        <!-- The Compose app on PvotLib; becomes the launcher once every tab is rebuilt. -->
+        <activity
+            android:name=".ui.ClockActivity"
+            android:exported="true"
+            android:label="@string/app_label"
+            android:theme="@style/Theme.Material3.Dark.NoActionBar" />
+
         <activity
             android:name=".DeskClock"
             android:label="@string/app_label"

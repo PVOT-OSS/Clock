@@ -182,4 +182,6 @@
     <string name="bedtime_intro_title">A steady sleep schedule</string>
     <string name="bedtime_intro_text">Set when you go to bed and the alarm that wakes you. Clock can remind you, quiet your phone overnight and play a sleep sound.</string>
     <string name="bedtime_intro_start">Get started</string>
+    <!-- Button on a tab of the new screens that isn't rebuilt yet; opens the classic screens -->
+    <string name="open_classic_view">Open in classic view</string>
 </resources>

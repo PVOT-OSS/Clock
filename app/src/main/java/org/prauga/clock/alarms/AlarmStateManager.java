@@ -44,7 +44,7 @@ import org.prauga.clock.events.Events;
 import org.prauga.clock.provider.Alarm;
 import org.prauga.clock.provider.AlarmDates;
 import org.prauga.clock.provider.AlarmInstance;
-import org.prauga.clock.ui.ClockActivity;
+import org.prauga.clock.ClockActivity;
 
 import java.util.Calendar;
 import java.util.List;

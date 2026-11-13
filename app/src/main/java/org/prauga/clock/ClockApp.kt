@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.prauga.clock.ui
+package org.prauga.clock
 
 import android.content.Intent
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -32,16 +32,18 @@ import com.prauga.pvot.designsystem.navigation.PvotTabItem
 import com.prauga.pvot.designsystem.navigation.PvotTopBar
 import com.prauga.pvot.designsystem.navigation.PvotTopBarAction
 import kotlinx.coroutines.flow.collectLatest
-import org.prauga.clock.R
+import org.prauga.clock.alarms.ui.AlarmsScreen
+import org.prauga.clock.bedtime.ui.BedtimeScreen
+import org.prauga.clock.common.ClockSnackbars
+import org.prauga.clock.common.FloatingActionSlot
+import org.prauga.clock.common.LocalFloatingActionSlot
 import org.prauga.clock.settings.SettingsActivity
-import org.prauga.clock.ui.alarms.AlarmsScreen
-import org.prauga.clock.ui.bedtime.BedtimeScreen
-import org.prauga.clock.ui.clock.ClockScreen
-import org.prauga.clock.ui.stopwatch.StopwatchScreen
-import org.prauga.clock.ui.timer.TimerScreen
+import org.prauga.clock.stopwatch.ui.StopwatchScreen
+import org.prauga.clock.timer.ui.TimerScreen
 import org.prauga.clock.uidata.TabListener
 import org.prauga.clock.uidata.UiDataModel
 import org.prauga.clock.uidata.UiDataModel.Tab
+import org.prauga.clock.worldclock.ui.ClockScreen
 
 private val NAV_TABS =
     listOf(

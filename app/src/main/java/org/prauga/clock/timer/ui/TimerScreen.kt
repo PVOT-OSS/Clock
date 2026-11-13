@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.prauga.clock.ui.timer
+package org.prauga.clock.timer.ui
 
 import android.text.format.DateUtils
 import androidx.compose.foundation.layout.Arrangement
@@ -48,11 +48,11 @@ import kotlin.time.Duration
 import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Duration.Companion.seconds
 import org.prauga.clock.R
+import org.prauga.clock.common.ScreenFab
+import org.prauga.clock.common.screenPadding
 import org.prauga.clock.data.DataModel
 import org.prauga.clock.data.Timer
 import org.prauga.clock.data.TimerListener
-import org.prauga.clock.ui.ScreenFab
-import org.prauga.clock.ui.screenPadding
 
 private val PRESETS = listOf(5, 10, 30, 45)
 

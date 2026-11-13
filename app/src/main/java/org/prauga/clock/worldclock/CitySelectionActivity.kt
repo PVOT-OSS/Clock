@@ -48,10 +48,10 @@ import java.util.Calendar
 import java.util.TimeZone
 import org.prauga.clock.R
 import org.prauga.clock.Utils
+import org.prauga.clock.common.ChoiceSheet
+import org.prauga.clock.common.SubScreen
 import org.prauga.clock.data.City
 import org.prauga.clock.data.DataModel
-import org.prauga.clock.ui.ChoiceSheet
-import org.prauga.clock.ui.SubScreen
 
 class CitySelectionActivity : PvotBaseActivity() {
 

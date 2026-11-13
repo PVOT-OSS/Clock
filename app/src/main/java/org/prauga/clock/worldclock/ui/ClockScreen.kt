@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.prauga.clock.ui.clock
+package org.prauga.clock.worldclock.ui
 
 import android.content.Context
 import android.content.Intent
@@ -59,11 +59,11 @@ import kotlinx.coroutines.delay
 import org.prauga.clock.AnalogClock
 import org.prauga.clock.R
 import org.prauga.clock.Utils
+import org.prauga.clock.common.ScreenFab
+import org.prauga.clock.common.screenPadding
 import org.prauga.clock.data.City
 import org.prauga.clock.data.CityListener
 import org.prauga.clock.data.DataModel
-import org.prauga.clock.ui.ScreenFab
-import org.prauga.clock.ui.screenPadding
 import org.prauga.clock.worldclock.CitySelectionActivity
 
 @Composable

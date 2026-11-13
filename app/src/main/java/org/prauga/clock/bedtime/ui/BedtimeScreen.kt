@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.prauga.clock.ui.bedtime
+package org.prauga.clock.bedtime.ui
 
 import android.Manifest
 import android.content.Context
@@ -50,17 +50,17 @@ import kotlinx.coroutines.withContext
 import org.prauga.clock.R
 import org.prauga.clock.alarms.AlarmUpdateHandler
 import org.prauga.clock.alarms.ScrollHandler
+import org.prauga.clock.alarms.ui.TimeDialog
+import org.prauga.clock.alarms.ui.formatTime
 import org.prauga.clock.bedtime.BedtimeMode
 import org.prauga.clock.bedtime.BedtimeScheduler
 import org.prauga.clock.bedtime.BedtimeSettings
 import org.prauga.clock.bedtime.SleepSoundService
 import org.prauga.clock.bedtime.TomorrowsEvent
+import org.prauga.clock.common.WeekdayButtons
+import org.prauga.clock.common.screenPadding
 import org.prauga.clock.data.DataModel
 import org.prauga.clock.provider.Alarm
-import org.prauga.clock.ui.WeekdayButtons
-import org.prauga.clock.ui.alarms.TimeDialog
-import org.prauga.clock.ui.alarms.formatTime
-import org.prauga.clock.ui.screenPadding
 
 private val REMINDERS = listOf(0, 15, 30, 45, 60)
 private val SLEEP_LENGTHS = listOf(15, 30, 60)

@@ -5,7 +5,7 @@
 
 @file:JvmName("Insets")
 
-package org.prauga.clock.ui
+package org.prauga.clock.common
 
 import android.view.View
 import android.view.ViewGroup

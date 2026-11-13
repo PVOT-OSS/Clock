@@ -34,9 +34,9 @@ import com.prauga.pvot.designsystem.theme.PvotAppTheme
 import com.prauga.pvot.designsystem.theme.PvotSpacing
 import java.util.Locale
 import org.prauga.clock.R
+import org.prauga.clock.common.ChoiceSheet
+import org.prauga.clock.common.SubScreen
 import org.prauga.clock.data.DataModel
-import org.prauga.clock.ui.ChoiceSheet
-import org.prauga.clock.ui.SubScreen
 
 class ScreensaverSettingsActivity : PvotBaseActivity() {
 

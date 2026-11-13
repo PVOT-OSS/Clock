@@ -41,7 +41,7 @@ import org.prauga.clock.R;
 import org.prauga.clock.ThemeUtils;
 import org.prauga.clock.provider.Alarm;
 import org.prauga.clock.provider.AlarmInstance;
-import org.prauga.clock.ui.ClockActivity;
+import org.prauga.clock.ClockActivity;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

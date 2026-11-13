@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.prauga.clock.ui.ringing
+package org.prauga.clock.timer.ui
 
 import android.text.format.DateUtils
 import androidx.activity.ComponentActivity

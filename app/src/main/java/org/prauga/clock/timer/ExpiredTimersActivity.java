@@ -26,7 +26,7 @@ import org.prauga.clock.BaseActivity;
 import org.prauga.clock.LogUtils;
 import org.prauga.clock.R;
 import org.prauga.clock.data.DataModel;
-import org.prauga.clock.ui.ringing.ExpiredTimers;
+import org.prauga.clock.timer.ui.ExpiredTimers;
 
 /**
  * This activity is designed to be shown over the lock screen. As such, it displays the expired

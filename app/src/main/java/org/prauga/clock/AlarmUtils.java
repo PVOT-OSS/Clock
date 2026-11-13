@@ -24,7 +24,7 @@ import android.widget.Toast;
 import androidx.annotation.VisibleForTesting;
 
 import org.prauga.clock.provider.AlarmInstance;
-import org.prauga.clock.ui.ClockSnackbars;
+import org.prauga.clock.common.ClockSnackbars;
 import org.prauga.clock.widget.toast.ToastManager;
 
 import java.util.Calendar;

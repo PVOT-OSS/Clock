@@ -45,8 +45,8 @@ import org.prauga.clock.data.DataModel;
 import org.prauga.clock.data.DataModel.AlarmVolumeButtonBehavior;
 import org.prauga.clock.events.Events;
 import org.prauga.clock.provider.AlarmInstance;
-import org.prauga.clock.ui.ringing.AlarmRinging;
-import org.prauga.clock.ui.ringing.RingingState;
+import org.prauga.clock.alarms.ui.AlarmRinging;
+import org.prauga.clock.alarms.ui.RingingState;
 
 import java.util.List;
 

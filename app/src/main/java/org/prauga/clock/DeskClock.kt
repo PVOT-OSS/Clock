@@ -8,7 +8,6 @@ package org.prauga.clock
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import org.prauga.clock.ui.ClockActivity
 
 class DeskClock : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -13,9 +13,9 @@ import android.content.Intent
 import android.text.format.DateUtils
 import android.widget.RemoteViews
 import android.widget.Toast
+import org.prauga.clock.ClockActivity
 import org.prauga.clock.R
 import org.prauga.clock.data.DataModel
-import org.prauga.clock.ui.ClockActivity
 import org.prauga.clock.uidata.UiDataModel
 
 class TimerStarterAppWidgetProvider : AppWidgetProvider() {

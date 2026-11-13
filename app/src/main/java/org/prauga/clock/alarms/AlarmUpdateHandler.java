@@ -27,7 +27,7 @@ import org.prauga.clock.R;
 import org.prauga.clock.events.Events;
 import org.prauga.clock.provider.Alarm;
 import org.prauga.clock.provider.AlarmInstance;
-import org.prauga.clock.ui.ClockSnackbars;
+import org.prauga.clock.common.ClockSnackbars;
 
 import java.util.Calendar;
 import java.util.List;

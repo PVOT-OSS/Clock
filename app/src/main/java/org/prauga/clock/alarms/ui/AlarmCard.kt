@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.prauga.clock.ui.alarms
+package org.prauga.clock.alarms.ui
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -43,12 +43,12 @@ import org.prauga.clock.Utils
 import org.prauga.clock.alarms.AlarmDatePicker
 import org.prauga.clock.alarms.AlarmStateManager
 import org.prauga.clock.alarms.AlarmUpdateHandler
+import org.prauga.clock.common.WeekdayButtons
 import org.prauga.clock.data.DataModel
 import org.prauga.clock.provider.Alarm
 import org.prauga.clock.provider.AlarmDates
 import org.prauga.clock.provider.AlarmInstance
 import org.prauga.clock.ringtone.RingtonePickerActivity
-import org.prauga.clock.ui.WeekdayButtons
 
 @Composable
 fun AlarmCard(

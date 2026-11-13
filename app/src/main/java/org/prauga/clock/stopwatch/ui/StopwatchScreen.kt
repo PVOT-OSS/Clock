@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.prauga.clock.ui.stopwatch
+package org.prauga.clock.stopwatch.ui
 
 import android.content.Intent
 import androidx.compose.foundation.layout.Arrangement
@@ -43,10 +43,10 @@ import com.prauga.pvot.designsystem.motion.pvotReveal
 import com.prauga.pvot.designsystem.navigation.LocalPvotNavBarSizes
 import com.prauga.pvot.designsystem.theme.PvotSpacing
 import org.prauga.clock.R
+import org.prauga.clock.common.screenPadding
 import org.prauga.clock.data.DataModel
 import org.prauga.clock.data.Lap
 import org.prauga.clock.data.StopwatchListener
-import org.prauga.clock.ui.screenPadding
 
 @Composable
 fun StopwatchScreen(padding: PaddingValues, listState: LazyListState) {

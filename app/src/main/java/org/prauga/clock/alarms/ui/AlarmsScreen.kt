@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.prauga.clock.ui.alarms
+package org.prauga.clock.alarms.ui
 
 import android.content.Context
 import android.database.ContentObserver
@@ -45,9 +45,9 @@ import org.prauga.clock.BuildConfig
 import org.prauga.clock.R
 import org.prauga.clock.alarms.AlarmUpdateHandler
 import org.prauga.clock.alarms.ScrollHandler
+import org.prauga.clock.common.ScreenFab
+import org.prauga.clock.common.screenPadding
 import org.prauga.clock.provider.Alarm
-import org.prauga.clock.ui.ScreenFab
-import org.prauga.clock.ui.screenPadding
 
 @Composable
 fun AlarmsScreen(

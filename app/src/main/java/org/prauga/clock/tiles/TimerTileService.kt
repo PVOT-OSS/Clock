@@ -11,7 +11,7 @@ import android.content.Intent
 import android.os.Build
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
-import org.prauga.clock.ui.ClockActivity
+import org.prauga.clock.ClockActivity
 import org.prauga.clock.uidata.UiDataModel
 
 class TimerTileService : TileService() {

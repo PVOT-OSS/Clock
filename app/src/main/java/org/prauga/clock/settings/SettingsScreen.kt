@@ -61,6 +61,8 @@ import org.prauga.clock.Utils
 import org.prauga.clock.alarms.AlarmGestures
 import org.prauga.clock.alarms.AlarmsOff
 import org.prauga.clock.alarms.Sunrise
+import org.prauga.clock.common.ChoiceSheet
+import org.prauga.clock.common.SubScreen
 import org.prauga.clock.data.DataModel
 import org.prauga.clock.events.Events
 import org.prauga.clock.ringtone.RingtonePickerActivity
@@ -77,8 +79,6 @@ import org.prauga.clock.settings.SettingsActivity.Companion.KEY_TIMER_CRESCENDO
 import org.prauga.clock.settings.SettingsActivity.Companion.KEY_TIMER_VIBRATE
 import org.prauga.clock.settings.SettingsActivity.Companion.KEY_VOLUME_BUTTONS
 import org.prauga.clock.settings.SettingsActivity.Companion.KEY_WEEK_START
-import org.prauga.clock.ui.ChoiceSheet
-import org.prauga.clock.ui.SubScreen
 
 internal class ListSetting(
     val key: String,

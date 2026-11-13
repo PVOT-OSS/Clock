@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.prauga.clock.ui.alarms
+package org.prauga.clock.alarms.ui
 
 import androidx.compose.material3.DatePicker
 import androidx.compose.material3.DatePickerDialog

@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package org.prauga.clock.ui
+package org.prauga.clock.common
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border

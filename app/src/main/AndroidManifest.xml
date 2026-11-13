@@ -69,7 +69,7 @@
         <!-- ============================================================== -->
 
         <activity
-            android:name=".ui.ClockActivity"
+            android:name=".ClockActivity"
             android:exported="true"
             android:label="@string/app_label"
             android:launchMode="singleTask"

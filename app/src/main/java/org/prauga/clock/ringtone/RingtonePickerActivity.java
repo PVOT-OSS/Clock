@@ -58,7 +58,7 @@ import org.prauga.clock.RingtonePreviewKlaxon;
 import org.prauga.clock.alarms.AlarmUpdateHandler;
 import org.prauga.clock.data.DataModel;
 import org.prauga.clock.provider.Alarm;
-import org.prauga.clock.ui.Insets;
+import org.prauga.clock.common.Insets;
 import org.prauga.clock.widget.ToolbarBaseActivity;
 
 import java.util.List;

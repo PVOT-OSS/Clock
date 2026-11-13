@@ -182,52 +182,48 @@ fun BedtimeScreen(padding: PaddingValues, listState: LazyListState) {
         item(key = "tomorrow") { TomorrowCard() }
     }
 
-    if (pickBedtime) {
-        TimeDialog(
-            initial = LocalTime.of(settings.hour, settings.minute),
-            onDismiss = {
-                pickBedtime = false
-                afterBedtime = null
-            },
-            onConfirm = {
-                settings.hour = it.hour
-                settings.minute = it.minute
-                settings.enabled = true
-                pickBedtime = false
-                changed()
-                afterBedtime?.invoke()
-                afterBedtime = null
-            },
-        )
-    }
-    if (pickReminder) {
-        PvotDialog(
-            visible = true,
-            onDismissRequest = { pickReminder = false },
-            title = stringResource(R.string.bedtime_reminder_title),
-            actions = {
-                REMINDERS.forEach { minutes ->
-                    PvotDialogAction(
-                        label = reminderText(minutes),
-                        onClick = {
-                            settings.reminderMinutes = minutes
-                            pickReminder = false
-                            changed()
-                        },
-                    )
-                }
-            },
-        )
-    }
-    if (pickWakeUp) {
-        WakeUpChooser(
-            settings,
-            onDone = {
-                pickWakeUp = false
-                changed()
-            },
-        )
-    }
+    TimeDialog(
+        visible = pickBedtime,
+        initial = LocalTime.of(settings.hour, settings.minute),
+        onDismiss = {
+            pickBedtime = false
+            afterBedtime = null
+        },
+        onConfirm = {
+            settings.hour = it.hour
+            settings.minute = it.minute
+            settings.enabled = true
+            pickBedtime = false
+            changed()
+            afterBedtime?.invoke()
+            afterBedtime = null
+        },
+    )
+    PvotDialog(
+        visible = pickReminder,
+        onDismissRequest = { pickReminder = false },
+        title = stringResource(R.string.bedtime_reminder_title),
+        actions = {
+            REMINDERS.forEach { minutes ->
+                PvotDialogAction(
+                    label = reminderText(minutes),
+                    onClick = {
+                        settings.reminderMinutes = minutes
+                        pickReminder = false
+                        changed()
+                    },
+                )
+            }
+        },
+    )
+    WakeUpChooser(
+        visible = pickWakeUp,
+        settings = settings,
+        onDone = {
+            pickWakeUp = false
+            changed()
+        },
+    )
 }
 
 @Composable
@@ -302,22 +298,25 @@ private fun WakeUpCard(settings: BedtimeSettings, version: Int, onChoose: () -> 
 }
 
 @Composable
-private fun WakeUpChooser(settings: BedtimeSettings, onDone: () -> Unit) {
+private fun WakeUpChooser(visible: Boolean, settings: BedtimeSettings, onDone: () -> Unit) {
     val context = LocalContext.current
     val wakeUpTitle = stringResource(R.string.wakeup_title)
     var alarms by remember { mutableStateOf<List<Alarm>?>(null) }
-    LaunchedEffect(Unit) {
-        alarms =
-            Executors.newSingleThreadExecutor()
-                .submit<List<Alarm>> {
-                    Alarm.getAlarms(context.contentResolver, null)
-                        .sortedWith(compareBy({ it.hour }, { it.minutes }))
-                }
-                .get()
+    // Loads on each opening; the list stays while the dialog eases out.
+    LaunchedEffect(visible) {
+        if (visible) {
+            alarms =
+                Executors.newSingleThreadExecutor()
+                    .submit<List<Alarm>> {
+                        Alarm.getAlarms(context.contentResolver, null)
+                            .sortedWith(compareBy({ it.hour }, { it.minutes }))
+                    }
+                    .get()
+        }
     }
     val order = DataModel.getDataModel().weekdayOrder
     PvotDialog(
-        visible = alarms != null,
+        visible = visible && alarms != null,
         onDismissRequest = onDone,
         title = stringResource(R.string.wakeup_title),
         actions = {

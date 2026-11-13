@@ -87,7 +87,13 @@ fun AlarmsScreen(
     var expanded by rememberSaveable { mutableLongStateOf(-1L) }
     var editingTime by remember { mutableStateOf<Alarm?>(null) }
     var adding by rememberSaveable { mutableStateOf(false) }
-    LaunchedEffect(createRequests) { if (createRequests > 0) adding = true }
+    var timeDialogOpen by rememberSaveable { mutableStateOf(false) }
+    LaunchedEffect(createRequests) {
+        if (createRequests > 0) {
+            adding = true
+            timeDialogOpen = true
+        }
+    }
     LaunchedEffect(shownAlarm, alarms) {
         val index = alarms.indexOfFirst { it.id == shownAlarm }
         if (index >= 0) {
@@ -96,7 +102,10 @@ fun AlarmsScreen(
         }
     }
 
-    ScreenFab(R.drawable.ic_t_plus, R.string.new_alarm) { adding = true }
+    ScreenFab(R.drawable.ic_t_plus, R.string.new_alarm) {
+        adding = true
+        timeDialogOpen = true
+    }
 
     if (loaded && alarms.isEmpty()) {
         Box(Modifier.fillMaxSize().padding(padding), contentAlignment = Alignment.Center) {
@@ -120,38 +129,38 @@ fun AlarmsScreen(
                     version = version,
                     expanded = expanded == alarm.id,
                     onToggleExpanded = { expanded = if (expanded == alarm.id) -1L else alarm.id },
-                    onEditTime = { editingTime = alarm },
+                    onEditTime = {
+                        editingTime = alarm
+                        adding = false
+                        timeDialogOpen = true
+                    },
                     updater = updater,
                 )
             }
         }
     }
 
-    val target = editingTime
-    if (target != null || adding) {
-        val now = LocalTime.now()
-        TimeDialog(
-            initial =
-                if (target != null) LocalTime.of(target.hour, target.minutes)
-                else LocalTime.of(now.hour, 0),
-            onDismiss = {
-                editingTime = null
-                adding = false
-            },
-            onConfirm = { time ->
-                if (target != null) {
-                    target.hour = time.hour
-                    target.minutes = time.minute
-                    target.enabled = true
-                    updater.asyncUpdateAlarm(target, true, false)
-                } else {
-                    updater.asyncAddAlarm(Alarm(time.hour, time.minute).apply { enabled = true })
-                }
-                editingTime = null
-                adding = false
-            },
-        )
-    }
+    // The dialog keeps its alarm and mode after closing, so it shows the same time while it eases
+    // out.
+    val target = editingTime.takeUnless { adding }
+    TimeDialog(
+        visible = timeDialogOpen,
+        initial =
+            if (target != null) LocalTime.of(target.hour, target.minutes)
+            else LocalTime.of(LocalTime.now().hour, 0),
+        onDismiss = { timeDialogOpen = false },
+        onConfirm = { time ->
+            if (target != null) {
+                target.hour = time.hour
+                target.minutes = time.minute
+                target.enabled = true
+                updater.asyncUpdateAlarm(target, true, false)
+            } else {
+                updater.asyncAddAlarm(Alarm(time.hour, time.minute).apply { enabled = true })
+            }
+            timeDialogOpen = false
+        },
+    )
 }
 
 private val PROVIDER: Uri = Uri.parse("content://${BuildConfig.APPLICATION_ID}/")

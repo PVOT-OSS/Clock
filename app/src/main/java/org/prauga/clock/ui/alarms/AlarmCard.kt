@@ -137,17 +137,16 @@ fun AlarmCard(
             }
         }
     }
-    if (editingLabel) {
-        LabelDialog(
-            initial = alarm.label,
-            onDismiss = { editingLabel = false },
-            onConfirm = {
-                alarm.label = it
-                updater.asyncUpdateAlarm(alarm, false, true)
-                editingLabel = false
-            },
-        )
-    }
+    LabelDialog(
+        visible = editingLabel,
+        initial = alarm.label,
+        onDismiss = { editingLabel = false },
+        onConfirm = {
+            alarm.label = it
+            updater.asyncUpdateAlarm(alarm, false, true)
+            editingLabel = false
+        },
+    )
     if (editingDate) {
         AlarmDateDialog(
             alarm = alarm,

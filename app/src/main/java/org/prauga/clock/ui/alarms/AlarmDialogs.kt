@@ -35,10 +35,16 @@ import org.prauga.clock.provider.AlarmDates
 private val DAY_MILLIS = TimeUnit.DAYS.toMillis(1)
 
 @Composable
-fun TimeDialog(initial: LocalTime, onDismiss: () -> Unit, onConfirm: (LocalTime) -> Unit) {
-    var time by remember { mutableStateOf(initial) }
+fun TimeDialog(
+    visible: Boolean,
+    initial: LocalTime,
+    onDismiss: () -> Unit,
+    onConfirm: (LocalTime) -> Unit,
+) {
+    // Starts from [initial] each time it opens, and keeps the picked time while it eases out.
+    var time by remember(visible) { mutableStateOf(initial) }
     PvotDialog(
-        visible = true,
+        visible = visible,
         onDismissRequest = onDismiss,
         title = null,
         content = { PvotClockPicker(time = time, onTimeChange = { time = it }) },
@@ -54,10 +60,15 @@ fun TimeDialog(initial: LocalTime, onDismiss: () -> Unit, onConfirm: (LocalTime)
 }
 
 @Composable
-fun LabelDialog(initial: String, onDismiss: () -> Unit, onConfirm: (String) -> Unit) {
-    var label by remember { mutableStateOf(initial) }
+fun LabelDialog(
+    visible: Boolean,
+    initial: String,
+    onDismiss: () -> Unit,
+    onConfirm: (String) -> Unit,
+) {
+    var label by remember(visible) { mutableStateOf(initial) }
     PvotDialog(
-        visible = true,
+        visible = visible,
         onDismissRequest = onDismiss,
         title = stringResource(R.string.label),
         content = { PvotTextField(value = label, onValueChange = { label = it }) },

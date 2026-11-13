@@ -8,6 +8,7 @@ package org.prauga.clock.data
 import android.app.ActivityManager
 import android.app.AlarmManager
 import android.app.NotificationManager
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.media.AudioManager
@@ -26,7 +27,9 @@ object AlarmReliability {
     @JvmField
     val openFullScreenIntentSettings =
         View.OnClickListener { v ->
-            openAppSetting(v.context, Settings.ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+                openAppSetting(v.context, Settings.ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT)
+            }
         }
 
     // USE_EXACT_ALARM grants this, but some ROMs still deny it.
@@ -72,7 +75,7 @@ object AlarmReliability {
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         try {
             context.startActivity(intent)
-        } catch (_: Exception) {
+        } catch (_: ActivityNotFoundException) {
             context.startActivity(
                 Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
                     .setData(intent.data)

@@ -13,6 +13,8 @@ import android.text.format.DateFormat
 import android.webkit.MimeTypeMap
 import androidx.core.content.FileProvider
 import java.io.File
+import java.io.IOException
+import org.prauga.clock.LogUtils
 import org.prauga.clock.R
 
 // The recorder only lends its result, so recordings are copied and served from our FileProvider.
@@ -43,7 +45,12 @@ object RecordedSounds {
             resolver.openInputStream(source)?.use { input ->
                 file.outputStream().use { output -> input.copyTo(output) }
             } ?: return null
-        } catch (_: Exception) {
+        } catch (e: IOException) {
+            LogUtils.w("Could not copy the recording: %s", e)
+            file.delete()
+            return null
+        } catch (e: SecurityException) {
+            LogUtils.w("Could not read the recording: %s", e)
             file.delete()
             return null
         }

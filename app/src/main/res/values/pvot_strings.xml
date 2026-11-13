@@ -183,4 +183,8 @@
     <string name="new_timer">New timer</string>
     <!-- Floating button on the Clock tab that adds a city's clock -->
     <string name="add_city">Add city</string>
+    <!-- Placeholder of the search field above the list of cities -->
+    <string name="search_cities">Search cities</string>
+    <!-- Row in the "Add place" dialog that picks the place's time zone -->
+    <string name="add_place_zone">Time zone</string>
 </resources>

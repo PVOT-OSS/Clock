@@ -6,10 +6,16 @@
 package org.prauga.clock.ui
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyListScope
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
@@ -19,6 +25,7 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import com.prauga.pvot.designsystem.components.PvotScreen
 import com.prauga.pvot.designsystem.components.PvotScreenDefaults
 import com.prauga.pvot.designsystem.components.PvotScreenScaffold
@@ -31,15 +38,18 @@ fun SubScreen(
     title: String,
     onBack: () -> Unit,
     verticalArrangement: Arrangement.Vertical = Arrangement.spacedBy(PvotSpacing.L),
+    state: LazyListState = rememberLazyListState(),
+    actions: @Composable RowScope.() -> Unit = {},
+    listOverlay: @Composable BoxScope.() -> Unit = {},
     content: LazyListScope.() -> Unit,
 ) {
-    val state = rememberLazyListState()
     val compact by remember {
         derivedStateOf { state.firstVisibleItemIndex > 0 || state.firstVisibleItemScrollOffset > 0 }
     }
     val bottom = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
-    PvotScreenScaffold(topBar = { PvotTopBar(title, onBack = onBack, compact = compact) }) { padding
-        ->
+    PvotScreenScaffold(
+        topBar = { PvotTopBar(title, onBack = onBack, compact = compact, actions = actions) }
+    ) { padding ->
         CompositionLocalProvider(LocalContentColor provides MaterialTheme.colorScheme.onSurface) {
             PvotScreen(
                 state = state,
@@ -52,6 +62,10 @@ fun SubScreen(
                 horizontalAlignment = Alignment.Start,
                 content = content,
             )
+            // Below the top bar, so an edge control such as a fast scroller can't take its taps.
+            Box(Modifier.fillMaxSize().padding(top = padding.calculateTopPadding())) {
+                listOverlay()
+            }
         }
     }
 }

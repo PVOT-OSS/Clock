@@ -6,6 +6,7 @@
 package org.prauga.clock.data
 
 import android.content.SharedPreferences
+import androidx.core.content.edit
 import java.util.TimeZone
 
 object CustomPlaces {
@@ -29,7 +30,7 @@ object CustomPlaces {
     @JvmStatic
     fun add(prefs: SharedPreferences, name: String, zone: String): String {
         val entries = entries(prefs) + (name.replace("\n", " ") to zone)
-        prefs.edit().putString(KEY, entries.joinToString("\n") { (n, z) -> "$n\t$z" }).apply()
+        prefs.edit { putString(KEY, entries.joinToString("\n") { (n, z) -> "$n\t$z" }) }
         return ID_PREFIX + entries.lastIndex
     }
 

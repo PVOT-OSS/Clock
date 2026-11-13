@@ -7,6 +7,7 @@ package org.prauga.clock.bedtime
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.core.content.edit
 import java.util.Calendar
 import org.prauga.clock.data.Weekdays
 
@@ -19,47 +20,47 @@ class BedtimeSettings(context: Context) {
 
     var enabled: Boolean
         get() = prefs.getBoolean(KEY_ENABLED, false)
-        set(value) = prefs.edit().putBoolean(KEY_ENABLED, value).apply()
+        set(value) = prefs.edit { putBoolean(KEY_ENABLED, value) }
 
     var hour: Int
         get() = prefs.getInt(KEY_HOUR, 22)
-        set(value) = prefs.edit().putInt(KEY_HOUR, value).apply()
+        set(value) = prefs.edit { putInt(KEY_HOUR, value) }
 
     var minute: Int
         get() = prefs.getInt(KEY_MINUTE, 30)
-        set(value) = prefs.edit().putInt(KEY_MINUTE, value).apply()
+        set(value) = prefs.edit { putInt(KEY_MINUTE, value) }
 
     var days: Weekdays
         get() = Weekdays.fromBits(prefs.getInt(KEY_DAYS, ALL_DAYS))
-        set(value) = prefs.edit().putInt(KEY_DAYS, value.bits).apply()
+        set(value) = prefs.edit { putInt(KEY_DAYS, value.bits) }
 
     var wakeUpAlarmId: Long
         get() = prefs.getLong(KEY_WAKEUP_ALARM, -1)
-        set(value) = prefs.edit().putLong(KEY_WAKEUP_ALARM, value).apply()
+        set(value) = prefs.edit { putLong(KEY_WAKEUP_ALARM, value) }
 
     var modeEnabled: Boolean
         get() = prefs.getBoolean(KEY_MODE, false)
-        set(value) = prefs.edit().putBoolean(KEY_MODE, value).apply()
+        set(value) = prefs.edit { putBoolean(KEY_MODE, value) }
 
     var zenRuleId: String?
         get() = prefs.getString(KEY_ZEN_RULE, null)
-        set(value) = prefs.edit().putString(KEY_ZEN_RULE, value).apply()
+        set(value) = prefs.edit { putString(KEY_ZEN_RULE, value) }
 
     var sleepSound: Int
         get() = prefs.getInt(KEY_SLEEP_SOUND, 2)
-        set(value) = prefs.edit().putInt(KEY_SLEEP_SOUND, value).apply()
+        set(value) = prefs.edit { putInt(KEY_SLEEP_SOUND, value) }
 
     var sleepSoundMinutes: Int
         get() = prefs.getInt(KEY_SLEEP_SOUND_MINUTES, 30)
-        set(value) = prefs.edit().putInt(KEY_SLEEP_SOUND_MINUTES, value).apply()
+        set(value) = prefs.edit { putInt(KEY_SLEEP_SOUND_MINUTES, value) }
 
     var introDone: Boolean
         get() = prefs.getBoolean(KEY_INTRO_DONE, false)
-        set(value) = prefs.edit().putBoolean(KEY_INTRO_DONE, value).apply()
+        set(value) = prefs.edit { putBoolean(KEY_INTRO_DONE, value) }
 
     var reminderMinutes: Int
         get() = prefs.getInt(KEY_REMINDER, 15)
-        set(value) = prefs.edit().putInt(KEY_REMINDER, value).apply()
+        set(value) = prefs.edit { putInt(KEY_REMINDER, value) }
 
     fun nextBedtime(now: Calendar = Calendar.getInstance()): Calendar? {
         if (!enabled || !days.isRepeating) {

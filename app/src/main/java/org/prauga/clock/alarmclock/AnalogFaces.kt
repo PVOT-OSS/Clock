@@ -14,6 +14,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.edit
 import androidx.core.view.setPadding
 import org.prauga.clock.R
 
@@ -35,12 +36,12 @@ object AnalogFaces {
             .layout
 
     fun set(context: Context, widgetId: Int, face: Face) {
-        prefs(context).edit().putInt(widgetId.toString(), face.ordinal).apply()
+        prefs(context).edit { putInt(widgetId.toString(), face.ordinal) }
     }
 
     @JvmStatic
     fun forget(context: Context, widgetIds: IntArray) {
-        prefs(context).edit().apply { widgetIds.forEach { remove(it.toString()) } }.apply()
+        prefs(context).edit { widgetIds.forEach { remove(it.toString()) } }
     }
 }
 

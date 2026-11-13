@@ -6,6 +6,7 @@
 package org.prauga.clock.worldclock
 
 import android.content.SharedPreferences
+import androidx.core.content.edit
 import org.prauga.clock.data.City
 
 object CityOrder {
@@ -17,7 +18,7 @@ object CityOrder {
 
     @JvmStatic
     fun setCustom(prefs: SharedPreferences) {
-        prefs.edit().putBoolean(KEY_CUSTOM_ORDER, true).apply()
+        prefs.edit { putBoolean(KEY_CUSTOM_ORDER, true) }
     }
 
     @JvmStatic

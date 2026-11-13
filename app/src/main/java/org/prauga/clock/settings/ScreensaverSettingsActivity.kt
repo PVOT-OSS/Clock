@@ -24,6 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.core.content.edit
 import com.prauga.pvot.designsystem.components.list.PvotListGroup
 import com.prauga.pvot.designsystem.components.list.PvotPreferenceRow
 import com.prauga.pvot.designsystem.components.list.PvotSwitchRow
@@ -113,7 +114,7 @@ private fun ScreensaverSettingsScreen(onBack: () -> Unit) {
         open = setting
         shown = setting
     }
-    fun switch(key: String, value: Boolean) = prefs.edit().putBoolean(key, value).apply()
+    fun switch(key: String, value: Boolean) = prefs.edit { putBoolean(key, value) }
 
     SubScreen(stringResource(R.string.screensaver_settings), onBack) {
         item {
@@ -198,7 +199,7 @@ private fun ScreensaverSettingsScreen(onBack: () -> Unit) {
             selected = sheet.values.indexOf(values[sheet.key]),
             onDismiss = { open = null },
             onSelect = { index ->
-                prefs.edit().putString(sheet.key, sheet.values[index]).apply()
+                prefs.edit { putString(sheet.key, sheet.values[index]) }
                 open = null
             },
         )
@@ -227,10 +228,9 @@ private fun BrightnessRow(prefs: SharedPreferences, initial: Int, enabled: Boole
             valueRange = 0f..100f,
             enabled = enabled,
             onValueChangeFinished = {
-                prefs
-                    .edit()
-                    .putInt(ScreensaverSettingsActivity.KEY_NIGHT_MODE_BRIGHTNESS, percent.toInt())
-                    .apply()
+                prefs.edit {
+                    putInt(ScreensaverSettingsActivity.KEY_NIGHT_MODE_BRIGHTNESS, percent.toInt())
+                }
             },
         )
     }

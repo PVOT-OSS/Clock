@@ -12,13 +12,14 @@ import android.content.Context
 import android.net.Uri
 import android.os.Build
 import android.service.notification.Condition
+import androidx.core.net.toUri
 import org.prauga.clock.DeskClock
 import org.prauga.clock.LogUtils
 import org.prauga.clock.R
 
 object BedtimeMode {
 
-    private val CONDITION_ID: Uri = Uri.parse("condition://org.prauga.clock/bedtime")
+    private val CONDITION_ID: Uri = "condition://org.prauga.clock/bedtime".toUri()
 
     @JvmStatic
     fun hasAccess(context: Context): Boolean =

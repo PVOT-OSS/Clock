@@ -80,7 +80,7 @@ import org.prauga.clock.ui.ChoiceSheet
 import org.prauga.clock.ui.SubScreen
 
 /** A choice stored as a string, as the old ListPreferences stored it. */
-private class ListSetting(
+internal class ListSetting(
     val key: String,
     @StringRes val title: Int,
     val entries: List<String>,
@@ -409,7 +409,7 @@ fun SettingsScreen(onBack: () -> Unit) {
 }
 
 @Composable
-private fun list(
+internal fun list(
     key: String,
     @StringRes title: Int,
     @ArrayRes entries: Int,

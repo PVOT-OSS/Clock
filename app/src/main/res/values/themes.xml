@@ -40,12 +40,6 @@
         <item name="actionBarSize">64dp</item>
     </style>
 
-    <style name="Theme.DeskClock.Settings">
-        <item name="colorPrimary">?attr/colorSurface</item>
-        <item name="elevationOverlayColor">?attr/colorPrimary</item>
-        <item name="colorControlActivated">?attr/colorAccent</item>
-        <item name="android:dropDownSpinnerStyle">@style/DeskClock.Settings.DropDownSpinnerStyle</item>
-    </style>
 
     <style name="Theme.DeskClock.CitySelection">
         <!-- Attributes from androidx.appcompat.appcompat -->

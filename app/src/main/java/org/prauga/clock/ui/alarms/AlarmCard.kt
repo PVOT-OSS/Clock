@@ -17,6 +17,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -33,13 +34,18 @@ import com.prauga.pvot.designsystem.components.PvotSwitch
 import com.prauga.pvot.designsystem.components.button.PvotButton
 import com.prauga.pvot.designsystem.components.button.PvotButtonStyle
 import java.util.Calendar
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import org.prauga.clock.AlarmUtils
 import org.prauga.clock.R
 import org.prauga.clock.Utils
 import org.prauga.clock.alarms.AlarmDatePicker
+import org.prauga.clock.alarms.AlarmStateManager
 import org.prauga.clock.alarms.AlarmUpdateHandler
 import org.prauga.clock.data.DataModel
 import org.prauga.clock.provider.Alarm
 import org.prauga.clock.provider.AlarmDates
+import org.prauga.clock.provider.AlarmInstance
 import org.prauga.clock.ringtone.RingtonePickerActivity
 import org.prauga.clock.ui.WeekdayButtons
 
@@ -47,7 +53,7 @@ import org.prauga.clock.ui.WeekdayButtons
 fun AlarmCard(
     modifier: Modifier = Modifier,
     alarm: Alarm,
-    @Suppress("UNUSED_PARAMETER") version: Int,
+    version: Int,
     expanded: Boolean,
     onToggleExpanded: () -> Unit,
     onEditTime: () -> Unit,
@@ -85,6 +91,7 @@ fun AlarmCard(
                 )
             }
             Text(text = summary(context, alarm), style = MaterialTheme.typography.bodyMedium)
+            PredismissButton(alarm, version, updater)
 
             if (expanded) {
                 WeekdayButtons(alarm.daysOfWeek) { calendarDay, on ->
@@ -199,4 +206,47 @@ internal fun formatTime(context: android.content.Context, hour: Int, minute: Int
             set(Calendar.MINUTE, minute)
         }
     return android.text.format.DateFormat.getTimeFormat(context).format(calendar.time)
+}
+
+/** Stops a snoozed alarm, or one about to ring (its notification is up), before it goes off. */
+@Composable
+private fun PredismissButton(alarm: Alarm, version: Int, updater: AlarmUpdateHandler) {
+    val context = LocalContext.current
+    var instance by remember { mutableStateOf<AlarmInstance?>(null) }
+    LaunchedEffect(alarm.id, alarm.instanceId, alarm.instanceState, version) {
+        instance =
+            if (alarm.canPreemptivelyDismiss()) {
+                withContext(Dispatchers.IO) {
+                    AlarmInstance.getInstance(context.contentResolver, alarm.instanceId.toLong())
+                }
+            } else {
+                null
+            }
+    }
+    val shown = instance ?: return
+    PvotButton(
+        text =
+            if (alarm.instanceState == AlarmInstance.SNOOZE_STATE) {
+                stringResource(
+                    R.string.alarm_alert_snooze_until,
+                    AlarmUtils.getAlarmText(context, shown, false),
+                )
+            } else {
+                stringResource(R.string.alarm_alert_dismiss_text)
+            },
+        onClick = {
+            context.startService(
+                AlarmStateManager.createStateChangeIntent(
+                    context,
+                    AlarmStateManager.ALARM_DISMISS_TAG,
+                    shown,
+                    AlarmInstance.PREDISMISSED_STATE,
+                )
+            )
+            updater.showPredismissToast(shown)
+            instance = null
+        },
+        style = PvotButtonStyle.Tonal,
+        modifier = Modifier.padding(top = 8.dp),
+    )
 }

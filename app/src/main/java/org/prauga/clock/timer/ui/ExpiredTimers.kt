@@ -5,6 +5,7 @@
 
 package org.prauga.clock.timer.ui
 
+import android.os.SystemClock
 import android.text.format.DateUtils
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.LocalActivity
@@ -24,13 +25,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableLongStateOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.neverEqualPolicy
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.withFrameMillis
@@ -38,6 +35,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.prauga.pvot.coreui.UiState
 import com.prauga.pvot.designsystem.components.PvotCard
 import com.prauga.pvot.designsystem.components.button.PvotButton
 import com.prauga.pvot.designsystem.components.button.PvotButtonStyle
@@ -46,8 +46,6 @@ import com.prauga.pvot.designsystem.theme.PvotSpacing
 import kotlin.math.abs
 import org.prauga.clock.R
 import org.prauga.clock.data.DataModel
-import org.prauga.clock.data.Timer
-import org.prauga.clock.data.TimerListener
 
 object ExpiredTimers {
 
@@ -66,34 +64,19 @@ object ExpiredTimers {
 }
 
 @Composable
-private fun ExpiredTimersScreen() {
-    val model = DataModel.getDataModel()
-    val activity = LocalActivity.current
-    // Timer.equals compares ids only: keep every update, and redraw on each version.
-    var timers by remember { mutableStateOf(model.expiredTimers.toList(), neverEqualPolicy()) }
-    var version by remember { mutableIntStateOf(0) }
-    DisposableEffect(Unit) {
-        val listener =
-            object : TimerListener {
-                override fun timerAdded(timer: Timer) = reload()
-
-                override fun timerUpdated(before: Timer, after: Timer) = reload()
-
-                override fun timerRemoved(timer: Timer) = reload()
-
-                private fun reload() {
-                    timers = model.expiredTimers.toList()
-                    version++
-                }
-            }
-        model.addTimerListener(listener)
-        onDispose { model.removeTimerListener(listener) }
+private fun ExpiredTimersScreen(
+    viewModel: TimerViewModel = viewModel {
+        TimerViewModel(DataModel.getDataModel(), expiredOnly = true)
     }
-    LaunchedEffect(timers) { if (timers.isEmpty()) activity?.finish() }
-    var now by remember { mutableLongStateOf(0L) }
+) {
+    val activity = LocalActivity.current
+    val state by viewModel.state.collectAsStateWithLifecycle()
+    val timers = (state as? UiState.Success)?.data ?: return
+    LaunchedEffect(timers.isEmpty()) { if (timers.isEmpty()) activity?.finish() }
+    var now by remember { mutableLongStateOf(SystemClock.elapsedRealtime()) }
     LaunchedEffect(Unit) {
         while (true) {
-            withFrameMillis { now = it }
+            withFrameMillis { now = SystemClock.elapsedRealtime() }
         }
     }
 
@@ -110,27 +93,23 @@ private fun ExpiredTimersScreen() {
             modifier = Modifier.padding(bottom = PvotSpacing.L),
         )
         LazyColumn(verticalArrangement = Arrangement.spacedBy(PvotSpacing.M)) {
-            items(timers, key = { it.id }) { timer ->
-                // Read the clock and version so the card redraws as the overtime grows.
-                now.let {}
-                version.let {}
-                ExpiredTimerCard(model.getTimer(timer.id) ?: timer)
+            items(timers, key = { it.id }) { item ->
+                ExpiredTimerCard(item, item.remainingAt(now), viewModel::onEvent)
             }
         }
     }
 }
 
 @Composable
-private fun ExpiredTimerCard(timer: Timer) {
-    val model = DataModel.getDataModel()
+private fun ExpiredTimerCard(item: TimerItem, remaining: Long, onEvent: (TimerEvent) -> Unit) {
     PvotCard(Modifier.fillMaxWidth()) {
         Column(Modifier.padding(PvotSpacing.L)) {
             Text(
-                timer.label.ifEmpty { stringResource(R.string.timer_notification_label) },
+                item.label.ifEmpty { stringResource(R.string.timer_notification_label) },
                 style = MaterialTheme.typography.titleMedium,
             )
             Text(
-                overtime(timer.remainingTime),
+                overtime(remaining),
                 style = MaterialTheme.typography.displayMedium,
                 fontWeight = FontWeight.Light,
                 color = MaterialTheme.colorScheme.error,
@@ -142,12 +121,12 @@ private fun ExpiredTimerCard(timer: Timer) {
             ) {
                 PvotButton(
                     text = stringResource(R.string.timer_plus_1_min),
-                    onClick = { model.addTimerMinute(timer) },
+                    onClick = { onEvent(TimerEvent.AddMinute(item.id)) },
                     style = PvotButtonStyle.Tonal,
                 )
                 PvotButton(
                     text = stringResource(R.string.timer_stop),
-                    onClick = { model.resetOrDeleteTimer(timer, R.string.label_deskclock) },
+                    onClick = { onEvent(TimerEvent.Stop(item.id)) },
                     style = PvotButtonStyle.Filled,
                 )
             }

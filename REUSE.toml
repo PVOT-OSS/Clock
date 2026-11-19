@@ -13,6 +13,12 @@ SPDX-FileCopyrightText = "2007-2023 Gradle, Inc."
 SPDX-License-Identifier = "Apache-2.0"
 
 [[annotations]]
+path = ["fastlane/metadata/android/**/*.txt", "fastlane/metadata/android/**/*.png"]
+precedence = "override"
+SPDX-FileCopyrightText = "Saalim Quadri <danascape@gmail.com>"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
 path = "**"
 precedence = "closest"
 SPDX-FileCopyrightText = ["The Android Open Source Project", "The LineageOS Project"]

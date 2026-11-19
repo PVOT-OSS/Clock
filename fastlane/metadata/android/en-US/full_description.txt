@@ -1,0 +1,37 @@
+Clock is a simple, reliable alarm clock with timers, a stopwatch, world clocks and a bedtime routine.
+
+Alarms you can rely on
+• Repeat on chosen days, ring once on a date, or pause a repeating alarm for a holiday
+• Labels, your own sounds (pick a file or record one) and vibration
+• Slide up to dismiss and down to snooze, or tap if you prefer
+• Snooze length, silence after, gradually increasing volume and a sunrise that brightens the screen before the alarm
+• Volume buttons, flipping or shaking the phone can snooze or dismiss
+• Dismiss an upcoming or snoozed alarm early, or turn off all alarms at once
+• Tells you why an alarm was missed, and warns you when battery or permission settings could keep alarms from ringing
+
+Timers and stopwatch
+• Run several timers at once, add a minute with one tap, start from 5, 10, 30 or 45 minute presets
+• Stopwatch with laps, your fastest and slowest lap highlighted, and sharing of your times
+• Live notifications and Quick Settings tiles for the timer and stopwatch
+
+World clocks
+• Search more than 300 cities, or add a place of your own in any time zone
+• Sort by name or by time zone, and reorder or remove clocks with a long press
+• A home clock appears automatically while you travel
+
+Bedtime
+• Set a bedtime and days, with a reminder before it
+• Link the alarm that wakes you and see how long you will sleep
+• Do Not Disturb from bedtime until you wake up
+• White, pink and brown noise made on your phone, with a sleep timer
+• See tomorrow's first calendar event before you go to bed
+
+And more
+• Screen saver with a night mode for dark rooms
+• Home screen widgets: analog clock with three faces, digital, stacked, stopwatch and timer
+• Light and dark themes
+
+Private and open
+• No ads, no accounts, no tracking
+• No internet permission: your alarms and settings never leave your phone
+• Free and open source under the Apache-2.0 licence: github.com/PVOT-OSS/Clock

@@ -8,6 +8,12 @@ plugins {
     alias(libs.plugins.pvot.android.compose)
 }
 
+val versionMajor = rootProject.extra["versionMajor"] as Int
+val versionMinor = rootProject.extra["versionMinor"] as Int
+val versionPatch = rootProject.extra["versionPatch"] as Int
+val computedVersionCode = rootProject.extra["computedVersionCode"] as Int
+val computedVersionName = rootProject.extra["computedVersionName"] as String
+
 android {
     namespace = "org.prauga.clock"
     compileSdk { version = release(37) { minorApiLevel = 1 } }
@@ -16,6 +22,12 @@ android {
         applicationId = "org.prauga.clock"
         minSdk = 31
         targetSdk = 36
+        versionCode = computedVersionCode
+        versionName = computedVersionName
+
+        buildConfigField("int", "VERSION_MAJOR", "$versionMajor")
+        buildConfigField("int", "VERSION_MINOR", "$versionMinor")
+        buildConfigField("int", "VERSION_PATCH", "$versionPatch")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

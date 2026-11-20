@@ -16,9 +16,9 @@ import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableLongStateOf
+import androidx.compose.runtime.key
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -33,13 +33,15 @@ import com.prauga.pvot.coreui.UiState
 import com.prauga.pvot.designsystem.components.PvotScreen
 import com.prauga.pvot.designsystem.components.button.PvotIconButtonDefaults
 import com.prauga.pvot.designsystem.motion.pvotReveal
-import java.time.LocalTime
 import org.prauga.clock.R
+import org.prauga.clock.alarms.AlarmEditorActivity
 import org.prauga.clock.alarms.data.AlarmRepository
 import org.prauga.clock.common.ScreenAction
-import org.prauga.clock.common.TimeDialog
+import org.prauga.clock.common.TwoPane
+import org.prauga.clock.common.rememberWindowLayout
 import org.prauga.clock.common.screenPadding
 import org.prauga.clock.data.DataModel
+import org.prauga.clock.provider.Alarm
 
 @Composable
 fun AlarmsScreen(
@@ -51,29 +53,74 @@ fun AlarmsScreen(
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     val alarms = (state as? UiState.Success)?.data
-    var expanded by rememberSaveable { mutableLongStateOf(-1L) }
-    var editingTime by remember { mutableStateOf<AlarmItem?>(null) }
-    var adding by rememberSaveable { mutableStateOf(false) }
-    var timeDialogOpen by rememberSaveable { mutableStateOf(false) }
-    LaunchedEffect(createRequests) {
-        if (createRequests > 0) {
-            adding = true
-            timeDialogOpen = true
+    val context = LocalContext.current
+    val twoPane = rememberWindowLayout().twoPane
+    var selected by rememberSaveable { mutableStateOf<Long?>(null) }
+    var session by rememberSaveable { mutableIntStateOf(0) }
+    val open: (Long) -> Unit = { id ->
+        if (twoPane) {
+            selected = id
+            session++
+        } else {
+            context.startActivity(AlarmEditorActivity.intent(context, id))
         }
+    }
+    LaunchedEffect(createRequests) {
+        if (viewModel.isNewCreateRequest(createRequests)) open(Alarm.INVALID_ID)
     }
     LaunchedEffect(shownAlarm, alarms) {
         val index = alarms?.indexOfFirst { it.id == shownAlarm } ?: -1
-        if (index >= 0) {
-            expanded = shownAlarm
+        if (index >= 0 && viewModel.isNewShownAlarm(shownAlarm)) {
+            if (twoPane) open(shownAlarm)
             listState.animateScrollToItem(index)
         }
     }
-
-    ScreenAction(R.drawable.ic_t_plus, R.string.new_alarm) {
-        adding = true
-        timeDialogOpen = true
+    LaunchedEffect(twoPane) {
+        val id = selected
+        if (!twoPane && id != null) {
+            selected = null
+            context.startActivity(AlarmEditorActivity.intent(context, id))
+        }
     }
 
+    ScreenAction(R.drawable.ic_t_plus, R.string.new_alarm) { open(Alarm.INVALID_ID) }
+
+    val list =
+        @Composable {
+            AlarmList(alarms, padding, listState, onOpen = open, onEvent = viewModel::onEvent)
+        }
+    if (twoPane) {
+        TwoPane(
+            first = list,
+            second = {
+                val id = selected
+                if (id == null) {
+                    AlarmEditorPlaceholder(Modifier.fillMaxSize().padding(padding))
+                } else {
+                    key(session) {
+                        AlarmEditorPane(
+                            alarmId = id,
+                            session = session,
+                            contentPadding = screenPadding(padding),
+                            onClose = { selected = null },
+                        )
+                    }
+                }
+            },
+        )
+    } else {
+        list()
+    }
+}
+
+@Composable
+private fun AlarmList(
+    alarms: List<AlarmItem>?,
+    padding: PaddingValues,
+    listState: LazyListState,
+    onOpen: (Long) -> Unit,
+    onEvent: (AlarmEvent) -> Unit,
+) {
     when {
         alarms == null -> Unit
         alarms.isEmpty() ->
@@ -94,35 +141,13 @@ fun AlarmsScreen(
                 itemsIndexed(alarms, key = { _, item -> item.id }) { index, item ->
                     AlarmCard(
                         item = item,
-                        expanded = expanded == item.id,
-                        onToggleExpanded = { expanded = if (expanded == item.id) -1L else item.id },
-                        onEditTime = {
-                            editingTime = item
-                            adding = false
-                            timeDialogOpen = true
-                        },
-                        onEvent = viewModel::onEvent,
+                        onClick = { onOpen(item.id) },
+                        onEvent = onEvent,
                         modifier = Modifier.pvotReveal(index),
                     )
                 }
             }
     }
-
-    val target = editingTime.takeUnless { adding }
-    TimeDialog(
-        visible = timeDialogOpen,
-        initial =
-            if (target != null) LocalTime.of(target.hour, target.minutes)
-            else LocalTime.of(LocalTime.now().hour, 0),
-        onDismiss = { timeDialogOpen = false },
-        onConfirm = { time ->
-            viewModel.onEvent(
-                if (target != null) AlarmEvent.SetTime(target.id, time.hour, time.minute)
-                else AlarmEvent.Add(time.hour, time.minute)
-            )
-            timeDialogOpen = false
-        },
-    )
 }
 
 @Composable

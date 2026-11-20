@@ -10,6 +10,8 @@ import android.database.ContentObserver
 import android.os.Handler
 import android.os.Looper
 import androidx.core.net.toUri
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.awaitClose
@@ -49,6 +51,10 @@ class AlarmRepository(context: Context, private val io: CoroutineDispatcher = Di
     fun add(alarm: Alarm, onAdded: (Long) -> Unit = {}) {
         updater(onAdded).asyncAddAlarm(alarm)
     }
+
+    suspend fun insert(alarm: Alarm): Long = suspendCoroutine { add(alarm, it::resume) }
+
+    suspend fun get(id: Long): Alarm? = withContext(io) { Alarm.getAlarm(resolver, id) }
 
     suspend fun update(
         id: Long,

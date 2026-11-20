@@ -16,7 +16,6 @@ import kotlinx.coroutines.launch
 import org.prauga.clock.alarms.data.AlarmRepository
 import org.prauga.clock.data.DataModel
 import org.prauga.clock.provider.Alarm
-import org.prauga.clock.provider.AlarmDates
 
 class AlarmsViewModel(private val repository: AlarmRepository, private val model: DataModel) :
     ViewModel() {
@@ -30,44 +29,17 @@ class AlarmsViewModel(private val repository: AlarmRepository, private val model
             }
             .stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_TIMEOUT), UiState.Loading)
 
+    private var seenCreateRequests = 0
+    private var seenShownAlarm = Alarm.INVALID_ID
+
     fun onEvent(event: AlarmEvent) {
         when (event) {
-            is AlarmEvent.Add ->
-                repository.add(Alarm(event.hour, event.minute).apply { enabled = true })
-            is AlarmEvent.SetTime ->
-                update(event.id, popToast = true) {
-                    it.hour = event.hour
-                    it.minutes = event.minute
-                    it.enabled = true
-                }
             is AlarmEvent.SetEnabled ->
-                update(event.id, popToast = event.enabled) { it.enabled = event.enabled }
-            is AlarmEvent.SetDay ->
-                update(event.id, popToast = true) {
-                    it.daysOfWeek = it.daysOfWeek.setBit(event.calendarDay, event.on)
-                    if (it.daysOfWeek.isRepeating) {
-                        it.scheduledDate = AlarmDates.NONE
-                    } else {
-                        it.pauseStart = AlarmDates.NONE
-                        it.pauseEnd = AlarmDates.NONE
+                viewModelScope.launch {
+                    repository.update(event.id, popToast = event.enabled, minorUpdate = false) {
+                        it.enabled = event.enabled
                     }
                 }
-            is AlarmEvent.SetVibrate ->
-                update(event.id, minorUpdate = true) { it.vibrate = event.vibrate }
-            is AlarmEvent.SetLabel ->
-                update(event.id, minorUpdate = true) { it.label = event.label }
-            is AlarmEvent.SetDate ->
-                update(event.id, popToast = null) {
-                    it.scheduledDate = event.scheduledDate
-                    if (event.scheduledDate != AlarmDates.NONE) it.enabled = true
-                }
-            is AlarmEvent.SetPause ->
-                update(event.id, popToast = null) {
-                    it.pauseStart = event.start
-                    it.pauseEnd = event.end
-                    if (event.start != AlarmDates.NONE) it.enabled = true
-                }
-            is AlarmEvent.Delete -> viewModelScope.launch { repository.delete(event.id) }
             is AlarmEvent.Predismiss -> {
                 val item =
                     (state.value as? UiState.Success)?.data?.firstOrNull { it.id == event.id }
@@ -76,13 +48,16 @@ class AlarmsViewModel(private val repository: AlarmRepository, private val model
         }
     }
 
-    private fun update(
-        id: Long,
-        popToast: Boolean? = false,
-        minorUpdate: Boolean = false,
-        change: (Alarm) -> Unit,
-    ) {
-        viewModelScope.launch { repository.update(id, popToast, minorUpdate, change) }
+    fun isNewCreateRequest(requests: Int): Boolean {
+        val fresh = requests > 0 && requests != seenCreateRequests
+        seenCreateRequests = requests
+        return fresh
+    }
+
+    fun isNewShownAlarm(alarmId: Long): Boolean {
+        val fresh = alarmId != Alarm.INVALID_ID && alarmId != seenShownAlarm
+        seenShownAlarm = alarmId
+        return fresh
     }
 
     private companion object {

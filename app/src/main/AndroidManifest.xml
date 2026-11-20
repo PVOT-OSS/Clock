@@ -110,6 +110,13 @@
             android:theme="@style/Theme.DeskClock" />
 
         <activity
+            android:name=".alarms.AlarmEditorActivity"
+            android:exported="false"
+            android:label="@string/new_alarm"
+            android:theme="@style/Theme.DeskClock"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
             android:name=".HandleShortcuts"
             android:excludeFromRecents="true"
             android:launchMode="singleInstance"

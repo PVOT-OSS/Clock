@@ -15,15 +15,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.material3.rememberDateRangePickerState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
-import com.prauga.pvot.designsystem.components.PvotDialog
-import com.prauga.pvot.designsystem.components.PvotDialogAction
-import com.prauga.pvot.designsystem.components.PvotDialogActionStyle
-import com.prauga.pvot.designsystem.components.textfield.PvotTextField
 import java.util.Calendar
 import java.util.concurrent.TimeUnit
 import org.prauga.clock.R
@@ -31,30 +23,6 @@ import org.prauga.clock.provider.Alarm
 import org.prauga.clock.provider.AlarmDates
 
 private val DAY_MILLIS = TimeUnit.DAYS.toMillis(1)
-
-@Composable
-fun LabelDialog(
-    visible: Boolean,
-    initial: String,
-    onDismiss: () -> Unit,
-    onConfirm: (String) -> Unit,
-) {
-    var label by remember(visible) { mutableStateOf(initial) }
-    PvotDialog(
-        visible = visible,
-        onDismissRequest = onDismiss,
-        title = stringResource(R.string.label),
-        content = { PvotTextField(value = label, onValueChange = { label = it }) },
-        actions = {
-            PvotDialogAction(
-                label = stringResource(android.R.string.ok),
-                onClick = { onConfirm(label.trim()) },
-                style = PvotDialogActionStyle.Primary,
-            )
-            PvotDialogAction(label = stringResource(android.R.string.cancel), onClick = onDismiss)
-        },
-    )
-}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

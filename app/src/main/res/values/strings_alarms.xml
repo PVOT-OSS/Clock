@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  SPDX-FileCopyrightText: 2026 Saalim Quadri <danascape@gmail.com>
+  SPDX-License-Identifier: Apache-2.0
+  -->
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
+    <string name="alarm_editor_edit_title">Edit alarm</string>
+    <string name="alarm_editor_repeat">Repeat</string>
+    <string name="alarm_editor_color">Color</string>
+    <string name="alarm_editor_sound">Sound</string>
+    <string name="alarm_editor_save">Save</string>
+    <string name="alarm_editor_none_selected">Select an alarm to edit it here</string>
+    <string name="alarm_color_none">No color</string>
+    <string name="alarm_color_violet">Violet</string>
+    <string name="alarm_color_blue">Blue</string>
+    <string name="alarm_color_pink">Pink</string>
+    <string name="alarm_color_green">Green</string>
+    <string name="alarm_color_amber">Amber</string>
+    <string name="alarm_color_red">Red</string>
+</resources>

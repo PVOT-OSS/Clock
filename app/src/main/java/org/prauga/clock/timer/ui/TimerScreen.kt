@@ -50,7 +50,7 @@ import kotlin.time.Duration
 import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Duration.Companion.seconds
 import org.prauga.clock.R
-import org.prauga.clock.common.ScreenFab
+import org.prauga.clock.common.ScreenAction
 import org.prauga.clock.common.screenPadding
 import org.prauga.clock.data.DataModel
 import org.prauga.clock.data.Timer
@@ -95,7 +95,7 @@ private fun TimerSetup(
 ) {
     var duration by rememberSaveable(stateSaver = DurationSaver) { mutableStateOf(Duration.ZERO) }
     if (duration > Duration.ZERO) {
-        ScreenFab(R.drawable.ic_t_player_play, R.string.timer_start) {
+        ScreenAction(R.drawable.ic_t_player_play, R.string.timer_start) {
             onStart(duration.inWholeMilliseconds)
         }
     }
@@ -148,9 +148,9 @@ private fun TimerList(
             withFrameMillis { now = SystemClock.elapsedRealtime() }
         }
     }
-    ScreenFab(R.drawable.ic_t_plus, R.string.new_timer, onAdd)
+    ScreenAction(R.drawable.ic_t_plus, R.string.new_timer, onAdd)
     Box(Modifier.fillMaxSize()) {
-        PvotScreen(state = listState, contentPadding = screenPadding(padding, withFab = true)) {
+        PvotScreen(state = listState, contentPadding = screenPadding(padding)) {
             itemsIndexed(timers, key = { _, item -> item.id }) { index, item ->
                 TimerCard(item, now, onEvent, Modifier.pvotReveal(index))
             }

@@ -61,7 +61,7 @@ import kotlinx.coroutines.delay
 import org.prauga.clock.AnalogClock
 import org.prauga.clock.R
 import org.prauga.clock.Utils
-import org.prauga.clock.common.ScreenFab
+import org.prauga.clock.common.ScreenAction
 import org.prauga.clock.common.screenPadding
 import org.prauga.clock.data.City
 import org.prauga.clock.data.DataModel
@@ -96,13 +96,13 @@ private fun ClockBody(
     val haptics = LocalHapticFeedback.current
     var menuCity by remember { mutableStateOf<City?>(null) }
     var menuOpen by remember { mutableStateOf(false) }
-    ScreenFab(R.drawable.ic_t_world, R.string.add_city) {
+    ScreenAction(R.drawable.ic_t_world, R.string.add_city) {
         context.startActivity(Intent(context, CitySelectionActivity::class.java))
     }
 
     PvotScreen(
         state = listState,
-        contentPadding = screenPadding(padding, withFab = true),
+        contentPadding = screenPadding(padding),
         horizontalAlignment = Alignment.Start,
     ) {
         item { MainClock(context, now, seconds, content.analog) }

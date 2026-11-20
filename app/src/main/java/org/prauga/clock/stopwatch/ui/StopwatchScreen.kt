@@ -81,7 +81,7 @@ private fun StopwatchBody(
     Box(Modifier.fillMaxSize().padding(top = padding.calculateTopPadding())) {
         PvotScreen(
             state = listState,
-            contentPadding = screenPadding(PaddingValues(), withFab = true),
+            contentPadding = screenPadding(PaddingValues()),
             verticalArrangement = Arrangement.spacedBy(PvotSpacing.S),
         ) {
             item(key = "time") {

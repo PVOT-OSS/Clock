@@ -36,7 +36,7 @@ import com.prauga.pvot.designsystem.motion.pvotReveal
 import java.time.LocalTime
 import org.prauga.clock.R
 import org.prauga.clock.alarms.data.AlarmRepository
-import org.prauga.clock.common.ScreenFab
+import org.prauga.clock.common.ScreenAction
 import org.prauga.clock.common.TimeDialog
 import org.prauga.clock.common.screenPadding
 import org.prauga.clock.data.DataModel
@@ -69,7 +69,7 @@ fun AlarmsScreen(
         }
     }
 
-    ScreenFab(R.drawable.ic_t_plus, R.string.new_alarm) {
+    ScreenAction(R.drawable.ic_t_plus, R.string.new_alarm) {
         adding = true
         timeDialogOpen = true
     }
@@ -90,7 +90,7 @@ fun AlarmsScreen(
                 )
             }
         else ->
-            PvotScreen(state = listState, contentPadding = screenPadding(padding, withFab = true)) {
+            PvotScreen(state = listState, contentPadding = screenPadding(padding)) {
                 itemsIndexed(alarms, key = { _, item -> item.id }) { index, item ->
                     AlarmCard(
                         item = item,

@@ -6,6 +6,7 @@
 package org.prauga.clock
 
 import android.content.Intent
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
@@ -22,6 +23,7 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -35,8 +37,9 @@ import kotlinx.coroutines.flow.collectLatest
 import org.prauga.clock.alarms.ui.AlarmsScreen
 import org.prauga.clock.bedtime.ui.BedtimeScreen
 import org.prauga.clock.common.ClockSnackbars
-import org.prauga.clock.common.FloatingActionSlot
-import org.prauga.clock.common.LocalFloatingActionSlot
+import org.prauga.clock.common.ContentMaxWidth
+import org.prauga.clock.common.LocalTabActionSlot
+import org.prauga.clock.common.TabActionSlot
 import org.prauga.clock.settings.SettingsActivity
 import org.prauga.clock.stopwatch.ui.StopwatchScreen
 import org.prauga.clock.timer.ui.TimerScreen
@@ -90,8 +93,20 @@ fun ClockApp(timerSetupRequests: Int, createAlarmRequests: Int, shownAlarm: Long
             }
         }
     }
-    val fab = remember { FloatingActionSlot() }
-    fab.expanded = !compact
+    val actions = remember { TabActionSlot() }
+    val action = actions.action
+    val tabs =
+        NAV_TABS.mapIndexed { index, item ->
+            if (index == selected && action != null) {
+                item.copy(
+                    expandedIconRes = action.icon,
+                    expandedLabelRes = action.label,
+                    contentDescriptionRes = action.label,
+                )
+            } else {
+                item
+            }
+        }
 
     PvotScreenScaffold(
         topBar = {
@@ -113,18 +128,22 @@ fun ClockApp(timerSetupRequests: Int, createAlarmRequests: Int, shownAlarm: Long
             PvotNavBar(
                 selectedTab = selected,
                 onTabClick = {
-                    selected = it
-                    model.setSelectedTab(Tab.entries[it])
+                    if (it == selected && action != null) {
+                        action.onClick()
+                    } else {
+                        selected = it
+                        model.setSelectedTab(Tab.entries[it])
+                    }
                 },
-                tabs = NAV_TABS,
+                tabs = tabs,
+                modifier = Modifier.widthIn(max = ContentMaxWidth),
             )
         },
-        floatingAction = { fab.content?.invoke() },
         snackbarHost = { PvotSnackbarHost(snackbars) },
     ) { padding ->
         CompositionLocalProvider(
             LocalContentColor provides MaterialTheme.colorScheme.onBackground,
-            LocalFloatingActionSlot provides fab,
+            LocalTabActionSlot provides actions,
         ) {
             when (tab) {
                 Tab.CLOCKS -> ClockScreen(padding, listState)

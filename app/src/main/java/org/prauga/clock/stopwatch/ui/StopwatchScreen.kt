@@ -14,7 +14,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.MaterialTheme
@@ -32,8 +33,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.prauga.pvot.coreui.UiState
@@ -85,12 +86,14 @@ private fun StopwatchBody(
             verticalArrangement = Arrangement.spacedBy(PvotSpacing.S),
         ) {
             item(key = "time") {
-                Text(
-                    text = format(total, hundredths = true),
-                    style = MaterialTheme.typography.displayLarge,
-                    fontWeight = FontWeight.Light,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.fillMaxWidth().padding(vertical = PvotSpacing.L),
+                StopwatchRing(
+                    stopwatch = stopwatch,
+                    total = total,
+                    modifier =
+                        Modifier.fillMaxWidth()
+                            .wrapContentWidth()
+                            .widthIn(max = RingMaxSize)
+                            .padding(vertical = PvotSpacing.L),
                 )
             }
             if (laps.isNotEmpty() && !stopwatch.isReset) {
@@ -148,9 +151,9 @@ private fun StopwatchBody(
                     contentDescription = stringResource(R.string.sw_share_button),
                     onClick = {
                         val text = buildString {
-                            append(format(total, hundredths = true))
+                            append(formatStopwatch(total))
                             laps.reversed().forEach {
-                                append("\n#${it.lapNumber}  ${format(it.lapTime, true)}")
+                                append("\n#${it.lapNumber}  ${formatStopwatch(it.lapTime)}")
                             }
                         }
                         context.startActivity(
@@ -177,14 +180,14 @@ private fun LapRow(number: Int, lapTime: Long, total: Long, color: Color) {
             modifier = Modifier.weight(1f),
         )
         Text(
-            format(lapTime, hundredths = true),
+            formatStopwatch(lapTime),
             style = MaterialTheme.typography.bodyLarge,
             color = color,
             modifier = Modifier.weight(1f),
             textAlign = TextAlign.End,
         )
         Text(
-            format(total, hundredths = true),
+            formatStopwatch(total),
             style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier.weight(1f),
             textAlign = TextAlign.End,
@@ -205,13 +208,4 @@ private fun lapColor(lap: Lap, laps: List<Lap>): Color {
     }
 }
 
-private fun format(millis: Long, hundredths: Boolean): String {
-    val hours = millis / 3_600_000
-    val minutes = millis / 60_000 % 60
-    val seconds = millis / 1000 % 60
-    val centis = millis / 10 % 100
-    val base =
-        if (hours > 0) "%d:%02d:%02d".format(hours, minutes, seconds)
-        else "%d:%02d".format(minutes, seconds)
-    return if (hundredths) "%s.%02d".format(base, centis) else base
-}
+private val RingMaxSize = 320.dp

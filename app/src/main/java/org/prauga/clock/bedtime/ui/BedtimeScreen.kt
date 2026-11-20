@@ -5,14 +5,21 @@
 
 package org.prauga.clock.bedtime.ui
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -23,13 +30,17 @@ import com.prauga.pvot.coreui.UiState
 import com.prauga.pvot.designsystem.components.PvotDialog
 import com.prauga.pvot.designsystem.components.PvotDialogAction
 import com.prauga.pvot.designsystem.components.PvotScreen
+import com.prauga.pvot.designsystem.theme.PvotSpacing
 import java.time.LocalTime
 import org.prauga.clock.R
 import org.prauga.clock.alarms.data.AlarmRepository
 import org.prauga.clock.bedtime.data.BedtimeRepository
 import org.prauga.clock.bedtime.data.WakeUpAlarm
+import org.prauga.clock.common.TabletopSplit
 import org.prauga.clock.common.TimeDialog
+import org.prauga.clock.common.TwoPane
 import org.prauga.clock.common.formatTime
+import org.prauga.clock.common.rememberWindowLayout
 import org.prauga.clock.common.screenPadding
 import org.prauga.clock.data.DataModel
 import org.prauga.clock.data.Weekdays
@@ -85,19 +96,66 @@ private fun BedtimeBody(
             onChooseWakeUp = chooseWakeUp,
         )
 
-    PvotScreen(state = listState, contentPadding = screenPadding(padding)) {
-        bedtimeIntro(content, actions.onStartIntro)
-        item(key = "dial") {
-            BedtimeDial(content, onEvent, onPickGoal = { pickGoal = true }, Modifier.fillMaxWidth())
-        }
-        item(key = "chips") {
-            BedtimeChips(
-                content,
-                onPickBedtime = { pickBedtime = true },
-                onChooseWakeUp = chooseWakeUp,
+    val onPickGoal = { pickGoal = true }
+    val onPickBedtime = { pickBedtime = true }
+    val layout = rememberWindowLayout()
+    when {
+        layout.tabletop ->
+            TabletopSplit(
+                top = {
+                    BedtimeDial(
+                        content,
+                        onEvent,
+                        onPickGoal,
+                        Modifier.fillMaxSize()
+                            .padding(
+                                top = padding.calculateTopPadding() + PvotSpacing.S,
+                                start = PvotSpacing.L,
+                                end = PvotSpacing.L,
+                                bottom = PvotSpacing.S,
+                            ),
+                        fitHeight = true,
+                    )
+                },
+                bottom = {
+                    PvotScreen(state = listState, contentPadding = screenPadding(PaddingValues())) {
+                        item(key = "chips") { BedtimeChips(content, onPickBedtime, chooseWakeUp) }
+                        bedtimeIntro(content, actions.onStartIntro)
+                        bedtimeCards(content, onEvent, actions)
+                    }
+                },
             )
-        }
-        bedtimeCards(content, onEvent, actions)
+        layout.twoPane ->
+            TwoPane(
+                first = {
+                    Column(
+                        modifier =
+                            Modifier.fillMaxSize()
+                                .verticalScroll(rememberScrollState())
+                                .padding(screenPadding(padding)),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.spacedBy(PvotSpacing.L),
+                    ) {
+                        BedtimeDial(content, onEvent, onPickGoal, Modifier.fillMaxWidth())
+                        BedtimeChips(content, onPickBedtime, chooseWakeUp)
+                    }
+                },
+                second = {
+                    PvotScreen(state = listState, contentPadding = screenPadding(padding)) {
+                        bedtimeIntro(content, actions.onStartIntro)
+                        bedtimeCards(content, onEvent, actions)
+                    }
+                },
+            )
+        else ->
+            PvotScreen(state = listState, contentPadding = screenPadding(padding)) {
+                bedtimeIntro(content, actions.onStartIntro)
+                item(key = "dial") {
+                    BedtimeDial(content, onEvent, onPickGoal, Modifier.fillMaxWidth())
+                }
+                item(key = "chips") { BedtimeChips(content, onPickBedtime, chooseWakeUp) }
+                bedtimeCards(content, onEvent, actions)
+            }
     }
 
     TimeDialog(

@@ -8,9 +8,11 @@ package org.prauga.clock.bedtime.ui
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -20,10 +22,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import com.prauga.pvot.designsystem.components.PvotCard
 import com.prauga.pvot.designsystem.theme.PvotSpacing
 import org.prauga.clock.R
 import org.prauga.clock.common.formatTime
+
+private val ChipMinWidth: Dp = 160.dp
 
 @Composable
 fun BedtimeDial(
@@ -68,13 +74,17 @@ fun BedtimeChips(
     val context = LocalContext.current
     val bedtime = content.bedtime
     val wakeUp = bedtime.wakeUp
-    Row(modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(PvotSpacing.M)) {
+    FlowRow(
+        modifier = modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.spacedBy(PvotSpacing.M),
+        verticalArrangement = Arrangement.spacedBy(PvotSpacing.M),
+    ) {
         TimeChip(
             icon = R.drawable.ic_t_moon,
             label = stringResource(R.string.bedtime_schedule_title),
             time = formatTime(context, bedtime.hour, bedtime.minute),
             onClick = onPickBedtime,
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(1f).widthIn(min = ChipMinWidth),
         )
         TimeChip(
             icon = R.drawable.ic_t_sun,
@@ -83,7 +93,7 @@ fun BedtimeChips(
                 if (wakeUp == null) stringResource(R.string.wakeup_not_set)
                 else formatTime(context, wakeUp.hour, wakeUp.minute),
             onClick = onChooseWakeUp,
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(1f).widthIn(min = ChipMinWidth),
         )
     }
 }

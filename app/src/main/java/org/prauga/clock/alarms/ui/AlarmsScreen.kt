@@ -82,8 +82,7 @@ fun AlarmsScreen(
     }
     var scrollTarget by remember { mutableLongStateOf(Alarm.INVALID_ID) }
     LaunchedEffect(shownAlarm, alarms) {
-        val known =
-            alarms?.wakeUp?.id == shownAlarm || alarms?.others?.any { it.id == shownAlarm } == true
+        val known = alarms?.all?.any { it.id == shownAlarm } == true
         if (known && viewModel.isNewShownAlarm(shownAlarm)) {
             if (twoPane) open(shownAlarm)
             scrollTarget = shownAlarm
@@ -167,7 +166,7 @@ private fun AlarmList(
                 val width = maxWidth - PvotScreenDefaults.HorizontalPadding * 2
                 val columns =
                     ((width + CardGap) / (CardMinWidth + CardGap)).toInt().coerceAtLeast(1)
-                val rows = alarms.others.chunked(columns)
+                val entries = alarmListEntries(alarms, columns)
                 val card =
                     @Composable { item: AlarmItem, large: Boolean, modifier: Modifier ->
                         AlarmCard(
@@ -181,7 +180,7 @@ private fun AlarmList(
                     }
                 LaunchedEffect(scrollTarget, columns) {
                     if (scrollTarget == Alarm.INVALID_ID) return@LaunchedEffect
-                    val index = lazyIndexOf(alarms, columns, scrollTarget)
+                    val index = entries.indexOfAlarm(scrollTarget)
                     if (index >= 0) listState.animateScrollToItem(index)
                     onScrolled()
                 }
@@ -190,24 +189,37 @@ private fun AlarmList(
                     contentPadding = screenPadding(padding),
                     horizontalAlignment = Alignment.Start,
                 ) {
-                    alarms.wakeUp?.let { wakeUp ->
-                        item(key = "wake-up-title") {
-                            SectionTitle(stringResource(R.string.alarm_section_wake_up))
-                        }
-                        item(key = wakeUp.id) { card(wakeUp, true, Modifier.pvotReveal(0)) }
-                        if (rows.isNotEmpty()) {
-                            item(key = "others-title") {
-                                SectionTitle(stringResource(R.string.alarm_section_others))
-                            }
-                        }
-                    }
-                    itemsIndexed(rows, key = { _, row -> row.first().id }) { index, row ->
-                        Row(
-                            horizontalArrangement = Arrangement.spacedBy(CardGap),
-                            modifier = Modifier.pvotReveal(index + 1),
-                        ) {
-                            row.forEach { card(it, false, Modifier.weight(1f)) }
-                            repeat(columns - row.size) { Spacer(Modifier.weight(1f)) }
+                    itemsIndexed(entries, key = { _, entry -> entry.key }) { index, entry ->
+                        val reveal = Modifier.pvotReveal(index)
+                        when (entry) {
+                            is AlarmListEntry.Title ->
+                                SectionTitle(
+                                    stringResource(
+                                        when (entry.section) {
+                                            AlarmListSection.WakeUp ->
+                                                R.string.alarm_section_wake_up
+                                            AlarmListSection.Others -> R.string.alarm_section_others
+                                        }
+                                    )
+                                )
+                            is AlarmListEntry.WakeUp -> card(entry.item, true, reveal)
+                            is AlarmListEntry.GroupHeader ->
+                                AlarmGroupHeader(
+                                    section = entry.section,
+                                    onEvent = onEvent,
+                                    onLongPress = null,
+                                    modifier = reveal,
+                                )
+                            is AlarmListEntry.Cards ->
+                                Row(
+                                    horizontalArrangement = Arrangement.spacedBy(CardGap),
+                                    modifier = reveal,
+                                ) {
+                                    entry.items.forEach { card(it, false, Modifier.weight(1f)) }
+                                    repeat(columns - entry.items.size) {
+                                        Spacer(Modifier.weight(1f))
+                                    }
+                                }
                         }
                     }
                 }
@@ -225,13 +237,6 @@ internal fun SectionTitle(text: String) {
     )
 }
 
-private fun lazyIndexOf(alarms: AlarmsContent, columns: Int, id: Long): Int {
-    val wakeUp = alarms.wakeUp ?: return alarms.others.indexOfFirst { it.id == id } / columns
-    if (wakeUp.id == id) return 1
-    val position = alarms.others.indexOfFirst { it.id == id }
-    return if (position < 0) -1 else WAKE_UP_ITEMS + position / columns
-}
-
 @Composable
 private fun alarmsViewModel(): AlarmsViewModel {
     val context = LocalContext.current.applicationContext
@@ -240,4 +245,3 @@ private fun alarmsViewModel(): AlarmsViewModel {
 
 private val CardMinWidth = 160.dp
 private val CardGap = PvotSpacing.M
-private const val WAKE_UP_ITEMS = 3

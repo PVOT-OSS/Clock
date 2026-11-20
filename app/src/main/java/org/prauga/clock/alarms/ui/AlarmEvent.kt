@@ -9,4 +9,8 @@ sealed interface AlarmEvent {
     data class SetEnabled(val id: Long, val enabled: Boolean) : AlarmEvent
 
     data class Predismiss(val id: Long) : AlarmEvent
+
+    data class SetGroupEnabled(val groupId: Long, val enabled: Boolean) : AlarmEvent
+
+    data class SetGroupCollapsed(val groupId: Long, val collapsed: Boolean) : AlarmEvent
 }

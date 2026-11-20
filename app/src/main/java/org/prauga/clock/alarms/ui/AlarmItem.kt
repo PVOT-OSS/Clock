@@ -25,6 +25,7 @@ data class AlarmItem(
     val pauseStart: Long,
     val pauseEnd: Long,
     val instanceState: Int,
+    val groupId: Long,
 ) {
     val id: Long
         get() = alarm.id
@@ -45,5 +46,6 @@ data class AlarmItem(
         record.alarm.pauseStart,
         record.alarm.pauseEnd,
         record.alarm.instanceState,
+        record.alarm.groupId,
     )
 }

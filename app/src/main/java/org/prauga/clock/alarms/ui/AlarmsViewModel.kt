@@ -10,7 +10,7 @@ import androidx.lifecycle.viewModelScope
 import com.prauga.pvot.coreui.UiState
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import org.prauga.clock.alarms.data.AlarmRepository
@@ -19,16 +19,10 @@ import org.prauga.clock.provider.Alarm
 class AlarmsViewModel(private val repository: AlarmRepository) : ViewModel() {
 
     val state: StateFlow<UiState<AlarmsContent>> =
-        repository.alarms
-            .map<_, UiState<AlarmsContent>> { records ->
-                val wakeUpId = repository.wakeUpAlarmId()
-                val items = records.map(::AlarmItem)
-                UiState.Success(
-                    AlarmsContent(
-                        wakeUp = items.firstOrNull { it.id == wakeUpId },
-                        others = items.filter { it.id != wakeUpId },
-                    )
-                )
+        combine(repository.alarms, repository.groups) { records, groups ->
+                val content =
+                    alarmsContent(records.map(::AlarmItem), groups, repository.wakeUpAlarmId())
+                UiState.Success(content) as UiState<AlarmsContent>
             }
             .stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_TIMEOUT), UiState.Loading)
 
@@ -45,11 +39,18 @@ class AlarmsViewModel(private val repository: AlarmRepository) : ViewModel() {
                 }
             is AlarmEvent.Predismiss -> {
                 val content = (state.value as? UiState.Success)?.data
-                val item =
-                    content?.wakeUp?.takeIf { it.id == event.id }
-                        ?: content?.others?.firstOrNull { it.id == event.id }
-                item?.instance?.let(repository::predismiss)
+                content
+                    ?.all
+                    ?.firstOrNull { it.id == event.id }
+                    ?.instance
+                    ?.let(repository::predismiss)
             }
+            is AlarmEvent.SetGroupEnabled ->
+                viewModelScope.launch { repository.setGroupEnabled(event.groupId, event.enabled) }
+            is AlarmEvent.SetGroupCollapsed ->
+                viewModelScope.launch {
+                    repository.setGroupCollapsed(event.groupId, event.collapsed)
+                }
         }
     }
 

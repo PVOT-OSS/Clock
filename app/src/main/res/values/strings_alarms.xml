@@ -4,6 +4,7 @@
   SPDX-License-Identifier: Apache-2.0
   -->
 <resources xmlns:tools="http://schemas.android.com/tools"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"
     tools:ignore="MissingTranslation">
     <string name="alarm_section_wake_up">Wake up</string>
     <string name="alarm_section_others">Others</string>
@@ -20,4 +21,13 @@
     <string name="alarm_color_green">Green</string>
     <string name="alarm_color_amber">Amber</string>
     <string name="alarm_color_red">Red</string>
+    <plurals name="alarm_group_summary">
+        <item quantity="one"><xliff:g id="on" example="1">%1$d</xliff:g> of <xliff:g id="count" example="1">%2$d</xliff:g> alarm on</item>
+        <item quantity="other"><xliff:g id="on" example="2">%1$d</xliff:g> of <xliff:g id="count" example="3">%2$d</xliff:g> alarms on</item>
+    </plurals>
+    <string name="alarm_group_empty">No alarms yet</string>
+    <string name="alarm_group_switch">All alarms in <xliff:g id="group" example="Work week">%1$s</xliff:g></string>
+    <string name="alarm_group_expand">Expand</string>
+    <string name="alarm_group_collapse">Collapse</string>
+    <string name="alarm_group_options">Group options</string>
 </resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  SPDX-FileCopyrightText: 2026 Saalim Quadri <danascape@gmail.com>
+  SPDX-License-Identifier: Apache-2.0
+  -->
+<resources xmlns:tools="http://schemas.android.com/tools"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"
+    tools:ignore="MissingTranslation">
+    <string name="stopwatch_save">Save</string>
+    <string name="stopwatch_saved">Saved</string>
+    <string name="stopwatch_saved_toast">Time saved</string>
+    <string name="stopwatch_no_saved">No saved times yet</string>
+    <string name="stopwatch_delete_saved">Delete saved time</string>
+    <plurals name="stopwatch_lap_count">
+        <item quantity="one"><xliff:g id="count">%d</xliff:g> lap</item>
+        <item quantity="other"><xliff:g id="count">%d</xliff:g> laps</item>
+    </plurals>
+</resources>

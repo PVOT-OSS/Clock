@@ -6,17 +6,36 @@
 package org.prauga.clock.stopwatch.ui
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.prauga.pvot.coreui.UiState
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 import org.prauga.clock.data.DataModel
 import org.prauga.clock.data.StopwatchListener
+import org.prauga.clock.stopwatch.data.StopwatchSession
+import org.prauga.clock.stopwatch.data.StopwatchSessionsRepository
 
-class StopwatchViewModel(private val model: DataModel) : ViewModel() {
+class StopwatchViewModel(
+    private val model: DataModel,
+    private val sessions: StopwatchSessionsRepository,
+) : ViewModel() {
 
-    private val content = MutableStateFlow<UiState<StopwatchContent>>(UiState.Success(snapshot()))
-    val state: StateFlow<UiState<StopwatchContent>> = content.asStateFlow()
+    private val content = MutableStateFlow(snapshot())
+
+    val state: StateFlow<UiState<StopwatchContent>> =
+        combine(content, sessions.sessions.onStart { emit(emptyList()) }) { content, saved ->
+                UiState.Success(content.copy(sessions = saved))
+            }
+            .stateIn(
+                viewModelScope,
+                SharingStarted.WhileSubscribed(STOP_TIMEOUT_MILLIS),
+                UiState.Success(content.value),
+            )
 
     private val listener = StopwatchListener { _, _ -> refresh() }
 
@@ -33,6 +52,9 @@ class StopwatchViewModel(private val model: DataModel) : ViewModel() {
                 model.addLap()
                 refresh()
             }
+            StopwatchEvent.Save -> save()
+            is StopwatchEvent.DeleteSession ->
+                viewModelScope.launch { sessions.delete(event.savedAt) }
         }
     }
 
@@ -40,10 +62,31 @@ class StopwatchViewModel(private val model: DataModel) : ViewModel() {
         model.removeStopwatchListener(listener)
     }
 
+    private fun save() {
+        val stopwatch = model.stopwatch
+        if (stopwatch.isReset) return
+        val session =
+            StopwatchSession(
+                savedAt = System.currentTimeMillis(),
+                total = stopwatch.totalTime,
+                laps = model.laps.reversed().map { it.lapTime },
+            )
+        model.resetStopwatch()
+        viewModelScope.launch { sessions.save(session) }
+    }
+
     private fun refresh() {
-        content.value = UiState.Success(snapshot())
+        content.value = snapshot()
     }
 
     private fun snapshot() =
-        StopwatchContent(model.stopwatch, model.laps.toList(), model.canAddMoreLaps())
+        StopwatchContent(
+            stopwatch = model.stopwatch,
+            laps = model.laps.toList(),
+            canAddLap = model.canAddMoreLaps(),
+        )
+
+    private companion object {
+        const val STOP_TIMEOUT_MILLIS = 5_000L
+    }
 }

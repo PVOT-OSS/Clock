@@ -13,4 +13,8 @@ sealed interface StopwatchEvent {
     data object Reset : StopwatchEvent
 
     data object Lap : StopwatchEvent
+
+    data object Save : StopwatchEvent
+
+    data class DeleteSession(val savedAt: Long) : StopwatchEvent
 }

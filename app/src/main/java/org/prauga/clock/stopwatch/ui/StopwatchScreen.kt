@@ -28,7 +28,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableLongStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.withFrameMillis
 import androidx.compose.ui.Alignment
@@ -50,20 +52,30 @@ import com.prauga.pvot.designsystem.motion.pvotReveal
 import com.prauga.pvot.designsystem.navigation.LocalPvotNavBarSizes
 import com.prauga.pvot.designsystem.theme.PvotSpacing
 import org.prauga.clock.R
+import org.prauga.clock.common.ClockSnackbars
 import org.prauga.clock.common.ContentMaxWidth
 import org.prauga.clock.common.ScreenAction
 import org.prauga.clock.data.DataModel
 import org.prauga.clock.data.Lap
+import org.prauga.clock.stopwatch.data.StopwatchSessionsRepository
 
 @Composable
 fun StopwatchScreen(
     padding: PaddingValues,
     listState: LazyListState,
-    viewModel: StopwatchViewModel = viewModel { StopwatchViewModel(DataModel.getDataModel()) },
+    viewModel: StopwatchViewModel = stopwatchViewModel(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     val content = (state as? UiState.Success)?.data ?: return
     StopwatchBody(content, padding, listState, viewModel::onEvent)
+}
+
+@Composable
+private fun stopwatchViewModel(): StopwatchViewModel {
+    val context = LocalContext.current.applicationContext
+    return viewModel {
+        StopwatchViewModel(DataModel.getDataModel(), StopwatchSessionsRepository(context))
+    }
 }
 
 @Composable
@@ -93,6 +105,11 @@ private fun StopwatchBody(
     ) {
         onEvent(if (stopwatch.isRunning) StopwatchEvent.Pause else StopwatchEvent.Start)
     }
+    var showSaved by rememberSaveable { mutableStateOf(false) }
+    var expanded by rememberSaveable { mutableStateOf(emptyList<Long>()) }
+    val toggle: (Long) -> Unit = { id ->
+        expanded = if (id in expanded) expanded - id else expanded + id
+    }
 
     Column(
         modifier =
@@ -106,8 +123,22 @@ private fun StopwatchBody(
             modifier = Modifier.padding(PvotSpacing.L).widthIn(max = RingMaxSize).fillMaxWidth(),
         )
         LapList(content, total, listState, Modifier.weight(1f))
-        StopwatchControls(content, total, onEvent, Modifier.padding(top = PvotSpacing.L))
+        StopwatchControls(
+            content = content,
+            total = total,
+            onEvent = onEvent,
+            onShowSaved = { showSaved = true },
+            modifier = Modifier.padding(top = PvotSpacing.L),
+        )
     }
+    SavedSessionsSheet(
+        visible = showSaved,
+        sessions = content.sessions,
+        expanded = expanded,
+        onToggle = toggle,
+        onDelete = { onEvent(StopwatchEvent.DeleteSession(it)) },
+        onDismiss = { showSaved = false },
+    )
 }
 
 @Composable
@@ -143,15 +174,24 @@ private fun StopwatchControls(
     content: StopwatchContent,
     total: Long,
     onEvent: (StopwatchEvent) -> Unit,
+    onShowSaved: (() -> Unit)?,
     modifier: Modifier = Modifier,
 ) {
     val context = LocalContext.current
     val stopwatch = content.stopwatch
+    val savedMessage = stringResource(R.string.stopwatch_saved_toast)
     Row(
         modifier = modifier,
         horizontalArrangement = Arrangement.spacedBy(PvotSpacing.L),
         verticalAlignment = Alignment.CenterVertically,
     ) {
+        if (onShowSaved != null) {
+            PvotIconButton(
+                icon = painterResource(R.drawable.ic_t_history),
+                contentDescription = stringResource(R.string.stopwatch_saved),
+                onClick = onShowSaved,
+            )
+        }
         if (stopwatch.isPaused) {
             PvotButton(
                 text = stringResource(R.string.sw_reset_button),
@@ -168,6 +208,16 @@ private fun StopwatchControls(
                 onClick = { onEvent(StopwatchEvent.Lap) },
             )
         }
+        PvotButton(
+            text = stringResource(R.string.stopwatch_save),
+            icon = painterResource(R.drawable.ic_t_device_floppy),
+            style = PvotButtonStyle.Tonal,
+            enabled = !stopwatch.isReset,
+            onClick = {
+                onEvent(StopwatchEvent.Save)
+                ClockSnackbars.show(savedMessage)
+            },
+        )
         if (stopwatch.isPaused) {
             val shareTitle = stringResource(R.string.sw_share_button)
             PvotIconButton(
@@ -180,7 +230,7 @@ private fun StopwatchControls(
 }
 
 @Composable
-private fun LapRow(number: Int, lapTime: Long, total: Long, color: Color) {
+fun LapRow(number: Int, lapTime: Long, total: Long, color: Color = Color.Unspecified) {
     Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
         Text(
             "# $number",

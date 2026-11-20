@@ -7,5 +7,11 @@ package org.prauga.clock.stopwatch.ui
 
 import org.prauga.clock.data.Lap
 import org.prauga.clock.data.Stopwatch
+import org.prauga.clock.stopwatch.data.StopwatchSession
 
-data class StopwatchContent(val stopwatch: Stopwatch, val laps: List<Lap>, val canAddLap: Boolean)
+data class StopwatchContent(
+    val stopwatch: Stopwatch,
+    val laps: List<Lap>,
+    val canAddLap: Boolean,
+    val sessions: List<StopwatchSession> = emptyList(),
+)

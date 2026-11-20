@@ -30,4 +30,16 @@
     <string name="alarm_group_expand">Expand</string>
     <string name="alarm_group_collapse">Collapse</string>
     <string name="alarm_group_options">Group options</string>
+    <string name="alarm_group_rename">Rename</string>
+    <string name="alarm_group_rename_title">Rename group</string>
+    <string name="alarm_group_delete">Delete group</string>
+    <string name="alarm_group_name">Name</string>
+    <string name="alarm_group_save">Save</string>
+    <string name="alarm_group_delete_title">Delete <xliff:g id="group" example="Work week">%1$s</xliff:g>?</string>
+    <plurals name="alarm_group_delete_message">
+        <item quantity="one">Its alarm can move to Others or be deleted with the group.</item>
+        <item quantity="other">Its <xliff:g id="count" example="3">%d</xliff:g> alarms can move to Others or be deleted with the group.</item>
+    </plurals>
+    <string name="alarm_group_delete_keep">Delete group, keep alarms</string>
+    <string name="alarm_group_delete_all">Delete group and alarms</string>
 </resources>

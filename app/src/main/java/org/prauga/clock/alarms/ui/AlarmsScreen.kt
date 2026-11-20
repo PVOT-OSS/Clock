@@ -98,6 +98,14 @@ fun AlarmsScreen(
 
     ScreenAction(R.drawable.ic_t_plus, R.string.new_alarm) { open(Alarm.INVALID_ID) }
 
+    var groupId by rememberSaveable { mutableStateOf<Long?>(null) }
+    var groupDialog by rememberSaveable { mutableStateOf(GroupDialog.None) }
+    val group = alarms?.groups?.firstOrNull { it.group.id == groupId }
+    val lastGroup = remember { mutableStateOf<AlarmGroupSection?>(null) }
+    if (group != null) lastGroup.value = group
+    val shownGroup = lastGroup.value
+    val closeGroupDialog = { groupDialog = GroupDialog.None }
+
     val list =
         @Composable {
             AlarmList(
@@ -109,6 +117,10 @@ fun AlarmsScreen(
                 onScrolled = { scrollTarget = Alarm.INVALID_ID },
                 onOpen = open,
                 onEvent = viewModel::onEvent,
+                onGroupLongPress = { id ->
+                    groupId = id
+                    groupDialog = GroupDialog.Actions
+                },
             )
         }
     if (twoPane) {
@@ -133,6 +145,44 @@ fun AlarmsScreen(
     } else {
         list()
     }
+
+    if (shownGroup != null) {
+        val id = shownGroup.group.id
+        GroupActionsSheet(
+            visible = group != null && groupDialog == GroupDialog.Actions,
+            name = shownGroup.group.name,
+            onDismiss = closeGroupDialog,
+            onRename = { groupDialog = GroupDialog.Rename },
+            onDelete = { groupDialog = GroupDialog.Delete },
+        )
+        GroupNameDialog(
+            visible = group != null && groupDialog == GroupDialog.Rename,
+            title = stringResource(R.string.alarm_group_rename_title),
+            initial = shownGroup.group.name,
+            onDismiss = closeGroupDialog,
+            onSave = {
+                viewModel.onEvent(AlarmEvent.RenameGroup(id, it))
+                closeGroupDialog()
+            },
+        )
+        DeleteGroupDialog(
+            visible = group != null && groupDialog == GroupDialog.Delete,
+            name = shownGroup.group.name,
+            alarmCount = shownGroup.alarms.size,
+            onDismiss = closeGroupDialog,
+            onDelete = {
+                viewModel.onEvent(AlarmEvent.DeleteGroup(id, it))
+                closeGroupDialog()
+            },
+        )
+    }
+}
+
+private enum class GroupDialog {
+    None,
+    Actions,
+    Rename,
+    Delete,
 }
 
 @Composable
@@ -145,6 +195,7 @@ private fun AlarmList(
     onScrolled: () -> Unit,
     onOpen: (Long) -> Unit,
     onEvent: (AlarmEvent) -> Unit,
+    onGroupLongPress: (Long) -> Unit,
 ) {
     when {
         alarms == null -> Unit
@@ -207,7 +258,7 @@ private fun AlarmList(
                                 AlarmGroupHeader(
                                     section = entry.section,
                                     onEvent = onEvent,
-                                    onLongPress = null,
+                                    onLongPress = { onGroupLongPress(entry.section.group.id) },
                                     modifier = reveal,
                                 )
                             is AlarmListEntry.Cards ->

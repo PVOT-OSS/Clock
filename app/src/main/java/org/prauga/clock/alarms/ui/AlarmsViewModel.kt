@@ -51,6 +51,10 @@ class AlarmsViewModel(private val repository: AlarmRepository) : ViewModel() {
                 viewModelScope.launch {
                     repository.setGroupCollapsed(event.groupId, event.collapsed)
                 }
+            is AlarmEvent.RenameGroup ->
+                viewModelScope.launch { repository.renameGroup(event.groupId, event.name) }
+            is AlarmEvent.DeleteGroup ->
+                viewModelScope.launch { repository.deleteGroup(event.groupId, event.withAlarms) }
         }
     }
 

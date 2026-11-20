@@ -13,6 +13,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -44,6 +45,8 @@ import com.prauga.pvot.designsystem.theme.PvotAppTheme
 import com.prauga.pvot.designsystem.theme.PvotSpacing
 import kotlin.math.abs
 import org.prauga.clock.R
+import org.prauga.clock.common.TabletopSplit
+import org.prauga.clock.common.rememberWindowLayout
 
 object ExpiredTimers {
 
@@ -74,11 +77,17 @@ private fun ExpiredTimersScreen(viewModel: TimerViewModel = timerViewModel(expir
         }
     }
 
+    val background = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)
+    if (rememberWindowLayout().tabletop) {
+        TabletopSplit(
+            modifier = background.safeDrawingPadding(),
+            top = { ExpiredOvertimes(timers, now) },
+            bottom = { ExpiredControls(timers, viewModel::onEvent) },
+        )
+        return
+    }
     Column(
-        Modifier.fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)
-            .safeDrawingPadding()
-            .padding(PvotSpacing.L),
+        background.safeDrawingPadding().padding(PvotSpacing.L),
         verticalArrangement = Arrangement.Center,
     ) {
         Text(
@@ -95,36 +104,95 @@ private fun ExpiredTimersScreen(viewModel: TimerViewModel = timerViewModel(expir
 }
 
 @Composable
+private fun ExpiredOvertimes(timers: List<TimerItem>, now: Long) {
+    LazyColumn(
+        modifier = Modifier.fillMaxSize(),
+        contentPadding = PaddingValues(PvotSpacing.L),
+        verticalArrangement = Arrangement.spacedBy(PvotSpacing.S, Alignment.CenterVertically),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        item(key = KEY_TITLE) {
+            Text(
+                stringResource(R.string.timer_times_up),
+                style = MaterialTheme.typography.headlineMedium,
+            )
+        }
+        items(timers, key = { it.id }) { item ->
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Text(timerLabel(item), style = MaterialTheme.typography.titleMedium)
+                Text(
+                    overtime(item.remainingAt(now)),
+                    style =
+                        if (timers.size == 1) MaterialTheme.typography.displayLarge
+                        else MaterialTheme.typography.displayMedium,
+                    fontWeight = FontWeight.Light,
+                    color = MaterialTheme.colorScheme.error,
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun ExpiredControls(timers: List<TimerItem>, onEvent: (TimerEvent) -> Unit) {
+    LazyColumn(
+        modifier = Modifier.fillMaxSize(),
+        contentPadding = PaddingValues(PvotSpacing.L),
+        verticalArrangement = Arrangement.spacedBy(PvotSpacing.M),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        items(timers, key = { it.id }) { item ->
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                if (timers.size > 1) {
+                    Text(
+                        timerLabel(item),
+                        style = MaterialTheme.typography.labelLarge,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+                ExpiredButtons(item, onEvent)
+            }
+        }
+    }
+}
+
+@Composable
 private fun ExpiredTimerCard(item: TimerItem, remaining: Long, onEvent: (TimerEvent) -> Unit) {
     PvotCard(Modifier.fillMaxWidth()) {
         Column(Modifier.padding(PvotSpacing.L)) {
-            Text(
-                item.label.ifEmpty { stringResource(R.string.timer_notification_label) },
-                style = MaterialTheme.typography.titleMedium,
-            )
+            Text(timerLabel(item), style = MaterialTheme.typography.titleMedium)
             Text(
                 overtime(remaining),
                 style = MaterialTheme.typography.displayMedium,
                 fontWeight = FontWeight.Light,
                 color = MaterialTheme.colorScheme.error,
             )
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(PvotSpacing.S),
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.padding(top = PvotSpacing.S),
-            ) {
-                PvotButton(
-                    text = stringResource(R.string.timer_plus_1_min),
-                    onClick = { onEvent(TimerEvent.AddMinute(item.id)) },
-                    style = PvotButtonStyle.Tonal,
-                )
-                PvotButton(
-                    text = stringResource(R.string.timer_stop),
-                    onClick = { onEvent(TimerEvent.Stop(item.id)) },
-                    style = PvotButtonStyle.Filled,
-                )
-            }
+            ExpiredButtons(item, onEvent, Modifier.padding(top = PvotSpacing.S))
         }
+    }
+}
+
+@Composable
+private fun ExpiredButtons(
+    item: TimerItem,
+    onEvent: (TimerEvent) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Row(
+        horizontalArrangement = Arrangement.spacedBy(PvotSpacing.S),
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = modifier,
+    ) {
+        PvotButton(
+            text = stringResource(R.string.timer_plus_1_min),
+            onClick = { onEvent(TimerEvent.AddMinute(item.id)) },
+            style = PvotButtonStyle.Tonal,
+        )
+        PvotButton(
+            text = stringResource(R.string.timer_stop),
+            onClick = { onEvent(TimerEvent.Stop(item.id)) },
+            style = PvotButtonStyle.Filled,
+        )
     }
 }
 
@@ -135,3 +203,5 @@ private fun overtime(remaining: Long): String {
         else "%d:%02d".format(total / 60, total % 60)
     return if (remaining < 0) "−$text" else text
 }
+
+private const val KEY_TITLE = "title"

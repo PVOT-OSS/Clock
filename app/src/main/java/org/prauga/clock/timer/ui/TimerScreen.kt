@@ -112,6 +112,8 @@ private fun TimerBody(
         }
 
     when {
+        layout.tabletop && content.timers.isNotEmpty() && !adding ->
+            TimerTabletop(content.timers, padding, onEvent, onAdd = { adding = true })
         layout.twoPane ->
             TwoPane(
                 first = { setup(false) },
@@ -323,12 +325,9 @@ private fun TimerCard(
     val remaining = item.remainingAt(now)
     PvotCard(modifier.fillMaxWidth()) {
         Column(Modifier.padding(PvotSpacing.L)) {
+            Text(text = timerLabel(item), style = MaterialTheme.typography.titleMedium)
             Text(
-                text = item.label.ifEmpty { stringResource(R.string.timer_notification_label) },
-                style = MaterialTheme.typography.titleMedium,
-            )
-            Text(
-                text = format(remaining),
+                text = formatRemaining(remaining),
                 style = MaterialTheme.typography.displayMedium,
                 fontWeight = FontWeight.Light,
                 color =
@@ -341,53 +340,59 @@ private fun TimerCard(
                 },
                 modifier = Modifier.fillMaxWidth().padding(vertical = PvotSpacing.S),
             )
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(PvotSpacing.S),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                PvotButton(
-                    text = stringResource(R.string.timer_plus_1_min),
-                    onClick = { onEvent(TimerEvent.AddMinute(item.id)) },
-                    style = PvotButtonStyle.Tonal,
-                )
-                when {
-                    item.state == Timer.State.RUNNING ->
-                        PvotIconButton(
-                            icon = painterResource(R.drawable.ic_t_player_pause),
-                            contentDescription = stringResource(R.string.timer_pause),
-                            onClick = { onEvent(TimerEvent.Pause(item.id)) },
-                        )
-                    item.state == Timer.State.EXPIRED ->
-                        PvotIconButton(
-                            icon = painterResource(R.drawable.ic_t_x),
-                            contentDescription = stringResource(R.string.timer_stop),
-                            onClick = { onEvent(TimerEvent.Stop(item.id)) },
-                        )
-                    else ->
-                        PvotIconButton(
-                            icon = painterResource(R.drawable.ic_t_player_play),
-                            contentDescription = stringResource(R.string.timer_start),
-                            onClick = { onEvent(TimerEvent.Start(item.id)) },
-                        )
-                }
-                if (item.state == Timer.State.PAUSED) {
-                    PvotIconButton(
-                        icon = painterResource(R.drawable.ic_t_refresh),
-                        contentDescription = stringResource(R.string.timer_reset),
-                        onClick = { onEvent(TimerEvent.Reset(item.id)) },
-                    )
-                }
-                PvotIconButton(
-                    icon = painterResource(R.drawable.ic_t_trash),
-                    contentDescription = stringResource(R.string.timer_delete),
-                    onClick = { onEvent(TimerEvent.Delete(item.id)) },
-                )
-            }
+            TimerControls(item, onEvent)
         }
     }
 }
 
-private fun format(remaining: Long): String {
+@Composable
+fun TimerControls(item: TimerItem, onEvent: (TimerEvent) -> Unit, modifier: Modifier = Modifier) {
+    Row(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.spacedBy(PvotSpacing.S),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        PvotButton(
+            text = stringResource(R.string.timer_plus_1_min),
+            onClick = { onEvent(TimerEvent.AddMinute(item.id)) },
+            style = PvotButtonStyle.Tonal,
+        )
+        when {
+            item.state == Timer.State.RUNNING ->
+                PvotIconButton(
+                    icon = painterResource(R.drawable.ic_t_player_pause),
+                    contentDescription = stringResource(R.string.timer_pause),
+                    onClick = { onEvent(TimerEvent.Pause(item.id)) },
+                )
+            item.state == Timer.State.EXPIRED ->
+                PvotIconButton(
+                    icon = painterResource(R.drawable.ic_t_x),
+                    contentDescription = stringResource(R.string.timer_stop),
+                    onClick = { onEvent(TimerEvent.Stop(item.id)) },
+                )
+            else ->
+                PvotIconButton(
+                    icon = painterResource(R.drawable.ic_t_player_play),
+                    contentDescription = stringResource(R.string.timer_start),
+                    onClick = { onEvent(TimerEvent.Start(item.id)) },
+                )
+        }
+        if (item.state == Timer.State.PAUSED) {
+            PvotIconButton(
+                icon = painterResource(R.drawable.ic_t_refresh),
+                contentDescription = stringResource(R.string.timer_reset),
+                onClick = { onEvent(TimerEvent.Reset(item.id)) },
+            )
+        }
+        PvotIconButton(
+            icon = painterResource(R.drawable.ic_t_trash),
+            contentDescription = stringResource(R.string.timer_delete),
+            onClick = { onEvent(TimerEvent.Delete(item.id)) },
+        )
+    }
+}
+
+fun formatRemaining(remaining: Long): String {
     val seconds =
         if (remaining >= 0) (remaining + DateUtils.SECOND_IN_MILLIS - 1) / 1000
         else remaining / 1000

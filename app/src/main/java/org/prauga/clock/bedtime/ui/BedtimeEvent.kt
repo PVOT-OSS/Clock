@@ -20,6 +20,8 @@ sealed interface BedtimeEvent {
 
     data class SetMode(val enabled: Boolean) : BedtimeEvent
 
+    data class SetWakeUpTime(val hour: Int, val minute: Int) : BedtimeEvent
+
     data object LoadWakeUpChoices : BedtimeEvent
 
     data class ChooseWakeUp(val id: Long) : BedtimeEvent

@@ -12,4 +12,16 @@ data class BedtimeContent(
     val bedtime: BedtimeSnapshot,
     val wakeUpChoices: List<WakeUpAlarm>?,
     val tomorrow: String?,
-)
+) {
+    val bedMinutes: Int
+        get() = minuteOfDay(bedtime.hour, bedtime.minute)
+
+    val wakeMinutes: Int
+        get() =
+            bedtime.wakeUp?.let { minuteOfDay(it.hour, it.minute) }
+                ?: wrapDay(bedMinutes + DEFAULT_SLEEP_MINUTES)
+
+    private companion object {
+        const val DEFAULT_SLEEP_MINUTES = 8 * MINUTES_PER_HOUR
+    }
+}

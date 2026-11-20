@@ -51,6 +51,7 @@ class BedtimeViewModel(private val repository: BedtimeRepository) : ViewModel() 
                     publish()
                 }
             is BedtimeEvent.ChooseWakeUp -> change { wakeUpAlarmId = event.id }
+            is BedtimeEvent.SetWakeUpTime -> setWakeUpTime(event.hour, event.minute)
             is BedtimeEvent.AddWakeUpAlarm -> addWakeUpAlarm(event.label)
             is BedtimeEvent.SetSleepSound -> change { sleepSound = event.sound }
             is BedtimeEvent.SetSleepMinutes -> change { sleepSoundMinutes = event.minutes }
@@ -65,8 +66,7 @@ class BedtimeViewModel(private val repository: BedtimeRepository) : ViewModel() 
 
     private fun addWakeUpAlarm(label: String) {
         val bedtime = current()?.bedtime ?: return
-        val wake =
-            (bedtime.hour * MINUTES_PER_HOUR + bedtime.minute + SLEEP_MINUTES) % MINUTES_PER_DAY
+        val wake = wrapDay(minuteOfDay(bedtime.hour, bedtime.minute) + SLEEP_MINUTES)
         repository.addWakeUpAlarm(
             wake / MINUTES_PER_HOUR,
             wake % MINUTES_PER_HOUR,
@@ -75,6 +75,18 @@ class BedtimeViewModel(private val repository: BedtimeRepository) : ViewModel() 
         ) { id ->
             change { wakeUpAlarmId = id }
         }
+    }
+
+    private fun setWakeUpTime(hour: Int, minute: Int) {
+        val shown = current() ?: return
+        val wakeUp = shown.bedtime.wakeUp ?: return
+        content.value =
+            UiState.Success(
+                shown.copy(
+                    bedtime = shown.bedtime.copy(wakeUp = wakeUp.copy(hour = hour, minute = minute))
+                )
+            )
+        viewModelScope.launch { repository.setWakeUpTime(wakeUp.id, hour, minute) }
     }
 
     private fun toggleSleepSound() {
@@ -105,8 +117,6 @@ class BedtimeViewModel(private val repository: BedtimeRepository) : ViewModel() 
     private fun current(): BedtimeContent? = (content.value as? UiState.Success)?.data
 
     private companion object {
-        const val MINUTES_PER_HOUR = 60
-        const val MINUTES_PER_DAY = 24 * MINUTES_PER_HOUR
         const val SLEEP_MINUTES = 8 * MINUTES_PER_HOUR
     }
 }

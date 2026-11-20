@@ -14,6 +14,7 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -115,6 +116,23 @@ private fun BedtimeBody(
                         modifier = Modifier.padding(top = PvotSpacing.S),
                     )
                 }
+            }
+        }
+        item(key = "dial") {
+            Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+                SleepDial(
+                    bedMinutes = content.bedMinutes,
+                    wakeMinutes = content.wakeMinutes,
+                    wakeAdjustable = bedtime.wakeUp != null,
+                    onBedtimeChange = {
+                        onEvent(BedtimeEvent.SetTime(it / MINUTES_PER_HOUR, it % MINUTES_PER_HOUR))
+                    },
+                    onWakeUpChange = {
+                        onEvent(
+                            BedtimeEvent.SetWakeUpTime(it / MINUTES_PER_HOUR, it % MINUTES_PER_HOUR)
+                        )
+                    },
+                )
             }
         }
         item(key = "schedule") {

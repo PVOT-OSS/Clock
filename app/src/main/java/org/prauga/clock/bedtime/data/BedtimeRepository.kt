@@ -76,6 +76,12 @@ class BedtimeRepository(
         )
     }
 
+    suspend fun setWakeUpTime(id: Long, hour: Int, minute: Int) =
+        alarms.update(id, popToast = null, minorUpdate = false) {
+            it.hour = hour
+            it.minutes = minute
+        }
+
     fun startSleepSound(sound: Int, minutes: Int) =
         SleepSoundService.start(app, SleepSoundService.Noise.entries[sound], minutes)
 

@@ -147,6 +147,12 @@ public final class ClockContract {
          */
         String PAUSE_START = "pause_start";
         String PAUSE_END = "pause_end";
+
+        /**
+         * Index into the alarm colour palette, or -1 for none.
+         * <p>Type: INTEGER</p>
+         */
+        String COLOR = "color";
     }
 
     /**

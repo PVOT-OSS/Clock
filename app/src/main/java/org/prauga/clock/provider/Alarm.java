@@ -44,6 +44,8 @@ public final class Alarm implements Parcelable, ClockContract.AlarmsColumns {
      */
     public static final long INVALID_ID = -1;
 
+    public static final int NO_COLOR = -1;
+
     /**
      * The default sort order for this table
      */
@@ -66,6 +68,7 @@ public final class Alarm implements Parcelable, ClockContract.AlarmsColumns {
             SCHEDULED_DATE,
             PAUSE_START,
             PAUSE_END,
+            COLOR,
     };
 
     private static final String[] QUERY_ALARMS_WITH_INSTANCES_COLUMNS = {
@@ -92,6 +95,7 @@ public final class Alarm implements Parcelable, ClockContract.AlarmsColumns {
             ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + SCHEDULED_DATE,
             ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + PAUSE_START,
             ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + PAUSE_END,
+            ClockDatabaseHelper.ALARMS_TABLE_NAME + "." + COLOR,
     };
 
     /**
@@ -140,6 +144,7 @@ public final class Alarm implements Parcelable, ClockContract.AlarmsColumns {
         values.put(SCHEDULED_DATE, alarm.scheduledDate);
         values.put(PAUSE_START, alarm.pauseStart);
         values.put(PAUSE_END, alarm.pauseEnd);
+        values.put(COLOR, alarm.color);
         if (alarm.alert == null) {
             // We want to put null, so default alarm changes
             values.putNull(RINGTONE);
@@ -307,6 +312,7 @@ public final class Alarm implements Parcelable, ClockContract.AlarmsColumns {
     public long scheduledDate = AlarmDates.NONE;
     public long pauseStart = AlarmDates.NONE;
     public long pauseEnd = AlarmDates.NONE;
+    public int color = NO_COLOR;
     public int instanceState;
     public int instanceId;
 
@@ -340,6 +346,8 @@ public final class Alarm implements Parcelable, ClockContract.AlarmsColumns {
         scheduledDate = getLong(c, SCHEDULED_DATE);
         pauseStart = getLong(c, PAUSE_START);
         pauseEnd = getLong(c, PAUSE_END);
+        final int colorIndex = c.getColumnIndex(COLOR);
+        color = colorIndex < 0 || c.isNull(colorIndex) ? NO_COLOR : c.getInt(colorIndex);
 
         if (c.getColumnCount() == ALARM_JOIN_INSTANCE_COLUMN_COUNT) {
             instanceState = c.getInt(INSTANCE_STATE_INDEX);
@@ -369,6 +377,7 @@ public final class Alarm implements Parcelable, ClockContract.AlarmsColumns {
         scheduledDate = p.readLong();
         pauseStart = p.readLong();
         pauseEnd = p.readLong();
+        color = p.readInt();
     }
 
     private static long getLong(Cursor c, String column) {
@@ -405,6 +414,7 @@ public final class Alarm implements Parcelable, ClockContract.AlarmsColumns {
         p.writeLong(scheduledDate);
         p.writeLong(pauseStart);
         p.writeLong(pauseEnd);
+        p.writeInt(color);
     }
 
     public int describeContents() {
@@ -511,6 +521,7 @@ public final class Alarm implements Parcelable, ClockContract.AlarmsColumns {
                 ", scheduledDate=" + scheduledDate +
                 ", pauseStart=" + pauseStart +
                 ", pauseEnd=" + pauseEnd +
+                ", color=" + color +
                 '}';
     }
 }

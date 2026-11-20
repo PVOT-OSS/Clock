@@ -5,6 +5,8 @@
   -->
 <resources xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="MissingTranslation">
+    <string name="alarm_section_wake_up">Wake up</string>
+    <string name="alarm_section_others">Others</string>
     <string name="alarm_editor_edit_title">Edit alarm</string>
     <string name="alarm_editor_repeat">Repeat</string>
     <string name="alarm_editor_color">Color</string>

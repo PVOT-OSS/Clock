@@ -14,13 +14,12 @@ import org.prauga.clock.provider.AlarmInstance
 data class AlarmItem(
     val alarm: Alarm,
     val instance: AlarmInstance?,
-    val ringtoneTitle: String,
     val hour: Int,
     val minutes: Int,
     val enabled: Boolean,
     val days: Int,
     val label: String,
-    val vibrate: Boolean,
+    val color: Int,
     val alert: Uri?,
     val scheduledDate: Long,
     val pauseStart: Long,
@@ -31,18 +30,16 @@ data class AlarmItem(
         get() = alarm.id
 
     constructor(
-        record: AlarmRecord,
-        ringtoneTitle: String,
+        record: AlarmRecord
     ) : this(
         record.alarm,
         record.instance,
-        ringtoneTitle,
         record.alarm.hour,
         record.alarm.minutes,
         record.alarm.enabled,
         record.alarm.daysOfWeek.bits,
         record.alarm.label.orEmpty(),
-        record.alarm.vibrate,
+        record.alarm.color,
         record.alarm.alert,
         record.alarm.scheduledDate,
         record.alarm.pauseStart,

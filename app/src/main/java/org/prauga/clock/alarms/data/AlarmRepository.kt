@@ -25,6 +25,7 @@ import org.prauga.clock.BuildConfig
 import org.prauga.clock.alarms.AlarmStateManager
 import org.prauga.clock.alarms.AlarmUpdateHandler
 import org.prauga.clock.alarms.ScrollHandler
+import org.prauga.clock.bedtime.BedtimeSettings
 import org.prauga.clock.provider.Alarm
 import org.prauga.clock.provider.AlarmInstance
 
@@ -55,6 +56,8 @@ class AlarmRepository(context: Context, private val io: CoroutineDispatcher = Di
     suspend fun insert(alarm: Alarm): Long = suspendCoroutine { add(alarm, it::resume) }
 
     suspend fun get(id: Long): Alarm? = withContext(io) { Alarm.getAlarm(resolver, id) }
+
+    suspend fun wakeUpAlarmId(): Long = withContext(io) { BedtimeSettings(app).wakeUpAlarmId }
 
     suspend fun update(
         id: Long,

@@ -14,17 +14,20 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import org.prauga.clock.alarms.data.AlarmRepository
-import org.prauga.clock.data.DataModel
 import org.prauga.clock.provider.Alarm
 
-class AlarmsViewModel(private val repository: AlarmRepository, private val model: DataModel) :
-    ViewModel() {
+class AlarmsViewModel(private val repository: AlarmRepository) : ViewModel() {
 
-    val state: StateFlow<UiState<List<AlarmItem>>> =
+    val state: StateFlow<UiState<AlarmsContent>> =
         repository.alarms
-            .map<_, UiState<List<AlarmItem>>> { records ->
+            .map<_, UiState<AlarmsContent>> { records ->
+                val wakeUpId = repository.wakeUpAlarmId()
+                val items = records.map(::AlarmItem)
                 UiState.Success(
-                    records.map { AlarmItem(it, model.getRingtoneTitle(it.alarm.alert)) }
+                    AlarmsContent(
+                        wakeUp = items.firstOrNull { it.id == wakeUpId },
+                        others = items.filter { it.id != wakeUpId },
+                    )
                 )
             }
             .stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_TIMEOUT), UiState.Loading)
@@ -41,8 +44,10 @@ class AlarmsViewModel(private val repository: AlarmRepository, private val model
                     }
                 }
             is AlarmEvent.Predismiss -> {
+                val content = (state.value as? UiState.Success)?.data
                 val item =
-                    (state.value as? UiState.Success)?.data?.firstOrNull { it.id == event.id }
+                    content?.wakeUp?.takeIf { it.id == event.id }
+                        ?: content?.others?.firstOrNull { it.id == event.id }
                 item?.instance?.let(repository::predismiss)
             }
         }

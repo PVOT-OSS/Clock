@@ -209,6 +209,7 @@ private fun LabelField(initial: String, onEvent: (AlarmEditorEvent) -> Unit) {
             label = it
             onEvent(AlarmEditorEvent.SetLabel(it))
         },
+        label = stringResource(R.string.label),
         placeholder = stringResource(R.string.add_label),
         singleLine = true,
         modifier = Modifier.fillMaxWidth(),
@@ -218,12 +219,7 @@ private fun LabelField(initial: String, onEvent: (AlarmEditorEvent) -> Unit) {
 @Composable
 private fun Section(title: String, content: @Composable () -> Unit) {
     Column {
-        Text(
-            title,
-            style = MaterialTheme.typography.titleSmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            modifier = Modifier.padding(horizontal = PvotSpacing.L).semantics { heading() },
-        )
+        SectionTitle(title)
         content()
     }
 }

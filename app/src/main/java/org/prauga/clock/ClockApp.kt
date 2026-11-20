@@ -138,6 +138,7 @@ fun ClockApp(timerSetupRequests: Int, createAlarmRequests: Int, shownAlarm: Long
             PvotTopBar(
                 title = stringResource(tab.labelResId),
                 compact = compact,
+                inlineTitle = true,
                 actions = {
                     PvotTopBarAction(
                         icon = painterResource(R.drawable.ic_t_settings),

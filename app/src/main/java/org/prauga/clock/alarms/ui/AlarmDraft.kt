@@ -21,6 +21,7 @@ data class AlarmDraft(
     val scheduledDate: Long,
     val pauseStart: Long,
     val pauseEnd: Long,
+    val groupId: Long,
 ) {
     val isNew: Boolean
         get() = id == Alarm.INVALID_ID
@@ -39,6 +40,7 @@ data class AlarmDraft(
         alarm.scheduledDate,
         alarm.pauseStart,
         alarm.pauseEnd,
+        alarm.groupId,
     )
 
     fun applyTo(alarm: Alarm) {
@@ -51,6 +53,7 @@ data class AlarmDraft(
         alarm.scheduledDate = scheduledDate
         alarm.pauseStart = pauseStart
         alarm.pauseEnd = pauseEnd
+        alarm.groupId = groupId
         alarm.enabled = true
     }
 

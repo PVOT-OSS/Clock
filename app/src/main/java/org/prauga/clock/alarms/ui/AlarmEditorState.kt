@@ -6,5 +6,12 @@
 package org.prauga.clock.alarms.ui
 
 import org.prauga.clock.provider.Alarm
+import org.prauga.clock.provider.AlarmGroup
 
-data class AlarmEditorState(val draft: AlarmDraft, val ringtoneTitle: String, val preview: Alarm)
+data class AlarmEditorState(
+    val draft: AlarmDraft,
+    val ringtoneTitle: String,
+    val preview: Alarm,
+    val groups: List<AlarmGroup>,
+    val isWakeUp: Boolean,
+)

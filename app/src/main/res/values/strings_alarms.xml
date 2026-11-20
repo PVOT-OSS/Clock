@@ -42,4 +42,8 @@
     </plurals>
     <string name="alarm_group_delete_keep">Delete group, keep alarms</string>
     <string name="alarm_group_delete_all">Delete group and alarms</string>
+    <string name="alarm_editor_group">Group</string>
+    <string name="alarm_group_none">None</string>
+    <string name="alarm_group_new">New group…</string>
+    <string name="alarm_group_new_title">New group</string>
 </resources>

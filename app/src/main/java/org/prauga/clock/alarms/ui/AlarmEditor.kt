@@ -46,6 +46,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.prauga.pvot.coreui.UiState
+import com.prauga.pvot.designsystem.components.PvotChoiceSheet
 import com.prauga.pvot.designsystem.components.PvotScreen
 import com.prauga.pvot.designsystem.components.PvotSubScreen
 import com.prauga.pvot.designsystem.components.button.PvotButton
@@ -167,6 +168,9 @@ private fun LazyListScope.alarmEditorItems(
         }
     }
     item(key = "label") { LabelField(draft.label, onEvent) }
+    if (!content.isWakeUp) {
+        item(key = "group") { GroupRow(content, onEvent) }
+    }
     item(key = "repeat") {
         Section(stringResource(R.string.alarm_editor_repeat)) {
             WeekdayButtons(Weekdays.fromBits(draft.days)) { day, on ->
@@ -198,6 +202,51 @@ private fun LazyListScope.alarmEditorItems(
             )
         }
     }
+}
+
+@Composable
+private fun GroupRow(content: AlarmEditorState, onEvent: (AlarmEditorEvent) -> Unit) {
+    var choosing by rememberSaveable { mutableStateOf(false) }
+    var naming by rememberSaveable { mutableStateOf(false) }
+    val groups = content.groups
+    val none = stringResource(R.string.alarm_group_none)
+    val current = groups.firstOrNull { it.id == content.draft.groupId }
+    PvotListGroup {
+        item {
+            PvotPreferenceRow(
+                title = stringResource(R.string.alarm_editor_group),
+                value = current?.name ?: none,
+                onClick = { choosing = true },
+                icon = { Icon(painterResource(R.drawable.ic_t_folder), contentDescription = null) },
+                iconStyle = PvotRowIconStyle.Plain,
+            )
+        }
+    }
+    PvotChoiceSheet(
+        visible = choosing,
+        title = stringResource(R.string.alarm_editor_group),
+        entries = listOf(none) + groups.map { it.name } + stringResource(R.string.alarm_group_new),
+        selected = if (current == null) 0 else groups.indexOf(current) + 1,
+        onDismiss = { choosing = false },
+        onSelect = { index ->
+            choosing = false
+            when (index) {
+                0 -> onEvent(AlarmEditorEvent.SetGroup(Alarm.NO_GROUP))
+                groups.size + 1 -> naming = true
+                else -> onEvent(AlarmEditorEvent.SetGroup(groups[index - 1].id))
+            }
+        },
+    )
+    GroupNameDialog(
+        visible = naming,
+        title = stringResource(R.string.alarm_group_new_title),
+        initial = "",
+        onDismiss = { naming = false },
+        onSave = {
+            naming = false
+            onEvent(AlarmEditorEvent.CreateGroup(it))
+        },
+    )
 }
 
 @Composable

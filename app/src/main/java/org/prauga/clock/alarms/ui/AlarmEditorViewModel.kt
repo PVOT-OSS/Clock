@@ -32,23 +32,33 @@ class AlarmEditorViewModel(
 ) : ViewModel() {
 
     private val draft = MutableStateFlow<AlarmDraft?>(null)
+    private val wakeUpId = MutableStateFlow(Alarm.INVALID_ID)
     private val effects = Channel<AlarmEditorEffect>(Channel.BUFFERED)
     private var busy = false
 
     val effect: Flow<AlarmEditorEffect> = effects.receiveAsFlow()
 
     val state: StateFlow<UiState<AlarmEditorState>> =
-        combine(draft, repository.alarms) { draft, records ->
+        combine(draft, repository.alarms, repository.groups, wakeUpId) {
+                draft,
+                records,
+                groups,
+                wakeUpId ->
                 if (draft == null) {
                     UiState.Loading
                 } else {
                     val stored = records.firstOrNull { it.alarm.id == draft.id }?.alarm
-                    val current = if (stored != null) draft.copy(alert = stored.alert) else draft
+                    val withAlert = if (stored != null) draft.copy(alert = stored.alert) else draft
+                    val current =
+                        if (groups.any { it.id == withAlert.groupId }) withAlert
+                        else withAlert.copy(groupId = Alarm.NO_GROUP)
                     UiState.Success(
                         AlarmEditorState(
                             current,
                             model.getRingtoneTitle(current.alert),
                             current.toAlarm(),
+                            groups,
+                            !current.isNew && current.id == wakeUpId,
                         )
                     )
                 }
@@ -56,6 +66,7 @@ class AlarmEditorViewModel(
             .stateIn(viewModelScope, SharingStarted.WhileSubscribed(STOP_TIMEOUT), UiState.Loading)
 
     init {
+        viewModelScope.launch { wakeUpId.value = repository.wakeUpAlarmId() }
         if (alarmId == Alarm.INVALID_ID) {
             draft.value = AlarmDraft(Alarm(LocalTime.now().hour, 0))
         } else {
@@ -93,6 +104,12 @@ class AlarmEditorViewModel(
             is AlarmEditorEvent.SetDate -> edit { it.copy(scheduledDate = event.scheduledDate) }
             is AlarmEditorEvent.SetPause ->
                 edit { it.copy(pauseStart = event.start, pauseEnd = event.end) }
+            is AlarmEditorEvent.SetGroup -> edit { it.copy(groupId = event.groupId) }
+            is AlarmEditorEvent.CreateGroup ->
+                viewModelScope.launch {
+                    val id = repository.createGroup(event.name)
+                    edit { it.copy(groupId = id) }
+                }
             AlarmEditorEvent.PickSound -> pickSound()
             AlarmEditorEvent.Save -> save()
             AlarmEditorEvent.Delete -> delete()
@@ -118,7 +135,10 @@ class AlarmEditorViewModel(
     }
 
     private fun save() {
-        val current = draft.value ?: return
+        val current =
+            (state.value as? UiState.Success)?.data?.draft?.takeIf { it.id == draft.value?.id }
+                ?: draft.value
+                ?: return
         launchOnce {
             if (current.isNew) {
                 repository.insert(current.toAlarm())

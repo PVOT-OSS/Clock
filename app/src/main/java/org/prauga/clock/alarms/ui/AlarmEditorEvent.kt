@@ -20,6 +20,10 @@ sealed interface AlarmEditorEvent {
 
     data class SetPause(val start: Long, val end: Long) : AlarmEditorEvent
 
+    data class SetGroup(val groupId: Long) : AlarmEditorEvent
+
+    data class CreateGroup(val name: String) : AlarmEditorEvent
+
     data object PickSound : AlarmEditorEvent
 
     data object Save : AlarmEditorEvent

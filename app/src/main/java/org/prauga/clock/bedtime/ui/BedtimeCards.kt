@@ -130,7 +130,7 @@ private fun ScheduleGroup(
             PvotPreferenceRow(
                 title = stringResource(R.string.bedtime_reminder_title),
                 onClick = onPickReminder,
-                value = reminderText(bedtime.reminderMinutes),
+                value = reminderValue(bedtime.reminderMinutes),
                 icon = { RowIcon(R.drawable.ic_t_bell) },
                 iconStyle = PvotRowIconStyle.Plain,
                 showChevron = false,
@@ -293,6 +293,11 @@ private fun RowIcon(@DrawableRes icon: Int) {
 internal fun reminderText(minutes: Int): String =
     if (minutes == 0) stringResource(R.string.bedtime_reminder_off)
     else pluralStringResource(R.plurals.bedtime_reminder_before, minutes, minutes)
+
+@Composable
+private fun reminderValue(minutes: Int): String =
+    if (minutes == 0) stringResource(R.string.bedtime_reminder_off)
+    else pluralStringResource(R.plurals.bedtime_reminder_short, minutes, minutes)
 
 private fun requestAccess(context: Context) {
     context.startActivity(Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS))

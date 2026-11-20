@@ -21,4 +21,8 @@
     <string name="bedtime_goal_below">Below your sleep goal (~<xliff:g id="goal" example="8 hr">%s</xliff:g>)</string>
     <string name="bedtime_goal_meets">Meets your sleep goal (~<xliff:g id="goal" example="8 hr">%s</xliff:g>)</string>
     <string name="bedtime_goal_above">Above your sleep goal (~<xliff:g id="goal" example="8 hr">%s</xliff:g>)</string>
+    <plurals name="bedtime_reminder_short">
+        <item quantity="one"><xliff:g id="count" example="1">%d</xliff:g> min before</item>
+        <item quantity="other"><xliff:g id="count" example="15">%d</xliff:g> min before</item>
+    </plurals>
 </resources>

@@ -6,6 +6,7 @@
 package org.prauga.clock
 
 import android.content.Intent
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.LocalContentColor
@@ -20,10 +21,15 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
+import androidx.compose.ui.input.nestedscroll.NestedScrollSource
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -71,12 +77,31 @@ fun ClockApp(timerSetupRequests: Int, createAlarmRequests: Int, shownAlarm: Long
     val context = LocalContext.current
     val listStates = Tab.entries.map { rememberLazyListState() }
     val listState = listStates[selected]
-    val compact by
+    val listScrolled by
         remember(listState) {
             derivedStateOf {
                 listState.firstVisibleItemIndex > 0 || listState.firstVisibleItemScrollOffset > 0
             }
         }
+    // Grids and columns don't share the list state, so nested scrolling folds the bar for them.
+    var nestedScrolled by remember(selected) { mutableStateOf(false) }
+    val foldOnScroll =
+        remember(selected) {
+            object : NestedScrollConnection {
+                override fun onPostScroll(
+                    consumed: Offset,
+                    available: Offset,
+                    source: NestedScrollSource,
+                ): Offset {
+                    if (consumed.y < 0f) nestedScrolled = true
+                    if (available.y > 0f) nestedScrolled = false
+                    return Offset.Zero
+                }
+            }
+        }
+    val listShown by
+        remember(listState) { derivedStateOf { listState.layoutInfo.totalItemsCount > 0 } }
+    val compact = if (listShown) listScrolled else nestedScrolled
 
     val snackbars = remember { SnackbarHostState() }
     LaunchedEffect(snackbars) {
@@ -145,12 +170,14 @@ fun ClockApp(timerSetupRequests: Int, createAlarmRequests: Int, shownAlarm: Long
             LocalContentColor provides MaterialTheme.colorScheme.onBackground,
             LocalTabActionSlot provides actions,
         ) {
-            when (tab) {
-                Tab.CLOCKS -> ClockScreen(padding, listState)
-                Tab.STOPWATCH -> StopwatchScreen(padding, listState)
-                Tab.TIMERS -> TimerScreen(padding, listState, timerSetupRequests)
-                Tab.ALARMS -> AlarmsScreen(padding, listState, createAlarmRequests, shownAlarm)
-                Tab.BEDTIME -> BedtimeScreen(padding, listState)
+            Box(Modifier.nestedScroll(foldOnScroll)) {
+                when (tab) {
+                    Tab.CLOCKS -> ClockScreen(padding, listState)
+                    Tab.STOPWATCH -> StopwatchScreen(padding, listState)
+                    Tab.TIMERS -> TimerScreen(padding, listState, timerSetupRequests)
+                    Tab.ALARMS -> AlarmsScreen(padding, listState, createAlarmRequests, shownAlarm)
+                    Tab.BEDTIME -> BedtimeScreen(padding, listState)
+                }
             }
         }
     }

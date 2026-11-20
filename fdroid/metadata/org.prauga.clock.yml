@@ -10,16 +10,18 @@ SourceCode: https://github.com/PVOT-OSS/Clock
 IssueTracker: https://github.com/PVOT-OSS/Clock/issues
 Categories:
   - Clock
-CurrentVersion: "1.0.0"
-CurrentVersionCode: 10000
+CurrentVersion: "1.1.0"
+CurrentVersionCode: 10100
 Description: |
   Clock is an alarm clock with timers, a stopwatch, world clocks and a
   bedtime routine. Alarms can repeat, ring once on a date or pause for a
-  holiday, with your own sounds, a sunrise before they ring, and warnings
-  when settings could keep them from ringing. Run several timers, time laps,
+  holiday, with your own sounds, colours and named groups you can switch
+  on or off together, a sunrise before they ring, and warnings when
+  settings could keep them from ringing. Run several timers, time laps,
   follow cities around the world, and wind down with a bedtime reminder,
-  Do Not Disturb and sleep sounds made on the phone. No ads, no tracking and
-  no internet permission.
+  Do Not Disturb and sleep sounds made on the phone. Two panes on tablets,
+  foldables and phones on their side. No ads, no tracking and no internet
+  permission.
 
 RepoType: git
 Repo: https://github.com/PVOT-OSS/Clock.git
@@ -28,6 +30,14 @@ Builds:
   - versionName: 1.0.0
     versionCode: 10000
     commit: v1.0.0
+    subdir: app
+    submodules: true
+    gradle:
+      - yes
+
+  - versionName: 1.1.0
+    versionCode: 10100
+    commit: v1.1.0
     subdir: app
     submodules: true
     gradle:

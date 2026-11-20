@@ -2,7 +2,8 @@ Clock is a simple, reliable alarm clock with timers, a stopwatch, world clocks a
 
 Alarms you can rely on
 • Repeat on chosen days, ring once on a date, or pause a repeating alarm for a holiday
-• Labels, your own sounds (pick a file or record one) and vibration
+• Labels, colours, your own sounds (pick a file or record one) and vibration
+• Sort alarms into named groups, such as Work week or Weekend, and switch a whole group on or off at once
 • Slide up to dismiss and down to snooze, or tap if you prefer
 • Snooze length, silence after, gradually increasing volume and a sunrise that brightens the screen before the alarm
 • Volume buttons, flipping or shaking the phone can snooze or dismiss
@@ -10,18 +11,20 @@ Alarms you can rely on
 • Tells you why an alarm was missed, and warns you when battery or permission settings could keep alarms from ringing
 
 Timers and stopwatch
-• Run several timers at once, add a minute with one tap, start from 5, 10, 30 or 45 minute presets
-• Stopwatch with laps, your fastest and slowest lap highlighted, and sharing of your times
+• Run several timers at once, add a minute with one tap, and start from saved timers you name and edit
+• Stopwatch with a ring that fills each minute, laps with your fastest and slowest highlighted, saved times and sharing
 • Live notifications and Quick Settings tiles for the timer and stopwatch
 
 World clocks
 • Search more than 300 cities, or add a place of your own in any time zone
 • Sort by name or by time zone, and reorder or remove clocks with a long press
+• See at a glance whether it is day or night there
 • A home clock appears automatically while you travel
 
 Bedtime
-• Set a bedtime and days, with a reminder before it
-• Link the alarm that wakes you and see how long you will sleep
+• Drag your bedtime and wake-up time around a dial and see whether you meet your sleep goal
+• Set the days, with a reminder before bedtime
+• Link the alarm that wakes you
 • Do Not Disturb from bedtime until you wake up
 • White, pink and brown noise made on your phone, with a sleep timer
 • See tomorrow's first calendar event before you go to bed
@@ -29,6 +32,7 @@ Bedtime
 And more
 • Screen saver with a night mode for dark rooms
 • Home screen widgets: analog clock with three faces, digital, stacked, stopwatch and timer
+• Two panes on tablets, foldables and phones on their side, and a layout for a half-folded phone
 • Light and dark themes
 
 Private and open

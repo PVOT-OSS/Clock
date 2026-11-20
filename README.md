@@ -20,21 +20,23 @@ permission.
 ## Features
 
 - Alarms that repeat on chosen days, ring once on a date, or pause for a holiday
-- Labels, your own sounds (a file or a recording) and vibration
+- Labels, colours, your own sounds (a file or a recording) and vibration
+- Named alarm groups you can collapse, and switch on or off together
 - Slide up to dismiss and down to snooze, or tap; volume buttons, flip or shake work too
 - Gradually increasing volume and a sunrise that brightens the screen before the alarm
 - Dismiss an upcoming or snoozed alarm early, or turn off all alarms at once
 - Warnings when battery or permission settings could keep alarms from ringing, and the reason an
   alarm was missed
-- Several timers at once, with presets and one-tap extra minutes
-- Stopwatch with laps, fastest and slowest highlighted, and sharing
+- Several timers at once, with saved timers you name and one-tap extra minutes
+- Stopwatch ring with laps, fastest and slowest highlighted, saved times and sharing
 - World clocks for 340 cities or places of your own, sorted by name or time zone, with a home clock
   while you travel
-- Bedtime reminder, wake-up alarm, Do Not Disturb at night, white, pink and brown noise, and
-  tomorrow's first calendar event
+- Bedtime dial with a sleep goal, reminder, wake-up alarm, Do Not Disturb at night, white, pink
+  and brown noise, and tomorrow's first calendar event
 - Screen saver with a night mode
 - Widgets: analog clock with three faces, digital, stacked, stopwatch and timer
 - Quick Settings tiles and live notifications for the timer and stopwatch
+- Two panes on tablets, foldables and phones on their side
 - Light and dark themes
 
 ## Download

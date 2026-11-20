@@ -1,0 +1,7 @@
+# What's changed
+- New look, with the tab's main action in the floating bar
+- Alarm groups you can collapse and switch on or off at once
+- Alarm colours, a Wake up section and a full alarm editor
+- Saved timers you name, and a stopwatch ring with saved times
+- Day and night on world clocks, and a bedtime dial with a sleep goal
+- Two panes on tablets, foldables and phones on their side

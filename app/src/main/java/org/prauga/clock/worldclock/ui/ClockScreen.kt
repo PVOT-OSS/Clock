@@ -126,6 +126,8 @@ private fun ClockBody(
                 },
                 modifier = Modifier.fillMaxSize(),
             )
+        layout.twoPane && content.clocks.isEmpty() ->
+            MainClockPane(content, now, screenPadding(padding))
         layout.twoPane ->
             PvotTwoPane(
                 first = { MainClockPane(content, now, screenPadding(padding)) },

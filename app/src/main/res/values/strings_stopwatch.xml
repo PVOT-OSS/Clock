@@ -8,6 +8,7 @@
     tools:ignore="MissingTranslation">
     <string name="stopwatch_save">Save</string>
     <string name="stopwatch_saved">Saved</string>
+    <string name="stopwatch_laps">Laps</string>
     <string name="stopwatch_saved_toast">Time saved</string>
     <string name="stopwatch_no_saved">No saved times yet</string>
     <string name="stopwatch_delete_saved">Delete saved time</string>

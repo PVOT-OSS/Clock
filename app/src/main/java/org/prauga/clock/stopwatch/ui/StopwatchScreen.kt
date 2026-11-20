@@ -7,6 +7,7 @@ package org.prauga.clock.stopwatch.ui
 
 import android.content.Context
 import android.content.Intent
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,7 +21,9 @@ import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -39,6 +42,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -55,6 +60,9 @@ import org.prauga.clock.R
 import org.prauga.clock.common.ClockSnackbars
 import org.prauga.clock.common.ContentMaxWidth
 import org.prauga.clock.common.ScreenAction
+import org.prauga.clock.common.TabletopSplit
+import org.prauga.clock.common.TwoPane
+import org.prauga.clock.common.rememberWindowLayout
 import org.prauga.clock.data.DataModel
 import org.prauga.clock.data.Lap
 import org.prauga.clock.stopwatch.data.StopwatchSessionsRepository
@@ -111,28 +119,119 @@ private fun StopwatchBody(
         expanded = if (id in expanded) expanded - id else expanded + id
     }
 
-    Column(
-        modifier =
-            Modifier.fillMaxSize()
-                .padding(top = padding.calculateTopPadding(), bottom = bottomInset()),
-        horizontalAlignment = Alignment.CenterHorizontally,
-    ) {
+    val layout = rememberWindowLayout()
+    val savedInPane = layout.twoPane && !layout.tabletop
+    val top = padding.calculateTopPadding()
+    val bottom = bottomInset()
+    val ring: @Composable (Modifier) -> Unit = { modifier ->
         StopwatchRing(
             stopwatch = stopwatch,
             total = total,
-            modifier = Modifier.padding(PvotSpacing.L).widthIn(max = RingMaxSize).fillMaxWidth(),
+            modifier = Modifier.padding(PvotSpacing.L).widthIn(max = RingMaxSize).then(modifier),
         )
-        LapList(content, total, listState, Modifier.weight(1f))
+    }
+    val controls: @Composable (Modifier) -> Unit = { modifier ->
         StopwatchControls(
             content = content,
             total = total,
             onEvent = onEvent,
-            onShowSaved = { showSaved = true },
-            modifier = Modifier.padding(top = PvotSpacing.L),
+            onShowSaved = if (savedInPane) null else ({ showSaved = true }),
+            modifier = modifier.padding(top = PvotSpacing.L),
         )
     }
+
+    when {
+        layout.tabletop ->
+            TabletopSplit(
+                top = {
+                    Box(Modifier.fillMaxSize().padding(top = top), Alignment.Center) {
+                        ring(Modifier.fillMaxSize())
+                    }
+                },
+                bottom = {
+                    Column(
+                        Modifier.fillMaxSize().padding(bottom = bottom),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                    ) {
+                        LazyColumn(
+                            state = listState,
+                            modifier = Modifier.weight(1f).widthIn(max = ContentMaxWidth),
+                            contentPadding = PaddingValues(PvotSpacing.L),
+                            verticalArrangement = Arrangement.spacedBy(PvotSpacing.S),
+                        ) {
+                            lapItems(content, total)
+                        }
+                        controls(Modifier)
+                    }
+                },
+                modifier = Modifier.fillMaxSize(),
+            )
+        layout.twoPane ->
+            TwoPane(
+                first = {
+                    Column(
+                        Modifier.fillMaxSize().padding(top = top, bottom = bottom),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                    ) {
+                        Box(Modifier.weight(1f), Alignment.Center) { ring(Modifier.fillMaxSize()) }
+                        controls(Modifier)
+                    }
+                },
+                second = {
+                    LazyColumn(
+                        state = listState,
+                        modifier = Modifier.fillMaxSize(),
+                        contentPadding =
+                            PaddingValues(
+                                start = PvotSpacing.L,
+                                end = PvotSpacing.L,
+                                top = top + PvotSpacing.L,
+                                bottom = bottom,
+                            ),
+                        verticalArrangement = Arrangement.spacedBy(PvotSpacing.S),
+                    ) {
+                        if (content.laps.isNotEmpty() && !stopwatch.isReset) {
+                            item(key = "lapsHeader") { PaneHeader(R.string.stopwatch_laps) }
+                            lapItems(content, total)
+                        }
+                        item(key = "savedHeader") { PaneHeader(R.string.stopwatch_saved) }
+                        if (content.sessions.isEmpty()) {
+                            item(key = "noSaved") { NoSavedSessions() }
+                        }
+                        items(content.sessions, key = { it.savedAt }) { session ->
+                            SavedSessionCard(
+                                session = session,
+                                expanded = session.savedAt in expanded,
+                                onToggle = { toggle(session.savedAt) },
+                                onDelete = {
+                                    onEvent(StopwatchEvent.DeleteSession(session.savedAt))
+                                },
+                                modifier = Modifier.animateItem(),
+                            )
+                        }
+                    }
+                },
+                modifier = Modifier.fillMaxSize(),
+            )
+        else ->
+            Column(
+                modifier = Modifier.fillMaxSize().padding(top = top, bottom = bottom),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                ring(Modifier.fillMaxWidth())
+                LazyColumn(
+                    state = listState,
+                    modifier = Modifier.weight(1f).widthIn(max = ContentMaxWidth).fillMaxWidth(),
+                    contentPadding = PaddingValues(horizontal = PvotSpacing.L),
+                    verticalArrangement = Arrangement.spacedBy(PvotSpacing.S),
+                ) {
+                    lapItems(content, total)
+                }
+                controls(Modifier)
+            }
+    }
     SavedSessionsSheet(
-        visible = showSaved,
+        visible = showSaved && !savedInPane,
         sessions = content.sessions,
         expanded = expanded,
         onToggle = toggle,
@@ -141,32 +240,29 @@ private fun StopwatchBody(
     )
 }
 
-@Composable
-private fun LapList(
-    content: StopwatchContent,
-    total: Long,
-    state: LazyListState,
-    modifier: Modifier = Modifier,
-) {
+private fun LazyListScope.lapItems(content: StopwatchContent, total: Long) {
     val laps = content.laps
-    LazyColumn(
-        state = state,
-        modifier = modifier.widthIn(max = ContentMaxWidth).fillMaxWidth(),
-        contentPadding = PaddingValues(horizontal = PvotSpacing.L),
-        verticalArrangement = Arrangement.spacedBy(PvotSpacing.S),
-    ) {
-        if (laps.isNotEmpty() && !content.stopwatch.isReset) {
-            item(key = "current") {
-                val current = total - (laps.firstOrNull()?.accumulatedTime ?: 0L)
-                LapRow(laps.size + 1, current, total, Color.Unspecified)
-            }
-        }
-        itemsIndexed(laps, key = { _, lap -> lap.lapNumber }) { index, lap ->
-            Box(Modifier.pvotReveal(index)) {
-                LapRow(lap.lapNumber, lap.lapTime, lap.accumulatedTime, lapColor(lap, laps))
-            }
+    if (laps.isNotEmpty() && !content.stopwatch.isReset) {
+        item(key = "current") {
+            val current = total - (laps.firstOrNull()?.accumulatedTime ?: 0L)
+            LapRow(laps.size + 1, current, total)
         }
     }
+    itemsIndexed(laps, key = { _, lap -> lap.lapNumber }) { index, lap ->
+        Box(Modifier.pvotReveal(index)) {
+            LapRow(lap.lapNumber, lap.lapTime, lap.accumulatedTime, lapColor(lap, laps))
+        }
+    }
+}
+
+@Composable
+private fun PaneHeader(@StringRes text: Int) {
+    Text(
+        text = stringResource(text),
+        style = MaterialTheme.typography.titleSmall,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+        modifier = Modifier.padding(top = PvotSpacing.S).semantics { heading() },
+    )
 }
 
 @Composable

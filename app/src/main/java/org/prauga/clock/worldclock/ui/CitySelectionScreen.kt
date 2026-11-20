@@ -34,9 +34,12 @@ import androidx.lifecycle.compose.LifecycleEventEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.prauga.pvot.coreui.UiState
+import com.prauga.pvot.designsystem.adaptive.PvotCenteredContent
+import com.prauga.pvot.designsystem.components.PvotChoiceSheet
 import com.prauga.pvot.designsystem.components.PvotDialog
 import com.prauga.pvot.designsystem.components.PvotDialogAction
 import com.prauga.pvot.designsystem.components.PvotDialogActionStyle
+import com.prauga.pvot.designsystem.components.PvotSubScreen
 import com.prauga.pvot.designsystem.components.list.PvotFastScrollSection
 import com.prauga.pvot.designsystem.components.list.PvotFastScroller
 import com.prauga.pvot.designsystem.components.list.PvotListGroup
@@ -48,9 +51,6 @@ import com.prauga.pvot.designsystem.theme.PvotSpacing
 import java.util.Calendar
 import java.util.TimeZone
 import org.prauga.clock.R
-import org.prauga.clock.common.CenteredContent
-import org.prauga.clock.common.ChoiceSheet
-import org.prauga.clock.common.SubScreen
 import org.prauga.clock.data.DataModel
 
 @Composable
@@ -92,7 +92,7 @@ private fun CitySelectionBody(
             else R.string.menu_item_sort_by_name
         )
 
-    SubScreen(
+    PvotSubScreen(
         title = stringResource(R.string.cities_activity_title),
         onBack = onBack,
         verticalArrangement = Arrangement.Top,
@@ -111,7 +111,7 @@ private fun CitySelectionBody(
         },
         listOverlay = {
             if (query.isBlank()) {
-                CenteredContent(Modifier.fillMaxHeight()) {
+                PvotCenteredContent(Modifier.fillMaxHeight()) {
                     Box(Modifier.fillMaxSize()) {
                         PvotFastScroller(
                             state = state,
@@ -124,7 +124,7 @@ private fun CitySelectionBody(
         },
     ) {
         item(key = "search") {
-            CenteredContent {
+            PvotCenteredContent {
                 PvotTextField(
                     value = query,
                     onValueChange = { onEvent(CitySelectionEvent.Search(it)) },
@@ -136,7 +136,7 @@ private fun CitySelectionBody(
             }
         }
         items(sections, key = { if (content.query.isBlank()) it.index else "results" }) { section ->
-            CenteredContent {
+            PvotCenteredContent {
                 PvotListGroup(
                     title =
                         when {
@@ -236,7 +236,7 @@ private fun AddPlaceDialog(
             PvotDialogAction(label = stringResource(android.R.string.cancel), onClick = onDismiss)
         },
     )
-    ChoiceSheet(
+    PvotChoiceSheet(
         visible = visible && picking,
         title = stringResource(R.string.add_place_zone),
         entries = labels,

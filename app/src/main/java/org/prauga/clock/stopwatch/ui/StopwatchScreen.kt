@@ -50,6 +50,10 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.prauga.pvot.coreui.UiState
+import com.prauga.pvot.designsystem.adaptive.PvotAdaptiveDefaults
+import com.prauga.pvot.designsystem.adaptive.PvotTabletopSplit
+import com.prauga.pvot.designsystem.adaptive.PvotTwoPane
+import com.prauga.pvot.designsystem.adaptive.rememberPvotWindowLayout
 import com.prauga.pvot.designsystem.components.button.PvotButton
 import com.prauga.pvot.designsystem.components.button.PvotButtonStyle
 import com.prauga.pvot.designsystem.components.button.PvotIconButton
@@ -58,11 +62,7 @@ import com.prauga.pvot.designsystem.navigation.LocalPvotNavBarSizes
 import com.prauga.pvot.designsystem.theme.PvotSpacing
 import org.prauga.clock.R
 import org.prauga.clock.common.ClockSnackbars
-import org.prauga.clock.common.ContentMaxWidth
 import org.prauga.clock.common.ScreenAction
-import org.prauga.clock.common.TabletopSplit
-import org.prauga.clock.common.TwoPane
-import org.prauga.clock.common.rememberWindowLayout
 import org.prauga.clock.data.DataModel
 import org.prauga.clock.data.Lap
 import org.prauga.clock.stopwatch.data.StopwatchSessionsRepository
@@ -119,7 +119,7 @@ private fun StopwatchBody(
         expanded = if (id in expanded) expanded - id else expanded + id
     }
 
-    val layout = rememberWindowLayout()
+    val layout = rememberPvotWindowLayout()
     val savedInPane = layout.twoPane && !layout.tabletop
     val top = padding.calculateTopPadding()
     val bottom = bottomInset()
@@ -142,7 +142,7 @@ private fun StopwatchBody(
 
     when {
         layout.tabletop ->
-            TabletopSplit(
+            PvotTabletopSplit(
                 top = {
                     Box(Modifier.fillMaxSize().padding(top = top), Alignment.Center) {
                         ring(Modifier.fillMaxSize())
@@ -155,7 +155,9 @@ private fun StopwatchBody(
                     ) {
                         LazyColumn(
                             state = listState,
-                            modifier = Modifier.weight(1f).widthIn(max = ContentMaxWidth),
+                            modifier =
+                                Modifier.weight(1f)
+                                    .widthIn(max = PvotAdaptiveDefaults.ContentMaxWidth),
                             contentPadding = PaddingValues(PvotSpacing.L),
                             verticalArrangement = Arrangement.spacedBy(PvotSpacing.S),
                         ) {
@@ -167,7 +169,7 @@ private fun StopwatchBody(
                 modifier = Modifier.fillMaxSize(),
             )
         layout.twoPane ->
-            TwoPane(
+            PvotTwoPane(
                 first = {
                     Column(
                         Modifier.fillMaxSize().padding(top = top, bottom = bottom),
@@ -221,7 +223,10 @@ private fun StopwatchBody(
                 ring(Modifier.fillMaxWidth())
                 LazyColumn(
                     state = listState,
-                    modifier = Modifier.weight(1f).widthIn(max = ContentMaxWidth).fillMaxWidth(),
+                    modifier =
+                        Modifier.weight(1f)
+                            .widthIn(max = PvotAdaptiveDefaults.ContentMaxWidth)
+                            .fillMaxWidth(),
                     contentPadding = PaddingValues(horizontal = PvotSpacing.L),
                     verticalArrangement = Arrangement.spacedBy(PvotSpacing.S),
                 ) {

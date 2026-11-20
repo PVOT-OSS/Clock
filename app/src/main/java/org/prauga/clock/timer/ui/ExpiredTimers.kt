@@ -38,6 +38,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.prauga.pvot.coreui.UiState
+import com.prauga.pvot.designsystem.adaptive.PvotTabletopSplit
+import com.prauga.pvot.designsystem.adaptive.rememberPvotWindowLayout
 import com.prauga.pvot.designsystem.components.PvotCard
 import com.prauga.pvot.designsystem.components.button.PvotButton
 import com.prauga.pvot.designsystem.components.button.PvotButtonStyle
@@ -45,8 +47,6 @@ import com.prauga.pvot.designsystem.theme.PvotAppTheme
 import com.prauga.pvot.designsystem.theme.PvotSpacing
 import kotlin.math.abs
 import org.prauga.clock.R
-import org.prauga.clock.common.TabletopSplit
-import org.prauga.clock.common.rememberWindowLayout
 
 object ExpiredTimers {
 
@@ -78,8 +78,8 @@ private fun ExpiredTimersScreen(viewModel: TimerViewModel = timerViewModel(expir
     }
 
     val background = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)
-    if (rememberWindowLayout().tabletop) {
-        TabletopSplit(
+    if (rememberPvotWindowLayout().tabletop) {
+        PvotTabletopSplit(
             modifier = background.safeDrawingPadding(),
             top = { ExpiredOvertimes(timers, now) },
             bottom = { ExpiredControls(timers, viewModel::onEvent) },

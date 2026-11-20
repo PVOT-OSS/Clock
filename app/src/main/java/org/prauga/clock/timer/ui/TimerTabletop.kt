@@ -18,10 +18,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import com.prauga.pvot.designsystem.adaptive.PvotTabletopSplit
 import com.prauga.pvot.designsystem.theme.PvotSpacing
 import org.prauga.clock.R
 import org.prauga.clock.common.ScreenAction
-import org.prauga.clock.common.TabletopSplit
 import org.prauga.clock.common.screenPadding
 import org.prauga.clock.data.Timer
 
@@ -34,7 +34,7 @@ fun TimerTabletop(
 ) {
     val now = rememberNow(timers)
     ScreenAction(R.drawable.ic_t_plus, R.string.new_timer, onAdd)
-    TabletopSplit(
+    PvotTabletopSplit(
         modifier = Modifier.fillMaxSize(),
         top = {
             LazyColumn(

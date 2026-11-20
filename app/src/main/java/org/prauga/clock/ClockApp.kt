@@ -33,6 +33,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import com.prauga.pvot.designsystem.adaptive.PvotAdaptiveDefaults
 import com.prauga.pvot.designsystem.components.PvotScreenScaffold
 import com.prauga.pvot.designsystem.components.PvotSnackbarHost
 import com.prauga.pvot.designsystem.navigation.PvotNavBar
@@ -43,7 +44,6 @@ import kotlinx.coroutines.flow.collectLatest
 import org.prauga.clock.alarms.ui.AlarmsScreen
 import org.prauga.clock.bedtime.ui.BedtimeScreen
 import org.prauga.clock.common.ClockSnackbars
-import org.prauga.clock.common.ContentMaxWidth
 import org.prauga.clock.common.LocalTabActionSlot
 import org.prauga.clock.common.TabActionSlot
 import org.prauga.clock.settings.SettingsActivity
@@ -161,7 +161,7 @@ fun ClockApp(timerSetupRequests: Int, createAlarmRequests: Int, shownAlarm: Long
                     }
                 },
                 tabs = tabs,
-                modifier = Modifier.widthIn(max = ContentMaxWidth),
+                modifier = Modifier.widthIn(max = PvotAdaptiveDefaults.ContentMaxWidth),
             )
         },
         snackbarHost = { PvotSnackbarHost(snackbars) },

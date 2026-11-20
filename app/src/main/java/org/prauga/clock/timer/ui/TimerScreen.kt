@@ -46,6 +46,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.prauga.pvot.coreui.UiState
+import com.prauga.pvot.designsystem.adaptive.PvotTwoPane
+import com.prauga.pvot.designsystem.adaptive.rememberPvotWindowLayout
 import com.prauga.pvot.designsystem.components.PvotCard
 import com.prauga.pvot.designsystem.components.PvotScreen
 import com.prauga.pvot.designsystem.components.button.PvotButton
@@ -61,8 +63,6 @@ import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.seconds
 import org.prauga.clock.R
 import org.prauga.clock.common.ScreenAction
-import org.prauga.clock.common.TwoPane
-import org.prauga.clock.common.rememberWindowLayout
 import org.prauga.clock.common.screenPadding
 import org.prauga.clock.data.DataModel
 import org.prauga.clock.data.Timer
@@ -92,7 +92,7 @@ private fun TimerBody(
     var adding by rememberSaveable { mutableStateOf(false) }
     var draft by rememberSaveable(stateSaver = DraftSaver) { mutableStateOf(TimerDraft()) }
     LaunchedEffect(setupRequests) { if (setupRequests > 0) adding = true }
-    val layout = rememberWindowLayout()
+    val layout = rememberPvotWindowLayout()
     val setup =
         @Composable { canCancel: Boolean ->
             TimerSetup(
@@ -115,7 +115,7 @@ private fun TimerBody(
         layout.tabletop && content.timers.isNotEmpty() && !adding ->
             TimerTabletop(content.timers, padding, onEvent, onAdd = { adding = true })
         layout.twoPane ->
-            TwoPane(
+            PvotTwoPane(
                 first = { setup(false) },
                 second = {
                     if (content.timers.isEmpty()) {

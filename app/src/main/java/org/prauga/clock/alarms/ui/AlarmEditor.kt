@@ -47,6 +47,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.prauga.pvot.coreui.UiState
 import com.prauga.pvot.designsystem.components.PvotScreen
+import com.prauga.pvot.designsystem.components.PvotSubScreen
 import com.prauga.pvot.designsystem.components.button.PvotButton
 import com.prauga.pvot.designsystem.components.button.PvotButtonStyle
 import com.prauga.pvot.designsystem.components.button.PvotIconButton
@@ -62,7 +63,6 @@ import java.time.LocalTime
 import org.prauga.clock.R
 import org.prauga.clock.alarms.AlarmDatePicker
 import org.prauga.clock.alarms.data.AlarmRepository
-import org.prauga.clock.common.SubScreen
 import org.prauga.clock.common.WeekdayButtons
 import org.prauga.clock.data.DataModel
 import org.prauga.clock.data.Weekdays
@@ -75,7 +75,7 @@ fun AlarmEditorScreen(alarmId: Long, onClose: () -> Unit) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     EditorEffects(viewModel, onClose)
     val content = (state as? UiState.Success)?.data
-    SubScreen(title = editorTitle(content), onBack = onClose) {
+    PvotSubScreen(title = editorTitle(content), onBack = onClose) {
         if (content != null) alarmEditorItems(content, viewModel::onEvent)
     }
 }

@@ -56,6 +56,9 @@ import androidx.lifecycle.compose.LifecycleResumeEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.prauga.pvot.coreui.UiState
+import com.prauga.pvot.designsystem.adaptive.PvotTabletopSplit
+import com.prauga.pvot.designsystem.adaptive.PvotTwoPane
+import com.prauga.pvot.designsystem.adaptive.rememberPvotWindowLayout
 import com.prauga.pvot.designsystem.components.PvotBottomSheet
 import com.prauga.pvot.designsystem.components.PvotScreen
 import com.prauga.pvot.designsystem.components.PvotSheetItem
@@ -71,9 +74,6 @@ import org.prauga.clock.AnalogClock
 import org.prauga.clock.R
 import org.prauga.clock.Utils
 import org.prauga.clock.common.ScreenAction
-import org.prauga.clock.common.TabletopSplit
-import org.prauga.clock.common.TwoPane
-import org.prauga.clock.common.rememberWindowLayout
 import org.prauga.clock.common.screenPadding
 import org.prauga.clock.data.City
 import org.prauga.clock.data.DataModel
@@ -116,10 +116,10 @@ private fun ClockBody(
         menuOpen = true
     }
 
-    val layout = rememberWindowLayout()
+    val layout = rememberPvotWindowLayout()
     when {
         layout.tabletop ->
-            TabletopSplit(
+            PvotTabletopSplit(
                 top = { MainClockPane(content, now, abovePanePadding(padding)) },
                 bottom = {
                     CityList(content, now, listState, belowPanePadding(padding), onLongPress)
@@ -127,7 +127,7 @@ private fun ClockBody(
                 modifier = Modifier.fillMaxSize(),
             )
         layout.twoPane ->
-            TwoPane(
+            PvotTwoPane(
                 first = { MainClockPane(content, now, screenPadding(padding)) },
                 second = { CityList(content, now, listState, screenPadding(padding), onLongPress) },
                 modifier = Modifier.fillMaxSize(),

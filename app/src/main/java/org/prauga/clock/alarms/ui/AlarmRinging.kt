@@ -40,6 +40,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.prauga.pvot.designsystem.adaptive.PvotTabletopSplit
+import com.prauga.pvot.designsystem.adaptive.rememberPvotWindowLayout
 import com.prauga.pvot.designsystem.components.PvotSlideTarget
 import com.prauga.pvot.designsystem.components.PvotSlideToAct
 import com.prauga.pvot.designsystem.components.PvotSlideToActDefaults
@@ -49,8 +51,6 @@ import com.prauga.pvot.designsystem.theme.PvotAppTheme
 import com.prauga.pvot.designsystem.theme.PvotSpacing
 import kotlinx.coroutines.delay
 import org.prauga.clock.R
-import org.prauga.clock.common.TabletopSplit
-import org.prauga.clock.common.rememberWindowLayout
 
 object AlarmRinging {
 
@@ -128,8 +128,8 @@ private fun RingingContent(
 
 @Composable
 private fun Ringing(label: String, tapToAct: Boolean, onSnooze: () -> Unit, onDismiss: () -> Unit) {
-    if (rememberWindowLayout().tabletop) {
-        TabletopSplit(
+    if (rememberPvotWindowLayout().tabletop) {
+        PvotTabletopSplit(
             top = { RingingInfo(label, Modifier.fillMaxSize()) },
             bottom = {
                 Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {

@@ -33,9 +33,11 @@ import androidx.lifecycle.compose.LifecycleResumeEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.prauga.pvot.coreui.UiState
+import com.prauga.pvot.designsystem.components.PvotChoiceSheet
 import com.prauga.pvot.designsystem.components.PvotDialog
 import com.prauga.pvot.designsystem.components.PvotDialogAction
 import com.prauga.pvot.designsystem.components.PvotDialogActionStyle
+import com.prauga.pvot.designsystem.components.PvotSubScreen
 import com.prauga.pvot.designsystem.components.button.PvotIconButtonDefaults
 import com.prauga.pvot.designsystem.components.list.PvotListGroup
 import com.prauga.pvot.designsystem.components.list.PvotListGroupScope
@@ -48,8 +50,6 @@ import org.prauga.clock.ScreensaverActivity
 import org.prauga.clock.Utils
 import org.prauga.clock.alarms.AlarmGestures
 import org.prauga.clock.alarms.Sunrise
-import org.prauga.clock.common.ChoiceSheet
-import org.prauga.clock.common.SubScreen
 import org.prauga.clock.data.DataModel
 import org.prauga.clock.events.Events
 import org.prauga.clock.ringtone.RingtonePickerActivity
@@ -230,7 +230,7 @@ private fun SettingsBody(
         }
     val autoHome = content.boolean(KEY_AUTO_HOME_CLOCK, true)
 
-    SubScreen(stringResource(R.string.settings), onBack) {
+    PvotSubScreen(stringResource(R.string.settings), onBack) {
         item {
             PvotListGroup(title = stringResource(R.string.clock_settings)) {
                 clockStyle.row(this)
@@ -357,7 +357,7 @@ private fun SettingsBody(
 
     val sheet = shown
     if (sheet != null) {
-        ChoiceSheet(
+        PvotChoiceSheet(
             visible = open != null,
             title = stringResource(sheet.title),
             entries = sheet.entries,

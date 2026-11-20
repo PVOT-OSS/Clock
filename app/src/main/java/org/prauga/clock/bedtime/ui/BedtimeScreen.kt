@@ -27,20 +27,20 @@ import androidx.lifecycle.compose.LifecycleResumeEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.prauga.pvot.coreui.UiState
+import com.prauga.pvot.designsystem.adaptive.PvotTabletopSplit
+import com.prauga.pvot.designsystem.adaptive.PvotTwoPane
+import com.prauga.pvot.designsystem.adaptive.rememberPvotWindowLayout
 import com.prauga.pvot.designsystem.components.PvotDialog
 import com.prauga.pvot.designsystem.components.PvotDialogAction
 import com.prauga.pvot.designsystem.components.PvotScreen
+import com.prauga.pvot.designsystem.components.picker.PvotTimePickerDialog
 import com.prauga.pvot.designsystem.theme.PvotSpacing
 import java.time.LocalTime
 import org.prauga.clock.R
 import org.prauga.clock.alarms.data.AlarmRepository
 import org.prauga.clock.bedtime.data.BedtimeRepository
 import org.prauga.clock.bedtime.data.WakeUpAlarm
-import org.prauga.clock.common.TabletopSplit
-import org.prauga.clock.common.TimeDialog
-import org.prauga.clock.common.TwoPane
 import org.prauga.clock.common.formatTime
-import org.prauga.clock.common.rememberWindowLayout
 import org.prauga.clock.common.screenPadding
 import org.prauga.clock.data.DataModel
 import org.prauga.clock.data.Weekdays
@@ -98,10 +98,10 @@ private fun BedtimeBody(
 
     val onPickGoal = { pickGoal = true }
     val onPickBedtime = { pickBedtime = true }
-    val layout = rememberWindowLayout()
+    val layout = rememberPvotWindowLayout()
     when {
         layout.tabletop ->
-            TabletopSplit(
+            PvotTabletopSplit(
                 top = {
                     BedtimeDial(
                         content,
@@ -126,7 +126,7 @@ private fun BedtimeBody(
                 },
             )
         layout.twoPane ->
-            TwoPane(
+            PvotTwoPane(
                 first = {
                     Column(
                         modifier =
@@ -158,7 +158,7 @@ private fun BedtimeBody(
             }
     }
 
-    TimeDialog(
+    PvotTimePickerDialog(
         visible = pickBedtime,
         initial = LocalTime.of(bedtime.hour, bedtime.minute),
         onDismiss = {

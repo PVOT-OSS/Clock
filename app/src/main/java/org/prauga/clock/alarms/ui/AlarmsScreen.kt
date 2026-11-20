@@ -41,6 +41,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.prauga.pvot.coreui.PvotEmptyContent
 import com.prauga.pvot.coreui.UiState
+import com.prauga.pvot.designsystem.adaptive.PvotTwoPane
+import com.prauga.pvot.designsystem.adaptive.rememberPvotWindowLayout
 import com.prauga.pvot.designsystem.components.PvotScreen
 import com.prauga.pvot.designsystem.components.PvotScreenDefaults
 import com.prauga.pvot.designsystem.components.button.PvotIconButtonDefaults
@@ -50,8 +52,6 @@ import org.prauga.clock.R
 import org.prauga.clock.alarms.AlarmEditorActivity
 import org.prauga.clock.alarms.data.AlarmRepository
 import org.prauga.clock.common.ScreenAction
-import org.prauga.clock.common.TwoPane
-import org.prauga.clock.common.rememberWindowLayout
 import org.prauga.clock.common.screenPadding
 import org.prauga.clock.provider.Alarm
 
@@ -66,7 +66,7 @@ fun AlarmsScreen(
     val state by viewModel.state.collectAsStateWithLifecycle()
     val alarms = (state as? UiState.Success)?.data
     val context = LocalContext.current
-    val twoPane = rememberWindowLayout().twoPane
+    val twoPane = rememberPvotWindowLayout().twoPane
     var selected by rememberSaveable { mutableStateOf<Long?>(null) }
     var session by rememberSaveable { mutableIntStateOf(0) }
     val open: (Long) -> Unit = { id ->
@@ -113,7 +113,7 @@ fun AlarmsScreen(
             )
         }
     if (twoPane) {
-        TwoPane(
+        PvotTwoPane(
             first = list,
             second = {
                 val id = selected

@@ -18,9 +18,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import com.prauga.pvot.designsystem.components.PvotCard
+import com.prauga.pvot.designsystem.components.PvotChoiceSheet
 import com.prauga.pvot.designsystem.theme.PvotSpacing
 import org.prauga.clock.R
-import org.prauga.clock.common.ChoiceSheet
 
 private val GOAL_CHOICES =
     (MIN_GOAL_HOURS * MINUTES_PER_HOUR..MAX_GOAL_HOURS * MINUTES_PER_HOUR step GOAL_STEP_MINUTES)
@@ -67,7 +67,7 @@ fun SleepGoalSheet(
     onSelect: (Int) -> Unit,
 ) {
     val entries = GOAL_CHOICES.map { sleepLengthText(it) }
-    ChoiceSheet(
+    PvotChoiceSheet(
         visible = visible,
         title = stringResource(R.string.bedtime_goal_title),
         entries = entries,

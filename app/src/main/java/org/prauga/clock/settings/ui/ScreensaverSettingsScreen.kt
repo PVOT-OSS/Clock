@@ -23,14 +23,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.prauga.pvot.coreui.UiState
+import com.prauga.pvot.designsystem.components.PvotChoiceSheet
+import com.prauga.pvot.designsystem.components.PvotSubScreen
 import com.prauga.pvot.designsystem.components.list.PvotListGroup
 import com.prauga.pvot.designsystem.components.list.PvotPreferenceRow
 import com.prauga.pvot.designsystem.components.list.PvotSwitchRow
 import com.prauga.pvot.designsystem.components.slider.PvotSlider
 import com.prauga.pvot.designsystem.theme.PvotSpacing
 import org.prauga.clock.R
-import org.prauga.clock.common.ChoiceSheet
-import org.prauga.clock.common.SubScreen
 import org.prauga.clock.data.DataModel
 import org.prauga.clock.settings.ScreensaverSettingsActivity.Companion.KEY_BOLD_TEXT
 import org.prauga.clock.settings.ScreensaverSettingsActivity.Companion.KEY_CLOCK_COLOR
@@ -108,7 +108,7 @@ private fun ScreensaverSettingsBody(
     }
     val switch = { key: String, value: Boolean -> onEvent(ScreensaverEvent.SetBoolean(key, value)) }
 
-    SubScreen(stringResource(R.string.screensaver_settings), onBack) {
+    PvotSubScreen(stringResource(R.string.screensaver_settings), onBack) {
         item {
             PvotListGroup {
                 item {
@@ -182,7 +182,7 @@ private fun ScreensaverSettingsBody(
 
     val sheet = shown
     if (sheet != null) {
-        ChoiceSheet(
+        PvotChoiceSheet(
             visible = open != null,
             title = stringResource(sheet.title),
             entries = sheet.entries,

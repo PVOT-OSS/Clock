@@ -27,13 +27,15 @@ import org.prauga.clock.alarms.AlarmUpdateHandler
 import org.prauga.clock.alarms.ScrollHandler
 import org.prauga.clock.bedtime.BedtimeSettings
 import org.prauga.clock.provider.Alarm
+import org.prauga.clock.provider.AlarmGroup
+import org.prauga.clock.provider.AlarmGroups
 import org.prauga.clock.provider.AlarmInstance
 
 class AlarmRepository(context: Context, private val io: CoroutineDispatcher = Dispatchers.IO) {
     private val app = context.applicationContext
     private val resolver = app.contentResolver
 
-    val alarms: Flow<List<AlarmRecord>> =
+    private val changes: Flow<Unit> =
         callbackFlow {
                 val observer =
                     object : ContentObserver(Handler(Looper.getMainLooper())) {
@@ -46,8 +48,43 @@ class AlarmRepository(context: Context, private val io: CoroutineDispatcher = Di
                 awaitClose { resolver.unregisterContentObserver(observer) }
             }
             .conflate()
-            .map { load() }
-            .flowOn(io)
+
+    val alarms: Flow<List<AlarmRecord>> = changes.map { load() }.flowOn(io)
+
+    val groups: Flow<List<AlarmGroup>> = changes.map { AlarmGroups.getAll(resolver) }.flowOn(io)
+
+    suspend fun createGroup(name: String): Long =
+        withContext(io) { AlarmGroups.insert(resolver, name) }
+
+    suspend fun renameGroup(id: Long, name: String) {
+        withContext(io) { AlarmGroups.rename(resolver, id, name) }
+    }
+
+    suspend fun setGroupCollapsed(id: Long, collapsed: Boolean) {
+        withContext(io) { AlarmGroups.setCollapsed(resolver, id, collapsed) }
+    }
+
+    suspend fun setGroupEnabled(id: Long, enabled: Boolean) {
+        val wakeUpId = wakeUpAlarmId()
+        val members = withContext(io) { AlarmGroups.members(resolver, id) }
+        val updater = updater()
+        members
+            .filter { it.id != wakeUpId && it.enabled != enabled }
+            .forEach {
+                it.enabled = enabled
+                updater.asyncUpdateAlarm(it, false, false)
+            }
+    }
+
+    suspend fun deleteGroup(id: Long, withAlarms: Boolean) {
+        if (withAlarms) {
+            val wakeUpId = wakeUpAlarmId()
+            val members = withContext(io) { AlarmGroups.members(resolver, id) }
+            val updater = updater()
+            members.filter { it.id != wakeUpId }.forEach(updater::asyncDeleteAlarm)
+        }
+        withContext(io) { AlarmGroups.delete(resolver, id) }
+    }
 
     fun add(alarm: Alarm, onAdded: (Long) -> Unit = {}) {
         updater(onAdded).asyncAddAlarm(alarm)

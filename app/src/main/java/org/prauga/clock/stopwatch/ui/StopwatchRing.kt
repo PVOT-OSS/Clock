@@ -6,6 +6,7 @@
 package org.prauga.clock.stopwatch.ui
 
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,12 +32,14 @@ fun StopwatchRing(stopwatch: Stopwatch, total: Long, modifier: Modifier = Modifi
         color = color,
         modifier = modifier,
     ) {
+        val style = MaterialTheme.typography.displayMedium
         Text(
             text = formatStopwatch(total),
-            style = MaterialTheme.typography.displayMedium.copy(fontFeatureSettings = "tnum"),
+            style = style.copy(fontFeatureSettings = "tnum"),
             fontWeight = FontWeight.Medium,
             textAlign = TextAlign.Center,
             maxLines = 1,
+            autoSize = TextAutoSize.StepBased(maxFontSize = style.fontSize),
             modifier = Modifier.padding(horizontal = PvotSpacing.L),
         )
     }

@@ -6,10 +6,12 @@
 package org.prauga.clock.bedtime.ui
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.rememberScrollState
@@ -23,6 +25,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.LifecycleResumeEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -128,16 +132,28 @@ private fun BedtimeBody(
         layout.twoPane ->
             PvotTwoPane(
                 first = {
-                    Column(
-                        modifier =
-                            Modifier.fillMaxSize()
-                                .verticalScroll(rememberScrollState())
-                                .padding(screenPadding(padding)),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.spacedBy(PvotSpacing.L),
-                    ) {
-                        BedtimeDial(content, onEvent, onPickGoal, Modifier.fillMaxWidth())
-                        BedtimeChips(content, onPickBedtime, chooseWakeUp)
+                    BoxWithConstraints(Modifier.fillMaxSize()) {
+                        val inset = screenPadding(padding)
+                        val visible =
+                            maxHeight - inset.calculateTopPadding() - inset.calculateBottomPadding()
+                        Column(
+                            modifier =
+                                Modifier.fillMaxSize()
+                                    .verticalScroll(rememberScrollState())
+                                    .padding(inset),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.spacedBy(PvotSpacing.L),
+                        ) {
+                            BedtimeDial(
+                                content,
+                                onEvent,
+                                onPickGoal,
+                                Modifier.fillMaxWidth()
+                                    .heightIn(max = maxOf(visible, DialFitMinHeight)),
+                                fitHeight = true,
+                            )
+                            BedtimeChips(content, onPickBedtime, chooseWakeUp)
+                        }
                     }
                 },
                 second = {
@@ -246,3 +262,5 @@ private fun WakeUpChooser(
         },
     )
 }
+
+private val DialFitMinHeight: Dp = 320.dp

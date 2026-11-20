@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBars
@@ -53,6 +54,7 @@ import com.prauga.pvot.coreui.UiState
 import com.prauga.pvot.designsystem.adaptive.PvotAdaptiveDefaults
 import com.prauga.pvot.designsystem.adaptive.PvotTabletopSplit
 import com.prauga.pvot.designsystem.adaptive.PvotTwoPane
+import com.prauga.pvot.designsystem.adaptive.PvotWindowHeight
 import com.prauga.pvot.designsystem.adaptive.rememberPvotWindowLayout
 import com.prauga.pvot.designsystem.components.PvotScreenDefaults
 import com.prauga.pvot.designsystem.components.button.PvotButton
@@ -131,6 +133,7 @@ private fun StopwatchBody(
             modifier = Modifier.padding(PvotSpacing.L).widthIn(max = RingMaxSize).then(modifier),
         )
     }
+    val short = layout.height == PvotWindowHeight.Compact
     val controls: @Composable (Modifier) -> Unit = { modifier ->
         StopwatchControls(
             content = content,
@@ -138,6 +141,7 @@ private fun StopwatchBody(
             onEvent = onEvent,
             onShowSaved = if (savedInPane) null else ({ showSaved = true }),
             modifier = modifier.padding(top = PvotSpacing.L),
+            vertical = short && layout.twoPane && !layout.tabletop,
         )
     }
 
@@ -146,7 +150,7 @@ private fun StopwatchBody(
             PvotTabletopSplit(
                 top = {
                     Box(Modifier.fillMaxSize().padding(top = top), Alignment.Center) {
-                        ring(Modifier.fillMaxSize())
+                        ring(Modifier)
                     }
                 },
                 bottom = {
@@ -172,12 +176,26 @@ private fun StopwatchBody(
         layout.twoPane ->
             PvotTwoPane(
                 first = {
-                    Column(
-                        Modifier.fillMaxSize().padding(top = top, bottom = bottom),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                    ) {
-                        Box(Modifier.weight(1f), Alignment.Center) { ring(Modifier.fillMaxSize()) }
-                        controls(Modifier)
+                    if (short) {
+                        Row(
+                            Modifier.fillMaxSize().padding(top = top, bottom = bottom),
+                            verticalAlignment = Alignment.CenterVertically,
+                        ) {
+                            Box(Modifier.weight(1f).fillMaxHeight(), Alignment.Center) {
+                                ring(Modifier)
+                            }
+                            controls(Modifier)
+                        }
+                    } else {
+                        Column(
+                            Modifier.fillMaxSize().padding(top = top, bottom = bottom),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                        ) {
+                            Box(Modifier.weight(1f).fillMaxWidth(), Alignment.Center) {
+                                ring(Modifier)
+                            }
+                            controls(Modifier)
+                        }
                     }
                 },
                 second = {
@@ -278,15 +296,12 @@ private fun StopwatchControls(
     onEvent: (StopwatchEvent) -> Unit,
     onShowSaved: (() -> Unit)?,
     modifier: Modifier = Modifier,
+    vertical: Boolean = false,
 ) {
     val context = LocalContext.current
     val stopwatch = content.stopwatch
     val savedMessage = stringResource(R.string.stopwatch_saved_toast)
-    Row(
-        modifier = modifier,
-        horizontalArrangement = Arrangement.spacedBy(PvotSpacing.L),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
+    val buttons: @Composable () -> Unit = {
         if (onShowSaved != null) {
             PvotIconButton(
                 icon = painterResource(R.drawable.ic_t_history),
@@ -327,6 +342,23 @@ private fun StopwatchControls(
                 contentDescription = shareTitle,
                 onClick = { share(context, shareTitle, total, content.laps) },
             )
+        }
+    }
+    if (vertical) {
+        Column(
+            modifier = modifier,
+            verticalArrangement = Arrangement.spacedBy(PvotSpacing.M),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            buttons()
+        }
+    } else {
+        Row(
+            modifier = modifier,
+            horizontalArrangement = Arrangement.spacedBy(PvotSpacing.L),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            buttons()
         }
     }
 }

@@ -83,6 +83,9 @@ class BedtimeRepository(
             it.minutes = minute
         }
 
+    suspend fun setWakeUpEnabled(id: Long, enabled: Boolean) =
+        alarms.update(id, popToast = enabled, minorUpdate = false) { it.enabled = enabled }
+
     fun startSleepSound(sound: Int, minutes: Int) =
         SleepSoundService.start(app, SleepSoundService.Noise.entries[sound], minutes)
 

@@ -52,6 +52,7 @@ class BedtimeViewModel(private val repository: BedtimeRepository) : ViewModel() 
                 }
             is BedtimeEvent.ChooseWakeUp -> change { wakeUpAlarmId = event.id }
             is BedtimeEvent.SetWakeUpTime -> setWakeUpTime(event.hour, event.minute)
+            is BedtimeEvent.SetWakeUpEnabled -> setWakeUpEnabled(event.enabled)
             is BedtimeEvent.AddWakeUpAlarm -> addWakeUpAlarm(event.label)
             is BedtimeEvent.SetSleepSound -> change { sleepSound = event.sound }
             is BedtimeEvent.SetSleepMinutes -> change { sleepSoundMinutes = event.minutes }
@@ -88,6 +89,16 @@ class BedtimeViewModel(private val repository: BedtimeRepository) : ViewModel() 
                 )
             )
         viewModelScope.launch { repository.setWakeUpTime(wakeUp.id, hour, minute) }
+    }
+
+    private fun setWakeUpEnabled(enabled: Boolean) {
+        val shown = current() ?: return
+        val wakeUp = shown.bedtime.wakeUp ?: return
+        content.value =
+            UiState.Success(
+                shown.copy(bedtime = shown.bedtime.copy(wakeUp = wakeUp.copy(enabled = enabled)))
+            )
+        viewModelScope.launch { repository.setWakeUpEnabled(wakeUp.id, enabled) }
     }
 
     private fun toggleSleepSound() {

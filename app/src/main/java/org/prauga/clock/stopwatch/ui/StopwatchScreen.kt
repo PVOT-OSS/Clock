@@ -54,6 +54,7 @@ import com.prauga.pvot.designsystem.adaptive.PvotAdaptiveDefaults
 import com.prauga.pvot.designsystem.adaptive.PvotTabletopSplit
 import com.prauga.pvot.designsystem.adaptive.PvotTwoPane
 import com.prauga.pvot.designsystem.adaptive.rememberPvotWindowLayout
+import com.prauga.pvot.designsystem.components.PvotScreenDefaults
 import com.prauga.pvot.designsystem.components.button.PvotButton
 import com.prauga.pvot.designsystem.components.button.PvotButtonStyle
 import com.prauga.pvot.designsystem.components.button.PvotIconButton
@@ -371,7 +372,7 @@ private fun lapColor(lap: Lap, laps: List<Lap>): Color {
 private fun bottomInset(): Dp =
     WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding() +
         LocalPvotNavBarSizes.current.barHeight +
-        PvotSpacing.L
+        PvotScreenDefaults.BottomSpacing
 
 private fun share(context: Context, title: String, total: Long, laps: List<Lap>) {
     val text = buildString {

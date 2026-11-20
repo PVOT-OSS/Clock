@@ -17,4 +17,8 @@
     <string name="bedtime_sleep_length"><xliff:g id="hours" example="9 hr">%1$s</xliff:g>, <xliff:g id="minutes" example="45 mins">%2$s</xliff:g></string>
     <string name="bedtime_dial_later">Later</string>
     <string name="bedtime_dial_earlier">Earlier</string>
+    <string name="bedtime_goal_title">Sleep goal</string>
+    <string name="bedtime_goal_below">Below your sleep goal (~<xliff:g id="goal" example="8 hr">%s</xliff:g>)</string>
+    <string name="bedtime_goal_meets">Meets your sleep goal (~<xliff:g id="goal" example="8 hr">%s</xliff:g>)</string>
+    <string name="bedtime_goal_above">Above your sleep goal (~<xliff:g id="goal" example="8 hr">%s</xliff:g>)</string>
 </resources>

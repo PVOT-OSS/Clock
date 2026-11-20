@@ -56,6 +56,7 @@ class BedtimeViewModel(private val repository: BedtimeRepository) : ViewModel() 
             is BedtimeEvent.SetSleepSound -> change { sleepSound = event.sound }
             is BedtimeEvent.SetSleepMinutes -> change { sleepSoundMinutes = event.minutes }
             BedtimeEvent.ToggleSleepSound -> toggleSleepSound()
+            is BedtimeEvent.SetSleepGoal -> change { sleepGoalMinutes = event.minutes }
             BedtimeEvent.LoadTomorrow ->
                 viewModelScope.launch {
                     tomorrow = repository.tomorrowsEvent()
@@ -66,7 +67,7 @@ class BedtimeViewModel(private val repository: BedtimeRepository) : ViewModel() 
 
     private fun addWakeUpAlarm(label: String) {
         val bedtime = current()?.bedtime ?: return
-        val wake = wrapDay(minuteOfDay(bedtime.hour, bedtime.minute) + SLEEP_MINUTES)
+        val wake = wrapDay(minuteOfDay(bedtime.hour, bedtime.minute) + bedtime.sleepGoalMinutes)
         repository.addWakeUpAlarm(
             wake / MINUTES_PER_HOUR,
             wake % MINUTES_PER_HOUR,
@@ -115,8 +116,4 @@ class BedtimeViewModel(private val repository: BedtimeRepository) : ViewModel() 
     }
 
     private fun current(): BedtimeContent? = (content.value as? UiState.Success)?.data
-
-    private companion object {
-        const val SLEEP_MINUTES = 8 * MINUTES_PER_HOUR
-    }
 }

@@ -19,9 +19,8 @@ data class BedtimeContent(
     val wakeMinutes: Int
         get() =
             bedtime.wakeUp?.let { minuteOfDay(it.hour, it.minute) }
-                ?: wrapDay(bedMinutes + DEFAULT_SLEEP_MINUTES)
+                ?: wrapDay(bedMinutes + bedtime.sleepGoalMinutes)
 
-    private companion object {
-        const val DEFAULT_SLEEP_MINUTES = 8 * MINUTES_PER_HOUR
-    }
+    val goalStatus: SleepGoalStatus
+        get() = sleepGoalStatus(sleepLength(bedMinutes, wakeMinutes), bedtime.sleepGoalMinutes)
 }

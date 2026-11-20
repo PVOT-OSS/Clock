@@ -97,6 +97,7 @@ private fun BedtimeBody(
     var pickReminder by remember { mutableStateOf(false) }
     var pickWakeUp by remember { mutableStateOf(false) }
     var introPick by remember { mutableStateOf(false) }
+    var pickGoal by remember { mutableStateOf(false) }
 
     PvotScreen(
         state = listState,
@@ -132,6 +133,15 @@ private fun BedtimeBody(
                             BedtimeEvent.SetWakeUpTime(it / MINUTES_PER_HOUR, it % MINUTES_PER_HOUR)
                         )
                     },
+                )
+            }
+        }
+        item(key = "goal") {
+            Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+                SleepGoalLine(
+                    status = content.goalStatus,
+                    goalMinutes = bedtime.sleepGoalMinutes,
+                    onClick = { pickGoal = true },
                 )
             }
         }
@@ -205,6 +215,15 @@ private fun BedtimeBody(
                     },
                 )
             }
+        },
+    )
+    SleepGoalSheet(
+        visible = pickGoal,
+        goalMinutes = bedtime.sleepGoalMinutes,
+        onDismiss = { pickGoal = false },
+        onSelect = {
+            onEvent(BedtimeEvent.SetSleepGoal(it))
+            pickGoal = false
         },
     )
     WakeUpChooser(

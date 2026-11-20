@@ -18,4 +18,5 @@ data class BedtimeSnapshot(
     val sleepSound: Int,
     val sleepSoundMinutes: Int,
     val sleepSoundPlaying: Boolean,
+    val sleepGoalMinutes: Int,
 )

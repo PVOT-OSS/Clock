@@ -79,7 +79,9 @@ object BedtimeScheduler {
                 .takeIf { it >= 0 }
                 ?.let { Alarm.getAlarm(context.contentResolver, it) }
         return alarm?.takeIf { it.enabled }?.getNextAlarmTime(bedtime)
-            ?: (bedtime.clone() as Calendar).apply { add(Calendar.HOUR_OF_DAY, 8) }
+            ?: (bedtime.clone() as Calendar).apply {
+                add(Calendar.MINUTE, settings.sleepGoalMinutes)
+            }
     }
 
     internal fun onModeAlarm(context: Context, intent: Intent) {

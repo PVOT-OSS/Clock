@@ -46,6 +46,7 @@ class BedtimeRepository(
                 sleepSound = settings.sleepSound,
                 sleepSoundMinutes = settings.sleepSoundMinutes,
                 sleepSoundPlaying = SleepSoundService.isPlaying,
+                sleepGoalMinutes = settings.sleepGoalMinutes,
             )
         }
 

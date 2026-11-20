@@ -62,6 +62,10 @@ class BedtimeSettings(context: Context) {
         get() = prefs.getInt(KEY_REMINDER, 15)
         set(value) = prefs.edit { putInt(KEY_REMINDER, value) }
 
+    var sleepGoalMinutes: Int
+        get() = prefs.getInt(KEY_SLEEP_GOAL, DEFAULT_SLEEP_GOAL)
+        set(value) = prefs.edit { putInt(KEY_SLEEP_GOAL, value) }
+
     fun nextBedtime(now: Calendar = Calendar.getInstance()): Calendar? {
         if (!enabled || !days.isRepeating) {
             return null
@@ -81,6 +85,8 @@ class BedtimeSettings(context: Context) {
     }
 
     private companion object {
+        const val DEFAULT_SLEEP_GOAL = 8 * 60
+        const val KEY_SLEEP_GOAL = "bedtime_sleep_goal_minutes"
         const val KEY_ENABLED = "bedtime_enabled"
         const val KEY_HOUR = "bedtime_hour"
         const val KEY_MINUTE = "bedtime_minute"

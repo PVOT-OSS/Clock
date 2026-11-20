@@ -35,4 +35,6 @@ sealed interface BedtimeEvent {
     data object ToggleSleepSound : BedtimeEvent
 
     data object LoadTomorrow : BedtimeEvent
+
+    data class SetSleepGoal(val minutes: Int) : BedtimeEvent
 }

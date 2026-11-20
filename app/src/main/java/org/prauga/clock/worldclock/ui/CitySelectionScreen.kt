@@ -7,7 +7,10 @@ package org.prauga.clock.worldclock.ui
 
 import android.text.format.DateFormat
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.items
@@ -45,6 +48,7 @@ import com.prauga.pvot.designsystem.theme.PvotSpacing
 import java.util.Calendar
 import java.util.TimeZone
 import org.prauga.clock.R
+import org.prauga.clock.common.CenteredContent
 import org.prauga.clock.common.ChoiceSheet
 import org.prauga.clock.common.SubScreen
 import org.prauga.clock.data.DataModel
@@ -107,54 +111,62 @@ private fun CitySelectionBody(
         },
         listOverlay = {
             if (query.isBlank()) {
-                PvotFastScroller(
-                    state = state,
-                    sections = scrollSections,
-                    modifier = Modifier.align(Alignment.CenterEnd),
-                )
+                CenteredContent(Modifier.fillMaxHeight()) {
+                    Box(Modifier.fillMaxSize()) {
+                        PvotFastScroller(
+                            state = state,
+                            sections = scrollSections,
+                            modifier = Modifier.align(Alignment.CenterEnd),
+                        )
+                    }
+                }
             }
         },
     ) {
         item(key = "search") {
-            PvotTextField(
-                value = query,
-                onValueChange = { onEvent(CitySelectionEvent.Search(it)) },
-                placeholder = stringResource(R.string.search_cities),
-                singleLine = true,
-                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
-                modifier = Modifier.fillMaxWidth().padding(bottom = PvotSpacing.M),
-            )
+            CenteredContent {
+                PvotTextField(
+                    value = query,
+                    onValueChange = { onEvent(CitySelectionEvent.Search(it)) },
+                    placeholder = stringResource(R.string.search_cities),
+                    singleLine = true,
+                    keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
+                    modifier = Modifier.fillMaxWidth().padding(bottom = PvotSpacing.M),
+                )
+            }
         }
         items(sections, key = { if (content.query.isBlank()) it.index else "results" }) { section ->
-            PvotListGroup(
-                title =
-                    when {
-                        query.isNotBlank() -> null
-                        section.selected -> selectedLabel
-                        else -> section.index
-                    },
-                modifier = Modifier.padding(bottom = PvotSpacing.L),
-            ) {
-                section.cities.forEach { city ->
-                    item {
-                        val on = city in content.checked
-                        PvotListRow(
-                            title = city.name,
-                            supportingText = timeIn(city.timeZone, twentyFour),
-                            selected = on,
-                            trailing =
-                                if (on) {
-                                    {
-                                        Icon(
-                                            painterResource(R.drawable.ic_t_check),
-                                            contentDescription = null,
-                                        )
-                                    }
-                                } else {
-                                    null
-                                },
-                            onClick = { onEvent(CitySelectionEvent.Toggle(city)) },
-                        )
+            CenteredContent {
+                PvotListGroup(
+                    title =
+                        when {
+                            query.isNotBlank() -> null
+                            section.selected -> selectedLabel
+                            else -> section.index
+                        },
+                    modifier = Modifier.padding(bottom = PvotSpacing.L),
+                ) {
+                    section.cities.forEach { city ->
+                        item {
+                            val on = city in content.checked
+                            PvotListRow(
+                                title = city.name,
+                                supportingText = timeIn(city.timeZone, twentyFour),
+                                selected = on,
+                                trailing =
+                                    if (on) {
+                                        {
+                                            Icon(
+                                                painterResource(R.drawable.ic_t_check),
+                                                contentDescription = null,
+                                            )
+                                        }
+                                    } else {
+                                        null
+                                    },
+                                onClick = { onEvent(CitySelectionEvent.Toggle(city)) },
+                            )
+                        }
                     }
                 }
             }

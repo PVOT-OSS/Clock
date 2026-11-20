@@ -36,7 +36,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.prauga.pvot.coreui.UiState
 import com.prauga.pvot.designsystem.components.PvotCard
 import com.prauga.pvot.designsystem.components.button.PvotButton
@@ -45,7 +44,6 @@ import com.prauga.pvot.designsystem.theme.PvotAppTheme
 import com.prauga.pvot.designsystem.theme.PvotSpacing
 import kotlin.math.abs
 import org.prauga.clock.R
-import org.prauga.clock.data.DataModel
 
 object ExpiredTimers {
 
@@ -64,14 +62,10 @@ object ExpiredTimers {
 }
 
 @Composable
-private fun ExpiredTimersScreen(
-    viewModel: TimerViewModel = viewModel {
-        TimerViewModel(DataModel.getDataModel(), expiredOnly = true)
-    }
-) {
+private fun ExpiredTimersScreen(viewModel: TimerViewModel = timerViewModel(expiredOnly = true)) {
     val activity = LocalActivity.current
     val state by viewModel.state.collectAsStateWithLifecycle()
-    val timers = (state as? UiState.Success)?.data ?: return
+    val timers = (state as? UiState.Success)?.data?.timers ?: return
     LaunchedEffect(timers.isEmpty()) { if (timers.isEmpty()) activity?.finish() }
     var now by remember { mutableLongStateOf(SystemClock.elapsedRealtime()) }
     LaunchedEffect(Unit) {

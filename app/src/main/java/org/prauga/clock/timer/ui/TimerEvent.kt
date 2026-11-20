@@ -6,7 +6,7 @@
 package org.prauga.clock.timer.ui
 
 sealed interface TimerEvent {
-    data class Create(val lengthMillis: Long) : TimerEvent
+    data class Create(val lengthMillis: Long, val label: String) : TimerEvent
 
     data class Start(val id: Int) : TimerEvent
 
@@ -19,4 +19,8 @@ sealed interface TimerEvent {
     data class AddMinute(val id: Int) : TimerEvent
 
     data class Delete(val id: Int) : TimerEvent
+
+    data class SavePreset(val id: Long?, val name: String, val lengthMillis: Long) : TimerEvent
+
+    data class DeletePreset(val id: Long) : TimerEvent
 }

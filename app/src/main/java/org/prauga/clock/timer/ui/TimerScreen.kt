@@ -16,6 +16,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.GridItemSpan
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -30,6 +35,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.withFrameMillis
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -47,90 +53,166 @@ import com.prauga.pvot.designsystem.motion.pvotReveal
 import com.prauga.pvot.designsystem.theme.PvotSpacing
 import kotlin.math.abs
 import kotlin.time.Duration
-import kotlin.time.Duration.Companion.minutes
+import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.seconds
 import org.prauga.clock.R
 import org.prauga.clock.common.ScreenAction
 import org.prauga.clock.common.screenPadding
 import org.prauga.clock.data.DataModel
 import org.prauga.clock.data.Timer
-
-private val PRESETS = listOf(5, 10, 30, 45)
+import org.prauga.clock.timer.data.TimerPreset
+import org.prauga.clock.timer.data.TimerPresetsRepository
 
 @Composable
 fun TimerScreen(
     padding: PaddingValues,
     listState: LazyListState,
     setupRequests: Int,
-    viewModel: TimerViewModel = viewModel { TimerViewModel(DataModel.getDataModel()) },
+    viewModel: TimerViewModel = timerViewModel(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
-    val timers = (state as? UiState.Success)?.data ?: return
+    val content = (state as? UiState.Success)?.data ?: return
     var adding by rememberSaveable { mutableStateOf(false) }
     LaunchedEffect(setupRequests) { if (setupRequests > 0) adding = true }
 
     Box(Modifier.fillMaxSize()) {
-        if (timers.isEmpty() || adding) {
+        if (content.timers.isEmpty() || adding) {
             TimerSetup(
-                modifier = Modifier.padding(top = padding.calculateTopPadding()),
-                canCancel = timers.isNotEmpty(),
+                presets = content.presets,
+                padding = padding,
+                canCancel = content.timers.isNotEmpty(),
                 onCancel = { adding = false },
-                onStart = { length ->
-                    viewModel.onEvent(TimerEvent.Create(length))
+                onStart = { length, label ->
+                    viewModel.onEvent(TimerEvent.Create(length, label))
                     adding = false
                 },
+                onEvent = viewModel::onEvent,
             )
         } else {
-            TimerList(timers, listState, padding, viewModel::onEvent, onAdd = { adding = true })
+            TimerList(
+                content.timers,
+                listState,
+                padding,
+                viewModel::onEvent,
+                onAdd = { adding = true },
+            )
         }
     }
 }
 
 @Composable
+fun timerViewModel(expiredOnly: Boolean = false): TimerViewModel {
+    val context = LocalContext.current.applicationContext
+    return viewModel {
+        TimerViewModel(DataModel.getDataModel(), TimerPresetsRepository(context), expiredOnly)
+    }
+}
+
+@Composable
 private fun TimerSetup(
+    presets: List<TimerPreset>,
+    padding: PaddingValues,
     canCancel: Boolean,
     onCancel: () -> Unit,
-    onStart: (Long) -> Unit,
+    onStart: (Long, String) -> Unit,
+    onEvent: (TimerEvent) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     var duration by rememberSaveable(stateSaver = DurationSaver) { mutableStateOf(Duration.ZERO) }
+    var chosenPreset by rememberSaveable { mutableStateOf<Long?>(null) }
+    var actionsFor by rememberSaveable { mutableStateOf<Long?>(null) }
+    var editing by rememberSaveable { mutableStateOf<Long?>(null) }
+    var editorOpen by rememberSaveable { mutableStateOf(false) }
+    val label =
+        presets
+            .firstOrNull {
+                it.id == chosenPreset && it.lengthMillis == duration.inWholeMilliseconds
+            }
+            ?.name
+            .orEmpty()
     if (duration > Duration.ZERO) {
         ScreenAction(R.drawable.ic_t_player_play, R.string.timer_start) {
-            onStart(duration.inWholeMilliseconds)
+            onStart(duration.inWholeMilliseconds, label)
+            duration = Duration.ZERO
+            chosenPreset = null
         }
     }
-    Box(modifier.fillMaxSize()) {
-        Column(
-            Modifier.fillMaxWidth().padding(horizontal = PvotSpacing.L),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
+    LazyVerticalGrid(
+        columns = GridCells.Adaptive(PresetChipSize),
+        state = rememberLazyGridState(),
+        contentPadding = screenPadding(padding),
+        horizontalArrangement = Arrangement.spacedBy(PvotSpacing.M),
+        verticalArrangement = Arrangement.spacedBy(PvotSpacing.M),
+        modifier = modifier.fillMaxSize(),
+    ) {
+        item(key = KEY_PICKER, span = { GridItemSpan(maxLineSpan) }) {
             PvotDurationPicker(
                 duration = duration,
                 onDurationChange = { duration = it },
-                modifier = Modifier.fillMaxWidth().padding(top = PvotSpacing.L),
+                modifier = Modifier.fillMaxWidth(),
             )
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(PvotSpacing.S),
-                modifier = Modifier.padding(top = PvotSpacing.L),
-            ) {
-                PRESETS.forEach { minutes ->
+        }
+        if (canCancel) {
+            item(key = KEY_CANCEL, span = { GridItemSpan(maxLineSpan) }) {
+                Box(contentAlignment = Alignment.Center) {
                     PvotButton(
-                        text = stringResource(R.string.timer_preset_minutes, minutes),
-                        onClick = { duration = minutes.minutes },
-                        style = PvotButtonStyle.Tonal,
+                        text = stringResource(android.R.string.cancel),
+                        onClick = onCancel,
+                        style = PvotButtonStyle.Text,
                     )
                 }
             }
-            if (canCancel) {
-                PvotButton(
-                    text = stringResource(android.R.string.cancel),
-                    onClick = onCancel,
-                    style = PvotButtonStyle.Text,
-                    modifier = Modifier.padding(top = PvotSpacing.S),
-                )
-            }
+        }
+        item(key = KEY_SAVED, span = { GridItemSpan(maxLineSpan) }) {
+            Text(
+                stringResource(R.string.timer_saved),
+                style = MaterialTheme.typography.titleSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(top = PvotSpacing.M),
+            )
+        }
+        items(presets, key = { it.id }) { preset ->
+            PresetChip(
+                preset = preset,
+                onClick = {
+                    duration = preset.lengthMillis.milliseconds
+                    chosenPreset = preset.id
+                },
+                onLongClick = { actionsFor = preset.id },
+            )
+        }
+        item(key = KEY_ADD) {
+            AddPresetChip(
+                onClick = {
+                    editing = null
+                    editorOpen = true
+                }
+            )
         }
     }
+
+    PresetActionsSheet(
+        preset = presets.firstOrNull { it.id == actionsFor },
+        onDismiss = { actionsFor = null },
+        onEdit = {
+            actionsFor = null
+            editing = it.id
+            editorOpen = true
+        },
+        onDelete = {
+            actionsFor = null
+            onEvent(TimerEvent.DeletePreset(it.id))
+        },
+    )
+    PresetEditorDialog(
+        preset = presets.firstOrNull { it.id == editing },
+        visible = editorOpen,
+        onDismiss = { editorOpen = false },
+        onSave = { name, length ->
+            onEvent(TimerEvent.SavePreset(editing, name, length))
+            editorOpen = false
+        },
+    )
 }
 
 @Composable
@@ -242,6 +324,11 @@ private fun format(remaining: Long): String {
         else "%d:%02d".format(total / 60, total % 60)
     return if (seconds < 0) "−$text" else text
 }
+
+private const val KEY_PICKER = "picker"
+private const val KEY_CANCEL = "cancel"
+private const val KEY_SAVED = "saved"
+private const val KEY_ADD = "add"
 
 private val DurationSaver =
     androidx.compose.runtime.saveable.Saver<Duration, Long>(

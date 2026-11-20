@@ -16,9 +16,11 @@
 
 package org.prauga.clock.provider;
 
+import static org.prauga.clock.provider.ClockContract.AlarmGroupsColumns;
 import static org.prauga.clock.provider.ClockContract.AlarmsColumns;
 import static org.prauga.clock.provider.ClockContract.InstancesColumns;
 import static org.prauga.clock.provider.ClockDatabaseHelper.ALARMS_TABLE_NAME;
+import static org.prauga.clock.provider.ClockDatabaseHelper.GROUPS_TABLE_NAME;
 import static org.prauga.clock.provider.ClockDatabaseHelper.INSTANCES_TABLE_NAME;
 
 import android.content.ContentProvider;
@@ -49,6 +51,8 @@ public class ClockProvider extends ContentProvider {
     private static final int INSTANCES = 3;
     private static final int INSTANCES_ID = 4;
     private static final int ALARMS_WITH_INSTANCES = 5;
+    private static final int GROUPS = 6;
+    private static final int GROUPS_ID = 7;
 
     /**
      * Projection map used by query for snoozed alarms.
@@ -95,7 +99,8 @@ public class ClockProvider extends ContentProvider {
         sAlarmsWithInstancesProjection.put(INSTANCES_TABLE_NAME + "." + InstancesColumns.VIBRATE,
                 INSTANCES_TABLE_NAME + "." + InstancesColumns.VIBRATE);
         for (String column : new String[] {AlarmsColumns.SCHEDULED_DATE,
-                AlarmsColumns.PAUSE_START, AlarmsColumns.PAUSE_END, AlarmsColumns.COLOR}) {
+                AlarmsColumns.PAUSE_START, AlarmsColumns.PAUSE_END, AlarmsColumns.COLOR,
+                AlarmsColumns.GROUP_ID}) {
             sAlarmsWithInstancesProjection.put(ALARMS_TABLE_NAME + "." + column,
                     ALARMS_TABLE_NAME + "." + column);
         }
@@ -123,6 +128,8 @@ public class ClockProvider extends ContentProvider {
         sURIMatcher.addURI(ClockContract.AUTHORITY, "instances", INSTANCES);
         sURIMatcher.addURI(ClockContract.AUTHORITY, "instances/#", INSTANCES_ID);
         sURIMatcher.addURI(ClockContract.AUTHORITY, "alarms_with_instances", ALARMS_WITH_INSTANCES);
+        sURIMatcher.addURI(ClockContract.AUTHORITY, "alarm_groups", GROUPS);
+        sURIMatcher.addURI(ClockContract.AUTHORITY, "alarm_groups/#", GROUPS_ID);
     }
 
     public ClockProvider() {
@@ -174,6 +181,14 @@ public class ClockProvider extends ContentProvider {
                 qb.appendWhere(ALARM_JOIN_INSTANCE_WHERE_STATEMENT);
                 qb.setProjectionMap(sAlarmsWithInstancesProjection);
                 break;
+            case GROUPS:
+                qb.setTables(GROUPS_TABLE_NAME);
+                break;
+            case GROUPS_ID:
+                qb.setTables(GROUPS_TABLE_NAME);
+                qb.appendWhere(AlarmGroupsColumns._ID + "=");
+                qb.appendWhere(uri.getLastPathSegment());
+                break;
             default:
                 throw new IllegalArgumentException("Unknown URI " + uri);
         }
@@ -201,6 +216,10 @@ public class ClockProvider extends ContentProvider {
                 return "vnd.android.cursor.dir/instances";
             case INSTANCES_ID:
                 return "vnd.android.cursor.item/instances";
+            case GROUPS:
+                return "vnd.android.cursor.dir/alarm_groups";
+            case GROUPS_ID:
+                return "vnd.android.cursor.item/alarm_groups";
             default:
                 throw new IllegalArgumentException("Unknown URI");
         }
@@ -224,6 +243,12 @@ public class ClockProvider extends ContentProvider {
                         InstancesColumns._ID + "=" + alarmId,
                         null);
                 break;
+            case GROUPS_ID:
+                alarmId = uri.getLastPathSegment();
+                count = db.update(GROUPS_TABLE_NAME, values,
+                        AlarmGroupsColumns._ID + "=" + alarmId,
+                        null);
+                break;
             default: {
                 throw new UnsupportedOperationException("Cannot update URI: " + uri);
             }
@@ -243,6 +268,9 @@ public class ClockProvider extends ContentProvider {
                 break;
             case INSTANCES:
                 rowId = db.insert(INSTANCES_TABLE_NAME, null, initialValues);
+                break;
+            case GROUPS:
+                rowId = db.insert(GROUPS_TABLE_NAME, null, initialValues);
                 break;
             default:
                 throw new IllegalArgumentException("Cannot insert from URI: " + uri);
@@ -282,6 +310,10 @@ public class ClockProvider extends ContentProvider {
                     where = InstancesColumns._ID + "=" + primaryKey + " AND (" + where + ")";
                 }
                 count = db.delete(INSTANCES_TABLE_NAME, where, whereArgs);
+                break;
+            case GROUPS_ID:
+                count = mOpenHelper.deleteGroup(ContentUris.parseId(uri));
+                notifyChange(getContext().getContentResolver(), AlarmsColumns.CONTENT_URI);
                 break;
             default:
                 throw new IllegalArgumentException("Cannot delete from URI: " + uri);

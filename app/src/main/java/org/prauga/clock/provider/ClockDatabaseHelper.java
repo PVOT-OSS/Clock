@@ -82,6 +82,11 @@ class ClockDatabaseHelper extends SQLiteOpenHelper {
      */
     private static final int VERSION_13 = 14;
 
+    /**
+     * Added alarm groups
+     */
+    private static final int VERSION_14 = 15;
+
     // This creates a default alarm at 8:30 for every Mon,Tue,Wed,Thu,Fri
     private static final String DEFAULT_ALARM_1 = "(8, 30, 31, 0, 1, '', NULL, 0, 0);";
 
@@ -93,6 +98,7 @@ class ClockDatabaseHelper extends SQLiteOpenHelper {
     static final String OLD_ALARMS_TABLE_NAME = "alarms";
     static final String ALARMS_TABLE_NAME = "alarm_templates";
     static final String INSTANCES_TABLE_NAME = "alarm_instances";
+    static final String GROUPS_TABLE_NAME = "alarm_groups";
     private static final String SELECTED_CITIES_TABLE_NAME = "selected_cities";
 
     private static void createAlarmsTable(SQLiteDatabase db, String alarmsTableName) {
@@ -110,8 +116,17 @@ class ClockDatabaseHelper extends SQLiteOpenHelper {
                 ClockContract.AlarmsColumns.SCHEDULED_DATE + " INTEGER NOT NULL DEFAULT -1, " +
                 ClockContract.AlarmsColumns.PAUSE_START + " INTEGER NOT NULL DEFAULT -1, " +
                 ClockContract.AlarmsColumns.PAUSE_END + " INTEGER NOT NULL DEFAULT -1, " +
-                ClockContract.AlarmsColumns.COLOR + " INTEGER NOT NULL DEFAULT -1);");
+                ClockContract.AlarmsColumns.COLOR + " INTEGER NOT NULL DEFAULT -1, " +
+                ClockContract.AlarmsColumns.GROUP_ID + " INTEGER NOT NULL DEFAULT -1);");
         LogUtils.i("Alarms Table created");
+    }
+
+    private static void createGroupsTable(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + GROUPS_TABLE_NAME + " (" +
+                ClockContract.AlarmGroupsColumns._ID + " INTEGER PRIMARY KEY," +
+                ClockContract.AlarmGroupsColumns.NAME + " TEXT NOT NULL, " +
+                ClockContract.AlarmGroupsColumns.POSITION + " INTEGER NOT NULL DEFAULT 0, " +
+                ClockContract.AlarmGroupsColumns.COLLAPSED + " INTEGER NOT NULL DEFAULT 0);");
     }
 
     private static void createInstanceTable(SQLiteDatabase db, String instanceTableName) {
@@ -134,13 +149,14 @@ class ClockDatabaseHelper extends SQLiteOpenHelper {
     }
 
     public ClockDatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, VERSION_13);
+        super(context, DATABASE_NAME, null, VERSION_14);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         createAlarmsTable(db, ALARMS_TABLE_NAME);
         createInstanceTable(db, INSTANCES_TABLE_NAME);
+        createGroupsTable(db);
 
         // insert default alarms
         LogUtils.i("Inserting default alarms");
@@ -299,6 +315,31 @@ class ClockDatabaseHelper extends SQLiteOpenHelper {
                 && !hasColumn(db, ALARMS_TABLE_NAME, ClockContract.AlarmsColumns.COLOR)) {
             db.execSQL("ALTER TABLE " + ALARMS_TABLE_NAME + " ADD COLUMN "
                     + ClockContract.AlarmsColumns.COLOR + " INTEGER NOT NULL DEFAULT -1;");
+        }
+
+        if (oldVersion < VERSION_14) {
+            createGroupsTable(db);
+            if (!hasColumn(db, ALARMS_TABLE_NAME, ClockContract.AlarmsColumns.GROUP_ID)) {
+                db.execSQL("ALTER TABLE " + ALARMS_TABLE_NAME + " ADD COLUMN "
+                        + ClockContract.AlarmsColumns.GROUP_ID + " INTEGER NOT NULL DEFAULT -1;");
+            }
+        }
+    }
+
+    int deleteGroup(long groupId) {
+        final SQLiteDatabase db = getWritableDatabase();
+        db.beginTransaction();
+        try {
+            final ContentValues ungrouped = new ContentValues(1);
+            ungrouped.put(ClockContract.AlarmsColumns.GROUP_ID, -1);
+            db.update(ALARMS_TABLE_NAME, ungrouped,
+                    ClockContract.AlarmsColumns.GROUP_ID + "=" + groupId, null);
+            final int count = db.delete(GROUPS_TABLE_NAME,
+                    ClockContract.AlarmGroupsColumns._ID + "=" + groupId, null);
+            db.setTransactionSuccessful();
+            return count;
+        } finally {
+            db.endTransaction();
         }
     }
 

@@ -153,6 +153,40 @@ public final class ClockContract {
          * <p>Type: INTEGER</p>
          */
         String COLOR = "color";
+
+        /**
+         * Id of the {@link AlarmGroupsColumns} group the alarm belongs to, or -1 for none.
+         * <p>Type: INTEGER</p>
+         */
+        String GROUP_ID = "group_id";
+    }
+
+    /**
+     * Constants for the alarm groups table: named groups the user sorts alarms into.
+     */
+    protected interface AlarmGroupsColumns extends BaseColumns {
+        /**
+         * The content:// style URL for this table.
+         */
+        Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/alarm_groups");
+
+        /**
+         * The group's name.
+         * <p>Type: TEXT</p>
+         */
+        String NAME = "name";
+
+        /**
+         * Where the group sits in the alarm list, lowest first.
+         * <p>Type: INTEGER</p>
+         */
+        String POSITION = "position";
+
+        /**
+         * True if the group's alarms are hidden in the alarm list.
+         * <p>Type: BOOLEAN</p>
+         */
+        String COLLAPSED = "collapsed";
     }
 
     /**

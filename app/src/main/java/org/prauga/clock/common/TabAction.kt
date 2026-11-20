@@ -23,7 +23,6 @@ class TabActionSlot {
 
 val LocalTabActionSlot = staticCompositionLocalOf { TabActionSlot() }
 
-// The selected tab's pill in the nav bar shows this action and runs it when tapped again.
 @Composable
 fun ScreenAction(@DrawableRes icon: Int, @StringRes label: Int, onClick: () -> Unit) {
     val slot = LocalTabActionSlot.current

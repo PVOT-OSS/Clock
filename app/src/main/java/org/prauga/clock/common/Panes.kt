@@ -22,7 +22,6 @@ import androidx.compose.ui.layout.positionInWindow
 import androidx.compose.ui.unit.Constraints
 import kotlin.math.roundToInt
 
-// Side by side; on a book-folded device the panes meet at the hinge instead of the weights.
 @Composable
 fun TwoPane(
     first: @Composable () -> Unit,
@@ -66,7 +65,6 @@ fun TwoPane(
     }
 }
 
-// Tabletop posture: [top] on the upright half above the hinge, [bottom] on the flat half below it.
 @Composable
 fun TabletopSplit(
     top: @Composable () -> Unit,
@@ -99,7 +97,6 @@ fun TabletopSplit(
     }
 }
 
-// Keeps a single column readable on wide windows instead of stretching it edge to edge.
 @Composable
 fun CenteredContent(modifier: Modifier = Modifier, content: @Composable () -> Unit) {
     Box(modifier.fillMaxWidth(), contentAlignment = Alignment.TopCenter) {

@@ -15,4 +15,5 @@
     <string name="timer_preset_edit">Edit</string>
     <string name="timer_preset_delete">Delete</string>
     <string name="timer_preset_hours_minutes"><xliff:g id="hours" example="1">%1$d</xliff:g> hr <xliff:g id="minutes" example="30">%2$d</xliff:g> min</string>
+    <string name="timer_none_running">No timers running</string>
 </resources>

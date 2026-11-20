@@ -20,8 +20,10 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -30,6 +32,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.withFrameMillis
@@ -39,6 +42,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.prauga.pvot.coreui.UiState
@@ -57,6 +61,8 @@ import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.seconds
 import org.prauga.clock.R
 import org.prauga.clock.common.ScreenAction
+import org.prauga.clock.common.TwoPane
+import org.prauga.clock.common.rememberWindowLayout
 import org.prauga.clock.common.screenPadding
 import org.prauga.clock.data.DataModel
 import org.prauga.clock.data.Timer
@@ -72,31 +78,53 @@ fun TimerScreen(
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     val content = (state as? UiState.Success)?.data ?: return
-    var adding by rememberSaveable { mutableStateOf(false) }
-    LaunchedEffect(setupRequests) { if (setupRequests > 0) adding = true }
+    TimerBody(content, padding, listState, setupRequests, viewModel::onEvent)
+}
 
-    Box(Modifier.fillMaxSize()) {
-        if (content.timers.isEmpty() || adding) {
+@Composable
+private fun TimerBody(
+    content: TimerContent,
+    padding: PaddingValues,
+    listState: LazyListState,
+    setupRequests: Int,
+    onEvent: (TimerEvent) -> Unit,
+) {
+    var adding by rememberSaveable { mutableStateOf(false) }
+    var draft by rememberSaveable(stateSaver = DraftSaver) { mutableStateOf(TimerDraft()) }
+    LaunchedEffect(setupRequests) { if (setupRequests > 0) adding = true }
+    val layout = rememberWindowLayout()
+    val setup =
+        @Composable { canCancel: Boolean ->
             TimerSetup(
                 presets = content.presets,
+                draft = draft,
+                onDraftChange = { draft = it },
                 padding = padding,
-                canCancel = content.timers.isNotEmpty(),
+                canCancel = canCancel,
                 onCancel = { adding = false },
                 onStart = { length, label ->
-                    viewModel.onEvent(TimerEvent.Create(length, label))
+                    onEvent(TimerEvent.Create(length, label))
+                    draft = TimerDraft()
                     adding = false
                 },
-                onEvent = viewModel::onEvent,
-            )
-        } else {
-            TimerList(
-                content.timers,
-                listState,
-                padding,
-                viewModel::onEvent,
-                onAdd = { adding = true },
+                onEvent = onEvent,
             )
         }
+
+    when {
+        layout.twoPane ->
+            TwoPane(
+                first = { setup(false) },
+                second = {
+                    if (content.timers.isEmpty()) {
+                        NoTimers(padding)
+                    } else {
+                        TimerGrid(content.timers, padding, onEvent)
+                    }
+                },
+            )
+        content.timers.isEmpty() || adding -> setup(content.timers.isNotEmpty())
+        else -> TimerList(content.timers, listState, padding, onEvent, onAdd = { adding = true })
     }
 }
 
@@ -111,6 +139,8 @@ fun timerViewModel(expiredOnly: Boolean = false): TimerViewModel {
 @Composable
 private fun TimerSetup(
     presets: List<TimerPreset>,
+    draft: TimerDraft,
+    onDraftChange: (TimerDraft) -> Unit,
     padding: PaddingValues,
     canCancel: Boolean,
     onCancel: () -> Unit,
@@ -118,23 +148,20 @@ private fun TimerSetup(
     onEvent: (TimerEvent) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    var duration by rememberSaveable(stateSaver = DurationSaver) { mutableStateOf(Duration.ZERO) }
-    var chosenPreset by rememberSaveable { mutableStateOf<Long?>(null) }
+    val duration = draft.duration
     var actionsFor by rememberSaveable { mutableStateOf<Long?>(null) }
     var editing by rememberSaveable { mutableStateOf<Long?>(null) }
     var editorOpen by rememberSaveable { mutableStateOf(false) }
     val label =
         presets
             .firstOrNull {
-                it.id == chosenPreset && it.lengthMillis == duration.inWholeMilliseconds
+                it.id == draft.presetId && it.lengthMillis == duration.inWholeMilliseconds
             }
             ?.name
             .orEmpty()
     if (duration > Duration.ZERO) {
         ScreenAction(R.drawable.ic_t_player_play, R.string.timer_start) {
             onStart(duration.inWholeMilliseconds, label)
-            duration = Duration.ZERO
-            chosenPreset = null
         }
     }
     LazyVerticalGrid(
@@ -148,7 +175,7 @@ private fun TimerSetup(
         item(key = KEY_PICKER, span = { GridItemSpan(maxLineSpan) }) {
             PvotDurationPicker(
                 duration = duration,
-                onDurationChange = { duration = it },
+                onDurationChange = { onDraftChange(draft.copy(duration = it)) },
                 modifier = Modifier.fillMaxWidth(),
             )
         }
@@ -175,8 +202,7 @@ private fun TimerSetup(
             PresetChip(
                 preset = preset,
                 onClick = {
-                    duration = preset.lengthMillis.milliseconds
-                    chosenPreset = preset.id
+                    onDraftChange(TimerDraft(preset.lengthMillis.milliseconds, preset.id))
                 },
                 onLongClick = { actionsFor = preset.id },
             )
@@ -223,21 +249,68 @@ private fun TimerList(
     onEvent: (TimerEvent) -> Unit,
     onAdd: () -> Unit,
 ) {
+    val now = rememberNow(timers)
+    ScreenAction(R.drawable.ic_t_plus, R.string.new_timer, onAdd)
+    PvotScreen(state = listState, contentPadding = screenPadding(padding)) {
+        itemsIndexed(timers, key = { _, item -> item.id }) { index, item ->
+            TimerCard(item, now, onEvent, Modifier.pvotReveal(index))
+        }
+    }
+}
+
+@Composable
+private fun TimerGrid(
+    timers: List<TimerItem>,
+    padding: PaddingValues,
+    onEvent: (TimerEvent) -> Unit,
+) {
+    val now = rememberNow(timers)
+    LazyVerticalGrid(
+        columns = GridCells.Adaptive(TimerCardMinWidth),
+        state = rememberLazyGridState(),
+        contentPadding = screenPadding(padding),
+        horizontalArrangement = Arrangement.spacedBy(PvotSpacing.M),
+        verticalArrangement = Arrangement.spacedBy(PvotSpacing.M),
+        modifier = Modifier.fillMaxSize(),
+    ) {
+        itemsIndexed(timers, key = { _, item -> item.id }) { index, item ->
+            TimerCard(item, now, onEvent, Modifier.pvotReveal(index))
+        }
+    }
+}
+
+@Composable
+private fun NoTimers(padding: PaddingValues) {
+    Column(
+        Modifier.fillMaxSize().padding(screenPadding(padding)),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+    ) {
+        Icon(
+            painterResource(R.drawable.ic_t_hourglass),
+            contentDescription = null,
+            tint = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+        Text(
+            stringResource(R.string.timer_none_running),
+            style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.padding(top = PvotSpacing.S),
+        )
+    }
+}
+
+@Composable
+fun rememberNow(timers: List<TimerItem>): Long {
     var now by remember { mutableLongStateOf(SystemClock.elapsedRealtime()) }
     val ticking = timers.any { it.isTicking }
     LaunchedEffect(ticking) {
+        now = SystemClock.elapsedRealtime()
         while (ticking) {
             withFrameMillis { now = SystemClock.elapsedRealtime() }
         }
     }
-    ScreenAction(R.drawable.ic_t_plus, R.string.new_timer, onAdd)
-    Box(Modifier.fillMaxSize()) {
-        PvotScreen(state = listState, contentPadding = screenPadding(padding)) {
-            itemsIndexed(timers, key = { _, item -> item.id }) { index, item ->
-                TimerCard(item, now, onEvent, Modifier.pvotReveal(index))
-            }
-        }
-    }
+    return now
 }
 
 @Composable
@@ -325,13 +398,19 @@ private fun format(remaining: Long): String {
     return if (seconds < 0) "−$text" else text
 }
 
+private val TimerCardMinWidth = 300.dp
+
 private const val KEY_PICKER = "picker"
 private const val KEY_CANCEL = "cancel"
 private const val KEY_SAVED = "saved"
 private const val KEY_ADD = "add"
 
-private val DurationSaver =
-    androidx.compose.runtime.saveable.Saver<Duration, Long>(
-        save = { it.inWholeSeconds },
-        restore = { it.seconds },
+private data class TimerDraft(val duration: Duration = Duration.ZERO, val presetId: Long? = null)
+
+private val DraftSaver =
+    Saver<TimerDraft, LongArray>(
+        save = { longArrayOf(it.duration.inWholeSeconds, it.presetId ?: NO_PRESET) },
+        restore = { TimerDraft(it[0].seconds, it[1].takeIf { id -> id != NO_PRESET }) },
     )
+
+private const val NO_PRESET = -1L

@@ -9,7 +9,6 @@ import android.content.Context
 import android.content.Intent
 import android.text.format.DateFormat
 import android.text.format.DateUtils
-import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -20,39 +19,39 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyListState
-import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
-import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.compose.LifecycleResumeEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.prauga.pvot.coreui.PvotSectionHeader
 import com.prauga.pvot.coreui.UiState
 import com.prauga.pvot.designsystem.components.PvotBottomSheet
-import com.prauga.pvot.designsystem.components.PvotCard
 import com.prauga.pvot.designsystem.components.PvotScreen
 import com.prauga.pvot.designsystem.components.PvotSheetItem
 import com.prauga.pvot.designsystem.components.button.PvotIconButtonDefaults
-import com.prauga.pvot.designsystem.motion.pvotReveal
+import com.prauga.pvot.designsystem.components.list.PvotListGroup
+import com.prauga.pvot.designsystem.components.list.PvotListRow
 import com.prauga.pvot.designsystem.theme.PvotSpacing
 import java.util.Calendar
 import java.util.Date
@@ -68,11 +67,11 @@ import org.prauga.clock.data.DataModel
 import org.prauga.clock.worldclock.CitySelectionActivity
 
 @Composable
-fun ClockScreen(
-    padding: PaddingValues,
-    listState: LazyListState,
-    viewModel: ClockViewModel = viewModel { ClockViewModel(DataModel.getDataModel()) },
-) {
+fun ClockScreen(padding: PaddingValues, listState: LazyListState) {
+    val context = LocalContext.current.applicationContext
+    val viewModel: ClockViewModel = viewModel {
+        ClockViewModel(DataModel.getDataModel(), { Utils.getNextAlarm(context) })
+    }
     val state by viewModel.state.collectAsStateWithLifecycle()
     val content = (state as? UiState.Success)?.data ?: return
     LifecycleResumeEffect(Unit) {
@@ -92,88 +91,74 @@ private fun ClockBody(
     val context = LocalContext.current
     val seconds = content.seconds
     val now by rememberNow(if (seconds) DateUtils.SECOND_IN_MILLIS else DateUtils.MINUTE_IN_MILLIS)
-    val cities = content.clocks
     val haptics = LocalHapticFeedback.current
-    var menuCity by remember { mutableStateOf<City?>(null) }
-    var menuOpen by remember { mutableStateOf(false) }
+    var menuCityId by rememberSaveable { mutableStateOf<String?>(null) }
+    var menuOpen by rememberSaveable { mutableStateOf(false) }
     ScreenAction(R.drawable.ic_t_world, R.string.add_city) {
         context.startActivity(Intent(context, CitySelectionActivity::class.java))
     }
+    val onLongPress: (City) -> Unit = { city ->
+        haptics.performHapticFeedback(HapticFeedbackType.LongPress)
+        menuCityId = city.id
+        menuOpen = true
+    }
 
-    PvotScreen(
-        state = listState,
-        contentPadding = screenPadding(padding),
-        horizontalAlignment = Alignment.Start,
-    ) {
-        item { MainClock(context, now, seconds, content.analog) }
-        if (cities.isNotEmpty()) {
+    PvotScreen(state = listState, contentPadding = screenPadding(padding)) {
+        item(key = "clock") { MainClock(content, now) }
+        if (content.clocks.isNotEmpty()) {
             item(key = "cities") {
-                PvotSectionHeader(
-                    stringResource(R.string.cities_activity_title),
-                    Modifier.padding(top = PvotSpacing.L),
-                )
+                CityGroup(content, now, onLongPress, Modifier.padding(top = PvotSpacing.L))
             }
-        }
-        itemsIndexed(cities, key = { _, city -> city.id }) { index, city ->
-            CityCard(
-                context,
-                city,
-                now,
-                Modifier.pvotReveal(index).pointerInput(city) {
-                    detectTapGestures(
-                        onLongPress = {
-                            // The home clock follows the time zone, so only chosen cities move.
-                            if (city in content.selected) {
-                                haptics.performHapticFeedback(HapticFeedbackType.LongPress)
-                                menuCity = city
-                                menuOpen = true
-                            }
-                        }
-                    )
-                },
-            )
         }
     }
 
-    val shown = menuCity
+    val selected = content.selected
+    val shown = selected.firstOrNull { it.id == menuCityId }
     if (shown != null) {
-        val selected = content.selected
-        val index = selected.indexOf(shown)
-        PvotBottomSheet(
+        CityMenu(
+            city = shown,
+            index = selected.indexOf(shown),
+            last = selected.lastIndex,
             visible = menuOpen,
-            onDismissRequest = { menuOpen = false },
-            title = shown.name,
-        ) {
-            PvotSheetItem(
-                title = stringResource(R.string.city_move_up),
-                enabled = index > 0,
-                onClick = {
-                    onEvent(ClockEvent.Move(shown, -1))
-                    menuOpen = false
-                },
-            )
-            PvotSheetItem(
-                title = stringResource(R.string.city_move_down),
-                enabled = index in 0 until selected.lastIndex,
-                onClick = {
-                    onEvent(ClockEvent.Move(shown, 1))
-                    menuOpen = false
-                },
-            )
-            PvotSheetItem(
-                title = stringResource(R.string.city_remove),
-                destructive = true,
-                onClick = {
-                    onEvent(ClockEvent.Remove(shown))
-                    menuOpen = false
-                },
-            )
-        }
+            onDismiss = { menuOpen = false },
+            onEvent = {
+                onEvent(it)
+                menuOpen = false
+            },
+        )
     }
 }
 
 @Composable
-private fun rememberNow(step: Long): androidx.compose.runtime.State<Long> {
+private fun CityMenu(
+    city: City,
+    index: Int,
+    last: Int,
+    visible: Boolean,
+    onDismiss: () -> Unit,
+    onEvent: (ClockEvent) -> Unit,
+) {
+    PvotBottomSheet(visible = visible, onDismissRequest = onDismiss, title = city.name) {
+        PvotSheetItem(
+            title = stringResource(R.string.city_move_up),
+            enabled = index > 0,
+            onClick = { onEvent(ClockEvent.Move(city, -1)) },
+        )
+        PvotSheetItem(
+            title = stringResource(R.string.city_move_down),
+            enabled = index in 0 until last,
+            onClick = { onEvent(ClockEvent.Move(city, 1)) },
+        )
+        PvotSheetItem(
+            title = stringResource(R.string.city_remove),
+            destructive = true,
+            onClick = { onEvent(ClockEvent.Remove(city)) },
+        )
+    }
+}
+
+@Composable
+private fun rememberNow(step: Long): State<Long> {
     val now = remember { mutableLongStateOf(System.currentTimeMillis()) }
     LaunchedEffect(step) {
         while (true) {
@@ -186,33 +171,35 @@ private fun rememberNow(step: Long): androidx.compose.runtime.State<Long> {
 }
 
 @Composable
-private fun MainClock(context: Context, now: Long, seconds: Boolean, analog: Boolean) {
+private fun MainClock(content: ClockContent, now: Long, modifier: Modifier = Modifier) {
+    val context = LocalContext.current
     val locale = LocalConfiguration.current.locales[0]
-    Column(modifier = Modifier.fillMaxWidth().padding(vertical = PvotSpacing.L)) {
-        if (analog) {
+    Column(
+        modifier = modifier.fillMaxWidth().padding(vertical = PvotSpacing.L),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        if (content.analog) {
             AndroidView(
                 factory = { AnalogClock(it) },
-                update = { it.enableSeconds(seconds) },
-                modifier =
-                    Modifier.fillMaxWidth(ANALOG_FRACTION)
-                        .aspectRatio(1f)
-                        .align(Alignment.CenterHorizontally),
+                update = { it.enableSeconds(content.seconds) },
+                modifier = Modifier.fillMaxWidth(ANALOG_FRACTION).aspectRatio(1f),
             )
         } else {
             Text(
-                text = formatTime(context, now, TimeZone.getDefault(), seconds),
+                text = formatTime(context, now, TimeZone.getDefault(), content.seconds),
                 style = MaterialTheme.typography.displayLarge,
-                fontWeight = FontWeight.Light,
+                fontWeight = FontWeight.Medium,
+                textAlign = TextAlign.Center,
             )
         }
         Text(
             text =
                 DateFormat.format(DateFormat.getBestDateTimePattern(locale, "EEEMMMd"), now)
-                    .toString()
-                    .uppercase(),
-            style = MaterialTheme.typography.titleSmall,
+                    .toString(),
+            style = MaterialTheme.typography.titleMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
-        Utils.getNextAlarm(context)?.let { alarm ->
+        content.nextAlarm?.let { alarm ->
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.padding(top = PvotSpacing.XS),
@@ -221,34 +208,68 @@ private fun MainClock(context: Context, now: Long, seconds: Boolean, analog: Boo
                     painterResource(R.drawable.ic_t_alarm),
                     contentDescription = null,
                     modifier = Modifier.size(PvotIconButtonDefaults.SmallIconSize),
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
                 Spacer(Modifier.width(PvotSpacing.XS))
-                Text(alarm, style = MaterialTheme.typography.titleSmall)
+                Text(
+                    alarm,
+                    style = MaterialTheme.typography.titleSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
             }
         }
     }
 }
 
 @Composable
-private fun CityCard(context: Context, city: City, now: Long, modifier: Modifier = Modifier) {
-    PvotCard(modifier = modifier.fillMaxWidth()) {
-        Row(
-            modifier = Modifier.fillMaxWidth().padding(PvotSpacing.L),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Column(modifier = Modifier.weight(1f)) {
-                Text(city.name, style = MaterialTheme.typography.titleMedium)
-                difference(context, city, now)?.let {
-                    Text(it, style = MaterialTheme.typography.bodyMedium)
-                }
-            }
-            Text(
-                text = formatTime(context, now, city.timeZone, false),
-                style = MaterialTheme.typography.displaySmall,
-                fontWeight = FontWeight.Light,
-            )
+private fun CityGroup(
+    content: ClockContent,
+    now: Long,
+    onLongPress: (City) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    PvotListGroup(modifier = modifier) {
+        content.clocks.forEach { city ->
+            // The home clock follows the time zone, so only chosen cities move.
+            item { CityRow(city, now, if (city in content.selected) onLongPress else null) }
         }
     }
+}
+
+@Composable
+private fun CityRow(city: City, now: Long, onLongPress: ((City) -> Unit)?) {
+    val context = LocalContext.current
+    PvotListRow(
+        title = city.name,
+        supportingText = difference(context, city, now),
+        trailing = { CityTime(context, city, now) },
+        onLongClick = onLongPress?.let { { it(city) } },
+    )
+}
+
+@Composable
+private fun CityTime(context: Context, city: City, now: Long) {
+    val day = isDaytime(city.timeZone, now)
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Icon(
+            painterResource(if (day) R.drawable.ic_t_sun else R.drawable.ic_t_moon),
+            contentDescription =
+                stringResource(if (day) R.string.world_daytime else R.string.world_night),
+            modifier = Modifier.size(PvotIconButtonDefaults.SmallIconSize),
+            tint = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+        Spacer(Modifier.width(PvotSpacing.S))
+        Text(
+            text = formatTime(context, now, city.timeZone, false),
+            style = MaterialTheme.typography.headlineSmall,
+            fontWeight = FontWeight.Medium,
+        )
+    }
+}
+
+private fun isDaytime(zone: TimeZone, now: Long): Boolean {
+    val hour = Calendar.getInstance(zone).apply { timeInMillis = now }.get(Calendar.HOUR_OF_DAY)
+    return hour in DAY_START_HOUR until DAY_END_HOUR
 }
 
 private fun formatTime(context: Context, now: Long, zone: TimeZone, seconds: Boolean): String {
@@ -266,18 +287,18 @@ private fun formatTime(context: Context, now: Long, zone: TimeZone, seconds: Boo
     return format.format(Date(now))
 }
 
-private fun difference(context: Context, city: City, now: Long): String? {
+private fun difference(context: Context, city: City, now: Long): String {
     val delta = city.timeZone.getOffset(now) - TimeZone.getDefault().getOffset(now).toLong()
     val hours = (delta / DateUtils.HOUR_IN_MILLIS).toInt()
     val minutes = (delta / DateUtils.MINUTE_IN_MILLIS).toInt() % 60
     val showMinutes = delta % DateUtils.HOUR_IN_MILLIS != 0L
     if (hours == 0 && !showMinutes) {
-        return null
+        return context.getString(R.string.world_same_time)
     }
     val ahead = hours > 0 || (hours == 0 && minutes > 0)
     val text = Utils.createHoursDifferentString(context, showMinutes, ahead, hours, minutes)
-    val local = Calendar.getInstance()
-    val there = Calendar.getInstance(city.timeZone)
+    val local = Calendar.getInstance().apply { timeInMillis = now }
+    val there = Calendar.getInstance(city.timeZone).apply { timeInMillis = now }
     return if (local.get(Calendar.DAY_OF_WEEK) != there.get(Calendar.DAY_OF_WEEK)) {
         context.getString(
             if (ahead) R.string.world_hours_tomorrow else R.string.world_hours_yesterday,
@@ -287,3 +308,5 @@ private fun difference(context: Context, city: City, now: Long): String? {
 }
 
 private const val ANALOG_FRACTION = 0.6f
+private const val DAY_START_HOUR = 6
+private const val DAY_END_HOUR = 18

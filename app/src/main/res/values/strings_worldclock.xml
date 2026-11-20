@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  SPDX-FileCopyrightText: 2026 Saalim Quadri <danascape@gmail.com>
+  SPDX-License-Identifier: Apache-2.0
+  -->
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
+    <string name="world_same_time">Same time</string>
+    <string name="world_daytime">Daytime</string>
+    <string name="world_night">Night</string>
+</resources>

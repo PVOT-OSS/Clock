@@ -12,4 +12,5 @@ data class ClockContent(
     val analog: Boolean,
     val clocks: List<City>,
     val selected: List<City>,
+    val nextAlarm: String?,
 )

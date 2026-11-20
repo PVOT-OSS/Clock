@@ -49,6 +49,8 @@ import com.prauga.pvot.designsystem.theme.PvotAppTheme
 import com.prauga.pvot.designsystem.theme.PvotSpacing
 import kotlinx.coroutines.delay
 import org.prauga.clock.R
+import org.prauga.clock.common.TabletopSplit
+import org.prauga.clock.common.rememberWindowLayout
 
 object AlarmRinging {
 
@@ -83,6 +85,26 @@ private fun AlarmRingingScreen(
     onDismiss: () -> Unit,
 ) {
     val outcome by viewModel.state.collectAsStateWithLifecycle()
+    val color by viewModel.color.collectAsStateWithLifecycle()
+    val accent = AlarmColor.of(color)?.accent()
+    val scheme = MaterialTheme.colorScheme
+    MaterialTheme(
+        colorScheme =
+            if (accent == null) scheme
+            else scheme.copy(primary = accent.color, onPrimary = accent.onColor)
+    ) {
+        RingingContent(outcome, label, tapToAct, onSnooze, onDismiss)
+    }
+}
+
+@Composable
+private fun RingingContent(
+    outcome: RingingOutcome?,
+    label: String,
+    tapToAct: Boolean,
+    onSnooze: () -> Unit,
+    onDismiss: () -> Unit,
+) {
     Box(
         Modifier.fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
@@ -106,6 +128,26 @@ private fun AlarmRingingScreen(
 
 @Composable
 private fun Ringing(label: String, tapToAct: Boolean, onSnooze: () -> Unit, onDismiss: () -> Unit) {
+    if (rememberWindowLayout().tabletop) {
+        TabletopSplit(
+            top = { RingingInfo(label, Modifier.fillMaxSize()) },
+            bottom = {
+                Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                    RingingControls(label, tapToAct, onSnooze, onDismiss)
+                }
+            },
+            modifier = Modifier.fillMaxSize(),
+        )
+    } else {
+        Column(Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
+            RingingInfo(label, Modifier.weight(1f))
+            RingingControls(label, tapToAct, onSnooze, onDismiss)
+        }
+    }
+}
+
+@Composable
+private fun RingingInfo(label: String, modifier: Modifier) {
     val context = LocalContext.current
     val locale = LocalConfiguration.current.locales[0]
     var now by remember { mutableLongStateOf(System.currentTimeMillis()) }
@@ -116,61 +158,72 @@ private fun Ringing(label: String, tapToAct: Boolean, onSnooze: () -> Unit, onDi
         }
     }
     val skeleton = if (DateFormat.is24HourFormat(context)) "Hm" else "hm"
-    Column(Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
-        Column(
-            Modifier.weight(1f),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            Text(label, style = MaterialTheme.typography.titleLarge, textAlign = TextAlign.Center)
-            Text(
-                DateFormat.format(DateFormat.getBestDateTimePattern(locale, skeleton), now)
-                    .toString(),
-                style = MaterialTheme.typography.displayLarge,
-                fontWeight = FontWeight.Light,
+    Column(
+        modifier,
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Text(
+            label,
+            style = MaterialTheme.typography.titleLarge,
+            color = MaterialTheme.colorScheme.primary,
+            textAlign = TextAlign.Center,
+        )
+        Text(
+            DateFormat.format(DateFormat.getBestDateTimePattern(locale, skeleton), now).toString(),
+            style = MaterialTheme.typography.displayLarge,
+            fontWeight = FontWeight.Light,
+        )
+        Text(
+            DateFormat.format(DateFormat.getBestDateTimePattern(locale, "EEEEMMMMd"), now)
+                .toString(),
+            style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+    }
+}
+
+@Composable
+private fun RingingControls(
+    label: String,
+    tapToAct: Boolean,
+    onSnooze: () -> Unit,
+    onDismiss: () -> Unit,
+) {
+    if (tapToAct) {
+        Row(horizontalArrangement = Arrangement.spacedBy(PvotSpacing.M)) {
+            PvotButton(
+                text = stringResource(R.string.alarm_alert_snooze_text),
+                onClick = onSnooze,
+                style = PvotButtonStyle.Tonal,
             )
-            Text(
-                DateFormat.format(DateFormat.getBestDateTimePattern(locale, "EEEEMMMMd"), now)
-                    .toString(),
-                style = MaterialTheme.typography.bodyLarge,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-        }
-        if (tapToAct) {
-            Row(horizontalArrangement = Arrangement.spacedBy(PvotSpacing.M)) {
-                PvotButton(
-                    text = stringResource(R.string.alarm_alert_snooze_text),
-                    onClick = onSnooze,
-                    style = PvotButtonStyle.Tonal,
-                )
-                PvotButton(
-                    text = stringResource(R.string.alarm_alert_dismiss_text),
-                    onClick = onDismiss,
-                    style = PvotButtonStyle.Filled,
-                )
-            }
-        } else {
-            PvotSlideToAct(
-                icon = painterResource(R.drawable.ic_t_alarm),
-                contentDescription = label,
-                up =
-                    PvotSlideTarget(
-                        label = stringResource(R.string.alarm_alert_dismiss_text),
-                        onReached = onDismiss,
-                        distance = PvotSlideToActDefaults.UpDistance,
-                        hint = stringResource(R.string.alarm_slide_dismiss),
-                    ),
-                down =
-                    PvotSlideTarget(
-                        label = stringResource(R.string.alarm_alert_snooze_text),
-                        onReached = onSnooze,
-                        distance = PvotSlideToActDefaults.DownDistance,
-                        hint = stringResource(R.string.alarm_slide_snooze),
-                    ),
-                puckColor = MaterialTheme.colorScheme.primary,
-                puckContentColor = MaterialTheme.colorScheme.onPrimary,
+            PvotButton(
+                text = stringResource(R.string.alarm_alert_dismiss_text),
+                onClick = onDismiss,
+                style = PvotButtonStyle.Filled,
             )
         }
+    } else {
+        PvotSlideToAct(
+            icon = painterResource(R.drawable.ic_t_alarm),
+            contentDescription = label,
+            up =
+                PvotSlideTarget(
+                    label = stringResource(R.string.alarm_alert_dismiss_text),
+                    onReached = onDismiss,
+                    distance = PvotSlideToActDefaults.UpDistance,
+                    hint = stringResource(R.string.alarm_slide_dismiss),
+                ),
+            down =
+                PvotSlideTarget(
+                    label = stringResource(R.string.alarm_alert_snooze_text),
+                    onReached = onSnooze,
+                    distance = PvotSlideToActDefaults.DownDistance,
+                    hint = stringResource(R.string.alarm_slide_snooze),
+                ),
+            puckColor = MaterialTheme.colorScheme.primary,
+            puckContentColor = MaterialTheme.colorScheme.onPrimary,
+        )
     }
 }
 

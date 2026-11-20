@@ -45,6 +45,7 @@ import org.prauga.clock.R;
 import org.prauga.clock.data.DataModel;
 import org.prauga.clock.data.DataModel.AlarmVolumeButtonBehavior;
 import org.prauga.clock.events.Events;
+import org.prauga.clock.provider.Alarm;
 import org.prauga.clock.provider.AlarmInstance;
 import org.prauga.clock.alarms.ui.AlarmRinging;
 import org.prauga.clock.alarms.ui.AlarmRingingViewModel;
@@ -150,7 +151,10 @@ public class AlarmActivity extends BaseActivity {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
         }
 
-        mRinging = new ViewModelProvider(this).get(AlarmRingingViewModel.class);
+        final long alarmId = mAlarmInstance.mAlarmId == null
+                ? Alarm.INVALID_ID : mAlarmInstance.mAlarmId;
+        mRinging = new ViewModelProvider(this, AlarmRingingViewModel.factory(this, alarmId))
+                .get(AlarmRingingViewModel.class);
         AlarmRinging.show(this, mAlarmInstance.getLabelOrDefault(this),
                 isAccessibilityEnabled() || AlarmGestures.isTapToDismiss(this), mRinging,
                 () -> {

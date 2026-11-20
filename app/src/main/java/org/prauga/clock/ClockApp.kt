@@ -34,8 +34,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import com.prauga.pvot.designsystem.adaptive.PvotAdaptiveDefaults
+import com.prauga.pvot.designsystem.adaptive.PvotWindowHeight
+import com.prauga.pvot.designsystem.adaptive.rememberPvotWindowLayout
 import com.prauga.pvot.designsystem.components.PvotScreenScaffold
 import com.prauga.pvot.designsystem.components.PvotSnackbarHost
+import com.prauga.pvot.designsystem.navigation.LocalPvotNavBarSizes
 import com.prauga.pvot.designsystem.navigation.PvotNavBar
 import com.prauga.pvot.designsystem.navigation.PvotTabItem
 import com.prauga.pvot.designsystem.navigation.PvotTopBar
@@ -133,51 +136,60 @@ fun ClockApp(timerSetupRequests: Int, createAlarmRequests: Int, shownAlarm: Long
             }
         }
 
-    PvotScreenScaffold(
-        topBar = {
-            PvotTopBar(
-                title = stringResource(tab.labelResId),
-                compact = compact,
-                inlineTitle = true,
-                actions = {
-                    PvotTopBarAction(
-                        icon = painterResource(R.drawable.ic_t_settings),
-                        contentDescription = stringResource(R.string.settings),
-                        onClick = {
-                            context.startActivity(Intent(context, SettingsActivity::class.java))
-                        },
-                    )
-                },
-            )
-        },
-        bottomBar = {
-            PvotNavBar(
-                selectedTab = selected,
-                onTabClick = {
-                    if (it == selected && action != null) {
-                        action.onClick()
-                    } else {
-                        selected = it
-                        model.setSelectedTab(Tab.entries[it])
+    val short = rememberPvotWindowLayout().height == PvotWindowHeight.Compact
+    val navSizes = LocalPvotNavBarSizes.current
+    CompositionLocalProvider(
+        LocalPvotNavBarSizes provides
+            if (short) navSizes.copy(barHeight = navSizes.compactBarHeight) else navSizes
+    ) {
+        PvotScreenScaffold(
+            topBar = {
+                PvotTopBar(
+                    title = stringResource(tab.labelResId),
+                    compact = compact,
+                    inlineTitle = true,
+                    actions = {
+                        PvotTopBarAction(
+                            icon = painterResource(R.drawable.ic_t_settings),
+                            contentDescription = stringResource(R.string.settings),
+                            onClick = {
+                                context.startActivity(Intent(context, SettingsActivity::class.java))
+                            },
+                        )
+                    },
+                )
+            },
+            bottomBar = {
+                PvotNavBar(
+                    selectedTab = selected,
+                    onTabClick = {
+                        if (it == selected && action != null) {
+                            action.onClick()
+                        } else {
+                            selected = it
+                            model.setSelectedTab(Tab.entries[it])
+                        }
+                    },
+                    tabs = tabs,
+                    compact = short,
+                    modifier = Modifier.widthIn(max = PvotAdaptiveDefaults.ContentMaxWidth),
+                )
+            },
+            snackbarHost = { PvotSnackbarHost(snackbars) },
+        ) { padding ->
+            CompositionLocalProvider(
+                LocalContentColor provides MaterialTheme.colorScheme.onBackground,
+                LocalTabActionSlot provides actions,
+            ) {
+                Box(Modifier.nestedScroll(foldOnScroll)) {
+                    when (tab) {
+                        Tab.CLOCKS -> ClockScreen(padding, listState)
+                        Tab.STOPWATCH -> StopwatchScreen(padding, listState)
+                        Tab.TIMERS -> TimerScreen(padding, listState, timerSetupRequests)
+                        Tab.ALARMS ->
+                            AlarmsScreen(padding, listState, createAlarmRequests, shownAlarm)
+                        Tab.BEDTIME -> BedtimeScreen(padding, listState)
                     }
-                },
-                tabs = tabs,
-                modifier = Modifier.widthIn(max = PvotAdaptiveDefaults.ContentMaxWidth),
-            )
-        },
-        snackbarHost = { PvotSnackbarHost(snackbars) },
-    ) { padding ->
-        CompositionLocalProvider(
-            LocalContentColor provides MaterialTheme.colorScheme.onBackground,
-            LocalTabActionSlot provides actions,
-        ) {
-            Box(Modifier.nestedScroll(foldOnScroll)) {
-                when (tab) {
-                    Tab.CLOCKS -> ClockScreen(padding, listState)
-                    Tab.STOPWATCH -> StopwatchScreen(padding, listState)
-                    Tab.TIMERS -> TimerScreen(padding, listState, timerSetupRequests)
-                    Tab.ALARMS -> AlarmsScreen(padding, listState, createAlarmRequests, shownAlarm)
-                    Tab.BEDTIME -> BedtimeScreen(padding, listState)
                 }
             }
         }
